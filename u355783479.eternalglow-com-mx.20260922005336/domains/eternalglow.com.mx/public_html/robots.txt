@@ -1,63 +1,18 @@
-Sitemap:https://eternalglow.com.mx/sitemap_index.xml
-Sitemap:https://eternalglow.com.mx/page-sitemap.xml
-Sitemap:https://eternalglow.com.mx/post-sitemap.xml
-
-User-Agent: *
-Allow: /wp-content/uploads/
-Allow: /feed/$
+# CSS, JS and /wp-content/ stay crawlable so search engines can render the pages.
+# AI crawlers are allowed on purpose (client wants visibility in AI search).
+User-agent: *
 Allow: /wp-admin/admin-ajax.php
-Disallow: /wp-content/
-Disallow: /wp-includes/
-Disallow: /wp-content/plugins/
-Disallow: /wp-content/themes/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /xmlrpc.php
 Disallow: /readme.html
 Disallow: /license.txt
-Disallow: /xmlrpc.php
-Disallow: /*?attachment_id=
-Disallow: /trackback/
-Disallow: /wp-admin/
-Disallow: /feed/
 Disallow: /?s=
-Disallow: /search
-Disallow: /*?
-Disallow: /*.php$
-Disallow: /*.js$
-Disallow: /*.inc$
-Disallow: /*.css$
-Disallow: */feed/
-Disallow: */trackback/
-Disallow: /wp-login.php
-Disallow: /wp-register.php
-Disallow: /page/
-# No indexar copias de seguridad
-Disallow: /*.sql$
-Disallow: /*.tgz$
-Disallow: /*.gz$
-Disallow: /*.tar$
-Disallow: /*.svn$# Reglas para bots conocidos
-User-agent: Googlebot
-User-agent: Googlebot-Image
-Disallow: /wp-includes/
-Allow: /wp-content/uploads/
-User-agent: AhrefsSiteAudit
-Allow: /
-User-agent: AhrefsBot
-Allow: /
-User-agent: ia_archiver
-Disallow: /
-User-agent: duggmirror
-Disallow: /
-User-agent: noxtrumbot
-Crawl-delay: 50
-User-agent: msnbot
-Crawl-delay: 30
-User-agent: Slurp
-Crawl-delay: 10
-User-agent: MSIECrawler
-Disallow: /
-User-agent: WebCopier
-Disallow: /
-User-agent: Microsoft.URL.Control
-Disallow: /
-User-agent: libwww
-Disallow: /wp-content/uploads/wpo-plugins-tables-list.json
+Disallow: /search/
+Disallow: /feed/
+Disallow: /*/feed/
+Disallow: /trackback/
+Disallow: /*/trackback/
+Disallow: /*?attachment_id=
+
+Sitemap: https://eternalglow.com.mx/sitemap_index.xml
