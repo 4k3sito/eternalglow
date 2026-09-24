@@ -1,0 +1,131 @@
+:root{
+	--#{$prefix}body-font-size: #{$font-size-body};
+}
+body{
+	background-image: var(--img-bg);
+	background-position: center;
+	overflow-x: hidden;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+main{
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+	> div{
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		position: relative;
+		> .entry{
+			flex-grow: 1;
+		}
+	}
+}
+img {
+	max-width: 100%;
+	vertical-align: middle;
+  	border-style: none;
+	height: auto;
+	width: auto;
+}
+a{
+	outline: none;
+	&:not(.btn) {
+	    transition: all 0.2s linear;
+	}
+}
+b,
+strong {
+	font-weight: $font-weight-bold;
+}
+video{
+	max-width: 100%;
+}
+.nlm > *:last-child{
+	margin-bottom: 0 !important;
+}
+.nlp > *:last-child{
+	padding-bottom: 0 !important;
+}
+.nlb > *:last-child{
+	border: none !important;
+}
+.image-hover-scale{
+	img, .img{
+		display: block;
+		transition: all 0.2s linear;
+	}
+	&:hover{
+		img, .img{
+			transform: scale(1.1);
+		}
+	}
+}
+.transition-all{
+	transition: all 0.2s linear;
+}
+
+
+.accordion-button{
+	&::after{
+		background-image: var(--img-plus);
+		background-position: center;
+  		background-size: contain;
+		width: 32px;
+		height: 32px;
+	}
+	&:not(.collapsed){
+		&::after{
+			background-image: var(--img-minus);
+		}
+	}
+}
+.jss-text{
+	ul{
+		list-style: none;
+		display: grid;
+		gap: 8px;
+		padding: 0;
+		li{
+			position: relative;
+  			padding: 0 0 0 40px;
+			&::before{
+				content: '';
+				background-image: var(--img-tick-circle);
+				display: block;
+				width: 24px;
+				height: 24px;
+				position: absolute;
+				left: 0;
+				top: 50%;
+				margin: -12px 0 0;
+			}
+		}
+	}
+}
+.bg-primary-gradient{
+	background: linear-gradient(180deg, rgba(255, 213, 199, 0) 3.3%, rgba(249, 137, 107, 0.4) 100%), #FFF7F2;
+}
+
+
+
+@include media-breakpoint-down(md){
+	.jss-text{
+		ul{
+			text-align: center;
+    		gap: 16px;
+			li{
+				padding: 32px 0 0;
+				&::before{
+					top: 0;
+					left: 50%;
+					margin: 0 0 0 -12px;
+				}
+			}
+		}
+	}
+}

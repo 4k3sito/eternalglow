@@ -1,0 +1,41 @@
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+		@each $color, $value in $theme-colors {
+			.a#{$infix}-#{$color}{
+				a{
+					color: $value !important;
+					&:hover,
+					&:focus {
+						color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage)) !important;
+					}
+				}
+			}
+			.placeholder#{$infix}-#{$color}{
+				&::placeholder{
+					color: $value !important;
+				}
+			}
+			@each $hover, $hvalue in $theme-colors {
+				@if $color != $hover {
+					.text#{$infix}-#{$color}-#{$hover}{
+						color: $value !important;
+						&:hover,
+						&:focus{
+							color: $hvalue !important;
+						}
+					}
+					.a#{$infix}-#{$color}-#{$hover}{
+						a{
+							color: $value !important;
+							&:hover,
+							&:focus{
+								color: $hvalue !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

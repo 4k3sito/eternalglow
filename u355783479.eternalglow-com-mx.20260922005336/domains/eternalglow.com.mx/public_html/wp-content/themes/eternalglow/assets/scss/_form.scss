@@ -1,0 +1,105 @@
+.form-group {
+	position: relative;
+}
+.form-select,
+.form-control{
+	padding: 15px;
+  	border-radius: 16px;
+	&.loading{
+		background-image: var(--img-preloader);
+		background-repeat: no-repeat;
+		background-position: right 5px center;
+		background-size: 20px;
+		pointer-events: none;
+	}
+}
+.form-control{
+	&:read-only{
+		pointer-events: none;
+	}
+}
+form{
+	input, select, textarea{
+		&.error{
+			color: $danger;
+			@extend .is-invalid;
+			&::placeholder{
+				color: $danger;
+			}
+		}
+	}
+	div{
+		&.error{
+			@extend .invalid-feedback;
+		}
+	}
+}
+.wpcf7{
+	.submitting{
+		pointer-events: none;
+		.wpcf7-submit{
+			@extend .disabled;
+			@include gradient-striped();
+			animation: $progress-bar-animation-timing progress-bar-stripes;
+			background-size: $progress-height $progress-height;
+		}
+	}
+	.wpcf7-textarea{
+		max-height: 120px;
+	}
+	.wpcf7-response-output{
+		margin: 15px 0 0 !important;
+		font-size: 12px;
+		text-align: center;
+		padding: 5px !important;
+	}
+	.wpcf7-list-item{
+		margin-left: 0;
+	}
+	.wpcf7-not-valid-tip{
+		@extend .invalid-feedback;
+		display: block;
+	}
+	.wpcf7-spinner{
+		display: none;
+	}
+	.form-label{
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+	}
+	.wpcf7-checkbox{
+		@extend .row;
+		@extend .g-8;
+		@extend .g-sm-16;
+		.wpcf7-list-item{
+			@extend .col-sm-6;
+			position: relative;
+			input{
+				@extend .form-check-input;
+				@extend .right-16;
+				@extend .right-sm-20;
+				position: absolute;
+				font-size: 20px;
+				top: 50%;
+				margin-top: -10px;
+				border-color: var(--bs-tertiary);
+			}
+			span{
+				@extend .form-check-label;
+				display: block;
+				padding: 16px 12px;
+				border-radius: 16px;
+				border: 1px solid var(--bs-border-color);
+				background-color: var(--bs-white);
+  				color: var(--bs-tertiary);
+			}
+		}
+	}
+	.wpcf7-acceptance{
+		input{
+			@extend .form-check-input;
+			opacity: 1;
+		}
+	}
+}

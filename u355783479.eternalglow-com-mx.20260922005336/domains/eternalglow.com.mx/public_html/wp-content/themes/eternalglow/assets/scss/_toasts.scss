@@ -1,0 +1,15 @@
+.toasts{
+	position: fixed;
+	right: 15px;
+	top: 15px;
+	overflow: hidden;
+	max-height: calc(100vh - 30px);
+	min-width: 270px;
+	z-index: 99999;
+}
+.toast-body{
+	a{
+		color: inherit;
+		text-decoration: underline;
+	}
+}

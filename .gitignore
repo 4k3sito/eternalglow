@@ -1,0 +1,11 @@
+# secretos / datos de usuarios
+*.sql
+**/wp-config.php
+local-env/wp-config.original.php
+local-env/logs/
+local-env/backups/
+# generados
+**/wp-content/cache/
+**/wp-content/wflogs/
+**/wp-content/debug.log
+**/error_log

@@ -1,0 +1,11 @@
+.container,
+.container-fluid {
+	@include make-container();
+}
+@each $size, $container-max-width in $container-max-widths {
+	$size: if($size == null, "", "-#{$size}");
+    .container#{$size} {
+		@extend .container-fluid;
+		max-width: $container-max-width;
+    }
+}

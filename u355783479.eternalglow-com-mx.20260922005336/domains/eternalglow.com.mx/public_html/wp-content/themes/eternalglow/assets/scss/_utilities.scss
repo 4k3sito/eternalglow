@@ -1,0 +1,548 @@
+$utilities: (
+    "font-size": (
+		//rfs: true,
+		responsive: true,
+      	property: font-size,
+      	class: fs,
+      	values: $font-sizes
+    ),
+
+	// Margin utilities
+    "margin": (
+      	responsive: true,
+      	property: margin,
+      	class: m,
+      	values: $spacers
+    ),
+    "margin-x": (
+      	responsive: true,
+      	property: margin-right margin-left,
+      	class: mx,
+      	values: $spacers
+    ),
+    "margin-y": (
+      	responsive: true,
+      	property: margin-top margin-bottom,
+      	class: my,
+      	values: $spacers
+    ),
+    "margin-top": (
+		responsive: true,
+		property: margin-top,
+		class: mt,
+		values: $spacers
+    ),
+    "margin-end": (
+        responsive: true,
+        property: margin-right,
+        class: mr,
+        values: $spacers
+    ),
+    "margin-bottom": (
+		responsive: true,
+		property: margin-bottom,
+		class: mb,
+		values: $spacers
+    ),
+    "margin-start": (
+        responsive: true,
+        property: margin-left,
+        class: ml,
+        values: $spacers
+    ),
+
+	// Negative margin utilities
+    "negative-margin": (
+		responsive: true,
+		property: margin,
+		class: m,
+		values: $negative-spacers
+    ),
+    "negative-margin-x": (
+		responsive: true,
+		property: margin-right margin-left,
+		class: mx,
+		values: $negative-spacers
+    ),
+    "negative-margin-y": (
+		responsive: true,
+		property: margin-top margin-bottom,
+		class: my,
+		values: $negative-spacers
+    ),
+    "negative-margin-top": (
+		responsive: true,
+		property: margin-top,
+		class: mt,
+		values: $negative-spacers
+    ),
+    "negative-margin-end": (
+		responsive: true,
+		property: margin-right,
+		class: mr,
+		values: $negative-spacers
+    ),
+    "negative-margin-bottom": (
+		responsive: true,
+		property: margin-bottom,
+		class: mb,
+		values: $negative-spacers
+    ),
+    "negative-margin-start": (
+		responsive: true,
+		property: margin-left,
+		class: ml,
+		values: $negative-spacers
+    ),
+	
+    // Padding utilities
+    "padding": (
+		responsive: true,
+		property: padding,
+		class: p,
+		values: $spacers
+    ),
+    "padding-x": (
+		responsive: true,
+		property: padding-right padding-left,
+		class: px,
+		values: $spacers
+    ),
+    "padding-y": (
+		responsive: true,
+		property: padding-top padding-bottom,
+		class: py,
+		values: $spacers
+    ),
+    "padding-top": (
+		responsive: true,
+		property: padding-top,
+		class: pt,
+		values: $spacers
+    ),
+    "padding-end": (
+		responsive: true,
+		property: padding-right,
+		class: pr,
+		values: $spacers
+    ),
+    "padding-bottom": (
+		responsive: true,
+		property: padding-bottom,
+		class: pb,
+		values: $spacers
+    ),
+    "padding-start": (
+		responsive: true,
+		property: padding-left,
+		class: pl,
+		values: $spacers
+    ),
+	"w": (
+		responsive: true,
+		property: width,
+		class: w,
+		values: (
+			25: 25%,
+			50: 50%,
+			60: 60%,
+			75: 75%,
+			100: 100%,
+			auto: auto
+		)
+	),
+	"width": (
+		responsive: true,
+		property: width,
+		class: width,
+		values: $heights
+	),
+	"mw": (
+		responsive: true,
+		property: max-width,
+		class: mw,
+		values: (100: 100%, none: none)
+	),
+	"max-width": (
+		responsive: true,
+		property: max-width,
+		class: maxw,
+		values: $heights
+	),
+	"min-width": (
+		responsive: true,
+		property: min-width,
+		class: minw,
+		values: $heights
+	),
+	"h": (
+		responsive: true,
+		property: height,
+		class: h,
+		values: (
+			25: 25%,
+			50: 50%,
+			75: 75%,
+			100: 100%,
+			auto: auto
+		)
+    ),
+	"height": (
+		responsive: true,
+		property: height,
+		class: height,
+		values: $heights
+    ),
+	"min-height": (
+		responsive: true,
+		property: min-height,
+		class: minh,
+		values: $heights
+	),
+    "max-height": (
+		responsive: true,
+      	property: max-height,
+      	class: maxh,
+		values: $heights
+    ),
+    "viewport-height": (
+		responsive: true,
+      	property: height,
+      	class: vh,
+      	values: (
+			100: 100vh,
+		)
+    ),
+    "min-viewport-height": (
+		responsive: true,
+      	property: min-height,
+      	class: min-vh,
+      	values: (100: 100vh)
+    ),
+    "font-family": (
+        responsive: true,
+        property: font-family,
+        class: font,
+        values: $fonts
+    ),
+    "font-weight": (
+        responsive: true,
+        property: font-weight,
+        class: fw,
+        values: (
+            thin: 100,
+            light: 300,
+            normal: 400,
+            medium: 500,
+            semibold: 600,
+            bold: 700,
+            extrabold: 800,
+            black: 900,
+        )
+    ),
+
+    "position": (
+        responsive: true,
+		property: position,
+		values: static relative absolute fixed sticky
+    ),
+    "top": (
+        responsive: true,
+		property: top,
+		values: $position-values
+    ),
+    "bottom": (
+        responsive: true,
+		property: bottom,
+		values: $position-values
+    ),
+    "start": (
+        responsive: true,
+		property: left,
+		values: $position-values
+    ),
+    "end": (
+        responsive: true,
+		property: right,
+		values: $position-values
+    ),
+    "negative-top": (
+        responsive: true,
+		property: top,
+		values: $negative-position-values
+    ),
+    "negative-bottom": (
+        responsive: true,
+		property: bottom,
+		values: $negative-position-values
+    ),
+    "negative-start": (
+        responsive: true,
+		property: left,
+		values: $negative-position-values
+    ),
+    "negative-end": (
+        responsive: true,
+		property: right,
+		values: $negative-position-values
+    ),
+
+    "text-align": (
+		responsive: true,
+		property: text-align,
+		class: text,
+		values: left right center
+    ),
+
+    "rounded": (
+		responsive: true,
+		property: border-radius,
+		class: rounded,
+		values: $rounded
+    ),
+    "rounded-top": (
+		responsive: true,
+		property: border-top-left-radius border-top-right-radius,
+		class: rounded-top,
+		values: $rounded
+    ),
+    "rounded-end": (
+		responsive: true,
+		property: border-top-right-radius border-bottom-right-radius,
+		class: rounded-end,
+		values: $rounded
+    ),
+    "rounded-bottom": (
+		responsive: true,
+		property: border-bottom-right-radius border-bottom-left-radius,
+		class: rounded-bottom,
+		values: $rounded
+    ),
+    "rounded-start": (
+		responsive: true,
+		property: border-bottom-left-radius border-top-left-radius,
+		class: rounded-start,
+		values: $rounded
+    ),
+    "rounded-bottom-left": (
+		responsive: true,
+		property: border-bottom-left-radius,
+		class: rounded-bottom-left,
+		values: $rounded
+    ),
+    "rounded-bottom-right": (
+		responsive: true,
+		property: border-bottom-right-radius,
+		class: rounded-bottom-right,
+		values: $rounded
+    ),
+    "rounded-top-left": (
+		responsive: true,
+		property: border-top-left-radius,
+		class: rounded-top-left,
+		values: $rounded
+    ),
+    "rounded-top-right": (
+		responsive: true,
+		property: border-top-right-radius,
+		class: rounded-top-right,
+		values: $rounded
+    ),
+
+
+	"border": (
+		responsive: true,
+		property: border,
+		values: (
+			null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+			0: 0,
+		)
+    ),
+    "border-top": (
+		responsive: true,
+		property: border-top,
+		values: (
+			null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+			0: 0,
+		)
+    ),
+    "border-end": (
+		responsive: true,
+		property: border-right,
+		class: border-right,
+		values: (
+			null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+			0: 0,
+		)
+    ),
+    "border-bottom": (
+		responsive: true,
+		property: border-bottom,
+		values: (
+			null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+			0: 0,
+		)
+    ),
+    "border-start": (
+		responsive: true,
+		property: border-left,
+		class: border-left,
+		values: (
+			null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+			0: 0,
+		)
+    ),
+    "border-color": (
+		css-var: true,
+      	property: border-color,
+		css-variable-name: border-color,
+      	class: border,
+      	values:  $utilities-border-colors,
+    ),
+    "border-width": (
+      	property: border-width,
+      	class: border,
+      	values: $border-widths
+    ),
+
+
+	"background-size": (
+		responsive: true,
+      	property: background-size,
+      	class: bg,
+      	values: (
+			cover: cover,
+			contain: contain,
+			'100-auto': 100% auto,
+			'auto-100': auto 100%,
+			'cover.vc_row': cover,
+			'contain.vc_row': contain,
+			'100-auto.vc_row': 100% auto,
+			'auto-100.vc_row': auto 100%,
+		)
+    ),
+	"background-repeat": (
+		responsive: true,
+      	property: background-repeat,
+      	class: bg,
+      	values: repeat no-repeat
+    ),
+	"background-position": (
+		responsive: true,
+      	property: background-position,
+      	class: bg,
+      	values: (
+			center: center center,
+			center-top: center top,
+			center-bottom: center bottom,
+			left-center: left center,
+			left-bottom: left bottom,
+			right-center: right center,
+			right-bottom: right bottom,
+			'center.vc_row': center center,
+			'center-top.vc_row': center top,
+			'center-bottom.vc_row': center bottom,
+			'left-center.vc_row': left center,
+			'left-bottom.vc_row': left bottom,
+			'right-center.vc_row': right center,
+			'right-bottom.vc_row': right bottom,
+		)
+    ),
+	"background-color": (
+		responsive: true,
+		property: background-color,
+		class: bg,
+		local-vars: (
+			"bg-opacity": 1
+		),
+      	values: $utilities-bg-colors,
+    ),
+	"overflow": (
+		responsive: true,
+		property: overflow,
+		values: auto hidden visible scroll,
+	),
+    "line-height": (
+		responsive: true,
+		property: line-height,
+		class: lh,
+		values: $line-heights
+    ),
+    "letter-spacing": (
+		property: letter-spacing,
+		class: lsp,
+		values: $letter-spacing
+    ),
+    "float": (
+      	responsive: true,
+      	property: float,
+      	values: (
+        	left: left,
+        	right: right,
+        	none: none,
+      	)
+    ),
+    "display": (
+        responsive: true,
+        print: true,
+        property: display,
+        class: d,
+        values: (
+            inline: inline, 
+            inline-block: inline-block,
+            block: block,
+            grid: grid,
+            table: table,
+            table-row: table-row,
+            table-cell: table-cell,
+            flex: flex, 
+            inline-flex: inline-flex,
+            none: none,
+            thead: table-header-group,
+            tbody: table-row-group,
+            tfoot: table-footer-group,
+        )
+    ),
+    "rotate": (
+      	responsive: true,
+      	property: transform,
+		class: rotate,
+      	values: (
+        	180: rotate(180deg),
+      	)
+    ),
+    "writing-mode": (
+      	responsive: true,
+      	property: writing-mode,
+		class: writing,
+      	values: (
+        	vertical-rl,
+      	)
+    ),
+    "white-space": (
+      	responsive: true,
+      	property: white-space,
+		class: text,
+      	values: nowrap
+    ),
+    "skewX": (
+      	responsive: true,
+      	property: transform,
+		class: skewx,
+      	values: (
+        	10: skewX(10deg),
+        	-10: skewX(-10deg),
+      	)
+    ),
+	"opacity": (
+		property: opacity,
+		values: (
+			0: 0,
+			25: .25,
+			50: .5,
+			65: .65,
+			75: .75,
+			100: 1,
+		)
+    ),
+);

@@ -1,0 +1,41 @@
+.footer{
+    .contact-data{
+        gap: 16px !important;
+        img{
+            width: 16px;
+        }
+    }
+    h2, h4{
+        font-size: 14px;
+        color: var(--bs-primary);
+        margin-bottom: 24px;
+        font-family: inherit;
+    }
+    .nav-link{
+        &:hover,
+        &.active{
+            color: var(--bs-primary);
+        }
+    }
+}
+.go-top {
+    background-color: rgba(var(--bs-black-rgb), 0.2);
+    color: var(--bs-white);
+    opacity: 0;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    padding: 0;
+    border: none;
+    z-index: -1;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s linear;
+    &.active{
+        opacity: 1;
+        z-index: 1030;
+    }
+}

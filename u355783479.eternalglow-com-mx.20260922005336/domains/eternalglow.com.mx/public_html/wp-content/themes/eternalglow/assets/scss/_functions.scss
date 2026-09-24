@@ -1,0 +1,15 @@
+@function rem($px) {
+	@return calc($px / 16) * 1rem;
+}
+
+@function theme-color($key: "primary") {
+	@return map-get($theme-colors, $key);
+}
+
+@function assets($path: '') {
+	@return $assets_url + $path;
+}
+
+@function images($path: '') {
+	@return assets('images/' + $path);
+}

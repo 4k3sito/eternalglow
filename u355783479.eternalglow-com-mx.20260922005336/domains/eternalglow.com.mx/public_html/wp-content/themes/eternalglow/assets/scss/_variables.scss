@@ -1,0 +1,166 @@
+$prefix: bs-;
+$assets_url: '';
+
+$primary: #F9896B;
+$body: #505050;
+
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #212529;
+
+$white: #fff;
+$black: #000;
+
+$theme-colors: (
+    "primary": $primary,
+    "body": $body,
+
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark,
+    'black': $black,
+    'white': $white,
+);
+
+$enable-container-classes: false;
+$enable-shadows: false;
+$container-max-widths: (
+    null: 1249px,
+);
+
+$grid-gutter-width: 64px;
+$enable-rfs: true;
+
+$body-bg: $white;
+$body-color: rgba($body, 0.5);
+
+$link-color: $body;
+$link-hover-color: $body;
+$link-decoration: none;
+
+$font-family-base: "Urbanist", sans-serif;
+$headings-font-family: "Playfair Display", serif;
+$headings-color: $body;
+
+$fonts: (
+    base: $font-family-base,
+    playfair: $headings-font-family,
+);
+
+$font-size-base: 1rem;
+$font-size-body: 18px;
+$font-weight-base: 400;
+
+$headings-font-weight: 400;
+$h1-font-size: $font-size-base * 3.125;
+$h2-font-size: $font-size-base * 3;
+$h3-font-size: $font-size-base * 2;
+$h4-font-size: $font-size-base * 1.5;
+
+$input-btn-focus-box-shadow: 0;
+$form-select-focus-box-shadow: 0;
+$form-check-input-focus-box-shadow: 0;
+$input-focus-width: 0;
+$form-feedback-font-size: 12px;
+
+$input-bg: var(--bs-white);
+$input-color: var(--bs-body);
+$input-border-color: rgba(var(--bs-primary-rgb), 0.5);
+$input-focus-border-color: var(--bs-primary);
+
+$btn-line-height: normal;
+$btn-box-shadow: 0;
+$btn-focus-box-shadow: 0;
+$btn-close-focus-shadow: 0;
+$btn-focus-width: 0;
+$nav-link-focus-box-shadow: 0;
+$pagination-focus-box-shadow: 0;
+
+$box-shadow: 0 0 9.4px 0 rgba(220, 220, 220, 0.30);
+$box-shadow-sm: 0 4px 10px 0 rgba(0, 0, 0, 0.05);
+
+$accordion-button-active-color: var(--bs-white);
+
+$toast-box-shadow: 0;
+$toast-spacing: 10px;
+
+$rounded: (
+    null: var(--bs-border-radius),
+    0: 0,
+    circle: 50%,
+    pill: var(--bs-border-radius-pill)
+);
+@for $i from 1 through 50 {
+    $rounded: map-merge($rounded, ($i: $i + px));
+}
+
+$line-heights: (
+    normal: normal,
+    1: 1,
+    11: 1.1,
+    12: 1.2,
+    13: 1.3,
+    14: 1.4,
+    15: 1.5,
+    2: 2,
+);
+
+$border-widths: ();
+$letter-spacing: ();
+
+@for $i from 1 through 5 {
+    $border-widths: map-merge($border-widths, ($i: $i * 1px));
+    $letter-spacing: map-merge($letter-spacing, ($i: $i * 1px));
+}
+
+
+
+$font-sizes: (inherit: inherit);
+@for $i from 0 through 100 {
+    $font-sizes: map-merge($font-sizes, ($i: if($i > 0, $i + px, 0)));
+}
+$font-sizes: map-merge($font-sizes, (200: 200px));
+
+$spacers: (0: 0, auto: auto);
+$negative-spacers: ();
+$position-values: (
+    auto: auto,
+    0: 0,
+    50p: 50%,
+    100p: 100%
+);
+$negative-position-values: ();
+@for $i from 1 through 300 {
+    $spacers: map-merge($spacers, ($i: $i + px));
+    $negative-spacers: map-merge($negative-spacers, (-$i: -$i + px));
+    $position-values: map-merge($position-values, ($i: $i + px));
+    $negative-position-values: map-merge($negative-position-values, (-$i: -$i + px));
+}
+
+$heights: (0: 0);
+@for $n from 1 through 2 {
+    $from: if($n == 1, 1, 15);
+    $to: if($n == 1, 70, 200);
+    @for $i from $from through $to {
+        $v: $i * if($n == 1, 1, 5);
+        $heights: map-merge($heights, ($v: $v + px));
+    }
+}
+
+
+$utilities-border-colors: $theme-colors;
+
+$utilities-bg-colors: (transparent: transparent);
+$utilities-bg-colors: map-merge($theme-colors, $utilities-bg-colors);
+@each $color, $value in $theme-colors {
+    @for $i from 1 through 9 {
+        $utilities-bg-colors: map-merge($utilities-bg-colors, (#{$color}-0#{$i}: rgba($value, calc($i / 10))));
+        $utilities-border-colors: map-merge($utilities-border-colors, (#{$color}-0#{$i}: rgba($value, calc($i / 10))));
+    }
+}

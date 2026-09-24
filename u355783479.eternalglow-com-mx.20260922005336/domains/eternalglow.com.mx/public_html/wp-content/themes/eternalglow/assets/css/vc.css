@@ -1,0 +1,103 @@
+.vc-jss-icon{
+    background: #000842 !important;
+    color: #fff;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.vc-jss-icon:after{
+    opacity: 1;
+    content: "JSS";
+    font-size: 12px;
+    font-style: normal;
+    display: block;
+    font-weight: normal;
+    line-height: 32px;
+    text-align: center;
+}
+.vc_shortcode-param[data-param_type=dropdown] select.wpb_vc_param_value, 
+.vc_shortcode-param[data-param_type=dropdown] select.wpb_vc_param_value option{
+    font-size: 14px !important;
+    line-height: normal !important;
+    text-align: left !important;
+    font-weight: normal !important;
+}
+.vc_shortcode-param[data-param_type=dropdown] select.wpb_vc_param_value option{
+    display: block !important;
+}
+.wpb_el_type_checkbox .edit_form_line{
+    overflow: auto;
+    max-height: 250px;
+}
+.vc_checkbox-label{
+    display: block;
+    margin-bottom: 4px;
+}
+.vc_checkbox-label:last-child{
+    margin-bottom: 0;
+}
+.vc_checkbox-label input{
+    margin-left: 0 !important;
+    margin-right: 4px !important;
+    margin-top: -3px !important;
+    vertical-align: middle;
+}
+.vc_properties-list input, 
+.vc_properties-list select{
+    line-height: normal;
+    padding: 6px !important;
+}
+.vc_properties-list select{
+    padding-right: 24px !important;
+}
+.vc_properties-list textarea{
+    line-height: normal;
+    display: block;
+}
+.vc_properties-list input[type=checkbox]{
+    padding: 0 !important;
+}
+input[type="checkbox"]:checked::before{
+    width: 16px;
+    margin-top: -1px;
+    margin-left: -2px;
+}
+
+
+
+
+
+
+
+
+
+
+.vc-dimension-block > div{
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+}
+.vc-dimension-block label{
+    text-transform: uppercase;
+    font-size: 10px;
+    text-align: center;
+    display: block;
+    opacity: 0.7;
+}
+.vc-dimension-block input{
+    line-height: 1;
+    text-align: center;
+}
+.vc-dimension-block input:focus{
+    position: relative;
+    z-index: 1;
+}
+.vc-dimension-block > :not(:last-child) input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.vc-dimension-block > :not(:first-child) input{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
