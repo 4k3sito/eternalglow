@@ -45,6 +45,7 @@ function get_theme_contact(){
         return $val;
     });
     $contact['has_contact'] = (bool)$has_contact;
+    $contact['schedules_note'] = $contact['schedules_note'] ?? '';
     $contact['phone1_plain'] = preg_replace('/[^0-9]/', '', $contact['phone1']);
     $contact['phone2_plain'] = preg_replace('/[^0-9]/', '', $contact['phone2']);
     return (object)$contact;

@@ -47,13 +47,26 @@
 		</div>
 	<?php } ?>
 	<?php if($contact->schedules){ ?>
-		<div class="row g-8 align-items-center">
-			<div class="col-md-auto">
-				<img src="<?php images_url('clock.svg'); ?>" alt="" />
+		<div>
+			<div class="row g-8 align-items-center">
+				<div class="col-md-auto">
+					<img src="<?php images_url('clock.svg'); ?>" alt="" />
+				</div>
+				<div class="col">
+					<?php _p(nl2br($contact->schedules)); ?>
+				</div>
 			</div>
-			<div class="col">
-				<?php _p(nl2br($contact->schedules)); ?>
-			</div>
+			<?php if($contact->schedules_note){ ?>
+				<div class="row g-8">
+					<?php // Invisible icon keeps the note aligned with the hours text, not the clock ?>
+					<div class="col-md-auto d-none d-md-block invisible">
+						<img src="<?php images_url('clock.svg'); ?>" alt="" />
+					</div>
+					<div class="col small fw-bold mt-8">
+						<?php _p(esc_html($contact->schedules_note)); ?>
+					</div>
+				</div>
+			<?php } ?>
 		</div>
 	<?php } ?>
 </div>

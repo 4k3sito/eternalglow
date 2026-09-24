@@ -49,6 +49,12 @@
 		</td>
 	</tr>
 	<tr valign="top">
+		<th scope="row">Nota de horario</th>
+		<td>
+			<input type="text" class="regular-text" value="<?php _p(esc_attr($contact->schedules_note)); ?>" name="theme_contact[schedules_note]" placeholder="Todo bajo cita previa.">
+		</td>
+	</tr>
+	<tr valign="top">
 		<th scope="row">Formulario</th>
 		<td>
 			<select class="regular-text" name="theme_contact[form]">
