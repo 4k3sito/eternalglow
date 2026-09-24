@@ -7,8 +7,6 @@
     $_class1[] = $animation;
     $_class1[] = $responsive;
 
-    $svg = get_images_url('arrow-right-up.svg');
-        
     $url = vc_build_link($url);
     $target = $url['target'];
     $rel = $url['rel'];
@@ -27,17 +25,15 @@
 
     $btn_id = 'btn-'.random_string();
     
-    $button = "
-        <{$tag_open} id='{$btn_id}' class='btn-arrow btn-arrow-primary'{$url}{$target}{$title}{$rel}>
-            <span class='btn-arrow-text'>
-                <span>{$text}</span>
-            </span>
-            <span class='btn-arrow-icon'>
-                <img src='{$svg}' alt='' />
-            </span>
-        </{$tag_close}>
-	";
+    $button = "<{$tag_open} id='{$btn_id}' class='btn btn-primary'{$url}{$target}{$title}{$rel}>{$text}</{$tag_close}>";
 ?>
 <div class='<?php _p($class); ?>'>
-    <?php _p($button); ?>
+    <?php if($whatsapp){ ?>
+        <div class="d-inline-flex flex-column flex-md-row align-items-center gap-16">
+            <?php _p($button); ?>
+            <?php get_template_part('whatsapp-button'); ?>
+        </div>
+    <?php } else { ?>
+        <?php _p($button); ?>
+    <?php } ?>
 </div>

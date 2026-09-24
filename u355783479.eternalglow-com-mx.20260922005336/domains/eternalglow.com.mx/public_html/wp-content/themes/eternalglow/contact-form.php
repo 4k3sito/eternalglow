@@ -10,6 +10,7 @@
                 </div>
                 <div class="text-center text-md-left">
                     <?php get_template_part('contact-data'); ?>
+                    <?php get_template_part('whatsapp-button', null, array('text' => 'Escríbenos por WhatsApp', 'class' => 'btn-primary mt-32')); ?>
                 </div>
             </div>
         </div>

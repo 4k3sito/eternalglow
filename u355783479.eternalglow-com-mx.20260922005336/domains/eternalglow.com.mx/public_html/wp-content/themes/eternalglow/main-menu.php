@@ -33,15 +33,9 @@
                         );
                     ?>
                     <?php if($links->header_btn_text){ ?>
-                        <div class="mt-16 mt-lg-0">
-                            <a class="btn-arrow btn-arrow-primary w-auto" href="<?php _p($links->header_btn_link); ?>">
-                                <span class="btn-arrow-text">
-                                    <span><?php _p($links->header_btn_text); ?></span>
-                                </span>
-                                <span class="btn-arrow-icon">
-                                    <img src="<?php images_url('arrow-right-up.svg'); ?>" alt='' />
-                                </span>
-                            </a>
+                        <div class="mt-16 mt-lg-0 d-flex flex-wrap gap-8">
+                            <?php get_template_part('whatsapp-button'); ?>
+                            <a class="btn btn-primary" href="<?php _p($links->header_btn_link); ?>"><?php _p($links->header_btn_text); ?></a>
                         </div>
                     <?php } ?>
                 </div>

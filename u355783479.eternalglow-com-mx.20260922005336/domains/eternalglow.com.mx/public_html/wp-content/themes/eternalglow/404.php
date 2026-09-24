@@ -12,14 +12,7 @@
 										<h1 class="mb-0">ERROR <span class="text-primary">404</span></h1>
 										<div>Oops parece que no está lo que buscas.</div>
 										<div>
-											<a class="btn-arrow btn-arrow-primary" href="<?php base_url(); ?>">
-												<span class="btn-arrow-text">
-													<span>Regresar</span>
-												</span>
-												<span class="btn-arrow-icon">
-													<img src="<?php images_url('arrow-right-up.svg'); ?>" alt="" />
-												</span>
-											</a>
+											<a class="btn btn-primary" href="<?php base_url(); ?>">Regresar</a>
 										</div>
 									</div>
 								</div>

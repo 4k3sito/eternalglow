@@ -49,6 +49,12 @@ function get_theme_contact(){
     $contact['phone2_plain'] = preg_replace('/[^0-9]/', '', $contact['phone2']);
     return (object)$contact;
 }
+
+// ponytail: WhatsApp uses phone1 (same number today); add a separate setting if they ever diverge
+function get_whatsapp_url(){
+    $phone = get_theme_contact()->phone1_plain;
+    return $phone ? 'https://wa.me/'.$phone.'?text='.rawurlencode('¡Hola! Vi su página web y me gustaría agendar una valoración.') : '';
+}
 	
 function get_theme_social(){
     $social = get_option('theme_social');

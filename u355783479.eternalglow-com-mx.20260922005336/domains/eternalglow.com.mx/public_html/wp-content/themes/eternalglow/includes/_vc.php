@@ -191,7 +191,8 @@
 			'url' => '',
 			'text_align' => '',
 			'responsive' => '',
-			'animation' => ''
+			'animation' => '',
+			'whatsapp' => '',
 		), $atts, 'jss-button-arrow');
 		return jss_template('jss-button-arrow', $atts);
 	}
@@ -855,6 +856,12 @@
 	            "params" => array(
 	                $text,
 					$url,
+					array(
+						"type" => "checkbox",
+						"heading" => 'Botón de WhatsApp al lado',
+						"param_name" => "whatsapp",
+						'value' => array('Sí' => 'yes'),
+					),
 					$text_align,
 					$responsive,
 					$animation,
