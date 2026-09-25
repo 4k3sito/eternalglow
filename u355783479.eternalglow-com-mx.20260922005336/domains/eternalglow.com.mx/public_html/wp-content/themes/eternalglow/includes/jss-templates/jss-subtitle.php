@@ -5,7 +5,7 @@
 <div class='<?php _p($class); ?>'>
     <div class="row g-8 align-items-center justify-content-center justify-content-md-start text-center">
         <div class="col-md-auto">
-            <img src="<?php images_url('star.svg'); ?>" alt='' />
+            <img src="<?php images_url('star.svg'); ?>" data-no-lazy="1" alt='' />
         </div>
         <div class="col-md-auto">
             <h4 class="mb-0"><?php _p($text); ?></h4>

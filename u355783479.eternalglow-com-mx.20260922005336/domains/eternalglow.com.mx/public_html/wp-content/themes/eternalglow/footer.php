@@ -18,7 +18,7 @@
 							<div class="col-md-auto">
 								<div class='d-grid gap-40 text-center'>
 									<div>
-										<a href="<?php echo esc_url(home_url('/')); ?>">
+										<a href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php _p(esc_attr(get_bloginfo('name'))); ?>">
 											<img src='<?php _p($logo->url); ?>' alt='<?php _p($logo->alt); ?>' class='height-60' />
 										</a>
 									</div>
@@ -58,7 +58,7 @@
 			</div>
 		</footer> 
 		<div id='toasts' class='toasts toast-container'></div>
-		<button id='go-top' class='go-top scroll-to' data-scroll='0'>
+		<button id='go-top' class='go-top scroll-to' data-scroll='0' aria-label='Volver arriba'>
 			<i class="fa-solid fa-chevron-up"></i>
 		</button>  
 

@@ -218,7 +218,7 @@
 			'jss_token' => get_jss_token(),
 		);
 		wp_enqueue_style('custom-app', $manifest->css, '', $rv);
-		wp_enqueue_script('custom-app', $manifest->js, '', $rv, true);
+		wp_enqueue_script('custom-app', $manifest->js, array('jquery'), $rv, true);
 		wp_localize_script('custom-app', 'JSS_APP', $vars);
 	}
 	

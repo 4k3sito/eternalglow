@@ -9,3 +9,4 @@ local-env/backups/
 **/wp-content/wflogs/
 **/wp-content/debug.log
 **/error_log
+**/node_modules/

@@ -38,10 +38,10 @@
 <?php if($social->has_social){ ?>
 	<div class='social-icons'>
 		<div class='row g-16 justify-content-center'>
-			<?php foreach($icons as $icon){ ?>
+			<?php foreach($icons as $name => $icon){ ?>
 				<?php if($icon['url']){ ?>
 					<div class='col-auto'>
-						<a class="btn btn-outline-body rounded p-0 ratio ratio-1x1 width-40 fs-20" href='<?php _p($icon['url']); ?>' target='_blank'>
+						<a class="btn btn-outline-body rounded p-0 ratio ratio-1x1 width-40 fs-20" href='<?php _p($icon['url']); ?>' target='_blank' rel='noopener' aria-label='<?php _p(ucfirst($name)); ?>'>
 							<span class="d-flex justify-content-center align-items-center">
 								<?php _p($icon['icon']); ?>
 							</span>

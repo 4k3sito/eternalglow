@@ -28,7 +28,7 @@
                 <div class="px-24 py-48 d-grid gap-24 shadow-sm rounded-24 h-100 <?php _p($even ? 'bg-white': 'bg-primary-gradient'); ?>">
                     <div class="d-grid gap-8">
                         <div>
-                            <img src="<?php images_url('star.svg'); ?>" alt="" />
+                            <img src="<?php images_url('star.svg'); ?>" data-no-lazy="1" alt="" />
                         </div>
                         <div>
                             <img src="<?php _p($image->url); ?>" alt="" class="height-80" />

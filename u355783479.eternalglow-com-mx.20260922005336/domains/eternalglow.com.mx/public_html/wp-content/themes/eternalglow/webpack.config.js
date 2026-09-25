@@ -53,6 +53,10 @@ module.exports = env => {
 				},
 			]
 		},
+		// WordPress already loads jQuery; bundling a second copy cost ~87 KB and a separate jQuery instance.
+		externals: {
+			jquery: 'jQuery',
+		},
 		resolve: {
 			extensions: ['.ts', '.js'],
 			alias: {

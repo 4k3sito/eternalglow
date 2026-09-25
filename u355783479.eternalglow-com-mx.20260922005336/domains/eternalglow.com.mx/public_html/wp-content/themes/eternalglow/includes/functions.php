@@ -544,6 +544,27 @@
 		return $d;
 	}
 
+	// <img> for an image from get_theme_image(). WordPress adds srcset/sizes, so phones download
+	// a small rendition instead of the full-size upload.
+	function get_theme_img($image, $attr = array()){
+		// Resized GIFs keep only the first frame, so animated GIFs must use the original file.
+		if($image->ID && get_post_mime_type($image->ID) !== 'image/gif'){
+			return wp_get_attachment_image($image->ID, 'full', false, $attr);
+		}
+		$attr = array_merge(array(
+			'src' => $image->url,
+			'alt' => $image->alt,
+			'width' => $image->width,
+			'height' => $image->height,
+			'decoding' => 'async',
+		), $attr);
+		$html = '<img';
+		foreach($attr as $k => $v){
+			$html .= ' '.$k.'="'.esc_attr($v).'"';
+		}
+		return $html.' />';
+	}
+
 	function get_theme_file($id = 0){
 		$d = array(
 			'ID' => 0,

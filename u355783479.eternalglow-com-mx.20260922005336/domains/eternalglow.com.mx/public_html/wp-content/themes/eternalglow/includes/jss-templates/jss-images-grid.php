@@ -27,8 +27,8 @@
                                     }
                                     $class = implode(' ', $class);
                                 ?>
-                                <a class="<?php _p($class); ?>" data-fancybox='<?php _p($fancybox); ?>' href='<?php _p($image->url); ?>'>
-                                    <img src="<?php _p($image->url); ?>" alt="" class="object-fit-cover" />
+                                <a class="<?php _p($class); ?>" data-fancybox='<?php _p($fancybox); ?>' href='<?php _p($image->url); ?>' aria-label='<?php _p(esc_attr($image->alt ? $image->alt : 'Ver imagen')); ?>'>
+                                    <?php _p(get_theme_img($image, array('class' => 'object-fit-cover', 'loading' => 'lazy', 'sizes' => '(max-width: 767.98px) 34vw, 400px'))); ?>
                                 </a>
                             <?php } ?>
                         </div>

@@ -7,7 +7,7 @@
  
         <div class='row g-md-24 g-0 justify-content-center justify-content-md-start text-center'>
             <div class="col-md-auto pt-24">
-                <img src="<?php images_url('quote.svg'); ?>" alt="" />
+                <img src="<?php images_url('quote.svg'); ?>" data-no-lazy="1" alt="" />
             </div>
             <div class="col-md">
                 <div class="row g-md-48 g-16">

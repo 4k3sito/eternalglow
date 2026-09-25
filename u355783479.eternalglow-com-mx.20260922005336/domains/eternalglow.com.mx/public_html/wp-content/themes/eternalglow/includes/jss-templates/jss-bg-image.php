@@ -31,7 +31,7 @@
     
     <div id='<?php _p($img_id); ?>' class='<?php _p($class_tag); ?>'>
         <?php _p($a1); ?>
-            <img src='<?php _p($image->url); ?>' alt='' class='w-100 h-100 object-fit-cover' />
+            <?php _p(get_theme_img($image, array('alt' => '', 'class' => 'w-100 h-100 object-fit-cover'))); ?>
         <?php _p($a2); ?>
     </div>
 
