@@ -24,7 +24,8 @@ module.exports = {
             skippedContentGlobs: [path.join(__dirname, 'node_modules/**/*.php')],
             // Built with template strings, so the extractor cannot see them.
             safelist: {
-                standard: [/^text-bg-/],
+                // details/summary: FAQ markup comes from page content, so the crawl only sees it after it is live.
+                standard: [/^text-bg-/, 'details', 'summary'],
                 greedy: [/^f-/, /^fancybox/, /^is-/, /^has-/, /^wpcf7/],
             },
         }),
