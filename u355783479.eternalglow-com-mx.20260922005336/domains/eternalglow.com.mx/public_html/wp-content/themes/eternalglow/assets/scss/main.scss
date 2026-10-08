@@ -107,27 +107,24 @@ video{
 		}
 	}
 }
-// Long-form copy on the service hub pages: subheadings and FAQ inside a text block.
-.jss-text{
-	h3{
-		font-size: 24px;
-		margin: 24px 0 8px;
-		&:first-child{
-			margin-top: 0;
+// Collapsible copy on the service landing pages (guide + FAQ). Native <details>, so it opens without any JS.
+.jss-text details{
+	border-bottom: 1px solid rgba(var(--#{$prefix}primary-rgb), 0.3);
+	padding: 16px 0;
+	summary{
+		cursor: pointer;
+		color: var(--#{$prefix}body);
+		// Headings stay in the markup for search engines but read as accordion labels.
+		h3{
+			display: inline;
+			font-family: $font-family-base;
+			font-size: 18px;
+			font-weight: 600;
+			margin: 0;
 		}
 	}
-	// The FAQ uses native <details>, so it opens without any JS.
-	details{
-		border-bottom: 1px solid rgba(var(--#{$prefix}primary-rgb), 0.3);
-		padding: 16px 0;
-		summary{
-			cursor: pointer;
-			font-weight: 600;
-			color: var(--#{$prefix}body);
-		}
-		p{
-			margin: 12px 0 0;
-		}
+	p, ul{
+		margin: 12px 0 0;
 	}
 }
 .bg-primary-gradient{
