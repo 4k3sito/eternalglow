@@ -4,6 +4,7 @@
 	require_once(get_template_path().'/includes/_token.php');
 	require_once(get_template_path().'/includes/_vc.php');
 	require_once(get_template_path().'/includes/_ajax.php');
+	require_once(get_template_path().'/includes/_home.php');
 
 
 	register_nav_menus(
@@ -224,16 +225,10 @@
 	
 	add_action('wp_enqueue_scripts', 'extra_scripts');
 
-	// Pages on the editorial look (cream and olive, serif display) the client asked for.
-	// Add slugs here as each page is approved; the styles live in assets/scss/_editorial.scss.
-	function is_editorial_page() {
-		return is_page(array('sculptra-cdmx'));
-	}
-
+	// The editorial look (cream and olive, serif display) is the whole site's look since the client approved the rollout.
+	// The styles live in assets/scss/_editorial.scss and _home.scss, scoped to body.lp-editorial.
 	function editorial_body_class($classes) {
-		if (is_editorial_page()) {
-			$classes[] = 'lp-editorial';
-		}
+		$classes[] = 'lp-editorial';
 		return $classes;
 	}
 

@@ -7,7 +7,7 @@
 		?>
 		<footer>
 			<?php if(!is_404()){ ?>
-				<div class="container py-40 py-md-80">
+				<div class="container py-40 py-md-80" id="contacto">
 					<?php get_template_part('contact-form'); ?>
 				</div>
 			<?php } ?>
@@ -52,15 +52,20 @@
 	                    </div>
 	                    <div class="text-md-right text-center mt-12 mt-md-0">
 		                    <strong>Permiso de publicidad COFEPRIS:</strong> 2509152002A00185
+							<?php if($links->privacy){ ?>
+								· <a href="<?php _p(esc_url($links->privacy)); ?>">Aviso de privacidad</a>
+							<?php } ?>
 	                    </div>
                     </div>
 				</div>
 			</div>
 		</footer> 
 		<div id='toasts' class='toasts toast-container'></div>
-		<button id='go-top' class='go-top scroll-to' data-scroll='0' aria-label='Volver arriba'>
-			<i class="fa-solid fa-chevron-up"></i>
-		</button>  
+		<?php if(get_whatsapp_url()){ ?>
+			<a class="lp-wa-float" href="<?php _p(esc_url(get_whatsapp_url())); ?>" target="_blank" rel="noopener" aria-label="WhatsApp" data-cta="flotante">
+				<?php _p(eg_icon('whatsapp-logo')); ?>
+			</a>
+		<?php } ?>
 
 		<?php wp_footer(); ?>
 		

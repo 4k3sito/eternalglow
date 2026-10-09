@@ -1,0 +1,752 @@
+// Home template sections (template-parts/home.php) and the sitewide header pieces of the editorial look.
+// Tokens (--lp-*) are defined in _editorial.scss.
+.lp-editorial{
+	// Left edge of full-bleed blocks lines up with the container's content.
+	--lp-edge: max(32px, calc((100vw - 1249px) / 2 + 32px));
+
+	.lp-skip{
+		position: absolute;
+		left: 16px;
+		top: -64px;
+		z-index: 1100;
+		padding: 12px 16px;
+		background: var(--lp-ink);
+		color: var(--lp-surface);
+		&:focus{
+			top: 16px;
+		}
+	}
+	.lp-icon{
+		display: inline-flex;
+		vertical-align: -0.125em;
+		svg{
+			width: 1em;
+			height: 1em;
+		}
+	}
+	.lp-stars{
+		display: inline-flex;
+		gap: 2px;
+		color: var(--lp-accent);
+	}
+	.lp-link{
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		color: var(--lp-ink);
+		font-size: 12px;
+		line-height: 16px;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		.lp-icon{
+			transition: transform 0.3s var(--lp-ease);
+		}
+	}
+	a:hover > .lp-link .lp-icon,
+	a.lp-link:hover .lp-icon{
+		transform: translateX(4px);
+	}
+	.lp-actions{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 32px;
+	}
+	.btn .lp-icon{
+		font-size: 16px;
+		margin-right: 4px;
+	}
+
+	// Header
+	.lp-lang{
+		display: flex;
+		font-size: 12px;
+		letter-spacing: 0.14em;
+		a{
+			color: var(--lp-muted);
+			&[aria-current]{
+				color: var(--lp-ink);
+				font-weight: 600;
+			}
+			& + a::before{
+				content: "|";
+				margin: 0 8px;
+				color: var(--lp-line);
+			}
+		}
+	}
+	.lp-burger{
+		position: relative;
+		z-index: 1046; // above the open offcanvas (1045), so the same button closes it
+		width: 48px;
+		height: 48px;
+		border: 0;
+		background: none;
+		span{
+			position: absolute;
+			left: 12px;
+			width: 24px;
+			height: 1px;
+			background: var(--lp-ink);
+			transition: transform 0.7s var(--lp-ease);
+			&:first-child{
+				top: 19px;
+			}
+			&:last-child{
+				top: 28px;
+			}
+		}
+	}
+	&.lp-menu-open .lp-burger span{
+		&:first-child{
+			transform: translateY(4.5px) rotate(45deg);
+		}
+		&:last-child{
+			transform: translateY(-4.5px) rotate(-45deg);
+		}
+	}
+	@include media-breakpoint-down(lg){
+		header .offcanvas{
+			--#{$prefix}offcanvas-width: 100%;
+			--#{$prefix}offcanvas-bg: rgba(243, 239, 234, 0.9);
+			border: 0;
+			backdrop-filter: blur(24px);
+			-webkit-backdrop-filter: blur(24px);
+			.offcanvas-body{
+				padding: 96px 24px 24px;
+			}
+			.nav-link{
+				font-family: var(--lp-serif);
+				font-size: 30px;
+				line-height: 36px;
+			}
+		}
+		@media (prefers-reduced-motion: no-preference){
+			header .offcanvas.show .nav-main-menu > li{
+				animation: lp-rise 0.7s var(--lp-ease) both;
+				@for $i from 1 through 8{
+					&:nth-child(#{$i}){
+						animation-delay: #{$i * 50}ms;
+					}
+				}
+			}
+		}
+	}
+	@keyframes lp-rise{
+		from{
+			opacity: 0;
+			transform: translateY(48px);
+		}
+	}
+
+	.lp-wa-float{
+		position: fixed;
+		right: 16px;
+		bottom: 16px;
+		z-index: 1030;
+		display: grid;
+		place-items: center;
+		width: 56px;
+		height: 56px;
+		border-radius: 9999px;
+		background: var(--lp-accent);
+		color: var(--lp-surface);
+		font-size: 28px;
+		transition: transform 0.3s var(--lp-ease), background-color 0.3s var(--lp-ease);
+		&:hover{
+			background: var(--lp-ink);
+			transform: scale(1.05);
+		}
+		&:active{
+			transform: scale(0.98);
+		}
+	}
+
+	// Service pages are built with Divi, which writes the old coral palette into inline styles and per-page CSS.
+	// #et-boc is there to outrank Divi's own selectors. PurgeCSS cannot see this markup, hence the ignore block.
+	/*! purgecss start ignore */
+	[style*="#f9896b" i]{
+		color: inherit !important;
+	}
+	// WPBakery rows filled with the old coral artwork (the /tratamientos/ banner) become a flat sand band.
+	.vc_row.vc_row-has-fill{
+		background-image: none !important;
+		background-color: var(--lp-sand) !important;
+		[style*="#ffffff" i]{
+			color: var(--lp-ink) !important;
+		}
+	}
+	#et-boc .et-l{
+		.et_pb_module{
+			font-family: var(--#{$prefix}body-font-family) !important;
+		}
+		h1, h2, h3, h4{
+			font-family: var(--lp-serif) !important;
+			color: var(--lp-ink) !important;
+		}
+		.et-pb-icon,
+		.et_pb_toggle_title::before{
+			color: var(--lp-accent) !important;
+		}
+		// Repeated class: Divi's per-module button rule is .et_pb_button_N.et_pb_button with !important.
+		.et_pb_button.et_pb_button.et_pb_button{
+			padding: 12px 24px !important;
+			border: 1px solid var(--lp-accent) !important;
+			border-radius: 2px !important;
+			background-color: var(--lp-accent) !important;
+			color: var(--lp-surface) !important;
+			font-size: 12px !important;
+			line-height: 22px !important;
+			font-weight: 600;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			transition: background-color 0.3s var(--lp-ease);
+			&:hover{
+				background-color: var(--lp-ink) !important;
+			}
+			&::after{
+				display: none;
+			}
+		}
+		.et_pb_promo{
+			background-color: var(--lp-sand) !important;
+			&, p, .et_pb_module_header{
+				color: var(--lp-ink) !important;
+			}
+			p{
+				color: var(--lp-text) !important;
+			}
+		}
+		.et_pb_toggle{
+			background-color: transparent !important;
+			border-color: var(--lp-line) !important;
+		}
+		.et_pb_row{
+			background-image: none !important;
+		}
+		.et_pb_row, .et_pb_column, .et_pb_module, .et_pb_image img, .et_pb_image_wrap{
+			border-radius: 0 !important;
+			box-shadow: none !important;
+		}
+	}
+	/*! purgecss end ignore */
+
+	// Service pages
+	.bg-primary{
+		background-color: var(--lp-accent) !important;
+	}
+	// Coral arrow icon files in the related services list, shown in the ink tone.
+	img[src$="arrow-right.svg"]{
+		filter: grayscale(1) brightness(0.45);
+	}
+	.lp-breadcrumb{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 12px;
+		margin-bottom: 32px;
+		color: var(--lp-muted);
+		font-size: 12px;
+		line-height: 16px;
+		a{
+			color: var(--lp-muted);
+			&:hover{
+				color: var(--lp-ink);
+			}
+			&::after{
+				content: "/";
+				margin-left: 12px;
+				color: var(--lp-line);
+			}
+		}
+		[aria-current]{
+			color: var(--lp-ink);
+		}
+	}
+	.lp-service-cta{
+		margin-top: 48px;
+		padding: 32px;
+		background: var(--lp-sand);
+		p{
+			margin: 0;
+			font-size: 14px;
+			line-height: 20px;
+		}
+		a:not(.btn){
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+		.lp-actions{
+			margin-top: 24px;
+		}
+	}
+
+	// Sections
+	.lp-section{
+		padding: 64px 0;
+		h2{
+			margin: 0;
+			max-width: 680px;
+		}
+	}
+	.lp-band{
+		background: var(--lp-sand);
+	}
+	.lp-head{
+		display: grid;
+		gap: 24px;
+		margin-bottom: 40px;
+		> p{
+			margin: 0;
+			max-width: 44ch;
+		}
+	}
+
+	.lp-hero{
+		display: grid;
+		background: var(--lp-sand);
+		h1{
+			margin: 0 0 24px;
+			max-width: 680px;
+		}
+		.lp-eyebrow{
+			margin-bottom: 24px;
+		}
+	}
+	.lp-hero-text{
+		padding: 48px 32px;
+		order: 2;
+	}
+	.lp-hero-media img,
+	.lp-final-media img,
+	.lp-doctor-media img{
+		display: block;
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+	}
+	.lp-lead{
+		margin: 0;
+		max-width: 44ch;
+		font-size: 18px;
+		line-height: 28px;
+	}
+	.lp-proof{
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		margin-top: 24px;
+		font-size: 14px;
+		line-height: 20px;
+		color: var(--lp-text);
+	}
+	.lp-place{
+		margin: 40px 0 0;
+		color: var(--lp-muted);
+		font-size: 12px;
+		line-height: 16px;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.lp-brands{
+		padding: 40px 0;
+		text-align: center;
+		ul{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 16px 64px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			color: var(--lp-muted);
+			font-family: var(--lp-serif);
+			font-size: 24px;
+			line-height: 32px;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+	}
+
+	// Horizontal lists scroll sideways on phones and snap to each card.
+	.lp-treatments,
+	.lp-results{
+		display: grid;
+		grid-auto-flow: column;
+		gap: 24px;
+		margin: 0;
+		padding: 0 0 16px;
+		list-style: none;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: thin;
+		scrollbar-color: var(--lp-line) transparent;
+		> li{
+			scroll-snap-align: start;
+			&[hidden]{
+				display: none;
+			}
+		}
+	}
+	.lp-treatments{
+		grid-auto-columns: 72%;
+		a{
+			display: grid;
+			gap: 12px;
+			color: inherit;
+		}
+		.lp-photo{
+			display: block;
+			overflow: hidden;
+			aspect-ratio: 4 / 5;
+			img{
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		h3{
+			margin: 12px 0 0;
+		}
+		p{
+			margin: 0;
+			color: var(--lp-muted);
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+
+	.lp-steps{
+		display: grid;
+		gap: 32px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: lp-step;
+		li{
+			padding-top: 24px;
+			border-top: 1px solid var(--lp-line);
+			counter-increment: lp-step;
+			&::before{
+				content: "0" counter(lp-step);
+				display: block;
+				margin-bottom: 12px;
+				color: var(--lp-ink);
+				font-family: var(--lp-serif);
+				font-size: 36px;
+				line-height: 40px;
+			}
+		}
+		h3{
+			margin: 0 0 8px;
+		}
+		p{
+			margin: 0;
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+	// Tagline reveal: main.ts wraps each word; they light up one by one as the heading crosses the viewport.
+	.lp-words span{
+		opacity: 0.3;
+		transition: opacity 0.7s var(--lp-ease);
+		&.is-in{
+			opacity: 1;
+		}
+	}
+
+	.lp-doctor{
+		display: grid;
+		background: var(--lp-surface);
+		h2{
+			margin: 0;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+		}
+		blockquote{
+			margin: 24px 0;
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-size: 30px;
+			line-height: 36px;
+			text-wrap: balance;
+		}
+		p{
+			max-width: 44ch;
+		}
+		.btn{
+			margin-top: 16px;
+			justify-self: start;
+		}
+	}
+	.lp-doctor-text{
+		padding: 48px 32px;
+	}
+	.lp-role{
+		margin: 8px 0 0;
+		color: var(--lp-ink);
+		font-family: var(--lp-serif);
+		font-size: 20px;
+		line-height: 28px;
+	}
+	.lp-facts{
+		display: grid;
+		gap: 24px;
+		align-content: center;
+		margin: 0;
+		padding: 48px 32px;
+		background: var(--lp-bg);
+		dt{
+			color: var(--lp-ink);
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 600;
+		}
+		dd{
+			margin: 4px 0 0;
+			color: var(--lp-muted);
+			font-size: 12px;
+			line-height: 16px;
+		}
+	}
+
+	.lp-tabs{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 24px;
+		button{
+			padding: 8px 0;
+			border: 0;
+			border-bottom: 1px solid transparent;
+			background: none;
+			color: var(--lp-muted);
+			font-size: 14px;
+			line-height: 20px;
+			transition: color 0.3s var(--lp-ease), border-color 0.3s var(--lp-ease);
+			&:hover,
+			&[aria-pressed="true"]{
+				color: var(--lp-ink);
+			}
+			&[aria-pressed="true"]{
+				border-color: var(--lp-ink);
+			}
+		}
+	}
+	.lp-results{
+		grid-auto-columns: 80%;
+		figure{
+			position: relative;
+			margin: 0;
+			// Every photo is a before/after pair side by side, so one label sits on each half.
+			&::before, &::after{
+				position: absolute;
+				top: 12px;
+				padding: 4px 8px;
+				background: rgba(43, 39, 33, 0.7);
+				color: var(--lp-surface);
+				font-size: 12px;
+				line-height: 16px;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+			}
+			&::before{
+				content: attr(data-before);
+				left: 12px;
+			}
+			&::after{
+				content: attr(data-after);
+				left: calc(50% + 12px);
+			}
+		}
+		img{
+			display: block;
+			width: 100%;
+			aspect-ratio: 1;
+			object-fit: cover;
+		}
+		figcaption{
+			margin-top: 12px;
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+
+	.lp-score{
+		display: grid;
+		justify-items: center;
+		gap: 4px;
+		margin: 0;
+		font-size: 12px;
+		line-height: 16px;
+		strong{
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-size: 48px;
+			line-height: 1;
+			font-weight: 500;
+		}
+	}
+	.lp-head-reviews{
+		justify-items: start;
+	}
+	.lp-reviews{
+		display: grid;
+		gap: 24px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li{
+			display: grid;
+			gap: 24px;
+			align-content: space-between;
+			padding: 32px;
+			background: var(--lp-surface);
+		}
+		blockquote{
+			margin: 0;
+			color: var(--lp-ink);
+		}
+		p{
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin: 0;
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+
+	.lp-faq{
+		display: grid;
+		gap: 32px;
+	}
+
+	.lp-final{
+		display: grid;
+		background: var(--lp-sand);
+		h2{
+			margin: 0 0 24px;
+			max-width: 680px;
+		}
+		p{
+			max-width: 44ch;
+		}
+		ul{
+			display: grid;
+			gap: 8px;
+			margin: 24px 0 0;
+			padding: 0;
+			list-style: none;
+			font-size: 14px;
+			line-height: 20px;
+			li::before{
+				content: "";
+				display: inline-block;
+				width: 16px;
+				height: 1px;
+				margin-right: 12px;
+				vertical-align: middle;
+				background: var(--lp-accent);
+			}
+		}
+	}
+	.lp-final-text{
+		padding: 48px 32px;
+	}
+
+	@media (prefers-reduced-motion: reduce){
+		.lp-words span{
+			opacity: 1;
+		}
+	}
+
+	@include media-breakpoint-up(md){
+		.lp-section{
+			padding: 96px 0;
+		}
+		.lp-head{
+			grid-template-columns: 1fr auto;
+			align-items: end;
+			margin-bottom: 48px;
+		}
+		.lp-head-reviews{
+			grid-template-columns: 1fr auto auto;
+			align-items: center;
+			gap: 48px;
+		}
+		.lp-treatments{
+			grid-auto-columns: 40%;
+		}
+		.lp-results{
+			grid-auto-columns: calc((100% - 48px) / 3);
+		}
+		.lp-steps{
+			grid-template-columns: repeat(2, 1fr);
+		}
+		.lp-reviews{
+			grid-template-columns: repeat(3, 1fr);
+		}
+		.lp-final ul{
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	@include media-breakpoint-up(lg){
+		.lp-hero{
+			grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+			min-height: 560px;
+		}
+		.lp-hero-text{
+			order: 0;
+			align-self: center;
+			padding: 80px 48px 80px var(--lp-edge);
+		}
+		.lp-hero-media img,
+		.lp-final-media img,
+		.lp-doctor-media img{
+			position: absolute;
+			inset: 0;
+			aspect-ratio: auto;
+		}
+		.lp-hero-media,
+		.lp-final-media,
+		.lp-doctor-media{
+			position: relative;
+		}
+		.lp-treatments{
+			grid-auto-flow: row;
+			grid-template-columns: repeat(5, 1fr);
+			overflow: visible;
+			padding-bottom: 0;
+		}
+		.lp-steps{
+			grid-template-columns: repeat(4, 1fr);
+		}
+		.lp-doctor{
+			grid-template-columns: minmax(0, 40fr) minmax(0, 40fr) minmax(0, 20fr);
+			min-height: 520px;
+		}
+		.lp-doctor-text{
+			align-self: center;
+			padding: 64px 48px;
+		}
+		.lp-facts{
+			padding: 48px 32px;
+		}
+		.lp-faq{
+			grid-template-columns: 1fr 2fr;
+			gap: 64px;
+		}
+		.lp-final{
+			grid-template-columns: 1fr 1fr;
+			min-height: 480px;
+		}
+		.lp-final-text{
+			align-self: center;
+			padding: 80px 48px 80px var(--lp-edge);
+		}
+	}
+}

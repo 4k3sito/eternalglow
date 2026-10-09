@@ -60,10 +60,13 @@
 	.jss-text p{
 		max-width: 65ch;
 	}
+	// Used as a wrapper around a paragraph (WPBakery pages) or on the text element itself (home template).
 	.lp-eyebrow{
+		display: block;
 		margin-bottom: 16px;
-		p{
+		&, p{
 			color: var(--lp-muted);
+			font-family: var(--#{$prefix}body-font-family);
 			font-size: 12px;
 			line-height: 16px;
 			font-weight: 600;
@@ -156,13 +159,15 @@
 		--#{$prefix}btn-active-border-color: var(--lp-ink);
 		--#{$prefix}btn-active-color: var(--lp-surface);
 	}
-	.jss-button-arrow .btn-primary::after{
+	.jss-button-arrow .btn-primary::after,
+	.lp-btn-arrow::after{
 		content: "\2192";
 		display: inline-block;
 		margin-left: 12px;
 		transition: transform 0.3s var(--lp-ease);
 	}
-	.jss-button-arrow .btn-primary:hover::after{
+	.jss-button-arrow .btn-primary:hover::after,
+	.lp-btn-arrow:hover::after{
 		transform: translateX(4px);
 	}
 

@@ -2,35 +2,35 @@
 	$social = get_theme_social(); 
 	$icons = [
         'facebook' => array(
-			'icon' => '<i class="fa-brands fa-facebook-f"></i>',
+			'icon' => eg_icon('facebook-logo'),
 			'url' => $social->facebook,
 		),
         'twitter' => array(
-			'icon' => '<i class="fa-brands fa-x-twitter"></i>',
+			'icon' => eg_icon('x-logo'),
 			'url' => $social->twitter,
 		),
         'youtube' => array(
-			'icon' => '<i class="fa-brands fa-youtube"></i>',
+			'icon' => eg_icon('youtube-logo'),
 			'url' => $social->youtube,
 		),
         'instagram' => array(
-			'icon' => '<i class="fa-brands fa-instagram"></i>',
+			'icon' => eg_icon('instagram-logo'),
 			'url' => $social->instagram,
 		),
         'pinterest' => array(
-			'icon' => '<i class="fa-brands fa-pinterest-p"></i>',
+			'icon' => eg_icon('pinterest-logo'),
 			'url' => $social->pinterest,
 		),
         'linkedin' => array(
-			'icon' => '<i class="fa-brands fa-linkedin-in"></i>',
+			'icon' => eg_icon('linkedin-logo'),
 			'url' => $social->linkedin,
 		),
         'tiktok' => array(
-			'icon' => '<i class="fa-brands fa-tiktok"></i>',
+			'icon' => eg_icon('tiktok-logo'),
 			'url' => $social->tiktok,
 		),
         'spotify' => array(
-			'icon' => '<i class="fa-brands fa-spotify"></i>',
+			'icon' => eg_icon('spotify-logo'),
 			'url' => $social->spotify,
 		),
     ];

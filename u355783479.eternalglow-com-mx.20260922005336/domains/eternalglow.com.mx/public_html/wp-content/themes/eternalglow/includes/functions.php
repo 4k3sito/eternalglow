@@ -462,8 +462,8 @@
 			'type' => 'array',
 			'mid_size' => 1,
 			'prev_next' => $prev_next,
-			'prev_text' => '<i class="fa-solid fa-chevron-left"></i>',
-			'next_text' => '<i class="fa-solid fa-chevron-right"></i>'
+			'prev_text' => eg_icon('arrow-left'),
+			'next_text' => eg_icon('arrow-right')
 		);
 		if($format_query){
 			$args['base'] = '%_%';
