@@ -6,7 +6,7 @@
 <html lang="<?php _p(eg_lang() == 'en' ? 'en' : 'es-MX'); ?>">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 		
 		<?php if($favicon->ID){ ?>
 			<link rel="shortcut icon" href="<?php _p($favicon->url); ?>" type="image/png" >

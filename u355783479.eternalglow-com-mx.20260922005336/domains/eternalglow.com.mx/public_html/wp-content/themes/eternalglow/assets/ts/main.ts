@@ -152,6 +152,20 @@ const trackCta = () => {
     });
 };
 
+// Phones: the fixed booking bar steps aside while another booking button or the contact form is on screen.
+const stickyBar = () => {
+    const bar = document.getElementById('lp-bar');
+    if (!bar || !('IntersectionObserver' in window)) {
+        return;
+    }
+    const onScreen = new Set<Element>();
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => entry.isIntersecting ? onScreen.add(entry.target) : onScreen.delete(entry.target));
+        bar.classList.toggle('is-hidden', onScreen.size > 0);
+    });
+    document.querySelectorAll('.lp-actions, #contacto form').forEach(el => observer.observe(el));
+};
+
 // The burger turns into a cross while the mobile menu is open.
 const menuState = () => {
     const menu = document.getElementById('offcanvasNavbar');
@@ -172,6 +186,7 @@ $(async () => {
     filterResults();
     menuState();
     trackCta();
+    stickyBar();
 
     $('.scroll-to, .scroll-to-a a').on('click', e => {
         scrollTarget(e.currentTarget);

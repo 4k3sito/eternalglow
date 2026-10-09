@@ -61,6 +61,13 @@
 			</div>
 		</footer> 
 		<div id='toasts' class='toasts toast-container'></div>
+		<?php // Phones: the booking button stays one thumb away on every page (hidden while another booking button is on screen, see stickyBar in main.ts). ?>
+		<div class="lp-bar" id="lp-bar">
+			<a class="btn btn-primary" href="<?php _p(esc_url(eg_booking_url())); ?>" target="_blank" rel="noopener" data-cta="barra"><?php _p(eg_lang() == 'en' ? 'Book your consultation' : 'Agenda tu valoración'); ?></a>
+			<?php if(get_whatsapp_url()){ ?>
+				<a class="btn btn-outline-primary" href="<?php _p(esc_url(get_whatsapp_url())); ?>" target="_blank" rel="noopener" aria-label="WhatsApp" data-cta="barra"><?php _p(eg_icon('whatsapp-logo')); ?></a>
+			<?php } ?>
+		</div>
 		<?php if(get_whatsapp_url()){ ?>
 			<a class="lp-wa-float" href="<?php _p(esc_url(get_whatsapp_url())); ?>" target="_blank" rel="noopener" aria-label="WhatsApp" data-cta="flotante">
 				<?php _p(eg_icon('whatsapp-logo')); ?>
