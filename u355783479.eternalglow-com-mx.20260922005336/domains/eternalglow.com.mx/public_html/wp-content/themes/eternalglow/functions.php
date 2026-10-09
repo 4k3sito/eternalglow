@@ -223,6 +223,21 @@
 	}
 	
 	add_action('wp_enqueue_scripts', 'extra_scripts');
+
+	// Pages on the editorial look (cream and olive, serif display) the client asked for.
+	// Add slugs here as each page is approved; the styles live in assets/scss/_editorial.scss.
+	function is_editorial_page() {
+		return is_page(array('sculptra-cdmx'));
+	}
+
+	function editorial_body_class($classes) {
+		if (is_editorial_page()) {
+			$classes[] = 'lp-editorial';
+		}
+		return $classes;
+	}
+
+	add_filter('body_class', 'editorial_body_class');
 	
 	add_action('add_meta_boxes', 'extra_add_meta_boxes');
 	

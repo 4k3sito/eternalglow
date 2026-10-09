@@ -26,7 +26,8 @@ module.exports = {
             safelist: {
                 // details/summary: FAQ markup comes from page content, so the crawl only sees it after it is live.
                 standard: [/^text-bg-/, 'details', 'summary'],
-                greedy: [/^f-/, /^fancybox/, /^is-/, /^has-/, /^wpcf7/],
+                // lp-: editorial page classes, set from page content (el_class) and from main.ts.
+                greedy: [/^f-/, /^fancybox/, /^is-/, /^has-/, /^wpcf7/, /^lp-/],
             },
         }),
         require('autoprefixer')(),

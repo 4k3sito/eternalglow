@@ -93,9 +93,33 @@ const showModal = (id: string) => {
 
 window.showModal = showModal;
 
+// Editorial pages: rows fade up as they enter the viewport. The hidden state is added here,
+// so without JS (or before it runs) everything is visible. The first row is the hero and paints at once.
+const revealRows = () => {
+    if (!document.body.classList.contains('lp-editorial') || !('IntersectionObserver' in window)) {
+        return;
+    }
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.wpb-content-wrapper > .vc_row').forEach((row, i) => {
+        if (i > 0) {
+            row.classList.add('lp-reveal');
+            observer.observe(row);
+        }
+    });
+};
+
 $(async () => {
 
     isReady = true;
+
+    revealRows();
 
     $('.scroll-to, .scroll-to-a a').on('click', e => {
         scrollTarget(e.currentTarget);
