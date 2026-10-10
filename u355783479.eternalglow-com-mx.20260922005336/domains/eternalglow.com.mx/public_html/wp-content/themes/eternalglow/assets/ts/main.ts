@@ -141,6 +141,44 @@ const filterResults = () => {
     });
 };
 
+// Catalogue (/tratamientos/): category pills and the search box filter the same rows.
+// Accents are ignored, so "menton" finds "mentón".
+const filterCatalog = () => {
+    const search = document.querySelector<HTMLInputElement>('#lp-search');
+    const pills = document.querySelectorAll<HTMLButtonElement>('.lp-pills button');
+    if (!search) {
+        return;
+    }
+    const plain = (text: string) => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    let category = 'all';
+    const apply = () => {
+        const query = plain(search.value.trim());
+        let found = 0;
+        document.querySelectorAll<HTMLElement>('.lp-group').forEach(group => {
+            let rows = 0;
+            group.querySelectorAll<HTMLElement>('li').forEach(row => {
+                row.hidden = query !== '' && plain(row.textContent || '').indexOf(query) < 0;
+                rows += row.hidden ? 0 : 1;
+            });
+            group.hidden = rows === 0 || (category !== 'all' && group.dataset.category !== category);
+            found += group.hidden ? 0 : rows;
+        });
+        document.getElementById('lp-empty').hidden = found > 0;
+    };
+    const choose = (next: string) => {
+        category = next;
+        pills.forEach(pill => pill.setAttribute('aria-pressed', String(pill.dataset.filter === category)));
+        apply();
+    };
+    pills.forEach(pill => pill.addEventListener('click', () => choose(pill.dataset.filter)));
+    search.addEventListener('input', apply);
+    // Links from the home arrive as /tratamientos/#botox: open that category.
+    const hash = window.location.hash.slice(1);
+    if (document.querySelector(`.lp-pills button[data-filter="${hash}"]`)) {
+        choose(hash);
+    }
+};
+
 // Analytics: which button on the page was used (hero, header, final, flotante, servicio...).
 // The click events themselves (click_agendar_cita, click_whatsapp) are sent by the tracking snippet in wp-admin.
 const trackCta = () => {
@@ -184,6 +222,7 @@ $(async () => {
     revealRows();
     revealWords();
     filterResults();
+    filterCatalog();
     menuState();
     trackCta();
     stickyBar();

@@ -9,6 +9,18 @@ function eg_booking_url(){
 	return get_theme_links()->header_btn_link;
 }
 
+// The two booking buttons used across the site. $where goes to analytics as cta_location.
+function eg_cta_book($where, $label = null){
+	$label = $label ?: eg_home_strings()['cta'];
+	return '<a class="btn btn-primary" href="'.esc_url(eg_booking_url()).'" target="_blank" rel="noopener" data-cta="'.esc_attr($where).'">'.eg_icon('calendar-check').esc_html($label).'</a>';
+}
+
+function eg_cta_whatsapp($where, $label = null){
+	$url = get_whatsapp_url();
+	$label = $label ?: eg_home_strings()['whatsapp'];
+	return $url ? '<a class="btn lp-btn-wa" href="'.esc_url($url).'" target="_blank" rel="noopener" data-cta="'.esc_attr($where).'">'.eg_icon('whatsapp-fill').esc_html($label).'</a>' : '';
+}
+
 // Phosphor icon from assets/images/icons, inlined so it takes the text color.
 function eg_icon($name){
 	return '<span class="lp-icon" aria-hidden="true">'.get_svg("icons/{$name}.svg").'</span>';

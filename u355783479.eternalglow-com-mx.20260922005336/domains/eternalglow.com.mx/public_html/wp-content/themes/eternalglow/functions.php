@@ -5,6 +5,7 @@
 	require_once(get_template_path().'/includes/_vc.php');
 	require_once(get_template_path().'/includes/_ajax.php');
 	require_once(get_template_path().'/includes/_home.php');
+	require_once(get_template_path().'/includes/_treatments.php');
 
 
 	register_nav_menus(

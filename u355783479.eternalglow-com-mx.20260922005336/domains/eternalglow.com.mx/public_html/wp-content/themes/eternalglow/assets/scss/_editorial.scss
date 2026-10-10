@@ -1,31 +1,36 @@
-// Editorial look the client asked for: flat cream surfaces, olive accent, serif display type, square corners.
-// Everything is scoped to body.lp-editorial (see is_editorial_page() in functions.php), so the rest of the
-// site keeps the coral theme until the client approves a full rollout.
-// Colors were sampled from the client's mockup; --lp-muted was darkened from the sample to pass WCAG AA.
+// The site's look, taken from the client's design prototype: warm cream surfaces, terracotta accent,
+// Instrument Serif display type with italic accents, rounded cards and pill buttons.
+// Everything is scoped to body.lp-editorial (added on every page in functions.php).
 .lp-editorial{
-	--lp-bg: #F3EFEA;
-	--lp-surface: #FAF6F3;
-	--lp-sand: #E6DFD3;
-	--lp-line: #D9D2C7;
-	--lp-ink: #2B2721;
-	--lp-text: #5F574C;
-	--lp-muted: #6E685F;
-	--lp-accent: #544E40;
-	--lp-serif: "Cormorant Garamond", Georgia, serif;
+	--lp-bg: #FAF7F2;
+	--lp-surface: #FFFDFA;
+	--lp-sand: #F3EDE4;
+	--lp-blush: #EBD9CE;
+	--lp-line: #E6DDD1;
+	--lp-line-strong: #D9C6B8;
+	--lp-ink: #2B221D;
+	--lp-ink-soft: #4A3B32;
+	--lp-text: #6E625A;
+	--lp-muted: #6E625A;
+	--lp-accent: #9C5B45;
+	--lp-accent-dark: #7A4433;
+	--lp-green: #3F7D5C;
+	--lp-green-dark: #336A4D;
+	--lp-serif: "Instrument Serif", Georgia, serif;
 	--lp-ease: cubic-bezier(0.32, 0.72, 0, 1);
 
 	--#{$prefix}primary: var(--lp-accent);
-	--#{$prefix}primary-rgb: 84, 78, 64;
+	--#{$prefix}primary-rgb: 156, 91, 69;
 	--#{$prefix}body: var(--lp-ink);
-	--#{$prefix}body-rgb: 43, 39, 33;
+	--#{$prefix}body-rgb: 43, 34, 29;
 	--#{$prefix}body-color: var(--lp-text);
-	--#{$prefix}body-color-rgb: 95, 87, 76;
+	--#{$prefix}body-color-rgb: 110, 98, 90;
 	--#{$prefix}body-bg: var(--lp-bg);
 	--#{$prefix}body-font-family: "Manrope", sans-serif;
 	--#{$prefix}body-font-size: 16px;
-	--#{$prefix}link-color-rgb: 43, 39, 33;
-	--#{$prefix}link-hover-color-rgb: 84, 78, 64;
-	--#{$prefix}border-radius: 0;
+	--#{$prefix}link-color-rgb: 43, 34, 29;
+	--#{$prefix}link-hover-color-rgb: 156, 91, 69;
+	--#{$prefix}border-radius: 16px;
 	--#{$prefix}border-color: var(--lp-line);
 
 	background-image: none;
@@ -33,10 +38,13 @@
 
 	h1, h2, h3, h4, .h1, .h2, .h3, .h4{
 		font-family: var(--lp-serif);
-		font-weight: 500;
+		font-weight: 400; // Instrument Serif has a single weight
 		color: var(--lp-ink);
-		letter-spacing: -0.01em;
+		letter-spacing: -0.015em;
 		text-wrap: balance;
+		em{
+			color: var(--lp-accent);
+		}
 		// The theme paints part of each heading coral; here headings are one color.
 		.text-primary{
 			color: inherit !important;
@@ -65,12 +73,12 @@
 		display: block;
 		margin-bottom: 16px;
 		&, p{
-			color: var(--lp-muted);
+			color: var(--lp-accent);
 			font-family: var(--#{$prefix}body-font-family);
 			font-size: 12px;
 			line-height: 16px;
 			font-weight: 600;
-			letter-spacing: 0.16em;
+			letter-spacing: 0.14em;
 			text-transform: uppercase;
 		}
 	}
@@ -112,7 +120,7 @@
 		}
 	}
 
-	// Surfaces: flat and square. Bootstrap's utilities are !important, so these have to be too.
+	// Surfaces: flat. Bootstrap's utilities are !important, so these have to be too.
 	.shadow-sm{
 		box-shadow: none !important;
 	}
@@ -122,36 +130,36 @@
 	.bg-primary-gradient{
 		background: var(--lp-sand);
 	}
-	[class*="rounded-"]:not(.rounded-circle):not(.rounded-pill){
-		border-radius: 0 !important;
-	}
 
 	.btn{
-		--#{$prefix}btn-border-radius: 2px;
+		--#{$prefix}btn-border-radius: 9999px;
 		--#{$prefix}btn-padding-x: 24px;
 		--#{$prefix}btn-padding-y: 12px;
-		--#{$prefix}btn-font-size: 12px;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
+		--#{$prefix}btn-font-size: 16px;
+		--#{$prefix}btn-line-height: 24px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
 		transition: background-color 0.3s var(--lp-ease), border-color 0.3s var(--lp-ease), color 0.3s var(--lp-ease), transform 0.3s var(--lp-ease);
 		&:active{
 			transform: translateY(1px);
 		}
 	}
 	.btn-primary{
-		--#{$prefix}btn-bg: var(--lp-accent);
-		--#{$prefix}btn-border-color: var(--lp-accent);
-		--#{$prefix}btn-hover-bg: var(--lp-ink);
-		--#{$prefix}btn-hover-border-color: var(--lp-ink);
-		--#{$prefix}btn-active-bg: var(--lp-ink);
-		--#{$prefix}btn-active-border-color: var(--lp-ink);
+		--#{$prefix}btn-bg: var(--lp-ink);
+		--#{$prefix}btn-border-color: var(--lp-ink);
+		--#{$prefix}btn-hover-bg: var(--lp-ink-soft);
+		--#{$prefix}btn-hover-border-color: var(--lp-ink-soft);
+		--#{$prefix}btn-active-bg: var(--lp-ink-soft);
+		--#{$prefix}btn-active-border-color: var(--lp-ink-soft);
 		--#{$prefix}btn-color: var(--lp-surface);
 		--#{$prefix}btn-hover-color: var(--lp-surface);
 		--#{$prefix}btn-active-color: var(--lp-surface);
 	}
 	.btn-outline-primary{
 		--#{$prefix}btn-color: var(--lp-ink);
-		--#{$prefix}btn-border-color: var(--lp-accent);
+		--#{$prefix}btn-border-color: var(--lp-ink);
 		--#{$prefix}btn-hover-bg: var(--lp-ink);
 		--#{$prefix}btn-hover-border-color: var(--lp-ink);
 		--#{$prefix}btn-hover-color: var(--lp-surface);
@@ -159,15 +167,13 @@
 		--#{$prefix}btn-active-border-color: var(--lp-ink);
 		--#{$prefix}btn-active-color: var(--lp-surface);
 	}
-	.jss-button-arrow .btn-primary::after,
-	.lp-btn-arrow::after{
+	.jss-button-arrow .btn-primary::after{
 		content: "\2192";
 		display: inline-block;
 		margin-left: 12px;
 		transition: transform 0.3s var(--lp-ease);
 	}
-	.jss-button-arrow .btn-primary:hover::after,
-	.lp-btn-arrow:hover::after{
+	.jss-button-arrow .btn-primary:hover::after{
 		transform: translateX(4px);
 	}
 
@@ -317,8 +323,8 @@
 	}
 
 	.form-control, .form-select{
-		background-color: transparent;
-		border-radius: 0;
+		background-color: var(--lp-surface);
+		border-radius: 12px;
 		border-color: var(--lp-line);
 		&:focus{
 			border-color: var(--lp-ink);
