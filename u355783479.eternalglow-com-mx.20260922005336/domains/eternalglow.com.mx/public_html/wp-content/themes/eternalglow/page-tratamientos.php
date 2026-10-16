@@ -39,10 +39,10 @@
 					<?php foreach($treatments as $item){ ?>
 						<?php if($item->cat == $key){ ?>
 							<li>
-								<a href="<?php _p(esc_url($item->url)); ?>">
+								<a href="<?php _p(esc_url($item->url)); ?>"<?php _p(eg_sheet_attrs($item)); ?>>
 									<span>
 										<span class="lp-row-name"><?php _p(esc_html($item->name)); ?></span>
-										<span class="lp-row-text"><?php _p(esc_html(eg_show_prices() ? "{$item->minutes} · Resultados {$item->lasts}" : $item->desc)); ?></span>
+										<span class="lp-row-text"><?php _p(esc_html($item->desc)); ?></span>
 									</span>
 									<?php if(eg_show_prices()){ ?><strong><?php _p(esc_html($item->price)); ?></strong><?php } ?>
 									<?php _p(eg_icon('caret-right')); ?>

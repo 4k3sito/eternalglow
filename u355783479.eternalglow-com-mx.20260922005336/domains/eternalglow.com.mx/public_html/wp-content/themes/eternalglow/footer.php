@@ -60,6 +60,24 @@
 			</div>
 		</footer> 
 		<div id='toasts' class='toasts toast-container'></div>
+		<?php // Booking sheet: main.ts fills it from the treatment link that was clicked (see eg_sheet_attrs()). ?>
+		<dialog class="lp-sheet" id="lp-sheet" aria-labelledby="lp-sheet-title" data-wa-text="<?php _p(esc_attr($t['sheet']['wa'])); ?>">
+			<form method="dialog"><button class="lp-sheet-close" aria-label="<?php _p(esc_attr($t['sheet']['close'])); ?>">&times;</button></form>
+			<p class="lp-eyebrow" data-sheet-cat></p>
+			<h2 id="lp-sheet-title" data-sheet-name></h2>
+			<p data-sheet-desc></p>
+			<dl data-sheet-pricebox>
+				<dt><?php _p(esc_html($t['sheet']['price'])); ?></dt>
+				<dd data-sheet-price></dd>
+			</dl>
+			<p class="lp-sheet-includes"><?php _p(eg_icon('seal-check')); ?> <?php _p(esc_html($t['sheet']['includes'])); ?></p>
+			<div class="lp-actions">
+				<?php _p(eg_cta_book('ficha')); ?>
+				<?php _p(eg_cta_whatsapp('ficha')); ?>
+			</div>
+			<p class="lp-fine"><?php _p(esc_html($t['sheet']['note'])); ?></p>
+			<a class="lp-link" data-sheet-more href="#"><?php _p(esc_html($t['sheet']['more'])); ?> <?php _p(eg_icon('arrow-right')); ?></a>
+		</dialog>
 		<?php // Phones: booking stays one thumb away on every page (hidden while another booking button is on screen, see stickyBar in main.ts). ?>
 		<div class="lp-bar" id="lp-bar">
 			<?php _p(eg_cta_book('barra', $t['cta_bar'])); ?>

@@ -196,6 +196,19 @@
 		width: 100%;
 		aspect-ratio: 4 / 3;
 		object-fit: cover;
+		// Cut-outs (see eg_cutout_attrs()) already have their own shape: show them whole.
+		&.lp-cutout{
+			width: min(100%, 520px);
+			aspect-ratio: auto;
+			object-fit: contain;
+		}
+	}
+	// A name set as the page's headline (Nosotros).
+	.lp-display .jss-heading-tag,
+	.lp-display h1{
+		font-size: clamp(56px, 8vw, 104px);
+		line-height: 0.95;
+		letter-spacing: -0.02em;
 	}
 	// A full-width band: the row stays in the container and its background bleeds to both edges.
 	.vc_row.lp-band{

@@ -4,17 +4,18 @@
 // with what the site can back up; see includes/_treatments.php for prices.
 // ponytail: a PHP array is enough for one translated page; move to Polylang when there are more than 3 pages in English.
 
-// Before and after photos by tab key. Photos are upload file names (see eg_img()).
+// Before and after photos: tab key, upload file name (see eg_img()), alt text in Spanish and in English.
+// The alt is set here because half of these uploads have none in the media library.
 $results = array(
-	array('botox', '2025/09/botox-arrugas-frente-hombre-antes-despues.png'),
-	array('sculptra', '2025/09/clinicas-con-sculptra-cdmx-antes-despues.png'),
-	array('hilos', '2025/09/hilos-tensores-rejuvenecimiento-facial-cdmx-1.jpg'),
-	array('botox', '2025/09/botox-ciudad-de-mexico-antes-despues-mujer-frente.png'),
-	array('sculptra', '2025/09/tratamientos-con-sculptra-en-cdmx-antes-despues-hombre.jpg'),
-	array('hilos', '2025/09/hilos-tensores-en-cdmx-antes-despues-1.jpg'),
-	array('botox', '2025/09/botox-para-hombres-ciudad-de-mexico-antes-despues.png'),
-	array('sculptra', '2025/09/sculptra-en-la-cara-cdmx-antes-despues.png'),
-	array('hilos', '2025/09/hilos-tensores-cdmx-resultados-reales.jpg'),
+	array('botox', '2025/09/botox-arrugas-frente-hombre-antes-despues.png', 'Antes y después de Botox en las arrugas de la frente de un hombre, Eternal Glow CDMX', 'Before and after Botox for forehead lines on a man, Eternal Glow Mexico City'),
+	array('sculptra', '2025/09/clinicas-con-sculptra-cdmx-antes-despues.png', 'Antes y después de la aplicación de Sculptra en Eternal Glow, Roma Norte CDMX', 'Before and after Sculptra at Eternal Glow, Roma Norte, Mexico City'),
+	array('hilos', '2025/09/hilos-tensores-rejuvenecimiento-facial-cdmx-1.jpg', 'Antes y después de hilos tensores para rejuvenecimiento facial en CDMX', 'Before and after PDO threads for facial rejuvenation in Mexico City'),
+	array('botox', '2025/09/botox-ciudad-de-mexico-antes-despues-mujer-frente.png', 'Antes y después de Botox en la frente de una mujer en Ciudad de México', 'Before and after Botox on a woman’s forehead in Mexico City'),
+	array('sculptra', '2025/09/tratamientos-con-sculptra-en-cdmx-antes-despues-hombre.jpg', 'Antes y después de un tratamiento con Sculptra en un hombre, CDMX', 'Before and after a Sculptra treatment on a man, Mexico City'),
+	array('hilos', '2025/09/hilos-tensores-en-cdmx-antes-despues-1.jpg', 'Antes y después de hilos tensores en CDMX con mayor definición facial', 'Before and after PDO threads in Mexico City, with more facial definition'),
+	array('botox', '2025/09/botox-para-hombres-ciudad-de-mexico-antes-despues.png', 'Antes y después de Botox para hombres en Ciudad de México', 'Before and after Botox for men in Mexico City'),
+	array('sculptra', '2025/09/sculptra-en-la-cara-cdmx-antes-despues.png', 'Antes y después de Sculptra en la cara, Eternal Glow CDMX', 'Before and after Sculptra on the face, Eternal Glow Mexico City'),
+	array('hilos', '2025/09/hilos-tensores-cdmx-resultados-reales.jpg', 'Resultado real de hilos tensores en Eternal Glow, CDMX', 'Real PDO threads result at Eternal Glow, Mexico City'),
 );
 
 // Logo files in assets/images/brands with the height each one needs to look the same size.
@@ -33,10 +34,11 @@ $popular = array('baby-botox-cdmx', 'full-face-botox-60-unidades', 'relleno-de-o
 
 return array(
 	'es' => array(
-		'nav' => array('/tratamientos/' => 'Tratamientos', '/botox-cdmx/' => 'Botox', '/sculptra-cdmx/' => 'Sculptra', '/hilos-tensores-cdmx/' => 'Hilos tensores', '/#resenas' => 'Reseñas', '/nosotros/' => 'Nosotros'),
+		'nav' => array('/tratamientos/' => 'Tratamientos', '/botox-cdmx/' => 'Botox', '/rellenos-cdmx/' => 'Rellenos', '/sculptra-cdmx/' => 'Sculptra', '/hilos-tensores-cdmx/' => 'Hilos tensores', '/#resenas' => 'Reseñas', '/nosotros/' => 'Nosotros'),
 		'cta' => 'Reservar en línea',
 		'cta_short' => 'Agendar cita',
 		'cta_bar' => 'Reservar',
+		'sheet' => array('price' => 'Precio', 'includes' => 'Incluye valoración médica', 'note' => 'Reserva con tu horario preferido o escríbenos y te ayudamos a elegir.', 'more' => 'Conocer el tratamiento', 'close' => 'Cerrar', 'wa' => '¡Hola! Vi su página web y me gustaría agendar: %s.'),
 		'whatsapp' => 'Agendar por WhatsApp',
 		'hero' => array(
 			'eyebrow' => 'Medicina estética · Roma Norte, CDMX',
@@ -45,12 +47,12 @@ return array(
 			'note' => 'Con cita previa · Atención en español e inglés',
 			'rating' => '%s · %s reseñas en Google',
 			'trust' => array(array('seal-check', 'Permiso COFEPRIS 2509152002A00185'), array('stethoscope', 'Atención del Dr. Bruno Ocampo')),
-			'chip' => array('Roma Norte', 'Con cita previa'),
+			'chip' => array('Próximo espacio', 'Esta semana'),
 		),
 		'marquee' => array('Baby botox', 'Relleno de ojeras', 'Hilos tensores', 'Sculptra', 'Marcaje mandibular', 'HIFU facial', 'Rejuran', 'Carbon Peel', 'Lip Flip', 'Rinomodelación'),
 		'cats' => array(
 			'title' => 'Explora por categoría',
-			'all' => 'Ver los 29 tratamientos',
+			'all' => 'Ver los %d tratamientos',
 			'count' => '%d tratamientos',
 			'names' => array(),
 		),
@@ -91,7 +93,7 @@ return array(
 			'eyebrow' => 'Lifting sin cirugía',
 			'title' => 'Hilos tensores',
 			'text' => 'Una técnica mínimamente invasiva que reposiciona y sostiene los tejidos faciales. Trabajamos con hilos PDO para definir el óvalo facial sin pasar por quirófano.',
-			'stats' => array(array('$8,900', 'Precio desde'), array('60–90 min', 'Duración'), array('12–18 meses', 'Resultados')),
+			'stats' => array(array('$1,500', 'Por hilo · 1 a 4 hilos'), array('$1,300', 'Por hilo · 5 a 8 hilos'), array('$1,100', 'Por hilo · 9 o más')),
 			'link' => 'Conocer hilos tensores',
 		),
 		'results' => array(
@@ -109,7 +111,7 @@ return array(
 			array('¿Cómo agendo una valoración?', 'Puedes reservar en línea en menos de un minuto o escribirnos por WhatsApp. Eliges el día y la hora que te acomoden.'),
 			array('¿Qué pasa en la valoración?', 'El médico revisa tu rostro, tu historial y lo que quieres lograr. Después te propone un plan con zonas, producto y número de sesiones. Tú decides si lo inicias ese día o más adelante.'),
 			array('¿Los resultados se ven naturales?', 'Sí. Trabajamos con dosis medidas y por etapas para conservar tu expresión. El objetivo es que te veas descansada o descansado, no diferente.'),
-			array('¿Qué tratamientos ofrecen?', 'Aplicamos <a href="/botox-cdmx/">Botox</a>, rellenos con ácido hialurónico, <a href="/sculptra-cdmx/">Sculptra</a>, Radiesse, <a href="/hilos-tensores-cdmx/">hilos tensores</a>, HIFU, peelings y microneedling. Puedes ver la lista completa en <a href="/tratamientos/">tratamientos</a>.'),
+			array('¿Qué tratamientos ofrecen?', 'Aplicamos <a href="/botox-cdmx/">Botox</a>, <a href="/rellenos-cdmx/">rellenos con ácido hialurónico</a>, <a href="/sculptra-cdmx/">Sculptra</a>, Radiesse, <a href="/hilos-tensores-cdmx/">hilos tensores</a>, HIFU, peelings y microneedling. Puedes ver la lista completa en <a href="/tratamientos/">tratamientos</a>.'),
 			array('¿Cuánto tiempo toma y cuándo puedo volver a mis actividades?', 'La mayoría de las aplicaciones toma menos de una hora y puedes retomar tus actividades el mismo día. En la valoración te explicamos los cuidados de tu tratamiento.'),
 			array('¿Cuánto cuestan los tratamientos?', 'El costo depende del tratamiento, la zona y la cantidad de producto. Lo confirmamos en la valoración, antes de aplicar cualquier cosa.'),
 			array('¿Atienden en inglés?', 'Sí. Nuestro equipo atiende en español y en inglés, tanto en la valoración como en el seguimiento.'),
@@ -125,6 +127,7 @@ return array(
 		'cta' => 'Book online',
 		'cta_short' => 'Book a visit',
 		'cta_bar' => 'Book',
+		'sheet' => array('price' => 'Price', 'includes' => 'Includes a medical consultation', 'note' => 'Book the time you prefer or message us and we will help you choose.', 'more' => 'About this treatment', 'close' => 'Close', 'wa' => 'Hello! I saw your website and would like to book: %s.'),
 		'whatsapp' => 'Book on WhatsApp',
 		'hero' => array(
 			'eyebrow' => 'Aesthetic medicine · Roma Norte, Mexico City',
@@ -133,12 +136,12 @@ return array(
 			'note' => 'By appointment · English and Spanish spoken',
 			'rating' => '%s · %s Google reviews',
 			'trust' => array(array('seal-check', 'COFEPRIS permit 2509152002A00185'), array('stethoscope', 'Care by Dr. Bruno Ocampo')),
-			'chip' => array('Roma Norte', 'By appointment'),
+			'chip' => array('Next opening', 'This week'),
 		),
 		'marquee' => array('Baby botox', 'Under eye filler', 'PDO threads', 'Sculptra', 'Jawline contouring', 'HIFU', 'Rejuran', 'Carbon Peel', 'Lip Flip', 'Liquid rhinoplasty'),
 		'cats' => array(
 			'title' => 'Browse by category',
-			'all' => 'See all 29 treatments',
+			'all' => 'See all %d treatments',
 			'count' => '%d treatments',
 			'names' => array(
 				'botox' => array('Botox', 'Botulinum toxin'),
@@ -191,7 +194,7 @@ return array(
 			'eyebrow' => 'Lifting without surgery',
 			'title' => 'PDO threads',
 			'text' => 'A minimally invasive technique that repositions and supports facial tissue. We work with PDO threads to define the jawline without an operating room.',
-			'stats' => array(array('$8,900', 'Starting price'), array('60–90 min', 'Duration'), array('12–18 months', 'Results')),
+			'stats' => array(array('$1,500', 'Per thread · 1 to 4 threads'), array('$1,300', 'Per thread · 5 to 8 threads'), array('$1,100', 'Per thread · 9 or more')),
 			'link' => 'About PDO threads',
 		),
 		'results' => array(

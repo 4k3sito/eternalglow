@@ -36,6 +36,56 @@ function eg_img($file, $size = 'large', $attr = array()){
 	return $ids[$file] ? wp_get_attachment_image($ids[$file], $size, false, $attr) : '';
 }
 
+// Hub pictures: the old pink circle cut-outs are served from assets/images/cutouts instead, the same subject on a
+// flat shape in the site's palette (made with seo/cutouts.py). Keyed by upload file name, so no content changes;
+// the hash-named files are the phone copies of the same pictures.
+function eg_cutout_attrs($attr, $attachment){
+	static $map = array(
+		'hilos-tensores-cdmx-rejuvenecimiento-facial.png' => 'hilos-tensores-cdmx-rejuvenecimiento-facial',
+		'689c149abd0bf.png' => 'hilos-tensores-cdmx-rejuvenecimiento-facial',
+		'hilos-tensores-en-cara-cdmx.png' => 'hilos-tensores-en-cara-cdmx',
+		'689c149abd0c1.png' => 'hilos-tensores-en-cara-cdmx',
+		'hilos-tensores-nariz-cdmx.png' => 'hilos-tensores-nariz-cdmx',
+		'689c149abd0c4.png' => 'hilos-tensores-nariz-cdmx',
+		'hilos-tensores-ciudad-de-mexico.png' => 'hilos-tensores-ciudad-de-mexico',
+		'botox-cdmx-resultados-naturales-eternal-glow.png' => 'botox-cdmx-resultados-naturales-eternal-glow',
+		'689b9b16ab085.png' => 'botox-cdmx-resultados-naturales-eternal-glow',
+		'especialistas-en-toxina-botulinica-aplicacion-facial.png' => 'especialistas-en-toxina-botulinica-aplicacion-facial',
+		'689b9b16ab088.png' => 'especialistas-en-toxina-botulinica-aplicacion-facial',
+		'botox-cerca-de-mi-para-hombres-aplicacion-estetica.png' => 'botox-cerca-de-mi-para-hombres-aplicacion-estetica',
+		'689b9b16ab08b.png' => 'botox-cerca-de-mi-para-hombres-aplicacion-estetica',
+		'botox-mexico-city-resultados-visibles-hombre-mujer.png' => 'botox-mexico-city-resultados-visibles-hombre-mujer',
+		// Not redrawn, only kept whole: the doctor's head stands out of its circle.
+		'clinica-medico-estetica-especialista-en-cdmx.png' => 'dr-bruno-ocampo-nosotros',
+	);
+	$file = basename((string)get_attached_file($attachment->ID));
+	if(isset($map[$file])){
+		$attr['src'] = get_template_directory_uri()."/assets/images/cutouts/{$map[$file]}.webp";
+		$attr['class'] = trim((isset($attr['class']) ? $attr['class'] : '').' lp-cutout');
+		unset($attr['srcset'], $attr['sizes']);
+	}
+	return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'eg_cutout_attrs', 10, 2);
+
+// Before and after photos uploaded without alt text get one from their file name, which says the treatment
+// and who is in the picture. An alt written in the media library always wins.
+// ponytail: three treatments by keyword; write the alt in the media library for anything this does not cover.
+function eg_alt_fallback($attr, $attachment){
+	if(!empty($attr['alt'])){
+		return $attr;
+	}
+	$file = basename((string)get_attached_file($attachment->ID));
+	if(!preg_match('/antes-despues|resultados/', $file) || !preg_match('/botox|sculptra|hilos/', $file, $m)){
+		return $attr;
+	}
+	$names = array('botox' => 'Botox', 'sculptra' => 'Sculptra', 'hilos' => 'hilos tensores');
+	$who = strpos($file, 'hombre') !== false ? ' en hombre' : (strpos($file, 'mujer') !== false ? ' en mujer' : '');
+	$attr['alt'] = "Antes y después de {$names[$m[0]]}{$who} en Eternal Glow, CDMX";
+	return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'eg_alt_fallback', 10, 2);
+
 // Rating, total and recent reviews saved by the Trustindex plugin. Null when the plugin has no data.
 function eg_google_reviews($limit = 3, $lang = 'es'){
 	global $wpdb;
@@ -72,6 +122,7 @@ function eg_google_reviews($limit = 3, $lang = 'es'){
 function eg_service_hub($post){
 	$hubs = array(
 		'/botox/' => array('Botox en CDMX', 'botox-cdmx'),
+		'/relleno|rinomodelacion|marcaje|armonizacion/' => array('Rellenos en CDMX', 'rellenos-cdmx'),
 		'/sculptra/' => array('Sculptra en CDMX', 'sculptra-cdmx'),
 		'/hilos/' => array('Hilos tensores en CDMX', 'hilos-tensores-cdmx'),
 	);
@@ -147,6 +198,14 @@ function eg_schema(){
 		);
 		$faq = array();
 		foreach($t['faq'] as $item){
+			$faq[] = array('@type' => 'Question', 'name' => $item[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => wp_strip_all_tags($item[1])));
+		}
+		$graph[] = array('@type' => 'FAQPage', 'mainEntity' => $faq);
+	}
+	$landing = is_page() ? eg_landing(get_post()->post_name) : null;
+	if($landing){
+		$faq = array();
+		foreach($landing['faq'] as $item){
 			$faq[] = array('@type' => 'Question', 'name' => $item[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => wp_strip_all_tags($item[1])));
 		}
 		$graph[] = array('@type' => 'FAQPage', 'mainEntity' => $faq);

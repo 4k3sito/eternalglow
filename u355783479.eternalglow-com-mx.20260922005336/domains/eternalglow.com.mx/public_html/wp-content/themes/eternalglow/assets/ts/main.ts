@@ -179,6 +179,48 @@ const filterCatalog = () => {
     }
 };
 
+// Treatment links open a booking sheet instead of the treatment's page: the visitor came to book.
+// The page stays one link away inside the sheet. Modified clicks (new tab) keep working as links.
+const bookingSheet = () => {
+    const sheet = document.querySelector<HTMLDialogElement>('#lp-sheet');
+    if (!sheet || typeof sheet.showModal !== 'function') {
+        return;
+    }
+    const fill = (key: string, text: string) => {
+        sheet.querySelector<HTMLElement>(`[data-sheet-${key}]`).textContent = text;
+    };
+    const whatsapp = sheet.querySelector<HTMLAnchorElement>('.lp-btn-wa');
+    const more = sheet.querySelector<HTMLAnchorElement>('[data-sheet-more]');
+    document.addEventListener('click', e => {
+        const link = (e.target as Element).closest<HTMLAnchorElement>('a[data-sheet]');
+        if (!link || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) {
+            return;
+        }
+        e.preventDefault();
+        const data = link.dataset;
+        fill('cat', data.cat);
+        fill('name', data.name);
+        fill('desc', data.desc);
+        fill('price', data.price);
+        sheet.querySelector<HTMLElement>('[data-sheet-pricebox]').hidden = !data.price;
+        if (whatsapp) {
+            const url = new URL(whatsapp.href);
+            url.searchParams.set('text', sheet.dataset.waText.replace('%s', data.name));
+            whatsapp.href = url.toString();
+        }
+        // Rows without a page of their own point to booking or to this same page: nothing more to read.
+        more.href = link.href;
+        more.hidden = link.origin !== window.location.origin || link.pathname === window.location.pathname;
+        sheet.showModal();
+    });
+    // A click on the backdrop lands on the dialog element itself.
+    sheet.addEventListener('click', e => {
+        if (e.target === sheet) {
+            sheet.close();
+        }
+    });
+};
+
 // Analytics: which button on the page was used (hero, header, final, flotante, servicio...).
 // The click events themselves (click_agendar_cita, click_whatsapp) are sent by the tracking snippet in wp-admin.
 const trackCta = () => {
@@ -223,6 +265,7 @@ $(async () => {
     revealWords();
     filterResults();
     filterCatalog();
+    bookingSheet();
     menuState();
     trackCta();
     stickyBar();

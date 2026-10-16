@@ -10,6 +10,7 @@
             $related = get_related_services(get_the_ID(), $terms[0]->term_id);
         }
         $hub = eg_service_hub(get_post());
+        $priced = eg_show_prices() ? eg_treatment_for(get_post()->post_name) : null;
     ?>
 
     <div <?php post_class('section'); ?>>
@@ -23,6 +24,19 @@
                         <a href="<?php _p(esc_url($hub->url)); ?>"><?php _p(esc_html($hub->title)); ?></a>
                         <span aria-current="page"><?php the_title(); ?></span>
                     </nav>
+
+                    <?php // Official price from the clinic's list (includes/_treatments.php). ?>
+                    <?php if($priced){ ?>
+                        <p class="lp-service-price">
+                            <span class="lp-eyebrow">Precio</span>
+                            <strong><?php _p(esc_html($priced->price)); ?> MXN</strong>
+                            <?php if($priced->slug != get_post()->post_name){ ?>
+                                <span>Se cobra como <a href="<?php _p(esc_url($priced->url)); ?>"><?php _p(esc_html(lcfirst($priced->name))); ?></a>; las unidades se definen en tu valoración.</span>
+                            <?php }else{ ?>
+                                <span>El plan y la cantidad se definen en tu valoración médica.</span>
+                            <?php } ?>
+                        </p>
+                    <?php } ?>
 
                     <div class='row g-md-40 g-48'>
                         <div class='col-md'>

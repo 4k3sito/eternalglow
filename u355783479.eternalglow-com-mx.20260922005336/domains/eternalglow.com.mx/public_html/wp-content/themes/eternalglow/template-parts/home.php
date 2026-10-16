@@ -35,8 +35,9 @@
 				<?php } ?>
 			</ul>
 		</div>
+		<?php // sizes: the 16:9 photo covers a 4:5 box, so it is drawn about 2.2 times wider than the box. Asking for the box width gives a blurry file. ?>
 		<div class="lp-hero-media">
-			<?php _p(eg_img('2026/06/piel-despues-tratamiento-sculptra-cdmx.png', 'full', array('fetchpriority' => 'high', 'loading' => 'eager', 'decoding' => 'async', 'sizes' => '(min-width: 992px) 560px, 100vw'))); ?>
+			<?php _p(eg_img('2026/06/piel-despues-tratamiento-sculptra-cdmx.png', 'full', array('fetchpriority' => 'high', 'loading' => 'eager', 'decoding' => 'async', 'sizes' => '(min-width: 992px) 1250px, 225vw'))); ?>
 			<p class="lp-chip"><span><?php _p(esc_html($t['hero']['chip'][0])); ?></span><?php _p(esc_html($t['hero']['chip'][1])); ?></p>
 		</div>
 	</div>
@@ -59,7 +60,7 @@
 	<div class="lp-wrap">
 		<div class="lp-head">
 			<h2 id="cats-title"><?php _p(esc_html($t['cats']['title'])); ?></h2>
-			<a class="lp-link" href="<?php _p(esc_url(home_url('/tratamientos/'))); ?>"><?php _p(esc_html($t['cats']['all'])); ?> <?php _p(eg_icon('arrow-right')); ?></a>
+			<a class="lp-link" href="<?php _p(esc_url(home_url('/tratamientos/'))); ?>"><?php _p(esc_html(sprintf($t['cats']['all'], count($treatments)))); ?> <?php _p(eg_icon('arrow-right')); ?></a>
 		</div>
 		<ul class="lp-cats">
 			<?php foreach($cats as $key => $cat){ ?>
@@ -105,10 +106,9 @@
 					$cat = isset($t['cats']['names'][$item->cat]) ? $t['cats']['names'][$item->cat] : $cats[$item->cat];
 				?>
 				<li>
-					<a href="<?php _p(esc_url($item->url)); ?>">
+					<a href="<?php _p(esc_url($item->url)); ?>"<?php _p(eg_sheet_attrs((object)array('name' => $copy[0], 'desc' => $copy[1], 'price' => $item->price), $cat[0])); ?>>
 						<span class="lp-card-top">
 							<span><?php _p(esc_html($cat[0])); ?></span>
-							<?php if(eg_show_prices()){ ?><span><?php _p(esc_html($item->minutes)); ?></span><?php } ?>
 						</span>
 						<span>
 							<h3><?php _p(esc_html($copy[0])); ?></h3>
@@ -170,7 +170,7 @@
 <section class="lp-section" id="doctor" aria-labelledby="doctor-title">
 	<div class="lp-wrap lp-doctor">
 		<div class="lp-doctor-media">
-			<img src="<?php images_url('dr-bruno-ocampo.png'); ?>" alt="Dr. Bruno Ocampo, <?php _p(esc_attr($t['doctor']['role'])); ?>" width="768" height="995" loading="lazy" />
+			<img src="<?php images_url('dr-bruno-ocampo.webp'); ?>" alt="Dr. Bruno Ocampo, <?php _p(esc_attr($t['doctor']['role'])); ?>" width="768" height="995" loading="lazy" />
 		</div>
 		<div>
 			<p class="lp-eyebrow"><?php _p(esc_html($t['doctor']['eyebrow'])); ?></p>
@@ -204,7 +204,8 @@
 			<a class="btn lp-btn-light" href="<?php _p(esc_url(home_url('/hilos-tensores-cdmx/'))); ?>"><?php _p(esc_html($t['hilos']['link'])); ?> <?php _p(eg_icon('arrow-right')); ?></a>
 		</div>
 		<div class="lp-hilos-media">
-			<?php _p(eg_img('2026/06/perfilamiento-facial-acido-hialuronico-natural.png', 'large', array('sizes' => '(min-width: 992px) 560px, 100vw', 'alt' => $t['hilos']['title']))); ?>
+			<div class="lp-lift" aria-hidden="true"><?php for($i = 0; $i < 3; $i++){ ?><span><?php _p(eg_icon('caret-double-up')); ?></span><?php } ?></div>
+			<?php _p(eg_img('2026/06/perfilamiento-facial-acido-hialuronico-natural.png', 'large', array('sizes' => '(min-width: 992px) 1250px, 225vw', 'alt' => $t['hilos']['title']))); ?>
 		</div>
 	</div>
 </section>
@@ -226,7 +227,7 @@
 			<?php foreach($t['results']['items'] as $item){ ?>
 				<li data-category="<?php _p($item[0]); ?>">
 					<figure data-before="<?php _p(esc_attr($t['results']['before'])); ?>" data-after="<?php _p(esc_attr($t['results']['after'])); ?>">
-						<?php _p(eg_img($item[1], 'medium_large', array('sizes' => '(min-width: 992px) 380px, 80vw'))); ?>
+						<?php _p(eg_img($item[1], 'medium_large', array('sizes' => '(min-width: 992px) 380px, 80vw', 'alt' => $item[$en ? 3 : 2]))); ?>
 						<figcaption><?php _p(esc_html($t['results']['tabs'][$item[0]])); ?></figcaption>
 					</figure>
 				</li>

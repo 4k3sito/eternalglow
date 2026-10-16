@@ -15,6 +15,9 @@ main{
 	display: flex;
 	flex-direction: column;
 	overflow-x: hidden;
+	// clip, not hidden: hidden turns main into a scroll box of its own, and anything that pokes out below
+	// (a section still waiting to fade up) gave the page a second scrollbar.
+	overflow-x: clip;
 	> div{
 		display: flex;
 		flex-direction: column;
