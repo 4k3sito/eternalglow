@@ -17,3 +17,4 @@ seo/.venv/
 seo/gbp-data/
 .env
 seo/__pycache__/
+**/wp-content/et-cache/
