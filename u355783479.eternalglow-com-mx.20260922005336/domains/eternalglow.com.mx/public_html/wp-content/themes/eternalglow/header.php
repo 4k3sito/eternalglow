@@ -35,6 +35,7 @@
 	?>
 	
 	<body <?php body_class($args_body); ?>>
+		<?php wp_body_open(); ?>
 		<?php scripts('after_body'); ?>
 
 		<a class="lp-skip" href="#contenido"><?php _p(eg_lang() == 'en' ? 'Skip to content' : 'Saltar al contenido'); ?></a>
