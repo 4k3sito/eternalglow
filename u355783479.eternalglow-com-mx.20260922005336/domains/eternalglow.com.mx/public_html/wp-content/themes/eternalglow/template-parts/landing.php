@@ -9,6 +9,7 @@
 	<section class="lp-section lp-catalog lp-landing">
 		<div class="lp-wrap">
 			<?php if(!empty($landing['hero'])){ ?>
+				<div class="lp-landing-hero">
 				<div class="lp-catalog-head">
 					<p class="lp-eyebrow"><?php _p(esc_html($landing['hero'][0])); ?></p>
 					<h1><?php _p(esc_html($landing['hero'][1])); ?></h1>
@@ -17,6 +18,11 @@
 						<?php _p(eg_cta_book('landing')); ?>
 						<?php _p(eg_cta_whatsapp('landing')); ?>
 					</div>
+				</div>
+				<?php if(!empty($landing['image'])){ ?>
+					<?php // 16:9 photos cover a 4:3 box, so they are drawn about 1.2 times wider than the box. ?>
+					<?php _p(eg_img($landing['image'][0], 'full', array('alt' => $landing['image'][1], 'fetchpriority' => 'high', 'loading' => 'eager', 'sizes' => '(min-width: 992px) 760px, 120vw'))); ?>
+				<?php } ?>
 				</div>
 			<?php } ?>
 

@@ -196,6 +196,7 @@
 		width: 100%;
 		aspect-ratio: 4 / 3;
 		object-fit: cover;
+		border-radius: 24px;
 		// Cut-outs (see eg_cutout_attrs()) already have their own shape: show them whole.
 		&.lp-cutout{
 			width: min(100%, 520px);

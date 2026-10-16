@@ -1,7 +1,7 @@
 <?php
 // Hub pages by slug: what template-parts/landing.php adds to them. Prices come from includes/_treatments.php
 // (the clinic's official list) so they are written once.
-// - Pages with a 'hero' have no content in WordPress: the whole page is rendered from here.
+// - Pages with a 'hero' have no content in WordPress: the whole page is rendered from here ('image' sits beside the hero).
 // - Pages without one (Botox, hilos tensores) keep their WPBakery content; prices and questions go after it.
 // Answers stay within what the clinic's pages and price list already state. Durations are given as ranges.
 
@@ -68,6 +68,7 @@ function eg_landings(){
 			),
 		),
 		'rellenos-cdmx' => array(
+			'image' => array('2026/05/tratamiento-de-pomulos-con-acido-hialuronico.png', 'Aplicación de ácido hialurónico en pómulos en Eternal Glow, CDMX'),
 			'hero' => array(
 				'Ácido hialurónico · Roma Norte, CDMX',
 				'Rellenos con ácido hialurónico en CDMX',
@@ -98,6 +99,7 @@ function eg_landings(){
 			),
 		),
 		'relleno-de-labios-cdmx' => array(
+			'image' => array('2026/05/rejuvenecimiento-labial-cdmx-resultados.jpg', 'Imagen ilustrativa de labios antes y después de un relleno con ácido hialurónico'),
 			'hero' => array(
 				'Ácido hialurónico · Roma Norte, CDMX',
 				'Relleno de labios en CDMX',

@@ -68,6 +68,17 @@ function eg_cutout_attrs($attr, $attachment){
 }
 add_filter('wp_get_attachment_image_attributes', 'eg_cutout_attrs', 10, 2);
 
+// Service pages open with a coral banner that repeats the page title in another typeface; it is the one image
+// that does not match the site's palette, and the title, price and photos below already cover it. Removed from
+// the output (not hidden with CSS) so the browser does not download it.
+function eg_drop_service_banner($content){
+	if(!is_singular('service')){
+		return $content;
+	}
+	return preg_replace('#<div class="et_pb_module et_pb_image et_pb_image_0[^"]*">\s*<span class="et_pb_image_wrap ?">\s*<img[^>]*>\s*</span>\s*</div>#', '', $content, 1);
+}
+add_filter('the_content', 'eg_drop_service_banner', 20);
+
 // Before and after photos uploaded without alt text get one from their file name, which says the treatment
 // and who is in the picture. An alt written in the media library always wins.
 // ponytail: three treatments by keyword; write the alt in the media library for anything this does not cover.
