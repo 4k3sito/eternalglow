@@ -7,6 +7,7 @@
 	require_once(get_template_path().'/includes/_home.php');
 	require_once(get_template_path().'/includes/_treatments.php');
 	require_once(get_template_path().'/includes/_landings.php');
+	require_once(get_template_path().'/includes/_perf.php');
 
 
 	register_nav_menus(
