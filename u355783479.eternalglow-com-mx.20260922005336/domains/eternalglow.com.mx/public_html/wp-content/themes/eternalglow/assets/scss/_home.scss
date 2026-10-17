@@ -1116,6 +1116,11 @@
 			font-size: 22px;
 			line-height: 1.3;
 			text-wrap: pretty;
+			// The full review stays in the HTML; the card only shows whole lines of it.
+			display: -webkit-box;
+			-webkit-line-clamp: 6;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
 		}
 		figcaption{
 			display: flex;
@@ -1136,6 +1141,9 @@
 		border-radius: 9999px;
 		background: var(--lp-blush);
 		color: var(--lp-accent-dark);
+		&::before{
+			content: attr(data-initial);
+		}
 	}
 
 	.lp-doctor{
@@ -1240,8 +1248,10 @@
 	.lp-hilos-media{
 		position: relative;
 		width: 100%;
-		max-height: 600px;
-		aspect-ratio: 4 / 5;
+		max-width: 600px;
+		justify-self: center;
+		// Square: the photo is a before/after pair side by side, and a 4:5 crop would cut into both halves.
+		aspect-ratio: 1;
 		img{
 			display: block;
 			width: 100%;
@@ -1316,9 +1326,12 @@
 		img{
 			display: block;
 			width: 100%;
+			height: auto;
 			aspect-ratio: 1;
 			border-radius: 22px;
 			object-fit: cover;
+			// Uploads come in mixed proportions; keeping the upper third keeps the faces in the square.
+			object-position: center 30%;
 		}
 		figcaption{
 			margin-top: 12px;

@@ -47,7 +47,8 @@ return array(
 			'note' => 'Con cita previa · Atención en español e inglés',
 			'rating' => '%s · %s reseñas en Google',
 			'trust' => array(array('seal-check', 'Permiso COFEPRIS 2509152002A00185'), array('stethoscope', 'Atención del Dr. Bruno Ocampo')),
-			'chip' => array('Próximo espacio', 'Esta semana'),
+			// Not tied to AgendaPro availability, so it only claims what is always true.
+			'chip' => array('Agenda en línea', 'Las 24 h'),
 		),
 		'marquee' => array('Baby botox', 'Relleno de ojeras', 'Hilos tensores', 'Sculptra', 'Marcaje mandibular', 'HIFU facial', 'Rejuran', 'Carbon Peel', 'Lip Flip', 'Rinomodelación'),
 		'cats' => array(
@@ -92,6 +93,7 @@ return array(
 		'hilos' => array(
 			'eyebrow' => 'Lifting sin cirugía',
 			'title' => 'Hilos tensores',
+			'alt' => 'Antes y después de un tratamiento con hilos tensores en Eternal Glow, CDMX',
 			'text' => 'Una técnica mínimamente invasiva que reposiciona y sostiene los tejidos faciales. Trabajamos con hilos PDO para definir el óvalo facial sin pasar por quirófano.',
 			'stats' => array(array('$1,500', 'Por hilo · 1 a 4 hilos'), array('$1,300', 'Por hilo · 5 a 8 hilos'), array('$1,100', 'Por hilo · 9 o más')),
 			'link' => 'Conocer hilos tensores',
@@ -113,7 +115,7 @@ return array(
 			array('¿Los resultados se ven naturales?', 'Sí. Trabajamos con dosis medidas y por etapas para conservar tu expresión. El objetivo es que te veas descansada o descansado, no diferente.'),
 			array('¿Qué tratamientos ofrecen?', 'Aplicamos <a href="/botox-cdmx/">Botox</a>, <a href="/rellenos-cdmx/">rellenos con ácido hialurónico</a>, <a href="/sculptra-cdmx/">Sculptra</a>, Radiesse, <a href="/hilos-tensores-cdmx/">hilos tensores</a>, HIFU, peelings y microneedling. Puedes ver la lista completa en <a href="/tratamientos/">tratamientos</a>.'),
 			array('¿Cuánto tiempo toma y cuándo puedo volver a mis actividades?', 'La mayoría de las aplicaciones toma menos de una hora y puedes retomar tus actividades el mismo día. En la valoración te explicamos los cuidados de tu tratamiento.'),
-			array('¿Cuánto cuestan los tratamientos?', 'El costo depende del tratamiento, la zona y la cantidad de producto. Lo confirmamos en la valoración, antes de aplicar cualquier cosa.'),
+			array('¿Cuánto cuestan los tratamientos?', 'Los precios publicados son de referencia. El total depende de la zona a tratar y la cantidad de producto; el doctor te lo confirma en tu valoración antes de empezar.'),
 			array('¿Atienden en inglés?', 'Sí. Nuestro equipo atiende en español y en inglés, tanto en la valoración como en el seguimiento.'),
 		),
 		'final' => array(
@@ -136,7 +138,7 @@ return array(
 			'note' => 'By appointment · English and Spanish spoken',
 			'rating' => '%s · %s Google reviews',
 			'trust' => array(array('seal-check', 'COFEPRIS permit 2509152002A00185'), array('stethoscope', 'Care by Dr. Bruno Ocampo')),
-			'chip' => array('Next opening', 'This week'),
+			'chip' => array('Book online', '24/7'),
 		),
 		'marquee' => array('Baby botox', 'Under eye filler', 'PDO threads', 'Sculptra', 'Jawline contouring', 'HIFU', 'Rejuran', 'Carbon Peel', 'Lip Flip', 'Liquid rhinoplasty'),
 		'cats' => array(
@@ -193,6 +195,7 @@ return array(
 		'hilos' => array(
 			'eyebrow' => 'Lifting without surgery',
 			'title' => 'PDO threads',
+			'alt' => 'Before and after a PDO threads treatment at Eternal Glow, Mexico City',
 			'text' => 'A minimally invasive technique that repositions and supports facial tissue. We work with PDO threads to define the jawline without an operating room.',
 			'stats' => array(array('$1,500', 'Per thread · 1 to 4 threads'), array('$1,300', 'Per thread · 5 to 8 threads'), array('$1,100', 'Per thread · 9 or more')),
 			'link' => 'About PDO threads',
@@ -215,7 +218,7 @@ return array(
 			array('Will the results look natural?', 'Yes. We work with measured doses and in stages to keep your expression. The goal is for you to look rested, not different.'),
 			array('Which treatments do you offer?', 'We offer Botox, hyaluronic acid fillers, Sculptra, Radiesse, PDO threads, HIFU, peels and microneedling.'),
 			array('How long does it take and when can I get back to my day?', 'Most treatments take under an hour and you can return to your activities the same day. During the consultation we explain the aftercare for your treatment.'),
-			array('How much do treatments cost?', 'The cost depends on the treatment, the area and the amount of product. We confirm it during the consultation, before anything is applied.'),
+			array('How much do treatments cost?', 'Published prices are a reference. The total depends on the area treated and the amount of product; the doctor confirms it during your consultation, before anything is applied.'),
 		),
 		'final' => array(
 			'title' => 'Your consultation is the <em>first step</em>.',

@@ -158,7 +158,8 @@
 						<figure>
 							<?php _p($stars); ?>
 							<blockquote>“<?php _p(esc_html($review->text)); ?>”</blockquote>
-							<figcaption><span class="lp-avatar" aria-hidden="true"><?php _p(esc_html(mb_strtoupper(mb_substr($review->user, 0, 1)))); ?></span><?php _p(esc_html($review->user)); ?></figcaption>
+							<?php // The initial is drawn from data-initial by CSS so the text content holds the name only once. ?>
+							<figcaption><span class="lp-avatar" data-initial="<?php _p(esc_attr(mb_strtoupper(mb_substr($review->user, 0, 1)))); ?>" aria-hidden="true"></span><?php _p(esc_html($review->user)); ?></figcaption>
 						</figure>
 					</li>
 				<?php } ?>
@@ -205,7 +206,7 @@
 		</div>
 		<div class="lp-hilos-media">
 			<div class="lp-lift" aria-hidden="true"><?php for($i = 0; $i < 3; $i++){ ?><span><?php _p(eg_icon('caret-double-up')); ?></span><?php } ?></div>
-			<?php _p(eg_img('2026/06/perfilamiento-facial-acido-hialuronico-natural.png', 'large', array('sizes' => '(min-width: 992px) 1250px, 225vw', 'alt' => $t['hilos']['title']))); ?>
+			<?php _p(eg_img('2025/09/hilos-tensores-para-la-cara-cerca-de-mi.jpg', 'medium_large', array('sizes' => '(min-width: 992px) 600px, 100vw', 'alt' => $t['hilos']['alt']))); ?>
 		</div>
 	</div>
 </section>
