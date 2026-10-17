@@ -30,8 +30,16 @@ foreach ($meta as $k => $v) {
 $en = get_page_by_path('en', OBJECT, 'page');
 $en_id = $en ? $en->ID : wp_insert_post(array('post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'en', 'post_title' => 'Eternal Glow (English)', 'post_content' => ''));
 update_post_meta($en_id, 'rank_math_title', 'Aesthetic Clinic in Roma Norte, Mexico City | Eternal Glow');
-update_post_meta($en_id, 'rank_math_description', wp_slash('Aesthetic medicine clinic in Roma Norte, Mexico City. Botox, fillers, Sculptra and PDO threads with Dr. Bruno Ocampo. English speaking team. Book online.'));
+update_post_meta($en_id, 'rank_math_description', wp_slash('Aesthetic medicine clinic in Roma Norte, Mexico City. Botox, fillers, Sculptra and PDO threads with Dr. Bruno Ocampo. Book your consultation online.'));
 update_post_meta($en_id, 'rank_math_focus_keyword', 'aesthetic clinic mexico city,botox mexico city');
+
+// 2b. English Botox hub at /en/botox-mexico-city/: no content in WordPress, the theme renders it from includes/_landings.php.
+$botox_en = get_page_by_path('en/botox-mexico-city', OBJECT, 'page');
+$botox_en_id = $botox_en ? $botox_en->ID : wp_insert_post(array('post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'botox-mexico-city', 'post_parent' => $en_id, 'post_title' => 'Botox in Mexico City', 'post_content' => ''));
+if (!$botox_en_id || is_wp_error($botox_en_id)) { echo "ERROR: no pude crear /en/botox-mexico-city/\n"; exit(1); }
+update_post_meta($botox_en_id, 'rank_math_title', 'Botox in Mexico City | From $165 per Unit | Eternal Glow');
+update_post_meta($botox_en_id, 'rank_math_description', wp_slash('Botox in Mexico City from $165 MXN per unit. Baby Botox $4,499, Full Face $8,499. Natural results by an aesthetic physician in Roma Norte. Book online.'));
+update_post_meta($botox_en_id, 'rank_math_focus_keyword', 'botox mexico city,botox in mexico city');
 
 // 3. /servicios/ is an empty page that sat in the main menu: point the menu to /tratamientos/ and redirect it.
 if ($services) {

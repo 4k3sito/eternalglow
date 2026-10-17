@@ -22,8 +22,8 @@
                     <div class="lp-header-actions">
                         <?php _p(eg_cta_book('header', $t['cta_short'])); ?>
                         <div class="lp-lang">
-                            <a href="<?php _p(esc_url(home_url('/'))); ?>" hreflang="es-MX" lang="es" <?php _p($en ? '' : 'aria-current="true"'); ?>>ES</a>
-                            <a href="<?php _p(esc_url(home_url('/en/'))); ?>" hreflang="en" lang="en" <?php _p($en ? 'aria-current="true"' : ''); ?>>EN</a>
+                            <a href="<?php _p(esc_url(home_url($en ? eg_alternate_path() : $path))); ?>" hreflang="es-MX" lang="es" <?php _p($en ? '' : 'aria-current="true"'); ?>>ES</a>
+                            <a href="<?php _p(esc_url(home_url($en ? $path : eg_alternate_path()))); ?>" hreflang="en" lang="en" <?php _p($en ? 'aria-current="true"' : ''); ?>>EN</a>
                         </div>
                     </div>
                 </div>

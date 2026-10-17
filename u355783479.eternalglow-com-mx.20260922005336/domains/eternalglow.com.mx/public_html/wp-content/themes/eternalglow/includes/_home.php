@@ -1,8 +1,29 @@
 <?php
 // Editorial redesign helpers: language, icons, photos by file name, Google reviews, hubs and JSON-LD.
 
+// English pages are /en/ and its child pages (e.g. /en/botox-mexico-city/).
 function eg_lang(){
-	return is_page('en') ? 'en' : 'es';
+	if(!is_page()){
+		return 'es';
+	}
+	$page = get_queried_object();
+	return $page->post_name == 'en' || ($page->post_parent && get_post_field('post_name', $page->post_parent) == 'en') ? 'en' : 'es';
+}
+
+// Spanish path => English path of the same page; drives hreflang and the ES/EN switch.
+function eg_translations(){
+	return array('/' => '/en/', '/botox-cdmx/' => '/en/botox-mexico-city/');
+}
+
+// The current page in the other language, or that language's home when it has no translation.
+function eg_alternate_path(){
+	$path = trailingslashit(strtok($_SERVER['REQUEST_URI'] ?? '/', '?'));
+	$pairs = eg_translations();
+	if(eg_lang() == 'en'){
+		$es = array_search($path, $pairs, true);
+		return $es !== false ? $es : '/';
+	}
+	return isset($pairs[$path]) ? $pairs[$path] : '/en/';
 }
 
 function eg_booking_url(){
@@ -243,14 +264,23 @@ function eg_schema(){
 add_action('wp_head', 'eg_schema');
 
 function eg_hreflang(){
-	if(is_front_page() || is_page('en')){
-		echo '<link rel="alternate" hreflang="es-MX" href="'.esc_url(home_url('/')).'">'."\n";
-		echo '<link rel="alternate" hreflang="en" href="'.esc_url(home_url('/en/')).'">'."\n";
-		echo '<link rel="alternate" hreflang="x-default" href="'.esc_url(home_url('/')).'">'."\n";
+	$path = trailingslashit(strtok($_SERVER['REQUEST_URI'] ?? '/', '?'));
+	$pairs = eg_translations();
+	$es = isset($pairs[$path]) ? $path : array_search($path, $pairs, true);
+	if($es === false || is_404()){
+		return;
 	}
+	echo '<link rel="alternate" hreflang="es-MX" href="'.esc_url(home_url($es)).'">'."\n";
+	echo '<link rel="alternate" hreflang="en" href="'.esc_url(home_url($pairs[$es])).'">'."\n";
+	echo '<link rel="alternate" hreflang="x-default" href="'.esc_url(home_url($es)).'">'."\n";
 }
 
 add_action('wp_head', 'eg_hreflang', 1);
+
+// Rank Math takes og:locale from the site language (es_MX), which is wrong on the English pages.
+add_filter('rank_math/opengraph/facebook/og_locale', function($locale){
+	return eg_lang() == 'en' ? 'en_US' : $locale;
+});
 
 // Rank Math adds "Escrito por <user>" and reading time as twitter:label/data, so link previews on X, Slack and
 // WhatsApp show the WordPress login of whoever last saved the page instead of the clinic.

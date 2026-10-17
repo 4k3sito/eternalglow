@@ -82,3 +82,21 @@ function eg_cutout_ratio($attr){
 
 // After eg_cutout_attrs() (priority 10), which swaps in the cut-out file.
 add_filter('wp_get_attachment_image_attributes', 'eg_cutout_ratio', 11);
+
+// CLS: Instrument Serif is condensed, so headings drawn in the fallback (Georgia, or Noto Serif on Android) took
+// one more line and everything below jumped when the web font arrived (0.16 on /botox-cdmx/ mobile).
+// Fallback faces scaled to Instrument Serif's metrics keep the same line breaks. Values from @capsizecss/core
+// createFontStack(); Liberation Serif shares Times New Roman's metrics.
+// ponytail: inline because the SCSS (--lp-serif in _editorial.scss) needs a dist rebuild; move it there next build.
+function eg_serif_fallback(){
+	?>
+<style id="eg-serif-fallback">
+@font-face{font-family:"Instrument Serif Fallback: Georgia";src:local('Georgia');ascent-override:129.426%;descent-override:40.5273%;size-adjust:76.4916%}
+@font-face{font-family:"Instrument Serif Fallback: Noto Serif";src:local('Noto Serif Regular'),local('NotoSerif-Regular');ascent-override:139.6452%;descent-override:43.7273%;size-adjust:70.894%}
+@font-face{font-family:"Instrument Serif Fallback: Times New Roman";src:local('Times New Roman'),local('TimesNewRomanPSMT'),local('Liberation Serif');ascent-override:117.9435%;descent-override:36.9318%;line-gap-override:0%;size-adjust:83.9385%}
+body.lp-editorial{--lp-serif:"Instrument Serif","Instrument Serif Fallback: Georgia","Instrument Serif Fallback: Noto Serif","Instrument Serif Fallback: Times New Roman",Georgia,serif}
+</style>
+	<?php
+}
+
+add_action('wp_head', 'eg_serif_fallback', 99);

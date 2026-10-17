@@ -34,6 +34,17 @@ function eg_landings(){
 	$lips->name = 'Relleno de labios · 1 jeringa (1 mL)';
 	$lips->url = eg_booking_url();
 
+	// The catalogue is written in Spanish: English pages keep its prices and links and swap the copy.
+	$english = function($rows) use ($treatments){
+		$items = array();
+		foreach($rows as $slug => $copy){
+			$item = clone $treatments[$slug];
+			list($item->name, $item->desc) = $copy;
+			$items[] = $item;
+		}
+		return $items;
+	};
+
 	$landings = array(
 		'botox-cdmx' => array(
 			'prices' => array(
@@ -48,6 +59,54 @@ function eg_landings(){
 				array('¿El Baby Botox incluye retoque?', 'Sí. El protocolo de la clínica contempla un retoque de Baby Botox a las 2 semanas. El número de unidades y la indicación dependen de tu valoración.'),
 				array('¿Hay tiempo de recuperación?', 'No. Es un procedimiento rápido y puedes retomar tus actividades el mismo día. En la valoración te explicamos los cuidados posteriores.'),
 				array('¿Aplican Botox en los labios?', 'Sí. Para el código de barras se aplica <a href="/servicio/botox-en-los-labios/">Botox en los labios</a>, que se cobra por unidad, y para mostrar más labio superior sin relleno existe el <a href="/servicio/botox-lip-flip/">Lip Flip</a> ($1,250).'),
+			),
+		),
+		// English version of /botox-cdmx/ (child of /en/, so eg_lang() is 'en'). Same facts and prices as the Spanish hub.
+		'botox-mexico-city' => array(
+			'image' => array('2026/03/botox-para-lineas-de-expresion-cdmx.png', 'Botox treatment for expression lines at Eternal Glow, Mexico City'),
+			'hero' => array(
+				'Botulinum toxin · Roma Norte, Mexico City',
+				'Botox in Mexico City',
+				'Softer expression lines with a natural result, applied by an aesthetic physician. From $165 MXN per unit.',
+			),
+			'sections' => array(
+				array('What is Botox?', array(
+					'Botox (botulinum toxin) temporarily relaxes the muscles that cause expression lines, mainly on the forehead, between the brows and around the eyes. It is applied with micro injections.',
+					'Results start to show 48 to 72 hours after the treatment and last 3 to 5 months. It is quick and you can go back to your plans the same day.',
+				)),
+				array('How does the visit work?', array(
+					'Every treatment starts with a medical consultation: the doctor looks at your face, listens to what you want and decides with you the areas and the number of units.',
+					'We see patients by appointment at Valladolid 56, Roma Norte, a short walk from Condesa and Juárez.',
+				)),
+			),
+			'prices' => array(
+				array('Botox prices', 'Botulinum toxin · MXN', $english(array(
+					'botox-por-unidad' => array('Botox per unit', 'A tailored dose for one area: forehead, frown lines or lip lines.'),
+					'baby-botox-cdmx' => array('Baby botox (30 units)', 'Micro doses for forehead, frown lines and eyes. Softens without freezing your expression.'),
+					'full-face-botox-60-unidades' => array('Full face botox (60 units)', 'Complete treatment of the upper and lower face for a rested look.'),
+					'botox-frente' => array('Forehead botox', 'Softens the horizontal lines on the forehead.'),
+					'botox-en-entrecejo' => array('Frown lines botox', 'Relaxes the lines between the brows that make you look angry or tired.'),
+					'botox-para-patas-de-gallo-cdmx' => array('Crow’s feet botox', 'Softens the lines beside the eyes while keeping a natural smile.'),
+					'botox-en-cuello-cdmx' => array('Neck botox', 'Relaxes the platysmal bands and defines the jawline.'),
+					'botox-lip-flip' => array('Botox lip flip', 'A subtle turn of the upper lip to show more of it without filler.'),
+					'botox-sonrisa-gingival' => array('Gummy smile botox', 'Reduces how much gum shows when you smile.'),
+					'botox-foxy-eyes-cdmx' => array('Foxy eyes botox', 'Gently lifts the tail of the brow for a more open look.'),
+					'botox-para-bruxismo-en-maseteros-cdmx' => array('Masseter botox for bruxism', 'Eases teeth clenching and jaw pain and slims the face.'),
+					'botox-trapecio-trap-tox' => array('Trap botox (Trap-Tox / Barbie Botox)', 'Refines the neck and shoulder line and relieves muscle tension.'),
+					'botox-para-hiperhidrosis-en-cdmx' => array('Botox for hyperhidrosis (underarms, hands or feet)', 'Controls excessive sweating of the underarms, hands or feet.'),
+					'botox-bunny-lines' => array('Bunny lines botox', 'Softens the lines on the sides of the nose.'),
+					'botox-para-menton-en-cdmx' => array('Chin botox', 'Relaxes a dimpled chin and balances the profile.'),
+					'botox-dao' => array('DAO botox (downturned mouth corners)', 'Relaxes the muscle that pulls the corners of the mouth down.'),
+				))),
+			),
+			'faq_title' => 'Botox questions',
+			'faq' => array(
+				array('How much does Botox cost in Mexico City?', 'At Eternal Glow Botox costs $165 MXN per unit. Baby Botox (30 units) is $4,499 MXN and Full Face (60 units) is $8,499 MXN. By area: frown lines $1,750, crow’s feet $2,150 and forehead $2,750 MXN.'),
+				array('How many units of Botox do I need?', 'It depends on the area and the strength of your muscles, so the doctor decides it in your consultation. As a reference, Baby Botox uses 30 units and Full Face 60.'),
+				array('When will I see the results?', 'Results start to show 48 to 72 hours after the treatment.'),
+				array('How long does Botox last?', 'The effect lasts 3 to 5 months. It varies with the area, the dose and your metabolism.'),
+				array('Does Baby Botox include a touch up?', 'Yes. The clinic’s protocol includes a Baby Botox touch up after 2 weeks. The number of units depends on your consultation.'),
+				array('Is there any downtime?', 'No. It is a quick procedure and you can go back to your plans the same day. We explain the aftercare in your consultation.'),
 			),
 		),
 		'hilos-tensores-cdmx' => array(

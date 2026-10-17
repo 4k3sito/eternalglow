@@ -18,3 +18,4 @@ seo/gbp-data/
 .env
 seo/__pycache__/
 **/wp-content/et-cache/
+seo/gsc-data/

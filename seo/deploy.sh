@@ -20,11 +20,12 @@ echo "3/4 Corriendo los scripts (el orden importa: prices.php va después de tre
 ssh "$HOST" 'cd ~/public_html && for f in home treatments sculptra-cdmx prices landings nosotros content-fixes; do echo "== $f"; wp eval-file ~/seo-deploy/seo/$f.php 2>/dev/null || { echo "FALLO: $f"; exit 1; }; done'
 
 echo "4/4 Purgando cachés..."
-# WP Rocket was removed from production on 2026-10-15; only purge it if it comes back.
-ssh "$HOST" 'cd ~/public_html && wp cache flush 2>/dev/null && wp eval "if (function_exists(\"rocket_clean_domain\")) { rocket_clean_domain(); rocket_clean_minify(); }" 2>/dev/null'
+# Page cache is WP Super Cache in mod_rewrite mode since 2026-10-16: the seo/*.php scripts write with $wpdb,
+# which fires no save hooks, so its files must be deleted here or Apache keeps serving the old HTML.
+ssh "$HOST" 'cd ~/public_html && wp cache flush 2>/dev/null && wp eval "\\RankMath\\Sitemap\\Cache::invalidate_storage();" 2>/dev/null && rm -rf wp-content/cache/supercache/eternalglow.com.mx'
 
 echo "Verificando..."
-for path in / /en/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/; do
+for path in / /en/ /en/botox-mexico-city/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/; do
 	printf '%s -> ' "$path"
 	curl -s -o /dev/null -m 30 -w '%{http_code} %{redirect_url}\n' "https://eternalglow.com.mx$path"
 done
