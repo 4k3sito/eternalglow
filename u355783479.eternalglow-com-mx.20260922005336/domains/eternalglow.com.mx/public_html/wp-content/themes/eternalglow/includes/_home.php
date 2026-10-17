@@ -254,7 +254,7 @@ add_action('wp_head', 'eg_hreflang', 1);
 
 // Rank Math adds "Escrito por <user>" and reading time as twitter:label/data, so link previews on X, Slack and
 // WhatsApp show the WordPress login of whoever last saved the page instead of the clinic.
-add_filter('rank_math/opengraph/slack_enhanced_sharing', '__return_false');
+add_filter('rank_math/opengraph/slack_enhanced_data', '__return_empty_array');
 
 // The home is a PHP template, so the page builders' CSS and JS are dead weight there.
 // Divi's Google Fonts (Playfair, Urbanist) go everywhere: the editorial look has its own two families.
