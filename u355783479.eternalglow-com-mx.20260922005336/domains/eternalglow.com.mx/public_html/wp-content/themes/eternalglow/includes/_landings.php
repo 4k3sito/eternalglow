@@ -67,7 +67,7 @@ function eg_landings(){
 			'hero' => array(
 				'Botulinum toxin · Roma Norte, Mexico City',
 				'Botox in Mexico City',
-				'Softer expression lines with a natural result, applied by an aesthetic physician. From $165 MXN per unit.',
+				'Softer expression lines with a natural result, applied by an aesthetic physician. From $165 MXN per unit, with English spoken at the clinic.',
 			),
 			'sections' => array(
 				array('What is Botox?', array(
@@ -107,6 +107,49 @@ function eg_landings(){
 				array('How long does Botox last?', 'The effect lasts 3 to 5 months. It varies with the area, the dose and your metabolism.'),
 				array('Does Baby Botox include a touch up?', 'Yes. The clinic’s protocol includes a Baby Botox touch up after 2 weeks. The number of units depends on your consultation.'),
 				array('Is there any downtime?', 'No. It is a quick procedure and you can go back to your plans the same day. We explain the aftercare in your consultation.'),
+				array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up. You can also book online or message us on WhatsApp in English.'),
+			),
+		),
+		// English version of /sculptra-cdmx/. Same facts and prices as the Spanish hub.
+		'sculptra-mexico-city' => array(
+			'image' => array('2026/06/piel-despues-tratamiento-sculptra-cdmx.png', 'Skin after a Sculptra treatment at Eternal Glow, Mexico City'),
+			'hero' => array(
+				'Collagen biostimulator · Roma Norte, Mexico City',
+				'Sculptra in Mexico City',
+				'Firmer skin and restored volume that build up gradually as your own collagen grows, without changing your expression. $14,999 MXN per vial.',
+			),
+			'sections' => array(
+				array('What is Sculptra?', array(
+					'Sculptra is an injectable made of poly-L-lactic acid. It is not a filler: instead of adding volume on the spot, it stimulates your skin to produce its own collagen, so firmness, density and support improve over the following weeks and months.',
+					'That is why the result looks natural. Your features do not change overnight; the improvement builds up as your body responds.',
+				)),
+				array('Who is it for?', array(
+					'Women and men who notice loss of firmness, mild to moderate sagging, hollow cheeks, a less defined facial contour or lost volume after weight loss, and who prefer a gradual result to an obvious change.',
+					'There is no set age to start. The doctor decides in your consultation, based on your skin, your medical history and what you want to achieve.',
+				)),
+				array('How does the treatment work?', array(
+					'It starts with a medical consultation, where we define the areas, the number of vials and the number of sessions. Many patients need two or three sessions a few weeks apart.',
+					'Each session takes 30 to 45 minutes. Sculptra is placed in the deep layers of the skin with a cannula or a fine needle. Afterwards you massage the area 5 times a day for 5 days, and avoid intense exercise on the first day.',
+				)),
+			),
+			'prices' => array(
+				array('Sculptra prices', 'Poly-L-lactic acid · MXN', array(
+					eg_price_row('Sculptra · 1 vial', 'Collagen biostimulator for the face', $treatments['tratamiento-sculptra-en-cdmx']->price),
+					eg_price_row('Sculptra · 2 vials', 'Package for the face', '$28,000'),
+					eg_price_row('Sculptra · 3 vials', 'Package for the face', '$33,000'),
+					eg_price_row('Body Sculptra · 5 vials', 'Body treatment; areas set in your consultation', '$52,999'),
+					eg_price_row('Body Sculptra · 10 vials', 'Body treatment; areas set in your consultation', '$99,999'),
+				)),
+			),
+			'faq_title' => 'Sculptra questions',
+			'faq' => array(
+				array('How much does Sculptra cost in Mexico City?', 'At Eternal Glow Sculptra costs $14,999 MXN per vial; 2 vials cost $28,000 and 3 vials $33,000 MXN. For the body, 5 vials cost $52,999 and 10 vials $99,999 MXN. The number of vials and sessions is set in your consultation.'),
+				array('Is Sculptra hyaluronic acid?', 'No. Sculptra is poly-L-lactic acid. Hyaluronic acid adds volume right away, while Sculptra stimulates new collagen gradually. They can be combined in the same plan.'),
+				array('When will I see the results?', 'Some patients notice changes during the first month, and the improvement keeps developing over the following months as collagen increases.'),
+				array('Why does the initial volume go away?', 'The volume of the first days comes mostly from the liquid used to prepare the product and from swelling. It fades, and then the real biostimulation starts.'),
+				array('How many sessions do I need?', 'Many patients need two or three sessions a few weeks apart. The exact number depends on your skin, the loss of support and how you respond.'),
+				array('How long do the results last?', 'In some patients the effect lasts up to about two years. It depends on the protocol, metabolism, age, habits and skin quality.'),
+				array('Does it hurt?', 'You may feel pressure, small pricks or tenderness. The product can be prepared with a local anaesthetic to make you more comfortable.'),
 			),
 		),
 		'hilos-tensores-cdmx' => array(

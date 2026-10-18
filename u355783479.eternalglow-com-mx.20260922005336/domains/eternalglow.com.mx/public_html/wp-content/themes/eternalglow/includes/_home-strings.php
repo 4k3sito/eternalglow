@@ -44,7 +44,7 @@ return array(
 			'eyebrow' => 'Medicina estética · Roma Norte, CDMX',
 			'title' => 'Resultados <em>naturales</em>, en manos que te escuchan.',
 			'text' => 'Una clínica pequeña a propósito. Cada tratamiento empieza con una valoración médica sin prisa y un plan pensado para tu rostro.',
-			'note' => 'Con cita previa · Valladolid 56, Roma Norte',
+			'note' => 'Con cita previa · Atención en español e inglés',
 			'rating' => '%s · %s reseñas en Google',
 			'trust' => array(array('seal-check', 'Permiso COFEPRIS 2509152002A00185'), array('stethoscope', 'Atención del Dr. Bruno Ocampo')),
 			// Not tied to AgendaPro availability, so it only claims what is always true.
@@ -116,6 +116,7 @@ return array(
 			array('¿Qué tratamientos ofrecen?', 'Aplicamos <a href="/botox-cdmx/">Botox</a>, <a href="/rellenos-cdmx/">rellenos con ácido hialurónico</a>, <a href="/sculptra-cdmx/">Sculptra</a>, Radiesse, <a href="/hilos-tensores-cdmx/">hilos tensores</a>, HIFU, peelings y microneedling. Puedes ver la lista completa en <a href="/tratamientos/">tratamientos</a>.'),
 			array('¿Cuánto tiempo toma y cuándo puedo volver a mis actividades?', 'La mayoría de las aplicaciones toma menos de una hora y puedes retomar tus actividades el mismo día. En la valoración te explicamos los cuidados de tu tratamiento.'),
 			array('¿Cuánto cuestan los tratamientos?', 'Los precios publicados son de referencia. El total depende de la zona a tratar y la cantidad de producto; el doctor te lo confirma en tu valoración antes de empezar.'),
+			array('¿Atienden en inglés?', 'Sí. Nuestro equipo atiende en español y en inglés, tanto en la valoración como en el seguimiento.'),
 		),
 		'final' => array(
 			'title' => 'Tu valoración es el <em>primer paso</em>.',
@@ -125,7 +126,7 @@ return array(
 	),
 	'en' => array(
 		// Full paths, not bare #anchors: the menu is also shown on English pages other than /en/.
-		'nav' => array('/en/#tratamientos' => 'Treatments', '/en/botox-mexico-city/' => 'Botox', '/en/#doctor' => 'The doctor', '/en/#resultados' => 'Results', '/en/#resenas' => 'Reviews'),
+		'nav' => array('/en/#tratamientos' => 'Treatments', '/en/botox-mexico-city/' => 'Botox', '/en/sculptra-mexico-city/' => 'Sculptra', '/en/#doctor' => 'The doctor', '/en/#resultados' => 'Results', '/en/#resenas' => 'Reviews'),
 		'cta' => 'Book online',
 		'cta_short' => 'Book a visit',
 		'cta_bar' => 'Book',
@@ -135,7 +136,7 @@ return array(
 			'eyebrow' => 'Aesthetic medicine · Roma Norte, Mexico City',
 			'title' => '<em>Natural</em> results, from people who listen.',
 			'text' => 'A small clinic on purpose. Every treatment starts with an unhurried medical consultation and a plan made for your face.',
-			'note' => 'By appointment · Valladolid 56, Roma Norte',
+			'note' => 'By appointment · English and Spanish spoken',
 			'rating' => '%s · %s Google reviews',
 			'trust' => array(array('seal-check', 'COFEPRIS permit 2509152002A00185'), array('stethoscope', 'Care by Dr. Bruno Ocampo')),
 			'chip' => array('Book online', '24/7'),
@@ -213,6 +214,7 @@ return array(
 		'faq' => array(
 			array('Where is the Eternal Glow clinic?', 'We are at Valladolid 56, Roma Norte, Cuauhtémoc, 06700 Mexico City. We are open Monday to Friday from 11:30 am to 6:00 pm and Saturdays from 11:30 am to 5:00 pm, by appointment only.'),
 			array('How do I book a consultation?', 'You can book online in under a minute or message us on WhatsApp. You pick the day and time that suit you.'),
+			array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up.'),
 			array('What happens during the consultation?', 'The doctor reviews your face, your history and what you want to achieve. Then he proposes a plan with areas, product and number of sessions. You decide whether to start that day or later.'),
 			array('Will the results look natural?', 'Yes. We work with measured doses and in stages to keep your expression. The goal is for you to look rested, not different.'),
 			array('Which treatments do you offer?', 'We offer Botox, hyaluronic acid fillers, Sculptra, Radiesse, PDO threads, HIFU, peels and microneedling.'),
