@@ -116,7 +116,7 @@ function eg_landings(){
 			'hero' => array(
 				'Collagen biostimulator · Roma Norte, Mexico City',
 				'Sculptra in Mexico City',
-				'Firmer skin and restored volume that build up gradually as your own collagen grows, without changing your expression. $14,999 MXN per vial.',
+				'Firmer skin and restored volume that build up gradually as your own collagen grows, without changing your expression. $14,999 MXN per vial, with English spoken at the clinic.',
 			),
 			'sections' => array(
 				array('What is Sculptra?', array(
@@ -150,6 +150,7 @@ function eg_landings(){
 				array('How many sessions do I need?', 'Many patients need two or three sessions a few weeks apart. The exact number depends on your skin, the loss of support and how you respond.'),
 				array('How long do the results last?', 'In some patients the effect lasts up to about two years. It depends on the protocol, metabolism, age, habits and skin quality.'),
 				array('Does it hurt?', 'You may feel pressure, small pricks or tenderness. The product can be prepared with a local anaesthetic to make you more comfortable.'),
+				array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up. You can also book online or message us on WhatsApp in English.'),
 			),
 		),
 		'hilos-tensores-cdmx' => array(

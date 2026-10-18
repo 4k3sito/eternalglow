@@ -46,7 +46,7 @@ $sculptra_en = get_page_by_path('en/sculptra-mexico-city', OBJECT, 'page');
 $sculptra_en_id = $sculptra_en ? $sculptra_en->ID : wp_insert_post(array('post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'sculptra-mexico-city', 'post_parent' => $en_id, 'post_title' => 'Sculptra in Mexico City', 'post_content' => ''));
 if (!$sculptra_en_id || is_wp_error($sculptra_en_id)) { echo "ERROR: no pude crear /en/sculptra-mexico-city/\n"; exit(1); }
 update_post_meta($sculptra_en_id, 'rank_math_title', 'Sculptra in Mexico City | $14,999 per Vial | Eternal Glow');
-update_post_meta($sculptra_en_id, 'rank_math_description', wp_slash('Sculptra in Mexico City: $14,999 MXN per vial, 2 vials $28,000, 3 vials $33,000. Collagen biostimulator by an aesthetic physician in Roma Norte.'));
+update_post_meta($sculptra_en_id, 'rank_math_description', wp_slash('Sculptra in Mexico City: $14,999 MXN per vial, 2 vials $28,000, 3 vials $33,000. Collagen biostimulator in Roma Norte. English spoken.'));
 update_post_meta($sculptra_en_id, 'rank_math_focus_keyword', 'sculptra mexico city,sculptra in mexico city');
 
 // 3. /servicios/ is an empty page that sat in the main menu: point the menu to /tratamientos/ and redirect it.
