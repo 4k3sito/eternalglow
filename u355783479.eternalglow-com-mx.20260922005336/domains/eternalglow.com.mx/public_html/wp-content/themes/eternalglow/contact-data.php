@@ -1,5 +1,5 @@
 <?php
-    $contact = get_theme_contact();
+    $contact = eg_contact();
 	$has_emails = $contact->email1 || $contact->email2;
 	$has_phones = $contact->phone1 || $contact->phone2;
 ?>

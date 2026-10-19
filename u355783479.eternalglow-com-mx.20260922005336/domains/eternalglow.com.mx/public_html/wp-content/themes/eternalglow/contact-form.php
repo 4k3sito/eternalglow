@@ -1,16 +1,17 @@
 <?php
-    $contact = get_theme_contact();
+    $contact = eg_contact();
+    $t = eg_home_strings()['footer'];
 ?>
 <div class="text-body">
     <div class='row g-md-40 g-24'>
         <div class='col-md-6'>
             <div class="p-md-40 p-16 bg-primary-gradient rounded-24 h-100">
                 <div class="ratio ratio-1x1 rounded-24 overflow-hidden mb-md-40 mb-32 minh-460 minh-md-630">
-                    <?php _p(strpos($contact->map, 'title=') === false ? str_replace('<iframe ', '<iframe title="Mapa de ubicación" ', $contact->map) : $contact->map); ?>
+                    <?php _p(strpos($contact->map, 'title=') === false ? str_replace('<iframe ', '<iframe title="'.esc_attr($t['map']).'" ', $contact->map) : $contact->map); ?>
                 </div>
                 <div class="text-center text-md-left">
                     <?php get_template_part('contact-data'); ?>
-                    <?php get_template_part('whatsapp-button', null, array('text' => 'Escríbenos por WhatsApp', 'class' => 'btn-primary mt-32')); ?>
+                    <?php get_template_part('whatsapp-button', null, array('text' => $t['whatsapp'], 'class' => 'btn-primary mt-32')); ?>
                 </div>
             </div>
         </div>

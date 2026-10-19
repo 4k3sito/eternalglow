@@ -26,6 +26,22 @@ function eg_alternate_path(){
 	return isset($pairs[$path]) ? $pairs[$path] : '/en/';
 }
 
+// Contact details for the current language: on English pages the hours, the note and the form come from
+// eg_home_strings() and the English CF7 form (option eg_contact_form_en, created by seo/contact-form-en.php).
+function eg_contact(){
+	$contact = clone get_theme_contact();
+	if(eg_lang() == 'en'){
+		$t = eg_home_strings()['footer'];
+		$contact->schedules = $t['schedules'];
+		$contact->schedules_note = $t['schedules_note'];
+		$form = (int)get_option('eg_contact_form_en');
+		if($form){
+			$contact->form = $form;
+		}
+	}
+	return $contact;
+}
+
 function eg_booking_url(){
 	return get_theme_links()->header_btn_link;
 }

@@ -122,7 +122,7 @@ return array(
 			'title' => 'Tu valoración es el <em>primer paso</em>.',
 			'note' => 'Con cita previa · Valladolid 56, Roma Norte',
 		),
-		'footer' => array('tagline' => 'Clínica boutique de medicina estética.', 'visit' => 'Visítanos', 'hours' => 'Horario', 'contact' => 'Contacto', 'privacy' => 'Aviso de privacidad'),
+		'footer' => array('tagline' => 'Clínica boutique de medicina estética.', 'visit' => 'Visítanos', 'hours' => 'Horario', 'contact' => 'Contacto', 'privacy' => 'Aviso de privacidad', 'cofepris' => 'Permiso de publicidad COFEPRIS', 'whatsapp' => 'Escríbenos por WhatsApp', 'map' => 'Mapa de ubicación'),
 	),
 	'en' => array(
 		// Full paths, not bare #anchors: the menu is also shown on English pages other than /en/.
@@ -225,6 +225,8 @@ return array(
 			'title' => 'Your consultation is the <em>first step</em>.',
 			'note' => 'By appointment · Valladolid 56, Roma Norte',
 		),
-		'footer' => array('tagline' => 'Boutique aesthetic medicine clinic.', 'visit' => 'Visit us', 'hours' => 'Hours', 'contact' => 'Contact', 'privacy' => 'Privacy notice'),
+		'footer' => array('tagline' => 'Boutique aesthetic medicine clinic.', 'visit' => 'Visit us', 'hours' => 'Hours', 'contact' => 'Contact', 'privacy' => 'Privacy notice', 'cofepris' => 'COFEPRIS advertising permit', 'whatsapp' => 'Message us on WhatsApp', 'map' => 'Location map',
+			// Same hours as the theme's contact settings (wp-admin), translated: change both together.
+			'schedules' => "Monday to Friday: 11:30 a.m. to 6:00 p.m.\nSaturday: 11:30 a.m. to 5:00 p.m.", 'schedules_note' => 'By appointment only.', 'credit' => 'Website designed by'),
 	),
 );

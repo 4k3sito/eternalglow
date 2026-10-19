@@ -2,7 +2,7 @@
 		<?php 
 			$texts = get_theme_texts();
 			$links = get_theme_links();
-			$contact = get_theme_contact();
+			$contact = eg_contact();
 			$social = get_theme_social();
 			$t = eg_home_strings();
 			$whatsapp = get_whatsapp_url();
@@ -47,11 +47,11 @@
 							<?php _p($texts->copyright); ?> Eternal Glow ·
 							<a href="https://mktboom.com/" target="_blank" rel="noopener noreferrer">Agencia de publicidad y marketing digital</a>
 						<?php } else { ?>
-							<?php _p($texts->copyright); ?> Eternal Glow · <?php _p($texts->powered_by); ?>
+							<?php _p($texts->copyright); ?> Eternal Glow · <?php _p(isset($t['footer']['credit']) ? str_replace('Sitio Web Diseñado por', $t['footer']['credit'], $texts->powered_by) : $texts->powered_by); ?>
 						<?php } ?>
 					</span>
 					<span>
-						Permiso de publicidad COFEPRIS: 2509152002A00185
+						<?php _p(esc_html($t['footer']['cofepris'])); ?>: 2509152002A00185
 						<?php if($links->privacy){ ?>
 							· <a href="<?php _p(esc_url($links->privacy)); ?>"><?php _p(esc_html($t['footer']['privacy'])); ?></a>
 						<?php } ?>
