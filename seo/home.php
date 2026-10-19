@@ -57,6 +57,14 @@ update_post_meta($fillers_en_id, 'rank_math_title', 'Dermal Fillers in Mexico Ci
 update_post_meta($fillers_en_id, 'rank_math_description', wp_slash('Hyaluronic acid fillers in Mexico City: $6,499 MXN per syringe for lips, under eyes, cheeks, chin or jaw. Packages from 2 syringes. English spoken.'));
 update_post_meta($fillers_en_id, 'rank_math_focus_keyword', 'fillers mexico city,lip fillers mexico city,dermal fillers mexico city');
 
+// 2e. English lip filler page at /en/lip-filler-mexico-city/, rendered like 2b.
+$lips_en = get_page_by_path('en/lip-filler-mexico-city', OBJECT, 'page');
+$lips_en_id = $lips_en ? $lips_en->ID : wp_insert_post(array('post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'lip-filler-mexico-city', 'post_parent' => $en_id, 'post_title' => 'Lip Filler in Mexico City', 'post_content' => ''));
+if (!$lips_en_id || is_wp_error($lips_en_id)) { echo "ERROR: no pude crear /en/lip-filler-mexico-city/\n"; exit(1); }
+update_post_meta($lips_en_id, 'rank_math_title', 'Lip Filler in Mexico City | $6,499 per Syringe');
+update_post_meta($lips_en_id, 'rank_math_description', wp_slash('Lip filler in Mexico City: $6,499 MXN per 1 mL syringe of hyaluronic acid. Volume and definition with a natural result in Roma Norte. English spoken.'));
+update_post_meta($lips_en_id, 'rank_math_focus_keyword', 'lip filler mexico city,lip fillers mexico city,lip fillers in mexico');
+
 // 3. /servicios/ is an empty page that sat in the main menu: point the menu to /tratamientos/ and redirect it.
 if ($services) {
     $items = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_object_id' AND meta_value = %d AND post_id IN (SELECT ID FROM $wpdb->posts WHERE post_type = 'nav_menu_item')", $services->ID));

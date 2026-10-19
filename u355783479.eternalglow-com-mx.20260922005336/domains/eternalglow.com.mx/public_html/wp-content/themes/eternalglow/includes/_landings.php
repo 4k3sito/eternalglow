@@ -37,6 +37,9 @@ function eg_landings(){
 	$lips = clone $treatments['relleno-de-labios'];
 	$lips->name = 'Relleno de labios · 1 jeringa (1 mL)';
 	$lips->url = eg_booking_url();
+	$lips_en = clone $lips;
+	$lips_en->name = 'Lip filler · 1 syringe (1 mL)';
+	$lips_en->desc = 'Volume, definition and a natural shape.';
 
 	// The catalogue is written in Spanish: English pages keep its prices and links and swap the copy.
 	$english = function($rows) use ($treatments){
@@ -44,6 +47,10 @@ function eg_landings(){
 		foreach($rows as $slug => $copy){
 			$item = clone $treatments[$slug];
 			list($item->name, $item->desc) = $copy;
+			// Optional third value: an English page to link instead of the Spanish one.
+			if(isset($copy[2])){
+				$item->url = home_url($copy[2]);
+			}
 			$items[] = $item;
 		}
 		return $items;
@@ -177,7 +184,7 @@ function eg_landings(){
 			),
 			'prices' => array(
 				array('Price per area', 'Per 1 mL syringe · MXN', $english(array(
-					'relleno-de-labios' => array('Lip filler', 'Volume, definition and a natural shape.'),
+					'relleno-de-labios' => array('Lip filler', 'Volume, definition and a natural shape.', '/en/lip-filler-mexico-city/'),
 					'relleno-de-ojeras-con-acido-hialuronico' => array('Under-eye filler', 'Corrects the tear trough and the shadow under the eyes with a cannula.'),
 					'relleno-de-pomulos-con-acido-hialuronico' => array('Cheek filler', 'Restores projection and support to the mid face.'),
 					'relleno-de-menton' => array('Chin filler', 'Definition and balance of the profile.'),
@@ -197,6 +204,47 @@ function eg_landings(){
 				array('Can a filler be reversed?', 'Yes. Hyaluronic acid can be dissolved with an enzyme called hyaluronidase when the doctor considers it necessary.'),
 				array('What is the difference between fillers and Botox?', 'A filler restores volume and defines contours. <a href="/en/botox-mexico-city/">Botox</a> relaxes the muscles that cause expression lines. They can be combined in the same plan.'),
 				array('Is there any downtime?', 'You can go back to your plans the same day. Some swelling or a small bruise for a few days is normal.'),
+				array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up. You can also book online or message us on WhatsApp in English.'),
+			),
+		),
+		// English version of /relleno-de-labios-cdmx/. Same facts and prices as the Spanish page.
+		'lip-filler-mexico-city' => array(
+			'image' => array('2026/05/rejuvenecimiento-labial-cdmx-resultados.jpg', 'Illustrative before and after of lips treated with hyaluronic acid filler'),
+			'hero' => array(
+				'Hyaluronic acid · Roma Norte, Mexico City',
+				'Lip filler in Mexico City',
+				'Volume, definition and a natural shape with hyaluronic acid. $6,499 MXN per 1 mL syringe, applied by an aesthetic physician in Roma Norte, with English spoken at the clinic.',
+			),
+			'sections' => array(
+				array('What is lip filler?', array(
+					'It is hyaluronic acid applied to the lips to add volume, define their outline or correct asymmetries. The product is a gel that the body absorbs over time.',
+					'We work in stages and with measured amounts: the goal is lips that look in proportion with your face.',
+				)),
+				array('Who is it for?', array(
+					'For anyone who wants more volume, a sharper outline, to correct an asymmetry or to restore the volume lips lose with age.',
+					'If you only want to show a little more of the upper lip without adding volume, the alternative is the Botox lip flip (see our <a href="/en/botox-mexico-city/">Botox page</a>).',
+				)),
+				array('How does the visit work?', array(
+					'It starts with a medical consultation: the doctor looks at the shape of your lips, your profile and what you want to achieve, and suggests the amount of product.',
+					'The treatment takes less than an hour and you can go back to your plans the same day.',
+				)),
+			),
+			'prices' => array(
+				array('Price', 'Hyaluronic acid · MXN', array($lips_en)),
+				array('Related treatments', 'For lips and profile', $english(array(
+					'botox-lip-flip' => array('Botox lip flip', 'A subtle turn of the upper lip to show more of it without filler.'),
+					'relleno-de-menton' => array('Chin filler', 'Definition and balance of the profile.'),
+					'armonizacion-facial-con-acido-hialuronico' => array('Facial harmonization', 'A treatment tailored to your goals.'),
+				))),
+			),
+			'faq_title' => 'Lip filler questions',
+			'faq' => array(
+				array('How much does lip filler cost in Mexico City?', 'At Eternal Glow lip filler costs $6,499 MXN per 1 mL syringe of hyaluronic acid. The amount you need is set in your consultation.'),
+				array('How long does lip filler last?', 'It usually lasts 6 to 12 months. Lips move a lot, so the product is absorbed sooner than in other areas; the product and your metabolism also play a part.'),
+				array('Will my lips look natural?', 'Yes. We apply measured amounts and work in stages to respect the shape of your lips and the proportions of your face.'),
+				array('How long does the swelling last?', 'It is normal for the lips to swell during the first days and for a small bruise to appear. The result is easier to judge once the swelling goes down.'),
+				array('What is the difference between lip filler and a lip flip?', 'Filler adds volume with hyaluronic acid. The lip flip uses Botox to relax the muscle and show more of the upper lip, without volume. For the vertical lines above the lip, Botox is applied per unit.'),
+				array('Can it be reversed?', 'Yes. Hyaluronic acid can be dissolved with hyaluronidase when the doctor considers it necessary.'),
 				array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up. You can also book online or message us on WhatsApp in English.'),
 			),
 		),
