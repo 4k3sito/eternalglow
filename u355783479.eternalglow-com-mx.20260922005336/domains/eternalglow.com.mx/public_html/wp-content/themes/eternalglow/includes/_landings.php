@@ -30,6 +30,10 @@ function eg_landings(){
 	foreach(array(1 => 6499, 2 => 11000, 3 => 16000, 4 => 20000, 5 => 24000, 6 => 28000) as $n => $price){
 		$syringes[] = eg_price_row($n == 1 ? '1 jeringa' : "$n jeringas", "$n mL de ácido hialurónico", '$'.number_format($price));
 	}
+	$syringes_en = array();
+	foreach(array(1 => 6499, 2 => 11000, 3 => 16000, 4 => 20000, 5 => 24000, 6 => 28000) as $n => $price){
+		$syringes_en[] = eg_price_row($n == 1 ? '1 syringe' : "$n syringes", "$n mL of hyaluronic acid", '$'.number_format($price));
+	}
 	$lips = clone $treatments['relleno-de-labios'];
 	$lips->name = 'Relleno de labios · 1 jeringa (1 mL)';
 	$lips->url = eg_booking_url();
@@ -150,6 +154,49 @@ function eg_landings(){
 				array('How many sessions do I need?', 'Many patients need two or three sessions a few weeks apart. The exact number depends on your skin, the loss of support and how you respond.'),
 				array('How long do the results last?', 'In some patients the effect lasts up to about two years. It depends on the protocol, metabolism, age, habits and skin quality.'),
 				array('Does it hurt?', 'You may feel pressure, small pricks or tenderness. The product can be prepared with a local anaesthetic to make you more comfortable.'),
+				array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up. You can also book online or message us on WhatsApp in English.'),
+			),
+		),
+		// English version of /rellenos-cdmx/. Same facts and prices as the Spanish hub.
+		'fillers-mexico-city' => array(
+			'image' => array('2026/05/tratamiento-de-pomulos-con-acido-hialuronico.png', 'Hyaluronic acid applied to the cheeks at Eternal Glow, Mexico City'),
+			'hero' => array(
+				'Hyaluronic acid · Roma Norte, Mexico City',
+				'Dermal fillers in Mexico City',
+				'Volume, definition and balance with hyaluronic acid, applied by an aesthetic physician. Each area costs $6,499 MXN per syringe, with English spoken at the clinic.',
+			),
+			'sections' => array(
+				array('What is a hyaluronic acid filler?', array(
+					'Hyaluronic acid is a substance your body makes naturally that holds water in the skin. As a filler it is a gel injected to restore volume, define contours or soften folds.',
+					'The result shows from the moment of the treatment and the body absorbs the product over time. At Eternal Glow we work with reference brands such as Restylane and Yvoire.',
+				)),
+				array('How does the visit work?', array(
+					'Everything starts with a medical consultation: the doctor looks at your face, listens to what you want and suggests the areas and the amount of product.',
+					'Most treatments take less than an hour and you can go back to your plans the same day.',
+				)),
+			),
+			'prices' => array(
+				array('Price per area', 'Per 1 mL syringe · MXN', $english(array(
+					'relleno-de-labios' => array('Lip filler', 'Volume, definition and a natural shape.'),
+					'relleno-de-ojeras-con-acido-hialuronico' => array('Under-eye filler', 'Corrects the tear trough and the shadow under the eyes with a cannula.'),
+					'relleno-de-pomulos-con-acido-hialuronico' => array('Cheek filler', 'Restores projection and support to the mid face.'),
+					'relleno-de-menton' => array('Chin filler', 'Definition and balance of the profile.'),
+					'relleno-de-surcos-nasogenianos-en-cdmx' => array('Nasolabial fold filler', 'Softens the lines from nose to mouth while keeping a natural look.'),
+					'rinomodelacion-en-cdmx' => array('Non-surgical rhinoplasty', 'Corrects a nasal hump and lifts the tip without surgery.'),
+					'relleno-de-fosa-temporal-cdmx' => array('Temple filler', 'Fills hollow temples and refreshes the facial contour.'),
+					'marcaje-mandibular-con-acido-hialuronico-cdmx' => array('Jawline filler', 'Defines the angle and line of the jaw for a sculpted profile.'),
+					'armonizacion-facial-con-acido-hialuronico' => array('Facial harmonization', 'A treatment tailored to your goals.'),
+				))),
+				array('Packages by amount', 'For a global, balanced result', $syringes_en),
+			),
+			'faq_title' => 'Filler questions',
+			'faq' => array(
+				array('How much does a hyaluronic acid filler cost in Mexico City?', 'At Eternal Glow each area costs $6,499 MXN per 1 mL syringe. As a package, 2 syringes cost $11,000, 3 syringes $16,000 and 4 syringes $20,000 MXN. The number of syringes is set in your consultation.'),
+				array('How long does a filler last?', 'It depends on the area, the product and your metabolism. In general it lasts 6 to 18 months: less in areas that move a lot, such as the lips, and more in the cheeks or jaw.'),
+				array('Which areas can be treated?', 'Lips, under eyes, cheeks, chin, nasolabial folds, nose (non-surgical rhinoplasty), temples and jawline. When several areas are treated together we call it facial harmonization.'),
+				array('Can a filler be reversed?', 'Yes. Hyaluronic acid can be dissolved with an enzyme called hyaluronidase when the doctor considers it necessary.'),
+				array('What is the difference between fillers and Botox?', 'A filler restores volume and defines contours. <a href="/en/botox-mexico-city/">Botox</a> relaxes the muscles that cause expression lines. They can be combined in the same plan.'),
+				array('Is there any downtime?', 'You can go back to your plans the same day. Some swelling or a small bruise for a few days is normal.'),
 				array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up. You can also book online or message us on WhatsApp in English.'),
 			),
 		),

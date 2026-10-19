@@ -25,7 +25,7 @@ echo "4/4 Purgando cachés..."
 ssh "$HOST" 'cd ~/public_html && wp cache flush 2>/dev/null && wp eval "\\RankMath\\Sitemap\\Cache::invalidate_storage();" 2>/dev/null && rm -rf wp-content/cache/supercache/eternalglow.com.mx'
 
 echo "Verificando..."
-for path in / /en/ /en/botox-mexico-city/ /en/sculptra-mexico-city/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/; do
+for path in / /en/ /en/botox-mexico-city/ /en/sculptra-mexico-city/ /en/fillers-mexico-city/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/; do
 	printf '%s -> ' "$path"
 	curl -s -o /dev/null -m 30 -w '%{http_code} %{redirect_url}\n' "https://eternalglow.com.mx$path"
 done

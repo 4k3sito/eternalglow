@@ -12,7 +12,7 @@ function eg_lang(){
 
 // Spanish path => English path of the same page; drives hreflang and the ES/EN switch.
 function eg_translations(){
-	return array('/' => '/en/', '/botox-cdmx/' => '/en/botox-mexico-city/', '/sculptra-cdmx/' => '/en/sculptra-mexico-city/');
+	return array('/' => '/en/', '/botox-cdmx/' => '/en/botox-mexico-city/', '/sculptra-cdmx/' => '/en/sculptra-mexico-city/', '/rellenos-cdmx/' => '/en/fillers-mexico-city/');
 }
 
 // The current page in the other language, or that language's home when it has no translation.

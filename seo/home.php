@@ -49,6 +49,14 @@ update_post_meta($sculptra_en_id, 'rank_math_title', 'Sculptra in Mexico City | 
 update_post_meta($sculptra_en_id, 'rank_math_description', wp_slash('Sculptra in Mexico City: $14,999 MXN per vial, 2 vials $28,000, 3 vials $33,000. Collagen biostimulator in Roma Norte. English spoken.'));
 update_post_meta($sculptra_en_id, 'rank_math_focus_keyword', 'sculptra mexico city,sculptra in mexico city');
 
+// 2d. English fillers hub at /en/fillers-mexico-city/, rendered like 2b.
+$fillers_en = get_page_by_path('en/fillers-mexico-city', OBJECT, 'page');
+$fillers_en_id = $fillers_en ? $fillers_en->ID : wp_insert_post(array('post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'fillers-mexico-city', 'post_parent' => $en_id, 'post_title' => 'Dermal Fillers in Mexico City', 'post_content' => ''));
+if (!$fillers_en_id || is_wp_error($fillers_en_id)) { echo "ERROR: no pude crear /en/fillers-mexico-city/\n"; exit(1); }
+update_post_meta($fillers_en_id, 'rank_math_title', 'Dermal Fillers in Mexico City | $6,499 per Syringe');
+update_post_meta($fillers_en_id, 'rank_math_description', wp_slash('Hyaluronic acid fillers in Mexico City: $6,499 MXN per syringe for lips, under eyes, cheeks, chin or jaw. Packages from 2 syringes. English spoken.'));
+update_post_meta($fillers_en_id, 'rank_math_focus_keyword', 'fillers mexico city,lip fillers mexico city,dermal fillers mexico city');
+
 // 3. /servicios/ is an empty page that sat in the main menu: point the menu to /tratamientos/ and redirect it.
 if ($services) {
     $items = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_object_id' AND meta_value = %d AND post_id IN (SELECT ID FROM $wpdb->posts WHERE post_type = 'nav_menu_item')", $services->ID));
