@@ -10,3 +10,19 @@ local-env/backups/
 **/wp-content/debug.log
 **/error_log
 **/node_modules/
+
+# credenciales y datos de las APIs de Google (seo/google_oauth.py)
+seo/.secrets/
+seo/.venv/
+seo/gbp-data/
+.env
+seo/__pycache__/
+**/wp-content/et-cache/
+seo/gsc-data/
+
+# archivos locales sueltos en la raíz
+.mcp.json
+/*.zip
+/*.mp4
+*:Zone.Identifier
+*:mshield

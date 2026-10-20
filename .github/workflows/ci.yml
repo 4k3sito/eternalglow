@@ -1,7 +1,7 @@
 name: CI
 
-# Lint y tests en cada pull request y en cada push a main.
-# Detecta Node o Python automaticamente. Ajusta los pasos si el proyecto usa otro stack.
+# Lint y build en cada pull request y en cada push a main.
+# Este repo es un respaldo de WordPress: el codigo propio es el tema y seo/.
 on:
   push:
     branches: [main]
@@ -10,63 +10,27 @@ on:
 permissions:
   contents: read
 
+env:
+  THEME: u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow
+
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
 
-      - name: Detectar stack
-        id: stack
-        run: |
-          if [ -f package.json ]; then echo "node=true" >> "$GITHUB_OUTPUT"; fi
-          if [ -f pyproject.toml ] || [ -f requirements.txt ]; then echo "python=true" >> "$GITHUB_OUTPUT"; fi
-
-      # ---- Node ----
+      # Node fijo (no lts/*) para que el build no cambie solo de version.
       - uses: actions/setup-node@v4
-        if: steps.stack.outputs.node == 'true'
         with:
-          node-version: lts/*
-      - name: Node - instalar
-        if: steps.stack.outputs.node == 'true'
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
-      - name: Node - lint
-        if: steps.stack.outputs.node == 'true'
-        run: npm run lint --if-present
-      - name: Node - tests
-        if: steps.stack.outputs.node == 'true'
-        run: npm test --if-present
-      - name: Node - build
-        if: steps.stack.outputs.node == 'true'
-        run: npm run build --if-present
+          node-version: 22
+          cache: npm
+          cache-dependency-path: ${{ env.THEME }}/package-lock.json
 
-      # ---- Python ----
-      - uses: actions/setup-python@v5
-        if: steps.stack.outputs.python == 'true'
-        with:
-          python-version: "3.x"
-      - name: Python - instalar
-        if: steps.stack.outputs.python == 'true'
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          if [ -f pyproject.toml ]; then pip install -e . || true; fi
-          pip install ruff pytest
-      - name: Python - lint
-        if: steps.stack.outputs.python == 'true'
-        run: ruff check .
-      - name: Python - tests
-        if: steps.stack.outputs.python == 'true'
-        run: pytest || [ $? -eq 5 ]   # codigo 5 = no hay tests todavia
-
-      # ---- Este repo: el tema de WordPress vive en un subdirectorio ----
       # Sin collect-tokens: crawlea el sitio en vivo. Se compila con el purge-tokens.txt versionado.
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
       - name: Tema - build
-        working-directory: u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow
+        working-directory: ${{ env.THEME }}
         run: npm ci && npm run build-prod
+
+      # ubuntu-latest trae PHP 8.3, igual que produccion.
       - name: PHP - lint
-        run: find seo -name '*.php' -print0 | xargs -0 -n1 php -l
+        run: find seo "$THEME" -name '*.php' -not -path '*/node_modules/*' -print0 | xargs -0 -r -n1 php -l
