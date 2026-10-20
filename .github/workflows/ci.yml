@@ -1,0 +1,36 @@
+name: CI
+
+# Lint y build en cada pull request y en cada push a main.
+# Este repo es un respaldo de WordPress: el codigo propio es el tema y seo/.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  THEME: u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow
+
+jobs:
+  ci:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+
+      # Node fijo (no lts/*) para que el build no cambie solo de version.
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: ${{ env.THEME }}/package-lock.json
+
+      # Sin collect-tokens: crawlea el sitio en vivo. Se compila con el purge-tokens.txt versionado.
+      - name: Tema - build
+        working-directory: ${{ env.THEME }}
+        run: npm ci && npm run build-prod
+
+      # ubuntu-24.04 fijo: trae PHP 8.3, igual que produccion (ubuntu-latest pasa a 26).
+      - name: PHP - lint
+        run: find seo "$THEME" -name '*.php' -not -path '*/node_modules/*' -print0 | xargs -0 -r -n1 php -l

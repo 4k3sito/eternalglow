@@ -19,3 +19,10 @@ seo/gbp-data/
 seo/__pycache__/
 **/wp-content/et-cache/
 seo/gsc-data/
+
+# archivos locales sueltos en la raíz
+.mcp.json
+/*.zip
+/*.mp4
+*:Zone.Identifier
+*:mshield
