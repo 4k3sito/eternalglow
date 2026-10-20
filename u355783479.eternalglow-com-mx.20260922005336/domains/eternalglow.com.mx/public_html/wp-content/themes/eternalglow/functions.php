@@ -4,6 +4,7 @@
 	require_once(get_template_path().'/includes/_token.php');
 	require_once(get_template_path().'/includes/_vc.php');
 	require_once(get_template_path().'/includes/_ajax.php');
+	require_once(get_template_path().'/includes/_schema-saswp.php');
 	require_once(get_template_path().'/includes/_home.php');
 	require_once(get_template_path().'/includes/_treatments.php');
 	require_once(get_template_path().'/includes/_landings.php');

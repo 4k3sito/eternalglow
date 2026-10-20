@@ -225,12 +225,11 @@ function eg_breadcrumb_schema($trail){
 }
 
 // One graph per page, with the clinic node that the other nodes point to by @id.
-// Pages whose hand-written schema (saswp custom field) already describes the business are left alone.
+// The schema plugin's own output is off (eg_schema_only); its per-post nodes come in through eg_saswp_nodes().
 function eg_schema(){
-	if(is_singular() && !is_front_page() && preg_match('/Medical(Business|Clinic)/', (string)get_post_meta(get_the_ID(), 'saswp_custom_schema_field', true))){
-		return;
-	}
 	$graph = array(eg_clinic_schema());
+	$saswp = is_singular() ? eg_saswp_nodes(get_the_ID()) : array();
+	$saswp_types = eg_schema_types($saswp);
 	$clinic = array('@id' => home_url('/#clinic'));
 	if(is_front_page() || is_page('en')){
 		$t = eg_home_strings();
@@ -248,10 +247,12 @@ function eg_schema(){
 		foreach($t['faq'] as $item){
 			$faq[] = array('@type' => 'Question', 'name' => $item[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => wp_strip_all_tags($item[1])));
 		}
-		$graph[] = array('@type' => 'FAQPage', 'mainEntity' => $faq);
+		if(!in_array('FAQPage', $saswp_types, true)){
+			$graph[] = array('@type' => 'FAQPage', 'mainEntity' => $faq);
+		}
 	}
 	$landing = is_page() ? eg_landing(get_post()->post_name) : null;
-	if($landing){
+	if($landing && !in_array('FAQPage', $saswp_types, true)){
 		$faq = array();
 		foreach($landing['faq'] as $item){
 			$faq[] = array('@type' => 'Question', 'name' => $item[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => wp_strip_all_tags($item[1])));
@@ -261,20 +262,26 @@ function eg_schema(){
 	if(is_singular('service')){
 		$post = get_post();
 		$hub = eg_service_hub($post);
-		$graph[] = array(
-			'@type' => 'MedicalProcedure',
-			'name' => get_the_title($post),
-			'url' => get_permalink($post),
-			'procedureType' => 'https://schema.org/NoninvasiveProcedure',
-			'provider' => $clinic,
-		);
-		$graph[] = eg_breadcrumb_schema(array(
-			array('Inicio', home_url('/')),
-			array($hub->title, $hub->url),
-			array(get_the_title($post), get_permalink($post)),
-		));
+		if(!in_array('MedicalProcedure', $saswp_types, true)){
+			$graph[] = array(
+				'@type' => 'MedicalProcedure',
+				'name' => get_the_title($post),
+				'url' => get_permalink($post),
+				'procedureType' => 'https://schema.org/NoninvasiveProcedure',
+				'provider' => $clinic,
+			);
+		}
+		if(!in_array('BreadcrumbList', $saswp_types, true)){
+			$graph[] = eg_breadcrumb_schema(array(
+				array('Inicio', home_url('/')),
+				array($hub->title, $hub->url),
+				array(get_the_title($post), get_permalink($post)),
+			));
+		}
 	}
-	echo '<script type="application/ld+json">'.wp_json_encode(array('@context' => 'https://schema.org', '@graph' => $graph), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES).'</script>'."\n";
+	$graph = array_merge($graph, $saswp);
+	// JSON_HEX_TAG: post meta ends up here, and a "</script>" inside a string must not close the block.
+	echo '<script type="application/ld+json">'.wp_json_encode(array('@context' => 'https://schema.org', '@graph' => $graph), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG).'</script>'."\n";
 }
 
 add_action('wp_head', 'eg_schema');
@@ -319,14 +326,13 @@ function eg_home_dequeue(){
 	}
 }
 
-// On the home the theme's graph replaces the schema plugin's Organization and WebSite nodes.
-function eg_home_schema_only(){
-	if(is_front_page() || is_page('en')){
-		remove_action('wp_head', 'saswp_schema_markup_output');
-	}
+// The theme prints the only JSON-LD graph: the schema plugin's output carried a second business entity.
+function eg_schema_only(){
+	remove_action('wp_head', 'saswp_schema_markup_output');
+	remove_action('wp_footer', 'saswp_schema_markup_output');
 }
 
-add_action('wp', 'eg_home_schema_only');
+add_action('wp', 'eg_schema_only');
 
 add_action('wp_enqueue_scripts', 'eg_home_dequeue', 999);
 add_action('wp_footer', 'eg_home_dequeue', 1);
