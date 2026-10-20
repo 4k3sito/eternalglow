@@ -2,17 +2,19 @@
 Actualizado: 2026-10-20
 
 ## Ahora
-Deploy a producción integrado al pipeline y probado (spec en `docs/specs/deploy.md`).
+Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100).
 
 ## Hecho recientemente
+- Auditoría SEO completa (68/100); 12 tareas nuevas en Notion.
+- Schema unificado en una sola entidad `#clinic` (PR #5): fuera el MedicalBusiness de SASWP con el teléfono viejo y las reseñas propias.
 - Deploy por GitHub Actions (PR #3); primer deploy `--theme-only` OK el 2026-10-20, run 39391632264.
 - Pipeline instalado (PR #1); `rediseno-editorial` mergeada a `main` (PR #2).
 - 20 pendientes migrados de `tareas-eternalglow.md` a Notion.
 - SEO: páginas en inglés de Sculptra, Botox, rellenos y relleno de labios; footer y formulario en inglés en `/en/`.
 
 ## Siguiente
-- Primer deploy con `run_content_scripts` cuando haya un cambio de contenido.
-- Atacar los pendientes de Notion (prioridad Alta: formulario, enlaces internos a hubs, indexación /en/).
+- TTFB sin caché (2.4–11 s en /servicio/): precarga de WP Super Cache tras el deploy.
+- Resto de Altas de la auditoría: hub de Botox, reenfoque de Rellenos, médico visible en hubs.
 
 ## Decisiones
 - `seo/deploy.sh` es la única receta de deploy; CI la reutiliza.
