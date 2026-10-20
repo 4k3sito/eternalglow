@@ -29,7 +29,7 @@
                         <?php if($url){ ?>
                             <a class='image-hover-scale'<?php _p($url.$url_target.$url_title.$url_rel); ?>>
                         <?php } ?>
-                        <img src="<?php _p($image->url); ?>" alt="" class="object-fit-cover d-block h-100 w-100" />
+                        <?php _p(get_theme_img($image, array('alt' => '', 'class' => 'object-fit-cover d-block h-100 w-100', 'loading' => 'lazy', 'sizes' => '(max-width: 767.98px) calc(100vw - 64px), 400px'))); ?>
                         <?php if($url){ ?>
                             </a>
                         <?php } ?>

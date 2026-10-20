@@ -30,7 +30,7 @@
                             <?php if($url){ ?>
                                 <a href="<?php _p($url); ?>"<?php _p($target.$title.$rel); ?>>
                             <?php } ?>
-                            <img src='<?php _p($slide->image->url); ?>' alt='<?php _p($slide->image->alt); ?>' class='w-100 h-100 object-fit-cover' />
+                            <?php _p(get_theme_img($slide->image, array('class' => 'w-100 h-100 object-fit-cover'))); ?>
                             <?php if($url){ ?>
                                 </a>
                             <?php } ?>

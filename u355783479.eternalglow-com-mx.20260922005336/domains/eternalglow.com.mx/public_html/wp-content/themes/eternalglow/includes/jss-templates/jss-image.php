@@ -27,7 +27,7 @@
 ?>
 <div class='<?php _p($class); ?>'>
     <?php _p($a1); ?>
-        <img id='<?php _p($img_id); ?>' src='<?php _p($image->url); ?>' alt='<?php _p($image->alt); ?>' />
+        <?php _p(get_theme_img($image, array('id' => $img_id, 'sizes' => '(max-width: 767.98px) calc(100vw - 64px), min(50vw, 625px)'))); ?>
     <?php _p($a2); ?>
 </div>
 <?php if($width->has_values){ ?>

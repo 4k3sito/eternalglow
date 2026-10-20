@@ -7,7 +7,7 @@
 	<?php if($has_emails){ ?>
 		<div class="row g-8 align-items-center">
 			<div class="col-md-auto">
-				<img src="<?php images_url('sms.svg'); ?>" alt="" />
+				<img src="<?php images_url('sms.svg'); ?>" data-no-lazy="1" alt="" />
 			</div>
 			<div class="col d-grid gap-8">
 				<?php for($i = 1; $i <= 2; $i++){ ?>
@@ -23,7 +23,7 @@
 	<?php if($contact->address){ ?>
 		<div class="row g-8 align-items-center">
 			<div class="col-md-auto">
-				<img src="<?php images_url('location.svg'); ?>" alt="" />
+				<img src="<?php images_url('location.svg'); ?>" data-no-lazy="1" alt="" />
 			</div>
 			<div class="col">
 				<?php _p(nl2br($contact->address)); ?>
@@ -33,7 +33,7 @@
 	<?php if($has_phones){ ?>
 		<div class="row g-8 align-items-center">
 			<div class="col-md-auto">
-				<img src="<?php images_url('call.svg'); ?>" alt="" />
+				<img src="<?php images_url('call.svg'); ?>" data-no-lazy="1" alt="" />
 			</div>
 			<div class="col d-grid gap-8">
 				<?php for($i = 1; $i <= 2; $i++){ ?>
@@ -50,7 +50,7 @@
 		<div>
 			<div class="row g-8 align-items-center">
 				<div class="col-md-auto">
-					<img src="<?php images_url('clock.svg'); ?>" alt="" />
+					<img src="<?php images_url('clock.svg'); ?>" data-no-lazy="1" alt="" />
 				</div>
 				<div class="col">
 					<?php _p(nl2br($contact->schedules)); ?>
@@ -60,7 +60,7 @@
 				<div class="row g-8">
 					<?php // Invisible icon keeps the note aligned with the hours text, not the clock ?>
 					<div class="col-md-auto d-none d-md-block invisible">
-						<img src="<?php images_url('clock.svg'); ?>" alt="" />
+						<img src="<?php images_url('clock.svg'); ?>" data-no-lazy="1" alt="" />
 					</div>
 					<div class="col small fw-bold mt-8">
 						<?php _p(esc_html($contact->schedules_note)); ?>

@@ -107,10 +107,45 @@ video{
 		}
 	}
 }
+// Collapsible copy on the service landing pages (guide + FAQ). Native <details>, so it opens without any JS.
+.jss-text details{
+	border-bottom: 1px solid rgba(var(--#{$prefix}primary-rgb), 0.3);
+	padding: 16px 0;
+	summary{
+		cursor: pointer;
+		color: var(--#{$prefix}body);
+		// Headings stay in the markup for search engines but read as accordion labels.
+		h3{
+			display: inline;
+			font-family: $font-family-base;
+			font-size: 18px;
+			font-weight: 600;
+			margin: 0;
+		}
+	}
+	p, ul{
+		margin: 12px 0 0;
+	}
+}
 .bg-primary-gradient{
 	background: linear-gradient(180deg, rgba(255, 213, 199, 0) 3.3%, rgba(249, 137, 107, 0.4) 100%), #FFF7F2;
 }
-
+// Service tabs (jss-services-list). Recovered from the deployed build; they were missing from the sources.
+.btn-service{
+	--#{$prefix}btn-color: var(--#{$prefix}body);
+	--#{$prefix}btn-hover-bg: var(--#{$prefix}primary);
+	--#{$prefix}btn-hover-color: var(--#{$prefix}white);
+	--#{$prefix}btn-hover-border-color: var(--#{$prefix}primary);
+	--#{$prefix}btn-active-bg: var(--#{$prefix}primary);
+	--#{$prefix}btn-active-color: var(--#{$prefix}white);
+	--#{$prefix}btn-active-border-color: var(--#{$prefix}primary);
+}
+.services-content{
+	display: none;
+	&.active{
+		display: block;
+	}
+}
 
 
 @include media-breakpoint-down(md){

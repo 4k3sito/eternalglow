@@ -44,7 +44,7 @@
                                                         </div>
                                                         <div class="col-auto">
                                                             <a href='<?php the_permalink($_post); ?>'>
-                                                                <img src="<?php images_url('arrow-right.svg'); ?>" alt="" />
+                                                                <img src="<?php images_url('arrow-right.svg'); ?>" data-no-lazy="1" alt="" />
                                                             </a>
                                                         </div>
                                                     </div>
