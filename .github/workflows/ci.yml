@@ -15,12 +15,12 @@ env:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
 
       # Node fijo (no lts/*) para que el build no cambie solo de version.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -31,6 +31,6 @@ jobs:
         working-directory: ${{ env.THEME }}
         run: npm ci && npm run build-prod
 
-      # ubuntu-latest trae PHP 8.3, igual que produccion.
+      # ubuntu-24.04 fijo: trae PHP 8.3, igual que produccion (ubuntu-latest pasa a 26).
       - name: PHP - lint
         run: find seo "$THEME" -name '*.php' -not -path '*/node_modules/*' -print0 | xargs -0 -r -n1 php -l

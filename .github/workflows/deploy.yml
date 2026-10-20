@@ -51,7 +51,7 @@ jobs:
         run: '[ "$BUILD_DIR" != "." ] && [ -d "$BUILD_DIR" ] || { echo "BUILD_DIR invalido: $BUILD_DIR"; exit 1; }'
 
       # Si el proyecto necesita build antes de publicar, agregalo aqui. Ejemplo Node:
-      # - uses: actions/setup-node@v4
+      # - uses: actions/setup-node@v5
       #   with: { node-version: lts/* }
       # - run: npm ci && npm run build
 
