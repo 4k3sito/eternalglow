@@ -2,15 +2,17 @@
 Actualizado: 2026-10-20
 
 ## Ahora
-Rama `feat/ci-deploy`: el deploy a producción entra al pipeline (spec en `docs/specs/deploy.md`).
+Deploy a producción integrado al pipeline y probado (spec en `docs/specs/deploy.md`).
 
 ## Hecho recientemente
+- Deploy por GitHub Actions (PR #3); primer deploy `--theme-only` OK el 2026-10-20, run 39391632264.
 - Pipeline instalado (PR #1); `rediseno-editorial` mergeada a `main` (PR #2).
 - 20 pendientes migrados de `tareas-eternalglow.md` a Notion.
 - SEO: páginas en inglés de Sculptra, Botox, rellenos y relleno de labios; footer y formulario en inglés en `/en/`.
 
 ## Siguiente
-- Configurar GitHub para el deploy (secrets, environment `production`, `DEPLOY_MODE=script`) y hacer el primer deploy `--theme-only`.
+- Primer deploy con `run_content_scripts` cuando haya un cambio de contenido.
+- Atacar los pendientes de Notion (prioridad Alta: formulario, enlaces internos a hubs, indexación /en/).
 
 ## Decisiones
 - `seo/deploy.sh` es la única receta de deploy; CI la reutiliza.
