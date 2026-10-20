@@ -1,43 +1,31 @@
 <?php 
-    $logo = get_theme_logo(1); 
-    $contact = get_theme_contact();
-    $links = get_theme_links();
-    $texts = get_theme_texts();
+    $t = eg_home_strings();
+    $en = eg_lang() == 'en';
+    $path = trailingslashit(strtok($_SERVER['REQUEST_URI'] ?? '/', '?'));
 ?>
 <header>
-    <div class="container py-lg-32 py-24">
-        <nav class="bg-white navbar navbar-expand-lg p-16 px-lg-24 rounded-lg-24 rounded-16 shadow-sm">
-            <a href="<?php base_url(); ?>" aria-label="<?php _p(esc_attr(get_bloginfo('name'))); ?>">
-                <img src='<?php _p($logo->url); ?>' alt='<?php _p($logo->alt); ?>' class='d-block height-60' />
-            </a>
-            <a href='#' class='d-lg-none' role="button" aria-label="Abrir menú" aria-controls="offcanvasNavbar" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-                <img src='<?php images_url('menu.svg'); ?>' data-no-lazy="1" alt='' class='height-48' />
-            </a>
+    <div class="lp-wrap">
+        <nav class="navbar navbar-expand-lg p-0" aria-label="<?php _p($en ? 'Main' : 'Principal'); ?>">
+            <a class="lp-wordmark" href="<?php _p(esc_url(home_url($en ? '/en/' : '/'))); ?>">Eternal <em>Glow</em></a>
+            <?php // One button opens and closes the menu; its two lines turn into a cross (see .lp-menu-open in _home.scss). ?>
+            <button type="button" class="lp-burger d-lg-none" aria-label="<?php _p($en ? 'Menu' : 'Menú'); ?>" aria-controls="offcanvasNavbar" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                <span></span><span></span>
+            </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
-                <div class="offcanvas-header p-24">
-                    <div class="d-flex py-16">
-                        <a href="<?php base_url(); ?>" aria-label="<?php _p(esc_attr(get_bloginfo('name'))); ?>">
-                            <img src='<?php _p($logo->url); ?>' alt='<?php _p($logo->alt); ?>' class='d-block height-60' />
-                        </a>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar menú"></button>
-                </div>
-                <div class="offcanvas-body p-24 p-lg-0 align-items-center">
-                    <?php 
-                        wp_nav_menu(
-                            array(
-                                'theme_location' => 'theme_main_menu', 
-                                'menu_class' => 'nav-main-menu navbar-nav justify-content-center gap-lg-26 flex-grow-1',
-                                'container' => false
-                            )
-                        );
-                    ?>
-                    <?php if($links->header_btn_text){ ?>
-                        <div class="mt-16 mt-lg-0 d-flex flex-wrap gap-8">
-                            <?php get_template_part('whatsapp-button'); ?>
-                            <a class="btn btn-primary" href="<?php _p($links->header_btn_link); ?>"><?php _p($links->header_btn_text); ?></a>
+                <div class="offcanvas-body align-items-center">
+                    <ul class="nav-main-menu navbar-nav justify-content-end flex-grow-1">
+                        <?php foreach($t['nav'] as $href => $label){ ?>
+                            <?php $url = $href[0] == '#' ? $href : home_url($href); ?>
+                            <li class="nav-item"><a class="nav-link" href="<?php _p(esc_url($url)); ?>"<?php _p($href == $path ? ' aria-current="page"' : ''); ?>><?php _p(esc_html($label)); ?></a></li>
+                        <?php } ?>
+                    </ul>
+                    <div class="lp-header-actions">
+                        <?php _p(eg_cta_book('header', $t['cta_short'])); ?>
+                        <div class="lp-lang">
+                            <a href="<?php _p(esc_url(home_url($en ? eg_alternate_path() : $path))); ?>" hreflang="es-MX" lang="es" <?php _p($en ? '' : 'aria-current="true"'); ?>>ES</a>
+                            <a href="<?php _p(esc_url(home_url($en ? $path : eg_alternate_path()))); ?>" hreflang="en" lang="en" <?php _p($en ? 'aria-current="true"' : ''); ?>>EN</a>
                         </div>
-                    <?php } ?>
+                    </div>
                 </div>
             </div>
         </nav>

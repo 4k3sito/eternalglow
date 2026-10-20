@@ -14,10 +14,10 @@
 	$whatsapp = "https://wa.me/?text={$url} {$title}";
 
     $share = [
-        'fa-regular fa-envelope' => $email,
-        'fa-brands fa-facebook-f' => $facebook,
-        'fa-brands fa-x-twitter' => $twitter,
-        'fa-brands fa-whatsapp' => $whatsapp,
+        'envelope-simple' => $email,
+        'facebook-logo' => $facebook,
+        'x-logo' => $twitter,
+        'whatsapp-logo' => $whatsapp,
     ];
 ?>
 <div class='share overflow-hidden'>
@@ -29,7 +29,7 @@
             <div class='col-auto'>
                 <a href='<?php _p($v); ?>' class='btn btn-body ratio ratio-1x1 width-32 rounded-circle p-0 minh-0' target='_blank'>
                     <span class='d-flex align-items-center justify-content-center'>
-                        <i class="<?php _p($k); ?> fs-14"></i>
+                        <?php _p(eg_icon($k)); ?>
                     </span>
                 </a>
             </div>

@@ -54,7 +54,9 @@ function get_theme_contact(){
 // ponytail: WhatsApp uses phone1 (same number today); add a separate setting if they ever diverge
 function get_whatsapp_url(){
     $phone = get_theme_contact()->phone1_plain;
-    return $phone ? 'https://wa.me/'.$phone.'?text='.rawurlencode('¡Hola! Vi su página web y me gustaría agendar una valoración.') : '';
+    // English pages open WhatsApp with the greeting in English, so the clinic answers in the visitor's language.
+    $text = function_exists('eg_lang') && eg_lang() == 'en' ? 'Hello! I saw your website and would like to book a consultation.' : '¡Hola! Vi su página web y me gustaría agendar una valoración.';
+    return $phone ? 'https://wa.me/'.$phone.'?text='.rawurlencode($text) : '';
 }
 	
 function get_theme_social(){

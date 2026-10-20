@@ -1,5 +1,6 @@
 declare global {
     interface Window {
+        gtag?: (...args: unknown[]) => void;
         showModal: (id: string) => void;
         JSS_APP: {
             ajaxURL: string;

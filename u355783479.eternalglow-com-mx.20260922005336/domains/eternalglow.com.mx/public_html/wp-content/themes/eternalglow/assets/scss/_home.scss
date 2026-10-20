@@ -1,0 +1,1821 @@
+// Home, catalogue, header and footer of the look taken from the client's design prototype.
+// Tokens (--lp-*) are defined in _editorial.scss.
+.lp-editorial{
+	// Same width and side padding as the prototype: 1200px of content, fluid gutters.
+	.lp-wrap{
+		width: 100%;
+		max-width: 1296px;
+		margin: 0 auto;
+		padding: 0 clamp(20px, 5vw, 48px);
+	}
+	.lp-skip{
+		position: absolute;
+		left: 16px;
+		top: -64px;
+		z-index: 1100;
+		padding: 12px 16px;
+		border-radius: 12px;
+		background: var(--lp-ink);
+		color: var(--lp-surface);
+		&:focus{
+			top: 16px;
+		}
+	}
+	.lp-icon{
+		display: inline-flex;
+		vertical-align: -0.125em;
+		svg{
+			width: 1em;
+			height: 1em;
+		}
+	}
+	.btn .lp-icon{
+		font-size: 20px;
+	}
+	.lp-stars{
+		display: inline-flex;
+		gap: 2px;
+		color: var(--lp-accent);
+		vertical-align: -0.125em;
+	}
+	.lp-link{
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		color: var(--lp-accent);
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 600;
+		&:hover{
+			color: var(--lp-accent-dark);
+		}
+		.lp-icon{
+			transition: transform 0.3s var(--lp-ease);
+		}
+	}
+	a:hover > .lp-link .lp-icon,
+	a:hover > span > .lp-link .lp-icon,
+	a.lp-link:hover .lp-icon{
+		transform: translateX(4px);
+	}
+	.lp-fine{
+		margin: 12px 0 0;
+		color: var(--lp-muted);
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+	}
+	// The two booking buttons, side by side and the same size.
+	.lp-actions{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		max-width: 520px;
+		.btn{
+			flex: 1 1 240px;
+			min-height: 56px;
+			white-space: nowrap;
+		}
+	}
+	// Booking sheet opened from a treatment link (see bookingSheet in main.ts).
+	.lp-sheet{
+		width: min(490px, calc(100vw - 32px));
+		max-height: calc(100dvh - 32px);
+		padding: 32px;
+		border: 0;
+		border-radius: 28px;
+		background: var(--lp-bg);
+		color: var(--lp-text);
+		box-shadow: 0 24px 64px rgba(43, 34, 29, 0.24);
+		&::backdrop{
+			background: rgba(43, 34, 29, 0.45);
+		}
+		&[open]{
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+		@media (prefers-reduced-motion: no-preference){
+			&[open]{
+				animation: lp-hero-rise 0.4s var(--lp-ease) both;
+			}
+		}
+		[hidden]{
+			display: none;
+		}
+		form{
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+		h2{
+			margin: 0;
+			padding-right: 40px;
+			font-size: 40px;
+			line-height: 1;
+		}
+		p{
+			margin: 0;
+		}
+		.lp-eyebrow{
+			padding-right: 48px;
+		}
+		dl{
+			margin: 0;
+			padding: 14px 0;
+			border-top: 1px solid var(--lp-line);
+			border-bottom: 1px solid var(--lp-line);
+		}
+		dt{
+			font-size: 12px;
+			line-height: 16px;
+			font-weight: 500;
+		}
+		dd{
+			margin: 4px 0 0;
+			color: var(--lp-ink);
+			font-size: 18px;
+			line-height: 24px;
+			font-weight: 700;
+		}
+		.lp-actions .btn{
+			flex-basis: 100%;
+		}
+		.lp-fine{
+			text-align: center;
+		}
+		.lp-link{
+			align-self: center;
+		}
+	}
+	.lp-sheet-close{
+		width: 40px;
+		height: 40px;
+		border: 0;
+		border-radius: 50%;
+		background: var(--lp-sand);
+		color: var(--lp-ink);
+		font-size: 24px;
+		line-height: 1;
+		cursor: pointer;
+	}
+	.lp-sheet-includes{
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		color: var(--lp-ink);
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+		.lp-icon{
+			color: var(--lp-green);
+			font-size: 18px;
+		}
+	}
+	.lp-btn-wa{
+		--#{$prefix}btn-bg: var(--lp-green);
+		--#{$prefix}btn-border-color: var(--lp-green);
+		--#{$prefix}btn-hover-bg: var(--lp-green-dark);
+		--#{$prefix}btn-hover-border-color: var(--lp-green-dark);
+		--#{$prefix}btn-active-bg: var(--lp-green-dark);
+		--#{$prefix}btn-active-border-color: var(--lp-green-dark);
+		--#{$prefix}btn-color: var(--lp-bg);
+		--#{$prefix}btn-hover-color: var(--lp-bg);
+		--#{$prefix}btn-active-color: var(--lp-bg);
+	}
+	.lp-btn-light{
+		--#{$prefix}btn-color: var(--lp-sand);
+		--#{$prefix}btn-border-color: var(--lp-sand);
+		--#{$prefix}btn-hover-bg: var(--lp-sand);
+		--#{$prefix}btn-hover-border-color: var(--lp-sand);
+		--#{$prefix}btn-hover-color: var(--lp-ink);
+		--#{$prefix}btn-active-bg: var(--lp-sand);
+		--#{$prefix}btn-active-color: var(--lp-ink);
+		min-height: 48px;
+	}
+
+	// Header: stays on top with the page blurred behind it.
+	header{
+		position: sticky;
+		top: 0;
+		z-index: 1030;
+		box-shadow: 0 1px 0 var(--lp-line);
+		// The blur lives on a pseudo-element: a backdrop filter on the header itself would make it the
+		// containing block of the fixed mobile menu and push the page sideways.
+		&::before{
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			background: rgba(250, 247, 242, 0.92);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+		}
+		.navbar{
+			min-height: 68px;
+			justify-content: space-between;
+		}
+		.nav-main-menu{
+			gap: 4px 24px;
+		}
+		.nav-link{
+			--#{$prefix}nav-link-color: var(--lp-ink);
+			--#{$prefix}nav-link-hover-color: var(--lp-accent);
+			padding: 12px 0;
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 500;
+			&[aria-current]{
+				color: var(--lp-accent);
+			}
+		}
+		.btn{
+			--#{$prefix}btn-font-size: 14px;
+			--#{$prefix}btn-padding-y: 10px;
+			min-height: 44px;
+			.lp-icon{
+				display: none;
+			}
+		}
+	}
+	.lp-wordmark{
+		color: var(--lp-ink);
+		font-family: var(--lp-serif);
+		font-size: 30px;
+		line-height: 36px;
+		letter-spacing: -0.01em;
+		white-space: nowrap;
+		padding: 4px 0;
+		&:hover{
+			color: var(--lp-ink);
+		}
+	}
+	.lp-header-actions{
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		margin-left: 24px;
+	}
+	.lp-lang{
+		display: flex;
+		font-size: 12px;
+		letter-spacing: 0.14em;
+		a{
+			color: var(--lp-muted);
+			&[aria-current]{
+				color: var(--lp-ink);
+				font-weight: 600;
+			}
+			& + a::before{
+				content: "|";
+				margin: 0 8px;
+				color: var(--lp-line-strong);
+			}
+		}
+	}
+	.lp-burger{
+		position: relative;
+		z-index: 1046; // above the open offcanvas (1045), so the same button closes it
+		width: 44px;
+		height: 44px;
+		border: 1px solid var(--lp-line);
+		border-radius: 9999px;
+		background: none;
+		span{
+			position: absolute;
+			left: 12px;
+			width: 18px;
+			height: 1px;
+			background: var(--lp-ink);
+			transition: transform 0.7s var(--lp-ease);
+			&:first-child{
+				top: 18px;
+			}
+			&:last-child{
+				top: 24px;
+			}
+		}
+	}
+	&.lp-menu-open .lp-burger span{
+		&:first-child{
+			transform: translateY(3px) rotate(45deg);
+		}
+		&:last-child{
+			transform: translateY(-3px) rotate(-45deg);
+		}
+	}
+	@include media-breakpoint-down(lg){
+		header .offcanvas{
+			--#{$prefix}offcanvas-width: 100%;
+			--#{$prefix}offcanvas-bg: var(--lp-bg);
+			border: 0;
+			.offcanvas-body{
+				display: flex;
+				flex-direction: column;
+				align-items: stretch !important;
+				padding: 88px 20px 24px;
+			}
+			.nav-main-menu{
+				flex-grow: 0 !important;
+				gap: 0;
+			}
+			.nav-item{
+				box-shadow: 0 1px 0 var(--lp-line);
+			}
+			.nav-link{
+				padding: 16px 0;
+				font-family: var(--lp-serif);
+				font-size: 30px;
+				line-height: 36px;
+				font-weight: 400;
+			}
+			.lp-header-actions{
+				flex-direction: column;
+				align-items: stretch;
+				gap: 8px;
+				margin: 24px 0 0;
+			}
+			.btn{
+				min-height: 56px;
+				--#{$prefix}btn-font-size: 16px;
+			}
+			.lp-lang a{
+				padding: 12px 0;
+			}
+		}
+		@media (prefers-reduced-motion: no-preference){
+			header .offcanvas.show .nav-main-menu > li{
+				animation: lp-rise 0.7s var(--lp-ease) both;
+				@for $i from 1 through 8{
+					&:nth-child(#{$i}){
+						animation-delay: #{$i * 50}ms;
+					}
+				}
+			}
+		}
+	}
+	@keyframes lp-rise{
+		from{
+			opacity: 0;
+			transform: translateY(48px);
+		}
+	}
+	@keyframes lp-marquee{
+		to{
+			transform: translateX(-50%);
+		}
+	}
+
+	.lp-wa-float{
+		position: fixed;
+		right: 16px;
+		bottom: 16px;
+		z-index: 1020;
+		display: grid;
+		place-items: center;
+		width: 56px;
+		height: 56px;
+		border-radius: 9999px;
+		background: var(--lp-green);
+		color: var(--lp-bg);
+		font-size: 28px;
+		transition: transform 0.3s var(--lp-ease), background-color 0.3s var(--lp-ease);
+		&:hover{
+			background: var(--lp-green-dark);
+			color: var(--lp-bg);
+			transform: scale(1.05);
+		}
+		&:active{
+			transform: scale(0.98);
+		}
+	}
+
+	// Service pages are built with Divi, which writes the old coral palette into inline styles and per-page CSS.
+	// #et-boc is there to outrank Divi's own selectors. PurgeCSS cannot see this markup, hence the ignore block.
+	/*! purgecss start ignore */
+	[style*="#f9896b" i]{
+		color: inherit !important;
+	}
+	// WPBakery rows filled with the old coral artwork (the /tratamientos/ banner) become a flat sand band.
+	.vc_row.vc_row-has-fill{
+		background-image: none !important;
+		background-color: var(--lp-sand) !important;
+		[style*="#ffffff" i]{
+			color: var(--lp-ink) !important;
+		}
+	}
+	#et-boc .et-l{
+		.et_pb_module{
+			font-family: var(--#{$prefix}body-font-family) !important;
+		}
+		h1, h2, h3, h4{
+			font-family: var(--lp-serif) !important;
+			font-weight: 400 !important;
+			color: var(--lp-ink) !important;
+		}
+		.et-pb-icon,
+		.et_pb_toggle_title::before{
+			color: var(--lp-accent) !important;
+		}
+		// Repeated class: Divi's per-module button rule is .et_pb_button_N.et_pb_button with !important.
+		.et_pb_button.et_pb_button.et_pb_button{
+			padding: 12px 24px !important;
+			border: 1px solid var(--lp-ink) !important;
+			border-radius: 9999px !important;
+			background-color: var(--lp-ink) !important;
+			color: var(--lp-surface) !important;
+			font-size: 16px !important;
+			line-height: 24px !important;
+			font-weight: 600;
+			transition: background-color 0.3s var(--lp-ease);
+			&:hover{
+				background-color: var(--lp-ink-soft) !important;
+			}
+			&::after{
+				display: none;
+			}
+		}
+		.et_pb_promo{
+			background-color: var(--lp-sand) !important;
+			&, p, .et_pb_module_header{
+				color: var(--lp-ink) !important;
+			}
+			p{
+				color: var(--lp-text) !important;
+			}
+		}
+		.et_pb_toggle{
+			background-color: transparent !important;
+			border-color: var(--lp-line) !important;
+		}
+		.et_pb_row{
+			background-image: none !important;
+		}
+		.et_pb_image img, .et_pb_image_wrap{
+			border-radius: 24px !important;
+		}
+		.et_pb_promo, .et_pb_toggle{
+			border-radius: 24px !important;
+		}
+		.et_pb_row, .et_pb_column, .et_pb_module{
+			box-shadow: none !important;
+		}
+	}
+	/*! purgecss end ignore */
+
+	// Service pages
+	.bg-primary{
+		background-color: var(--lp-accent) !important;
+	}
+	// Coral arrow icon files in the related services list, shown in the ink tone.
+	img[src$="arrow-right.svg"]{
+		filter: grayscale(1) brightness(0.45);
+	}
+	.lp-breadcrumb{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 12px;
+		margin-bottom: 32px;
+		color: var(--lp-muted);
+		font-size: 12px;
+		line-height: 16px;
+		a{
+			color: var(--lp-muted);
+			&:hover{
+				color: var(--lp-ink);
+			}
+			&::after{
+				content: "/";
+				margin-left: 12px;
+				color: var(--lp-line);
+			}
+		}
+		[aria-current]{
+			color: var(--lp-ink);
+		}
+	}
+	.lp-service-price{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 4px 16px;
+		margin: 0 0 32px;
+		padding: 16px 20px;
+		border: 1px solid var(--lp-line);
+		border-radius: 16px;
+		font-size: 14px;
+		line-height: 20px;
+		strong{
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-size: 28px;
+			line-height: 32px;
+			font-weight: 400;
+		}
+		a{
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+	}
+	.lp-service-cta{
+		margin-top: 48px;
+		padding: 32px;
+		border-radius: 24px;
+		background: var(--lp-sand);
+		p{
+			margin: 0;
+			font-size: 14px;
+			line-height: 20px;
+		}
+		a:not(.btn){
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+		.lp-actions{
+			margin-top: 24px;
+		}
+	}
+
+	// Sections
+	.lp-section{
+		padding: clamp(56px, 8vw, 104px) 0;
+		h2{
+			margin: 0;
+			font-size: clamp(36px, 5vw, 56px);
+			line-height: 1.02;
+		}
+		h3{
+			margin: 0;
+		}
+	}
+	.lp-band{
+		background: var(--lp-sand);
+	}
+	.lp-head{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 16px;
+		margin-bottom: 32px;
+		.lp-eyebrow{
+			margin-bottom: 12px;
+		}
+	}
+
+	.lp-hero{
+		padding: clamp(28px, 6vw, 72px) 0 clamp(48px, 7vw, 96px);
+		.lp-wrap{
+			display: grid;
+			gap: clamp(32px, 5vw, 72px);
+			align-items: center;
+		}
+		h1{
+			margin: 0;
+			font-size: clamp(46px, 8.5vw, 92px);
+			line-height: 0.98;
+			letter-spacing: -0.02em;
+		}
+	}
+	.lp-hero-text{
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+	// Small rule before the label, as in the prototype.
+	.lp-eyebrow-line{
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 24px;
+		&::before{
+			content: "";
+			flex: none;
+			width: 28px;
+			height: 1px;
+			background: var(--lp-accent);
+		}
+	}
+	.lp-lead{
+		margin: 0;
+		max-width: 30em;
+		font-size: clamp(16px, 1.6vw, 18px);
+		line-height: 1.6;
+	}
+	.lp-trust{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 28px;
+		margin: 0;
+		padding: 20px 0 0;
+		list-style: none;
+		box-shadow: 0 -1px 0 var(--lp-line);
+		color: var(--lp-ink);
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+		li{
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		a{
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			color: inherit;
+		}
+		> li > .lp-icon{
+			color: var(--lp-accent);
+			font-size: 20px;
+		}
+	}
+	.lp-hero-media{
+		position: relative;
+		width: 100%;
+		max-height: 680px;
+		aspect-ratio: 4 / 5;
+		img{
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 28px;
+			object-fit: cover;
+		}
+	}
+	.lp-chip{
+		position: absolute;
+		left: -12px;
+		bottom: 28px;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		margin: 0;
+		padding: 14px 18px;
+		border: 1px solid var(--lp-line);
+		border-radius: 18px;
+		background: var(--lp-bg);
+		box-shadow: 0 12px 32px rgba(43, 34, 29, 0.12);
+		color: var(--lp-ink);
+		font-family: var(--lp-serif);
+		font-size: 24px;
+		line-height: 28px;
+		span{
+			color: var(--lp-muted);
+			font-family: var(--#{$prefix}body-font-family);
+			font-size: 12px;
+			line-height: 16px;
+			font-weight: 600;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+		}
+	}
+
+	// Motion from the client's prototype: the hero rises in, a halo breathes behind its photo, the chip's dot
+	// pulses, a sheen crosses the hero's WhatsApp button and carets climb over the threads photo.
+	// The still state is styled here; the movement itself is in the no-preference block below.
+	.lp-hero{
+		// The halo is wider than the photo; keep it from adding a horizontal scrollbar on phones.
+		overflow-x: clip;
+		.lp-btn-wa{
+			position: relative;
+			overflow: hidden;
+			&::after{
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				width: 30%;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+				transform: translateX(-120%) skewX(-20deg);
+				pointer-events: none;
+			}
+		}
+	}
+	.lp-hero-media{
+		isolation: isolate;
+		&::before{
+			content: "";
+			position: absolute;
+			inset: -10%;
+			z-index: -1;
+			border-radius: 50%;
+			background: radial-gradient(closest-side, rgba(226, 180, 150, 0.75), rgba(235, 217, 206, 0.35) 55%, transparent 75%);
+			filter: blur(20px);
+			opacity: 0.55;
+			pointer-events: none;
+		}
+	}
+	.lp-chip span{
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		&::before{
+			content: "";
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--lp-green);
+		}
+	}
+	.lp-lift{
+		position: absolute;
+		top: 18px;
+		right: 18px;
+		z-index: 2;
+		display: flex;
+		gap: 10px;
+		padding: 12px 14px;
+		border-radius: 16px;
+		background: rgba(43, 34, 29, 0.55);
+		backdrop-filter: blur(6px);
+		pointer-events: none;
+		> span{
+			position: relative;
+			width: 14px;
+			height: 56px;
+			overflow: hidden;
+		}
+		.lp-icon{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			color: var(--lp-sand);
+			font-size: 14px;
+		}
+	}
+	@media (prefers-reduced-motion: no-preference){
+		.lp-hero-text{
+			animation: lp-hero-rise 0.7s ease both;
+		}
+		.lp-hero-media{
+			animation: lp-hero-rise 0.9s 0.1s ease both;
+			&::before{
+				animation: lp-glow 6s ease-in-out infinite;
+			}
+		}
+		.lp-chip span::before{
+			animation: lp-pulse 1.6s ease-out infinite;
+		}
+		.lp-hero .lp-btn-wa::after{
+			animation: lp-shine 3.2s ease-in-out infinite;
+		}
+		.lp-lift > span{
+			@for $i from 1 through 3{
+				&:nth-child(#{$i}) .lp-icon{
+					animation: lp-lift 2.2s #{($i - 1) * 0.35}s ease-out infinite;
+				}
+			}
+		}
+	}
+	@keyframes lp-hero-rise{
+		from{
+			opacity: 0;
+			transform: translateY(14px);
+		}
+	}
+	@keyframes lp-glow{
+		0%, 100%{
+			transform: scale(1);
+			opacity: 0.55;
+		}
+		50%{
+			transform: scale(1.12);
+			opacity: 0.9;
+		}
+	}
+	@keyframes lp-pulse{
+		0%{
+			box-shadow: 0 0 0 0 rgba(63, 125, 92, 0.5);
+		}
+		100%{
+			box-shadow: 0 0 0 10px rgba(63, 125, 92, 0);
+		}
+	}
+	@keyframes lp-shine{
+		0%{
+			transform: translateX(-120%) skewX(-20deg);
+		}
+		60%, 100%{
+			transform: translateX(320%) skewX(-20deg);
+		}
+	}
+	@keyframes lp-lift{
+		0%{
+			transform: translateY(24px);
+			opacity: 0;
+		}
+		30%{
+			opacity: 1;
+		}
+		100%{
+			transform: translateY(-36px);
+			opacity: 0;
+		}
+	}
+
+	.lp-marquee{
+		overflow: hidden;
+		padding: 18px 0;
+		border-top: 1px solid var(--lp-line);
+		border-bottom: 1px solid var(--lp-line);
+		> div{
+			display: flex;
+			width: max-content;
+			animation: lp-marquee 38s linear infinite;
+		}
+		ul{
+			display: flex;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li{
+			display: flex;
+			align-items: center;
+			gap: 28px;
+			padding-right: 28px;
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-style: italic;
+			font-size: clamp(26px, 3.4vw, 40px);
+			line-height: 1;
+			white-space: nowrap;
+			&::after{
+				content: "";
+				width: 7px;
+				height: 7px;
+				background: #C98B72;
+				transform: rotate(45deg);
+			}
+		}
+	}
+
+	.lp-cats,
+	.lp-popular{
+		display: grid;
+		gap: 14px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.lp-cats{
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+		li{
+			display: flex;
+		}
+		a{
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 36px;
+			min-height: 200px;
+			padding: 24px;
+			border: 1px solid transparent;
+			border-radius: 22px;
+			background: var(--lp-sand);
+			color: var(--lp-ink);
+			transition: border-color 0.3s var(--lp-ease), transform 0.3s var(--lp-ease);
+			&:hover{
+				border-color: var(--lp-line-strong);
+				transform: translateY(-2px);
+			}
+			&:active{
+				transform: scale(0.98);
+			}
+		}
+		.lp-eyebrow{
+			margin: 0;
+			letter-spacing: 0.12em;
+		}
+	}
+	.lp-cat-top{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 12px;
+		font-size: 20px;
+	}
+	.lp-cat-name{
+		display: block;
+		font-family: var(--lp-serif);
+		font-size: 32px;
+		line-height: 1;
+	}
+	.lp-cat-sub{
+		display: block;
+		margin-top: 8px;
+		color: var(--lp-muted);
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+	}
+
+	.lp-brands{
+		padding: clamp(40px, 6vw, 64px) 0;
+		border-bottom: 1px solid var(--lp-line);
+		background: var(--lp-sand);
+		p{
+			margin: 0 0 24px;
+			color: var(--lp-muted);
+			font-size: 12px;
+			line-height: 20px;
+			font-weight: 600;
+			letter-spacing: 0.24em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		ul{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 4px clamp(12px, 2vw, 32px);
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: clamp(84px, 10vw, 150px);
+			height: 64px;
+		}
+		img{
+			width: auto;
+			max-width: 100%;
+			object-fit: contain;
+		}
+	}
+
+	.lp-popular{
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+		a{
+			display: flex;
+			flex-direction: column;
+			gap: 18px;
+			height: 100%;
+			padding: 24px;
+			border: 1px solid var(--lp-line);
+			border-radius: 22px;
+			background: var(--lp-bg);
+			color: var(--lp-ink);
+			transition: box-shadow 0.3s var(--lp-ease), transform 0.3s var(--lp-ease);
+			&:hover{
+				box-shadow: 0 14px 36px rgba(43, 34, 29, 0.1);
+			}
+			&:active{
+				transform: scale(0.98);
+			}
+		}
+		h3{
+			font-size: 30px;
+			line-height: 1.05;
+		}
+	}
+	.lp-card-top{
+		display: flex;
+		justify-content: space-between;
+		gap: 12px;
+		color: var(--lp-muted);
+		font-size: 12px;
+		line-height: 16px;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+	.lp-card-text{
+		display: block;
+		margin-top: 8px;
+		color: var(--lp-muted);
+		font-size: 16px;
+		line-height: 24px;
+	}
+	.lp-card-foot{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 12px;
+		margin-top: auto;
+		padding-top: 16px;
+		box-shadow: 0 -1px 0 var(--lp-line);
+		strong{
+			font-size: 18px;
+			line-height: 28px;
+			font-weight: 700;
+		}
+	}
+
+	.lp-steps-title{
+		max-width: 14em;
+		margin-bottom: 36px !important;
+	}
+	.lp-steps{
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+		gap: clamp(24px, 4vw, 48px);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: lp-step;
+		li{
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			padding-top: 20px;
+			border-top: 1px solid var(--lp-ink);
+			counter-increment: lp-step;
+			&::before{
+				content: "0" counter(lp-step);
+				color: var(--lp-accent);
+				font-family: var(--lp-serif);
+				font-style: italic;
+				font-size: 40px;
+				line-height: 1;
+			}
+		}
+		h3{
+			font-family: var(--#{$prefix}body-font-family);
+			font-size: 18px;
+			line-height: 28px;
+			font-weight: 600;
+			letter-spacing: 0;
+		}
+		p{
+			margin: 0;
+			font-size: 16px;
+			line-height: 24px;
+		}
+	}
+	// Tagline reveal: main.ts wraps each word; they light up one by one as the heading crosses the viewport.
+	.lp-words span{
+		opacity: 0.3;
+		transition: opacity 0.7s var(--lp-ease);
+		&.is-in{
+			opacity: 1;
+		}
+	}
+
+	.lp-score{
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		color: var(--lp-ink);
+		strong{
+			font-family: var(--lp-serif);
+			font-size: 64px;
+			line-height: 1;
+			font-weight: 400;
+		}
+		> span{
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			color: var(--lp-muted);
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 500;
+		}
+	}
+	// Horizontal lists scroll sideways and snap to each card.
+	.lp-reviews,
+	.lp-results{
+		display: flex;
+		gap: 14px;
+		margin: 0;
+		padding: 4px 0 12px;
+		list-style: none;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+		> li{
+			flex: 0 0 min(84%, 360px);
+			scroll-snap-align: start;
+			&[hidden]{
+				display: none;
+			}
+		}
+	}
+	.lp-reviews figure{
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		height: 100%;
+		margin: 0;
+		padding: 26px;
+		border: 1px solid var(--lp-line);
+		border-radius: 22px;
+		background: var(--lp-bg);
+		blockquote{
+			margin: 0;
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-size: 22px;
+			line-height: 1.3;
+			text-wrap: pretty;
+			// The full review stays in the HTML; the card only shows whole lines of it.
+			display: -webkit-box;
+			-webkit-line-clamp: 6;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		figcaption{
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin-top: auto;
+			color: var(--lp-ink);
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 600;
+		}
+	}
+	.lp-avatar{
+		display: grid;
+		place-items: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 9999px;
+		background: var(--lp-blush);
+		color: var(--lp-accent-dark);
+		&::before{
+			content: attr(data-initial);
+		}
+	}
+
+	.lp-doctor{
+		display: grid;
+		gap: clamp(32px, 5vw, 72px);
+		align-items: center;
+		blockquote{
+			margin: 20px 0;
+			color: var(--lp-muted);
+			font-family: var(--lp-serif);
+			font-style: italic;
+			font-size: 24px;
+			line-height: 1.35;
+			text-wrap: pretty;
+		}
+		.lp-eyebrow{
+			margin-bottom: 20px;
+		}
+		.lp-link{
+			margin-top: 20px;
+			padding: 12px 0;
+		}
+	}
+	.lp-doctor-media{
+		width: 100%;
+		max-width: 500px;
+		justify-self: center;
+		img{
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+	}
+	.lp-facts{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		box-shadow: 0 1px 0 var(--lp-line);
+		color: var(--lp-ink);
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 500;
+		li{
+			display: flex;
+			gap: 12px;
+			padding: 14px 0;
+			box-shadow: 0 -1px 0 var(--lp-line);
+		}
+		.lp-icon{
+			flex: none;
+			color: var(--lp-accent);
+			font-size: 20px;
+			line-height: 24px;
+		}
+	}
+
+	.lp-dark{
+		background: var(--lp-ink);
+		color: #C9BBAE;
+		h2{
+			color: var(--lp-sand);
+			font-size: clamp(40px, 6vw, 68px);
+			line-height: 1;
+		}
+		.lp-eyebrow{
+			margin-bottom: 20px;
+			color: #D9A48E;
+		}
+		p:not(.lp-eyebrow){
+			max-width: 30em;
+			margin: 20px 0;
+			font-size: 18px;
+			line-height: 28px;
+		}
+		dl{
+			display: flex;
+			flex-wrap: wrap;
+			gap: 28px;
+			margin: 0 0 20px;
+			padding: 18px 0;
+			border-top: 1px solid var(--lp-ink-soft);
+			border-bottom: 1px solid var(--lp-ink-soft);
+		}
+		dd{
+			margin: 0 0 4px;
+			color: var(--lp-sand);
+			font-family: var(--lp-serif);
+			font-size: 30px;
+			line-height: 1;
+		}
+		dt{
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 500;
+		}
+	}
+	.lp-hilos{
+		display: grid;
+		gap: clamp(32px, 5vw, 72px);
+		align-items: center;
+	}
+	.lp-hilos-media{
+		position: relative;
+		width: 100%;
+		max-width: 600px;
+		justify-self: center;
+		// Square: the photo is a before/after pair side by side, and a 4:5 crop would cut into both halves.
+		aspect-ratio: 1;
+		img{
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 28px;
+			object-fit: cover;
+		}
+	}
+
+	.lp-tabs,
+	.lp-pills{
+		display: flex;
+		gap: 8px;
+		overflow-x: auto;
+		scrollbar-width: none;
+		button{
+			flex: none;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			min-height: 44px;
+			padding: 0 18px;
+			border: 1px solid var(--lp-line);
+			border-radius: 9999px;
+			background: transparent;
+			color: var(--lp-ink);
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 600;
+			transition: background-color 0.3s var(--lp-ease), color 0.3s var(--lp-ease), border-color 0.3s var(--lp-ease);
+			&:hover{
+				border-color: var(--lp-line-strong);
+			}
+			&[aria-pressed="true"]{
+				border-color: var(--lp-ink);
+				background: var(--lp-ink);
+				color: var(--lp-bg);
+			}
+			span{
+				opacity: 0.6;
+			}
+		}
+	}
+	.lp-results{
+		> li{
+			flex-basis: min(84%, 380px);
+		}
+		figure{
+			position: relative;
+			margin: 0;
+			// Every photo is a before/after pair side by side, so one label sits on each half.
+			&::before, &::after{
+				position: absolute;
+				top: 12px;
+				padding: 4px 12px;
+				border-radius: 9999px;
+				background: rgba(43, 34, 29, 0.7);
+				color: var(--lp-bg);
+				font-size: 12px;
+				line-height: 16px;
+				font-weight: 600;
+			}
+			&::before{
+				content: attr(data-before);
+				left: 12px;
+			}
+			&::after{
+				content: attr(data-after);
+				left: calc(50% + 12px);
+			}
+		}
+		img{
+			display: block;
+			width: 100%;
+			height: auto;
+			aspect-ratio: 1;
+			border-radius: 22px;
+			object-fit: cover;
+			// Uploads come in mixed proportions; keeping the upper third keeps the faces in the square.
+			object-position: center 30%;
+		}
+		figcaption{
+			margin-top: 12px;
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+
+	.lp-faq{
+		display: grid;
+		gap: clamp(24px, 5vw, 72px);
+		align-items: start;
+		.jss-text details{
+			border-color: var(--lp-line-strong);
+			&:first-of-type{
+				border-color: var(--lp-line-strong);
+			}
+		}
+		summary{
+			min-height: 24px;
+			cursor: pointer;
+			&::after{
+				color: var(--lp-accent);
+			}
+		}
+	}
+
+	.lp-final{
+		background: var(--lp-blush);
+		.lp-wrap{
+			display: grid;
+			gap: 28px;
+			align-items: end;
+		}
+		h2{
+			font-size: clamp(40px, 6.5vw, 76px);
+			line-height: 1;
+			letter-spacing: -0.02em;
+			em{
+				color: var(--lp-accent-dark);
+			}
+		}
+		.lp-fine{
+			color: #5A4A40;
+		}
+	}
+
+	// Contact block (map, details, form) shared by every page, and the dark footer.
+	.lp-contact{
+		padding-top: clamp(48px, 7vw, 80px);
+		padding-bottom: clamp(48px, 7vw, 80px);
+		[class*="rounded-"]{
+			border-radius: 22px !important;
+		}
+		.btn{
+			min-height: 48px;
+		}
+	}
+	.lp-footer{
+		padding: clamp(48px, 7vw, 80px) 0 clamp(28px, 4vw, 40px);
+		background: var(--lp-ink);
+		color: #C9BBAE;
+		font-size: 16px;
+		line-height: 28px;
+		p{
+			margin: 0;
+		}
+		a{
+			color: #C9BBAE;
+			&:hover{
+				color: var(--lp-sand);
+			}
+		}
+		.social-icons{
+			margin-top: 16px;
+			.row{
+				justify-content: flex-start !important;
+			}
+			.btn{
+				--#{$prefix}btn-color: #C9BBAE;
+				--#{$prefix}btn-border-color: var(--lp-ink-soft);
+				--#{$prefix}btn-hover-bg: var(--lp-sand);
+				--#{$prefix}btn-hover-color: var(--lp-ink);
+				--#{$prefix}btn-hover-border-color: var(--lp-sand);
+				border-radius: 9999px !important;
+			}
+		}
+	}
+	.lp-footer-cols{
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+		gap: 32px;
+	}
+	.lp-footer-brand{
+		margin-bottom: 8px !important;
+		color: var(--lp-sand);
+		font-family: var(--lp-serif);
+		font-size: 40px;
+		line-height: 1;
+	}
+	.lp-footer-label{
+		color: var(--lp-sand);
+		font-size: 12px;
+		line-height: 24px;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+	.lp-footer-legal{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 12px;
+		margin-top: 40px;
+		padding-top: 20px;
+		border-top: 1px solid var(--lp-ink-soft);
+		color: #9E8F83;
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+		a{
+			color: #9E8F83;
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+	}
+
+	// Catalogue (/tratamientos/)
+	.lp-catalog{
+		padding-top: clamp(28px, 5vw, 64px);
+		.lp-wrap{
+			display: flex;
+			flex-direction: column;
+			gap: 28px;
+		}
+		h1{
+			margin: 0 0 14px;
+			font-size: clamp(44px, 7vw, 80px);
+			line-height: 1;
+			letter-spacing: -0.02em;
+		}
+		h2{
+			font-size: clamp(30px, 4vw, 40px);
+			line-height: 1;
+		}
+	}
+	// Hub pages built from includes/_landings.php: the catalogue layout with text sections and price tables.
+	.lp-landing-hero{
+		display: grid;
+		gap: 32px;
+		align-items: center;
+		img{
+			display: block;
+			width: 100%;
+			height: auto;
+			aspect-ratio: 4 / 3;
+			border-radius: 24px;
+			object-fit: cover;
+		}
+		@include media-breakpoint-up(lg){
+			grid-template-columns: 1fr 1fr;
+			gap: 56px;
+		}
+	}
+	.lp-landing{
+		.lp-actions{
+			margin-top: 24px;
+		}
+		.lp-group-head h2{
+			margin: 0;
+			color: var(--lp-ink);
+		}
+	}
+	// After a page's own content, the price tables need less room above.
+	.section + .lp-landing{
+		padding-top: 0;
+	}
+	.lp-prose{
+		max-width: 44em;
+		h2{
+			margin: 0 0 14px;
+		}
+		p{
+			margin: 0 0 12px;
+		}
+		a{
+			color: var(--lp-accent);
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+	}
+	.lp-catalog-head{
+		.lp-eyebrow{
+			margin-bottom: 14px;
+		}
+		p:not(.lp-eyebrow){
+			max-width: 34em;
+			margin: 0;
+		}
+	}
+	.lp-search{
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		max-width: 520px;
+		height: 52px;
+		padding: 0 18px;
+		border: 1px solid var(--lp-line);
+		border-radius: 9999px;
+		background: var(--lp-surface);
+		color: var(--lp-muted);
+		font-size: 20px;
+		&:focus-within{
+			border-color: var(--lp-ink);
+		}
+		input{
+			flex: 1;
+			min-width: 0;
+			border: 0;
+			outline: 0;
+			background: transparent;
+			color: var(--lp-ink);
+			font-size: 16px;
+			line-height: 24px;
+			font-weight: 500;
+		}
+	}
+	.lp-group{
+		padding-top: 16px;
+		scroll-margin-top: 88px;
+		&[hidden]{
+			display: none;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li[hidden]{
+			display: none;
+		}
+		a{
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			min-height: 76px;
+			padding: 16px 4px;
+			border-bottom: 1px solid var(--lp-line);
+			color: var(--lp-ink);
+			transition: background-color 0.3s var(--lp-ease);
+			&:hover{
+				background: var(--lp-sand);
+			}
+			> span:not(.lp-icon){
+				flex: 1;
+				min-width: 0;
+			}
+			> .lp-icon{
+				color: var(--lp-accent);
+				font-size: 18px;
+			}
+			strong{
+				font-size: 16px;
+				line-height: 20px;
+				font-weight: 700;
+				text-align: right;
+			}
+		}
+	}
+	.lp-group-head{
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 12px;
+		padding-bottom: 14px;
+		border-bottom: 1px solid var(--lp-ink);
+		color: var(--lp-muted);
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+	}
+	.lp-row-name{
+		display: block;
+		font-family: var(--lp-serif);
+		font-size: clamp(21px, 2.4vw, 26px);
+		line-height: 1.1;
+	}
+	.lp-row-text{
+		display: block;
+		margin-top: 6px;
+		color: var(--lp-muted);
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+	}
+	.lp-empty{
+		margin: 0;
+		padding: 24px 0;
+		a{
+			color: var(--lp-accent);
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+	}
+	.lp-hilos-row{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 16px;
+		padding: 26px;
+		border-radius: 22px;
+		background: var(--lp-ink);
+		color: #C9BBAE;
+		font-size: 24px;
+		transition: background-color 0.3s var(--lp-ease);
+		&:hover{
+			background: #3A2E27;
+			color: #C9BBAE;
+		}
+		> span{
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 500;
+		}
+		.lp-eyebrow{
+			margin: 0;
+			color: #D9A48E;
+		}
+		.lp-row-name{
+			color: var(--lp-sand);
+			font-size: 34px;
+			line-height: 1;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce){
+		.lp-words span{
+			opacity: 1;
+		}
+		.lp-marquee > div{
+			animation: none;
+		}
+	}
+
+	@include media-breakpoint-up(lg){
+		.lp-hero .lp-wrap,
+		.lp-doctor,
+		.lp-hilos,
+		.lp-final .lp-wrap{
+			grid-template-columns: 1fr 1fr;
+		}
+		.lp-faq{
+			grid-template-columns: 1fr 1.4fr;
+		}
+	}
+
+	// ---- Phones and small tablets. Most visits and bookings come from here: booking stays within
+	// reach of the thumb on every page and nothing is narrower than a fingertip.
+	.lp-bar{
+		display: none;
+	}
+	@include media-breakpoint-down(lg){
+		.lp-bar{
+			position: fixed;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1040; // under the open menu (1045)
+			display: flex;
+			gap: 8px;
+			padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+			background: rgba(250, 247, 242, 0.95);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			box-shadow: 0 -1px 0 var(--lp-line);
+			transition: transform 0.5s var(--lp-ease);
+			&.is-hidden{
+				transform: translateY(110%);
+			}
+			.btn{
+				flex: 1;
+				min-height: 50px;
+				--#{$prefix}btn-padding-x: 12px;
+			}
+		}
+		// The bar replaces the floating WhatsApp button and must not cover the end of the page or the reCAPTCHA badge.
+		.lp-wa-float{
+			display: none;
+		}
+		.lp-footer{
+			padding-bottom: calc(96px + env(safe-area-inset-bottom));
+		}
+		.grecaptcha-badge{
+			bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+		}
+		.lp-chip{
+			left: 12px;
+			bottom: 12px;
+		}
+	}
+	@include media-breakpoint-down(md){
+		.lp-hero-media{
+			aspect-ratio: 4 / 3;
+		}
+		.lp-hero-text{
+			gap: 20px;
+		}
+		.lp-eyebrow-line{
+			margin-bottom: 16px;
+		}
+		.lp-cats{
+			grid-template-columns: 1fr 1fr;
+			a{
+				gap: 20px;
+				min-height: 148px;
+				padding: 16px;
+			}
+		}
+		.lp-cat-name{
+			font-size: 24px;
+		}
+		// Two cards per row leave no room for the arrow next to the count.
+		.lp-cat-top{
+			.lp-icon{
+				display: none;
+			}
+			.lp-eyebrow{
+				letter-spacing: 0.08em;
+			}
+		}
+		.lp-popular h3{
+			font-size: 24px;
+			line-height: 28px;
+		}
+		.lp-brands li{
+			width: 84px;
+			height: 56px;
+		}
+		// Carousels run to the edge of the screen, so the cut card shows there is more to swipe.
+		.lp-reviews,
+		.lp-results,
+		.lp-tabs,
+		.lp-pills{
+			margin-right: -20px;
+			margin-left: -20px;
+			padding-right: 20px;
+			padding-left: 20px;
+			scroll-padding: 0 20px;
+		}
+		.lp-score strong{
+			font-size: 48px;
+		}
+		.lp-contact{
+			.ratio{
+				--#{$prefix}aspect-ratio: 60%;
+				min-height: 0 !important;
+				margin-bottom: 24px !important;
+			}
+			.text-center{
+				text-align: left !important;
+			}
+			.contact-data{
+				gap: 16px !important;
+				.row{
+					flex-wrap: nowrap;
+				}
+				.col-md-auto{
+					flex: 0 0 auto;
+					width: auto;
+				}
+				a{
+					display: inline-block;
+					padding: 8px 0;
+					overflow-wrap: anywhere;
+				}
+			}
+			.btn{
+				width: 100%;
+			}
+		}
+	}
+}

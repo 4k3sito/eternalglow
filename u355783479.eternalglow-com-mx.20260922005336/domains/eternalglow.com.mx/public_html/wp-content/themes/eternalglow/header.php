@@ -3,10 +3,10 @@
 	$touch_icon = get_theme_touch_icon();
 ?>
 <!doctype html>
-<html lang="es">
+<html lang="<?php _p(eg_lang() == 'en' ? 'en' : 'es-MX'); ?>">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 		
 		<?php if($favicon->ID){ ?>
 			<link rel="shortcut icon" href="<?php _p($favicon->url); ?>" type="image/png" >
@@ -22,10 +22,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-		
-		<script src="https://kit.fontawesome.com/b86bc3371d.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400..700&display=swap" rel="stylesheet">
 
 		<?php wp_head(); ?>
 
@@ -38,7 +35,10 @@
 	?>
 	
 	<body <?php body_class($args_body); ?>>
+		<?php wp_body_open(); ?>
 		<?php scripts('after_body'); ?>
 
+		<a class="lp-skip" href="#contenido"><?php _p(eg_lang() == 'en' ? 'Skip to content' : 'Saltar al contenido'); ?></a>
+
 		<?php get_template_part('main', 'menu'); ?>
-		<main>
+		<main id="contenido">

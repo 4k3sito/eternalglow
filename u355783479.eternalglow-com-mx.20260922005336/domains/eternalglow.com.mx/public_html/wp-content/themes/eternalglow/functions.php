@@ -4,6 +4,10 @@
 	require_once(get_template_path().'/includes/_token.php');
 	require_once(get_template_path().'/includes/_vc.php');
 	require_once(get_template_path().'/includes/_ajax.php');
+	require_once(get_template_path().'/includes/_home.php');
+	require_once(get_template_path().'/includes/_treatments.php');
+	require_once(get_template_path().'/includes/_landings.php');
+	require_once(get_template_path().'/includes/_perf.php');
 
 
 	register_nav_menus(
@@ -223,6 +227,15 @@
 	}
 	
 	add_action('wp_enqueue_scripts', 'extra_scripts');
+
+	// The editorial look (cream and olive, serif display) is the whole site's look since the client approved the rollout.
+	// The styles live in assets/scss/_editorial.scss and _home.scss, scoped to body.lp-editorial.
+	function editorial_body_class($classes) {
+		$classes[] = 'lp-editorial';
+		return $classes;
+	}
+
+	add_filter('body_class', 'editorial_body_class');
 	
 	add_action('add_meta_boxes', 'extra_add_meta_boxes');
 	

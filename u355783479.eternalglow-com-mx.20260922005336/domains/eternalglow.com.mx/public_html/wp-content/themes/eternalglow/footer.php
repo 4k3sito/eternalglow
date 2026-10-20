@@ -1,66 +1,93 @@
 		</main>
 		<?php 
-    		$logo = get_theme_logo(2);
 			$texts = get_theme_texts();
 			$links = get_theme_links();
-			$contact = get_theme_contact();
+			$contact = eg_contact();
+			$social = get_theme_social();
+			$t = eg_home_strings();
+			$whatsapp = get_whatsapp_url();
 		?>
-		<footer>
-			<?php if(!is_404()){ ?>
-				<div class="container py-40 py-md-80">
-					<?php get_template_part('contact-form'); ?>
-				</div>
-			<?php } ?>
-			<div class='container'>
-				<div class='footer text-body p-40 fs-14 bg-white rounded-24 shadow-sm text-md-left text-center'>
+		<?php if(!is_404()){ ?>
+			<div class="lp-wrap lp-contact" id="contacto">
+				<?php get_template_part('contact-form'); ?>
+			</div>
+		<?php } ?>
+		<footer class="lp-footer">
+			<div class="lp-wrap">
+				<div class="lp-footer-cols">
 					<div>
-						<div class="row g-32 justify-content-between">
-							<div class="col-md-auto">
-								<div class='d-grid gap-40 text-center'>
-									<div>
-										<a href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php _p(esc_attr(get_bloginfo('name'))); ?>">
-											<img src='<?php _p($logo->url); ?>' alt='<?php _p($logo->alt); ?>' class='height-60' />
-										</a>
-									</div>
-									<div>
-										<?php get_template_part('social-icons'); ?>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-auto">
-								<?php dynamic_sidebar('footer-sidebar'); ?>
-							</div>
-							<div class="col-md-auto">
-								<?php dynamic_sidebar('footer-sidebar-2'); ?>
-							</div>
-							<div class="col-md-auto">
-								<?php dynamic_sidebar('footer-sidebar-3'); ?>
-							</div>
-						</div>
+						<p class="lp-footer-brand">Eternal Glow</p>
+						<p><?php _p(esc_html($t['footer']['tagline'])); ?></p>
+						<?php get_template_part('social-icons'); ?>
 					</div>
-					<hr class="my-40" />
-                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100">
-	                    <div class="text-md-left text-center">
-							<?php if ( is_page('tratamientos') || is_singular('service') ) { ?>
-								<?php _p($texts->copyright); ?>
-								<a href="https://mktboom.com/" target="_blank" rel="noopener noreferrer">
-									Agencia de publicidad y marketing digital
-								</a>
-							<?php } else { ?>
-								<?php _p($texts->copyright); ?> <?php _p($texts->powered_by); ?>
+					<div>
+						<p class="lp-footer-label"><?php _p(esc_html($t['footer']['visit'])); ?></p>
+						<p><?php _p(nl2br(esc_html($contact->address))); ?></p>
+					</div>
+					<div>
+						<p class="lp-footer-label"><?php _p(esc_html($t['footer']['hours'])); ?></p>
+						<p><?php _p(nl2br(esc_html($contact->schedules))); ?><br><?php _p(esc_html($contact->schedules_note)); ?></p>
+					</div>
+					<div>
+						<p class="lp-footer-label"><?php _p(esc_html($t['footer']['contact'])); ?></p>
+						<p>
+							<?php if($whatsapp){ ?>
+								<a href="<?php _p(esc_url($whatsapp)); ?>" target="_blank" rel="noopener" data-cta="footer">WhatsApp · <?php _p(esc_html($contact->phone1)); ?></a><br>
 							<?php } ?>
-	                    </div>
-	                    <div class="text-md-right text-center mt-12 mt-md-0">
-		                    <strong>Permiso de publicidad COFEPRIS:</strong> 2509152002A00185
-	                    </div>
-                    </div>
+							<a href="tel:<?php _p(esc_attr($contact->phone1_plain)); ?>"><?php _p(esc_html($contact->phone1)); ?></a><br>
+							<?php if($social->instagram){ ?>
+								<a href="<?php _p(esc_url($social->instagram)); ?>" target="_blank" rel="noopener">Instagram</a>
+							<?php } ?>
+						</p>
+					</div>
+				</div>
+				<div class="lp-footer-legal">
+					<span>
+						<?php if ( is_page('tratamientos') || is_singular('service') ) { ?>
+							<?php _p($texts->copyright); ?> Eternal Glow ·
+							<a href="https://mktboom.com/" target="_blank" rel="noopener noreferrer">Agencia de publicidad y marketing digital</a>
+						<?php } else { ?>
+							<?php _p($texts->copyright); ?> Eternal Glow · <?php _p(isset($t['footer']['credit']) ? str_replace('Sitio Web Diseñado por', $t['footer']['credit'], $texts->powered_by) : $texts->powered_by); ?>
+						<?php } ?>
+					</span>
+					<span>
+						<?php _p(esc_html($t['footer']['cofepris'])); ?>: 2509152002A00185
+						<?php if($links->privacy){ ?>
+							· <a href="<?php _p(esc_url($links->privacy)); ?>"><?php _p(esc_html($t['footer']['privacy'])); ?></a>
+						<?php } ?>
+					</span>
 				</div>
 			</div>
 		</footer> 
 		<div id='toasts' class='toasts toast-container'></div>
-		<button id='go-top' class='go-top scroll-to' data-scroll='0' aria-label='Volver arriba'>
-			<i class="fa-solid fa-chevron-up"></i>
-		</button>  
+		<?php // Booking sheet: main.ts fills it from the treatment link that was clicked (see eg_sheet_attrs()). ?>
+		<dialog class="lp-sheet" id="lp-sheet" aria-labelledby="lp-sheet-title" data-wa-text="<?php _p(esc_attr($t['sheet']['wa'])); ?>">
+			<form method="dialog"><button class="lp-sheet-close" aria-label="<?php _p(esc_attr($t['sheet']['close'])); ?>">&times;</button></form>
+			<p class="lp-eyebrow" data-sheet-cat></p>
+			<h2 id="lp-sheet-title" data-sheet-name></h2>
+			<p data-sheet-desc></p>
+			<dl data-sheet-pricebox>
+				<dt><?php _p(esc_html($t['sheet']['price'])); ?></dt>
+				<dd data-sheet-price></dd>
+			</dl>
+			<p class="lp-sheet-includes"><?php _p(eg_icon('seal-check')); ?> <?php _p(esc_html($t['sheet']['includes'])); ?></p>
+			<div class="lp-actions">
+				<?php _p(eg_cta_book('ficha')); ?>
+				<?php _p(eg_cta_whatsapp('ficha')); ?>
+			</div>
+			<p class="lp-fine"><?php _p(esc_html($t['sheet']['note'])); ?></p>
+			<a class="lp-link" data-sheet-more href="#"><?php _p(esc_html($t['sheet']['more'])); ?> <?php _p(eg_icon('arrow-right')); ?></a>
+		</dialog>
+		<?php // Phones: booking stays one thumb away on every page (hidden while another booking button is on screen, see stickyBar in main.ts). ?>
+		<div class="lp-bar" id="lp-bar">
+			<?php _p(eg_cta_book('barra', $t['cta_bar'])); ?>
+			<?php _p(eg_cta_whatsapp('barra', 'WhatsApp')); ?>
+		</div>
+		<?php if($whatsapp){ ?>
+			<a class="lp-wa-float" href="<?php _p(esc_url($whatsapp)); ?>" target="_blank" rel="noopener" aria-label="WhatsApp" data-cta="flotante">
+				<?php _p(eg_icon('whatsapp-fill')); ?>
+			</a>
+		<?php } ?>
 
 		<?php wp_footer(); ?>
 		

@@ -1,0 +1,411 @@
+// The site's look, taken from the client's design prototype: warm cream surfaces, terracotta accent,
+// Instrument Serif display type with italic accents, rounded cards and pill buttons.
+// Everything is scoped to body.lp-editorial (added on every page in functions.php).
+.lp-editorial{
+	--lp-bg: #FAF7F2;
+	--lp-surface: #FFFDFA;
+	--lp-sand: #F3EDE4;
+	--lp-blush: #EBD9CE;
+	--lp-line: #E6DDD1;
+	--lp-line-strong: #D9C6B8;
+	--lp-ink: #2B221D;
+	--lp-ink-soft: #4A3B32;
+	--lp-text: #6E625A;
+	--lp-muted: #6E625A;
+	--lp-accent: #9C5B45;
+	--lp-accent-dark: #7A4433;
+	--lp-green: #3F7D5C;
+	--lp-green-dark: #336A4D;
+	--lp-serif: "Instrument Serif", Georgia, serif;
+	--lp-ease: cubic-bezier(0.32, 0.72, 0, 1);
+
+	--#{$prefix}primary: var(--lp-accent);
+	--#{$prefix}primary-rgb: 156, 91, 69;
+	--#{$prefix}body: var(--lp-ink);
+	--#{$prefix}body-rgb: 43, 34, 29;
+	--#{$prefix}body-color: var(--lp-text);
+	--#{$prefix}body-color-rgb: 110, 98, 90;
+	--#{$prefix}body-bg: var(--lp-bg);
+	--#{$prefix}body-font-family: "Manrope", sans-serif;
+	--#{$prefix}body-font-size: 16px;
+	--#{$prefix}link-color-rgb: 43, 34, 29;
+	--#{$prefix}link-hover-color-rgb: 156, 91, 69;
+	--#{$prefix}border-radius: 16px;
+	--#{$prefix}border-color: var(--lp-line);
+
+	background-image: none;
+	accent-color: var(--lp-accent);
+
+	h1, h2, h3, h4, .h1, .h2, .h3, .h4{
+		font-family: var(--lp-serif);
+		font-weight: 400; // Instrument Serif has a single weight
+		color: var(--lp-ink);
+		letter-spacing: -0.015em;
+		text-wrap: balance;
+		em{
+			color: var(--lp-accent);
+		}
+		// The theme paints part of each heading coral; here headings are one color.
+		.text-primary{
+			color: inherit !important;
+		}
+	}
+	h1, .h1{
+		font-size: 36px;
+		line-height: 40px;
+	}
+	h2, .h2{
+		font-size: 30px;
+		line-height: 36px;
+	}
+	h3, .h3, h4, .h4{
+		font-size: 24px;
+		line-height: 32px;
+	}
+	p, li{
+		text-wrap: pretty;
+	}
+	.jss-text p{
+		max-width: 65ch;
+	}
+	// Used as a wrapper around a paragraph (WPBakery pages) or on the text element itself (home template).
+	.lp-eyebrow{
+		display: block;
+		margin-bottom: 16px;
+		&, p{
+			color: var(--lp-accent);
+			font-family: var(--#{$prefix}body-font-family);
+			font-size: 12px;
+			line-height: 16px;
+			font-weight: 600;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+		}
+	}
+	.lp-note{
+		color: var(--lp-muted);
+		font-size: 12px;
+		line-height: 16px;
+		margin-top: 24px;
+		p{
+			max-width: none;
+		}
+	}
+	// The theme's font utilities name Urbanist and Playfair, which these pages do not load.
+	.font-base{
+		font-family: var(--#{$prefix}body-font-family) !important;
+	}
+	.font-playfair{
+		font-family: var(--lp-serif) !important;
+	}
+
+	// Motion and focus. The theme turns focus rings off and animates `all` on a linear curve.
+	a:not(.btn){
+		transition: color 0.3s var(--lp-ease);
+	}
+	a, button, summary, input, select, textarea{
+		&:focus-visible{
+			outline: 2px solid var(--lp-ink);
+			outline-offset: 3px;
+		}
+	}
+	.image-hover-scale{
+		img, .img{
+			transition: transform 0.7s var(--lp-ease);
+		}
+		&:hover{
+			img, .img{
+				transform: scale(1.04);
+			}
+		}
+	}
+
+	// Surfaces: flat. Bootstrap's utilities are !important, so these have to be too.
+	.shadow-sm{
+		box-shadow: none !important;
+	}
+	.bg-white{
+		background-color: var(--lp-surface) !important;
+	}
+	.bg-primary-gradient{
+		background: var(--lp-sand);
+	}
+
+	.btn{
+		--#{$prefix}btn-border-radius: 9999px;
+		--#{$prefix}btn-padding-x: 24px;
+		--#{$prefix}btn-padding-y: 12px;
+		--#{$prefix}btn-font-size: 16px;
+		--#{$prefix}btn-line-height: 24px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		transition: background-color 0.3s var(--lp-ease), border-color 0.3s var(--lp-ease), color 0.3s var(--lp-ease), transform 0.3s var(--lp-ease);
+		&:active{
+			transform: translateY(1px);
+		}
+	}
+	.btn-primary{
+		--#{$prefix}btn-bg: var(--lp-ink);
+		--#{$prefix}btn-border-color: var(--lp-ink);
+		--#{$prefix}btn-hover-bg: var(--lp-ink-soft);
+		--#{$prefix}btn-hover-border-color: var(--lp-ink-soft);
+		--#{$prefix}btn-active-bg: var(--lp-ink-soft);
+		--#{$prefix}btn-active-border-color: var(--lp-ink-soft);
+		--#{$prefix}btn-color: var(--lp-surface);
+		--#{$prefix}btn-hover-color: var(--lp-surface);
+		--#{$prefix}btn-active-color: var(--lp-surface);
+	}
+	.btn-outline-primary{
+		--#{$prefix}btn-color: var(--lp-ink);
+		--#{$prefix}btn-border-color: var(--lp-ink);
+		--#{$prefix}btn-hover-bg: var(--lp-ink);
+		--#{$prefix}btn-hover-border-color: var(--lp-ink);
+		--#{$prefix}btn-hover-color: var(--lp-surface);
+		--#{$prefix}btn-active-bg: var(--lp-ink);
+		--#{$prefix}btn-active-border-color: var(--lp-ink);
+		--#{$prefix}btn-active-color: var(--lp-surface);
+	}
+	.jss-button-arrow .btn-primary::after{
+		content: "\2192";
+		display: inline-block;
+		margin-left: 12px;
+		transition: transform 0.3s var(--lp-ease);
+	}
+	.jss-button-arrow .btn-primary:hover::after{
+		transform: translateX(4px);
+	}
+
+	header{
+		.navbar{
+			background-color: transparent !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+		.nav-link{
+			font-size: 14px;
+		}
+		.offcanvas{
+			--#{$prefix}offcanvas-bg: var(--lp-bg);
+		}
+	}
+
+	// Page photos: rectangular crops instead of the theme's circular cut-outs.
+	.wpb-content-wrapper .jss-image img{
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		border-radius: 24px;
+		// Cut-outs (see eg_cutout_attrs()) already have their own shape: show them whole.
+		&.lp-cutout{
+			width: min(100%, 520px);
+			aspect-ratio: auto;
+			object-fit: contain;
+		}
+	}
+	// A name set as the page's headline (Nosotros).
+	.lp-display .jss-heading-tag,
+	.lp-display h1{
+		font-size: clamp(56px, 8vw, 104px);
+		line-height: 0.95;
+		letter-spacing: -0.02em;
+	}
+	// A full-width band: the row stays in the container and its background bleeds to both edges.
+	.vc_row.lp-band{
+		background: var(--lp-sand);
+		box-shadow: 0 0 0 100vmax var(--lp-sand);
+		clip-path: inset(0 -100vmax);
+	}
+
+	.jss-text ul{
+		gap: 12px;
+		text-align: left;
+		li{
+			padding: 0 0 0 32px;
+			// A short rule instead of the coral tick icon.
+			&::before{
+				background: var(--lp-accent);
+				width: 16px;
+				height: 1px;
+				top: 12px;
+				left: 0;
+				margin: 0;
+			}
+		}
+	}
+
+	// Steps: numbered columns under a hairline instead of shadowed cards with animated icons.
+	.jss-procedure{
+		counter-reset: lp-step;
+		.row > div > div{
+			padding: 24px 0 0 !important;
+			gap: 12px !important;
+			background: none !important;
+			border-top: 1px solid var(--lp-line);
+			counter-increment: lp-step;
+			align-content: start;
+			&::before{
+				content: "0" counter(lp-step);
+				font-family: var(--lp-serif);
+				font-size: 36px;
+				line-height: 40px;
+				color: var(--lp-ink);
+			}
+		}
+		.col-auto{
+			display: none;
+		}
+	}
+
+	// Before and after: every photo is a left/right pair, so the labels sit on each half.
+	.jss-patients .row > div{
+		position: relative;
+		&::before, &::after{
+			position: absolute;
+			bottom: 12px;
+			z-index: 1;
+			padding: 4px 8px;
+			background: rgba(43, 39, 33, 0.7);
+			color: var(--lp-surface);
+			font-size: 12px;
+			line-height: 16px;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			pointer-events: none;
+		}
+		&::before{
+			content: "Antes";
+			left: calc(var(--#{$prefix}gutter-x) * 0.5 + 12px);
+		}
+		&::after{
+			content: "Despu\00e9s";
+			left: calc(50% + 12px);
+		}
+	}
+
+	.jss-services{
+		// Coral line icons clash with the palette; the titles carry the cards.
+		.d-grid.gap-8 > div{
+			display: none;
+		}
+		.row > div > div{
+			padding: 32px !important;
+			align-content: start;
+		}
+	}
+
+	.jss-text details{
+		border-bottom: 1px solid var(--lp-line);
+		padding: 24px 0;
+		&:first-of-type{
+			border-top: 1px solid var(--lp-line);
+		}
+		summary{
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 24px;
+			list-style: none;
+			color: var(--lp-ink);
+			&::-webkit-details-marker{
+				display: none;
+			}
+			// Plus that turns into a cross when the item is open.
+			&::after{
+				content: "+";
+				font-family: var(--lp-serif);
+				font-size: 24px;
+				line-height: 24px;
+				transition: transform 0.5s var(--lp-ease);
+			}
+			h3{
+				font-family: var(--#{$prefix}body-font-family);
+				font-size: 16px;
+				line-height: 24px;
+				font-weight: 600;
+				letter-spacing: 0;
+			}
+		}
+		&[open] summary::after{
+			transform: rotate(45deg);
+		}
+		a{
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+	}
+
+	.form-control, .form-select{
+		background-color: var(--lp-surface);
+		border-radius: 12px;
+		border-color: var(--lp-line);
+		&:focus{
+			border-color: var(--lp-ink);
+		}
+	}
+	.form-check-input:checked,
+	.wpcf7 input[type="checkbox"]:checked{
+		background-color: var(--lp-accent);
+		border-color: var(--lp-accent);
+	}
+	// Footer column titles read as small labels, like the section eyebrows.
+	.footer{
+		h2, h4{
+			font-family: var(--#{$prefix}body-font-family);
+			font-size: 12px;
+			line-height: 16px;
+			font-weight: 600;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			color: var(--lp-muted);
+		}
+	}
+	.contact-data img{
+		// Coral icon files, shown in the ink tone.
+		filter: grayscale(1) brightness(0.45);
+	}
+
+	@media (prefers-reduced-motion: no-preference){
+		.lp-reveal{
+			opacity: 0;
+			transform: translateY(32px);
+			transition: opacity 0.8s var(--lp-ease), transform 0.8s var(--lp-ease);
+			&.is-in{
+				opacity: 1;
+				transform: none;
+			}
+		}
+	}
+
+	@include media-breakpoint-up(md){
+		h1, .h1{
+			font-size: 48px;
+			line-height: 1;
+		}
+		h2, .h2{
+			font-size: 36px;
+			line-height: 40px;
+		}
+		.wpb-content-wrapper .jss-image img{
+			aspect-ratio: 5 / 4;
+		}
+	}
+	@include media-breakpoint-up(lg){
+		h1, .h1{
+			font-size: 60px;
+		}
+		h2, .h2{
+			font-size: 48px;
+			line-height: 1;
+		}
+	}
+	@include media-breakpoint-down(md){
+		.jss-procedure .row{
+			gap: 32px;
+		}
+		.jss-patients .row > div::before{
+			left: 12px;
+		}
+	}
+}
