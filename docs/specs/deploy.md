@@ -17,6 +17,7 @@ Que llegar a `main` termine en producción con un paso de aprobación, sin una r
 - **Aprobación humana**: el environment `production` tiene Required reviewers y solo acepta la rama `main`.
 - **Respaldo antes de tocar nada** (tablas `eg_posts`, `eg_postmeta` y `eg_options`, y el tema). Se conservan los últimos 10 en el servidor.
 - **El deploy falla** si un self-check falla o si alguna URL clave no responde 200/301.
+- **Después de purgar, calienta la caché**: pide el sitemap y cada una de sus URLs, una a la vez (~1.5 min para 40 URLs). Sin esto, las primeras visitas, Googlebot incluido, esperan 1–2 s, y un sitemap frío llegó a tardar 90 s.
 - **SSH**: llave dedicada a CI y `known_hosts` fijo en un secret (sin `ssh-keyscan`, para no aceptar a ciegas la clave del servidor).
 
 ## Criterios de aceptación

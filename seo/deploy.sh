@@ -47,10 +47,28 @@ ssh "$HOST" 'cd ~/public_html || exit 1; rc=0
 	rm -rf wp-content/cache/supercache/eternalglow.com.mx || rc=1
 	exit $rc'
 
+echo "Calentando la caché..."
+# The purge leaves every page uncached: a cold page takes 1-2 s to render and a cold sitemap once took over 90 s,
+# so request the sitemaps and every URL in them now, one at a time, before Googlebot does.
+# Bounded: 5 min in total and 3 failures in a row stop it (the job has 20 min, and hammering a slow host only hurts).
+# Only https URLs on this host are fetched: the <loc> values come from the database.
+SITE=https://eternalglow.com.mx
+locs(){ curl -s --proto =https --connect-timeout 10 -m 120 "$1" | grep -o '<loc>[^<]*' | sed 's/<loc>//; s/&amp;/\&/g' | grep -E "^$SITE/" || true; }
+warmed=0; misses=0; deadline=$((SECONDS + 300))
+while IFS= read -r sm; do
+	while IFS= read -r url; do
+		if [ "$SECONDS" -ge "$deadline" ] || [ "$misses" -ge 3 ]; then break 2; fi
+		case "$url" in *.jpg|*.jpeg|*.png|*.webp|*.gif) continue ;; esac
+		if curl -sf --proto =https --connect-timeout 10 -m 30 -o /dev/null "$url"; then warmed=$((warmed + 1)); misses=0; else misses=$((misses + 1)); fi
+	done < <(locs "$sm")
+done < <(locs "$SITE/sitemap_index.xml")
+# Not fatal: the site is deployed either way, only the first visits are slower.
+if [ "$warmed" -gt 0 ]; then echo "   $warmed URLs"; else echo "   AVISO: no se pudo calentar ninguna URL; la caché queda fría"; fi
+
 echo "Verificando..."
 failed=0
 for path in / /en/ /en/botox-mexico-city/ /en/sculptra-mexico-city/ /en/fillers-mexico-city/ /en/lip-filler-mexico-city/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/; do
-	result=$(curl -s -o /dev/null -m 30 -w '%{http_code} %{redirect_url}' "https://eternalglow.com.mx$path" || true)
+	result=$(curl -s -o /dev/null -m 30 -w '%{http_code} %{redirect_url}' "$SITE$path" || true)
 	printf '%s -> %s\n' "$path" "$result"
 	case "${result%% *}" in 200|301) ;; *) failed=1 ;; esac
 done

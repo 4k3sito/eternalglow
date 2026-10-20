@@ -28,7 +28,7 @@ Por defecto el global (español para reportes, tareas y docs; inglés para códi
 | Build | `cd $THEME && npm run collect-tokens && npm run build-prod` |
 
 ## Deploy
-Receta única: `seo/deploy.sh` (respaldo → tema → scripts de contenido → purga de cachés → verificación de URLs). La usan igual GitHub Actions y la terminal. Spec: `docs/specs/deploy.md`.
+Receta única: `seo/deploy.sh` (respaldo → tema → scripts de contenido → purga de cachés → calentar la caché con las URLs del sitemap → verificación de URLs). La usan igual GitHub Actions y la terminal. Spec: `docs/specs/deploy.md`.
 
 - **Destino**: GoDaddy cPanel por SSH (alias `godaddy-eternalglow`), WordPress en `~/public_html`.
 - **Automático** (`DEPLOY_MODE=script` en GitHub): cada merge a `main` que toque el tema o `seo/deploy.sh` corre `seo/deploy.sh --theme-only`, después de que lo apruebes en el environment `production`.
