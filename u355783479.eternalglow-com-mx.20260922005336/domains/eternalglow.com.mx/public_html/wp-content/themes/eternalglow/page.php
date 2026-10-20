@@ -32,6 +32,10 @@
         if($landing){
             get_template_part('template-parts/landing', null, array('landing' => $landing));
         }
+        // Sculptra's hub is WordPress content, not a landing, but it gets the same doctor block.
+        if(is_page('sculptra-cdmx')){
+            get_template_part('template-parts/doctor', null, array('byline' => true));
+        }
     ?>
     
 <?php get_footer(); ?>

@@ -15,6 +15,15 @@ function eg_landing($slug){
 	return isset($all[$slug]) ? $all[$slug] : null;
 }
 
+// When a hub page last changed. Its prices and questions live in this file, not in the post, so a landing can carry
+// an 'updated' date for edits that never touch the post's own modified date (bump it when those change).
+function eg_page_modified(){
+	$landing = is_page() ? eg_landing(get_post()->post_name) : null;
+	// 'updated' is a calendar day in the clinic's timezone; noon keeps it on that day whatever the offset.
+	$updated = !empty($landing['updated']) ? (new DateTimeImmutable($landing['updated'].' 12:00', wp_timezone()))->getTimestamp() : 0;
+	return max((int)get_the_modified_date('U'), $updated);
+}
+
 function eg_landings(){
 	static $landings = null;
 	if($landings !== null){
@@ -58,6 +67,7 @@ function eg_landings(){
 
 	$landings = array(
 		'botox-cdmx' => array(
+			'updated' => '2026-10-17',
 			'prices' => array(
 				array('Precios de Botox', 'Toxina botulínica · MXN', $by_cat('botox')),
 			),
@@ -249,6 +259,7 @@ function eg_landings(){
 			),
 		),
 		'hilos-tensores-cdmx' => array(
+			'updated' => '2026-10-13',
 			'prices' => array(
 				array('Precio de hilos tensores', 'Precio por hilo · MXN', array(
 					eg_price_row('1 a 4 hilos', 'Precio por cada hilo', '$1,500 / hilo'),

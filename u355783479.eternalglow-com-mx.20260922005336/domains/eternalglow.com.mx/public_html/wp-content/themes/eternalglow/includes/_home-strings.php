@@ -84,6 +84,8 @@ return array(
 			'role' => 'médico estético',
 			'quote' => 'Medicina estética con criterio médico.',
 			'link' => 'Conoce al Dr. Ocampo',
+			'care' => 'Atención médica',
+			'updated' => 'Actualizado el',
 			'facts' => array(
 				array('graduation-cap', 'Médico cirujano, Universidad La Salle'),
 				array('certificate', 'Especialidad en medicina estética, nutrición y antienvejecimiento, Universidad de Madrid'),
@@ -187,6 +189,8 @@ return array(
 			'role' => 'aesthetic physician',
 			'quote' => 'Aesthetic medicine with medical judgment.',
 			'link' => 'Meet Dr. Ocampo',
+			'care' => 'Medical care',
+			'updated' => 'Updated on',
 			'facts' => array(
 				array('graduation-cap', 'Medical degree, Universidad La Salle'),
 				array('certificate', 'Specialty in aesthetic medicine, nutrition and antiaging, Universidad de Madrid'),

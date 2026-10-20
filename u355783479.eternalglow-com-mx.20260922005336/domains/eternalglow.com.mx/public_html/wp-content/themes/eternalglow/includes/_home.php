@@ -216,6 +216,21 @@ function eg_clinic_schema(){
 	);
 }
 
+function eg_physician_schema(){
+	return array(
+		// Physician alone is an organization type in schema.org; Person carries alumniOf and jobTitle.
+		'@type' => array('Person', 'Physician'),
+		'@id' => home_url('/#dr-bruno-ocampo'),
+		'name' => 'Dr. Bruno Ocampo',
+		'jobTitle' => 'Médico estético',
+		'knowsAbout' => 'Medicina estética',
+		'url' => home_url('/nosotros/'),
+		'image' => get_images_url('dr-bruno-ocampo.webp'),
+		'worksFor' => array('@id' => home_url('/#clinic')),
+		'alumniOf' => 'Universidad La Salle',
+	);
+}
+
 function eg_breadcrumb_schema($trail){
 	$items = array();
 	foreach($trail as $i => $crumb){
@@ -234,15 +249,7 @@ function eg_schema(){
 	if(is_front_page() || is_page('en')){
 		$t = eg_home_strings();
 		$graph[] = array('@type' => 'WebSite', '@id' => home_url('/#website'), 'url' => home_url('/'), 'name' => 'Eternal Glow', 'inLanguage' => eg_lang() == 'en' ? 'en' : 'es-MX', 'publisher' => $clinic);
-		$graph[] = array(
-			'@type' => 'Physician',
-			'@id' => home_url('/#dr-bruno-ocampo'),
-			'name' => 'Dr. Bruno Ocampo',
-			'medicalSpecialty' => 'Medicina estética',
-			'url' => home_url('/nosotros/'),
-			'worksFor' => $clinic,
-			'alumniOf' => 'Universidad La Salle',
-		);
+		$graph[] = eg_physician_schema();
 		$faq = array();
 		foreach($t['faq'] as $item){
 			$faq[] = array('@type' => 'Question', 'name' => $item[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => wp_strip_all_tags($item[1])));
@@ -252,6 +259,11 @@ function eg_schema(){
 		}
 	}
 	$landing = is_page() ? eg_landing(get_post()->post_name) : null;
+	// Hub pages show the doctor block (template-parts/doctor.php), so the graph names him and dates the page.
+	if($landing || is_page('sculptra-cdmx')){
+		$graph[] = eg_physician_schema();
+		$graph[] = array('@type' => 'WebPage', '@id' => get_permalink().'#webpage', 'url' => get_permalink(), 'name' => get_the_title(), 'inLanguage' => eg_lang() == 'en' ? 'en' : 'es-MX', 'dateModified' => wp_date('c', eg_page_modified()), 'about' => $clinic);
+	}
 	if($landing && !in_array('FAQPage', $saswp_types, true)){
 		$faq = array();
 		foreach($landing['faq'] as $item){
