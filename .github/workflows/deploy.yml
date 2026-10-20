@@ -9,8 +9,9 @@ name: Deploy
 #                                                          corre los seo/*.php de contenido
 # Los scripts de contenido nunca corren solos: reescriben post_content y pisarian lo editado en wp-admin.
 #
-# CHECKPOINT: el job usa el environment "production". Crealo ANTES de activar DEPLOY_MODE, con
-# "Required reviewers" (tu usuario) y rama permitida main; si no existe, GitHub lo crea sin reviewers.
+# CHECKPOINT: el job usa el environment "production", que sólo restringe la rama a main (sin
+# Required reviewers): la aprobación es el "sí" al merge (CLAUDE.md > Checkpoints). Si no existe,
+# GitHub lo crea solo, sin restricción de rama: créalo antes de activar DEPLOY_MODE.
 #
 # Secrets:
 #   DEPLOY_HOST         IP o host SSH (ver HostName de godaddy-eternalglow en tu ~/.ssh/config)

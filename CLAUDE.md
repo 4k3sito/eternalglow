@@ -31,7 +31,7 @@ Por defecto el global (español para reportes, tareas y docs; inglés para códi
 Receta única: `seo/deploy.sh` (respaldo → tema → scripts de contenido → purga de cachés → calentar la caché con las URLs del sitemap → verificación de URLs). La usan igual GitHub Actions y la terminal. Spec: `docs/specs/deploy.md`.
 
 - **Destino**: GoDaddy cPanel por SSH (alias `godaddy-eternalglow`), WordPress en `~/public_html`.
-- **Automático** (`DEPLOY_MODE=script` en GitHub): cada merge a `main` que toque el tema o `seo/deploy.sh` corre `seo/deploy.sh --theme-only`, después de que lo apruebes en el environment `production`.
+- **Automático** (`DEPLOY_MODE=script` en GitHub): cada merge a `main` que toque el tema o `seo/deploy.sh` corre `seo/deploy.sh --theme-only`. Sin aprobación en GitHub: el environment `production` sólo restringe la rama; la aprobación es el "sí" al merge.
 - **Contenido** (`seo/*.php`): nunca es automático, porque reescribe `post_content` y pisa lo editado en wp-admin. Se lanza en Actions > Deploy > Run workflow con la casilla `run_content_scripts`, o a mano con `bash seo/deploy.sh`.
 - **Respaldo**: automático en el paso 0 a `~/backups-deploy/<timestamp>-deploy/` (`db.sql` con `eg_posts`, `eg_postmeta` y `eg_options`, más `theme.tgz`, con permisos 600). Se conservan los últimos 10: si reintentas muchas veces sobre un estado roto, el último respaldo bueno puede salir de la lista.
 - **Rollback**: primero ubica el respaldo con `ssh godaddy-eternalglow 'ls -1t ~/backups-deploy'` y pon su nombre en `B`.
@@ -39,11 +39,38 @@ Receta única: `seo/deploy.sh` (respaldo → tema → scripts de contenido → p
   - Tema y base: solo si corrieron los scripts de contenido. **Borra todo lo editado en wp-admin desde el respaldo**, incluidas las opciones de plugins. Antes del comando anterior: `ssh godaddy-eternalglow 'B=20261020-120000-deploy; cd ~/public_html && wp db import ~/backups-deploy/$B/db.sql'`
 - **Falla el deploy** si un script de contenido falla su self-check o si alguna URL de la verificación no responde 200/301.
 
-### Flujo en el pipeline (`/ship`)
-1. PR → CI verde → revisión → tu "sí" → merge a `main`.
-2. Se dispara el workflow Deploy, que espera tu aprobación en GitHub (checkpoint 3). Apruebas y queda en verde.
-3. Si el cambio es de contenido: Run workflow con `run_content_scripts`.
-4. Tarea de Notion → Hecha / Deploy con el link del run. Si el deploy falla → Bloqueada y rollback.
+### Checkpoints (reemplazan los 4 globales en este repo)
+
+Dos aprobaciones por cambio, no seis. Aquí **el merge a `main` es el deploy del tema**:
+
+1. **Ship** — un solo "sí" cubre commit, push, PR y esperar CI + revisión del bot. Si
+   algo falla, se para y se avisa; si pasa, queda listo para mergear sin más preguntas.
+2. **Deploy** — un solo "sí" = `--squash` merge a `main`. El workflow Deploy corre solo
+   (`--theme-only`); se vigila hasta verde y la tarea de Notion pasa a Hecha / Deploy con
+   el link del run. Si falla → Bloqueada y rollback.
+
+Siguen pidiendo confirmación aparte, siempre: **los scripts de contenido**
+(`run_content_scripts` o `bash seo/deploy.sh`, porque reescriben `post_content`),
+cualquier rollback de base, `--force`, y borrar archivos o datos. Cambios sólo de docs o
+de Notion no necesitan deploy (no tocan el tema; el workflow no corre). El subagente
+`reviewer` local no corre antes de cada ship: lo cubre el bot de revisión del PR.
+
+### Uso de tokens
+
+- **Nunca buscar en todo el repo**: es el respaldo del hosting (~1 GB, ~19 mil archivos,
+  core y plugins de WordPress). `grep`/`find` sólo dentro de `$THEME`, `seo/` y
+  `local-env/`.
+- **Leer por partes.** `grep -n` para ubicar y `sed -n 'a,bp'` para leer; nunca abrir
+  `*.sql`, `dist/` ni CSS/JS compilados.
+- **Notion directo.** Mover una tarea (estado, notas, link del run) se hace con las
+  herramientas de Notion sin subagente; `pm` sólo para cargas en bloque o reportes
+  (cada `pm` ≈150k tokens).
+- **Sin subagentes por defecto** (`Explore`, `general-purpose`) para lo que resuelve un `grep`.
+- **Salidas cortas.** `git … -q`, `| tail`, `--jq` en `gh api`; logs de CI y de
+  `deploy.sh` sólo con `grep` de errores. `gh pr checks --watch` / `gh run watch` en vez
+  de bucles de espera.
+- **No releer** un archivo recién editado ni repetir comandos ya verificados.
+- **Respuestas cortas** al usuario: resultado y siguiente paso, sin repetir el plan.
 
 ## Notion
 - **Base de tareas**: https://app.notion.com/p/d9f8b1aad67b4d4b8e1a3c331a494cd0
