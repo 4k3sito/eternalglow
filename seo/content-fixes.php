@@ -6,6 +6,9 @@
 //   which are not on the clinic's price list, and pointed to /tratamientos/ anchors that no longer exist.
 // The steps and cards live URL-encoded JSON in the `texts` attribute of [jss-procedure] and [jss-services]
 // (see the theme's includes/jss-templates), so plain text search in the database does not find them.
+// - 2026-10-20 audit, /botox-cdmx/: the intro promised guaranteed results, the onset was given as both 48-72 h and
+//   3-7 days, and two template sections ("Belleza natural…", "Nuestros Servicios") sat between the copy and the prices.
+//   The new wording was approved by the user on 2026-10-20.
 // Uses $wpdb->update, not wp_update_post: WP-CLI runs without a user and kses would strip the shortcodes.
 
 global $wpdb;
@@ -15,7 +18,7 @@ $procedures = array(
     'botox-cdmx' => array(
         array('Valoración', 'El médico revisa tu expresión en reposo y en movimiento, tus antecedentes y lo que quieres suavizar. Define las zonas y las unidades necesarias para un resultado natural.'),
         array('Aplicación', 'Se aplican microinyecciones con aguja muy fina en los músculos elegidos. La sesión dura de 10 a 20 minutos y puedes volver a tus actividades el mismo día.'),
-        array('Post-tratamiento', 'No te acuestes ni presiones o masajees la zona durante 4 horas, y evita ejercicio intenso, sauna y calor durante 24 horas. El efecto aparece entre 3 y 7 días y es completo a los 14.'),
+        array('Post-tratamiento', 'No te acuestes ni presiones o masajees la zona durante 4 horas, y evita ejercicio intenso, sauna y calor durante 24 horas. Los primeros cambios se notan entre 48 y 72 horas y el efecto es completo a los 14 días.'),
     ),
     'hilos-tensores-cdmx' => array(
         array('Valoración', 'Analizamos el grado de flacidez y las zonas que necesitan elevación. Diseñamos un plan personalizado según la estructura facial y el resultado que deseas lograr.'),
@@ -30,7 +33,18 @@ $services = array(
     array('Bioestimuladores', 'Sculptra, Radiesse y Rejuran estimulan tu propio colágeno para mejorar la firmeza y la calidad de la piel de forma gradual.', 'bio'),
     array('Piel y aparatología', 'HIFU, Hollywood Peel, microneedling, peeling químico y carboxiterapia para reafirmar y mejorar textura y luminosidad.', 'piel'),
 );
-$service_hubs = array('botox-cdmx', 'sculptra-cdmx', 'hilos-tensores-cdmx');
+$service_hubs = array('sculptra-cdmx', 'hilos-tensores-cdmx');
+
+// Botox hub copy: exact phrases replaced in place (str_replace is a no-op once applied, so the script stays rerunnable).
+$botox_copy = array(
+    'contamos con especialistas certificados que garantizan resultados seguros y naturales.' =>
+        'lo aplica el Dr. Bruno Ocampo, médico estético, después de una valoración. Cuesta desde $165 MXN por unidad: Baby Botox (30 unidades) $4,499 y Full Face (60 unidades) $8,499. El resultado varía en cada paciente.',
+    'sus efectos comienzan a notarse entre 48 a 72 horas después, con resultados visibles por hasta 5 meses.' =>
+        'los primeros cambios se notan entre 48 y 72 horas después, el efecto completo se ve a los 14 días y dura de 3 a 5 meses.',
+    'Resultados visibles a partir de las 48 a 72 horas' => 'Primeros cambios entre 48 y 72 horas, efecto completo a los 14 días',
+);
+// Whole outer [vc_row] sections dropped from the Botox hub, found by their heading. [vc_row_inner] does not end the match.
+$botox_drop = array('Belleza natural para cada tipo de piel', 'Nuestros {{Servicios}}');
 
 // WPBakery stores the attribute as rawurlencode(json); json_decode(urldecode()) in the templates reads it back.
 function eg_encode_texts(array $items): string {
@@ -72,6 +86,16 @@ foreach (array_unique(array_merge(array_keys($procedures), $service_hubs)) as $s
         }, $slug);
     }
 
+    if ($slug === 'botox-cdmx') {
+        $content = str_replace(array_keys($botox_copy), array_values($botox_copy), $content);
+        foreach ($botox_drop as $heading) {
+            // The tempered part refuses to cross any [vc_row or [/vc_row, so the match never spans two rows.
+            $content = preg_replace('/\[vc_row(?:\s[^\]]*)?\](?:(?!\[\/?vc_row[\s\]]).)*?' . preg_quote($heading, '/') . '.*?\[\/vc_row\]/s', '', $content, 1);
+            // preg_replace returns null on a PCRE failure: writing that would empty the hub.
+            if ($content === null) { echo "ERROR: regex botox-cdmx: " . preg_last_error_msg() . "\n"; exit(1); }
+        }
+    }
+
     if ($content === $post->post_content) continue;
     $wpdb->update($wpdb->posts, array('post_content' => $content), array('ID' => $post->ID));
     clean_post_cache($post->ID);
@@ -92,6 +116,14 @@ foreach (array_keys($procedures) as $slug) {
     if (stripos(eg_texts_of($slug, 'jss-procedure'), 'tramiento"') !== false) { echo "ERROR: $slug todavía dice 'Post-tramiento'\n"; exit(1); }
 }
 if (stripos(eg_texts_of('botox-cdmx', 'jss-procedure'), 'flacidez') !== false) { echo "ERROR: botox-cdmx todavía habla de flacidez\n"; exit(1); }
+$botox = get_page_by_path('botox-cdmx')->post_content;
+foreach (array('garantizan', 'hasta 5 meses', 'entre 3 y 7', 'Belleza natural para cada tipo de piel', 'Nuestros {{Servicios}}') as $bad) {
+    if (stripos($botox . eg_texts_of('botox-cdmx', 'jss-procedure'), $bad) !== false) { echo "ERROR: botox-cdmx todavía dice '$bad'\n"; exit(1); }
+}
+foreach (array('Dr. Bruno Ocampo', 'a los 14 días', 'Primeros cambios entre 48 y 72 horas', '[jss-procedure', 'Pacientes {{satisfechos}}') as $good) {
+    if (strpos($botox, $good) === false) { echo "ERROR: botox-cdmx perdió '$good'\n"; exit(1); }
+}
+if (preg_match_all('/\[vc_row[\s\]]/', $botox) !== substr_count($botox, '[/vc_row]')) { echo "ERROR: botox-cdmx quedó con filas sin cerrar\n"; exit(1); }
 
 wp_cache_flush();
 if (function_exists('rocket_clean_domain')) rocket_clean_domain();

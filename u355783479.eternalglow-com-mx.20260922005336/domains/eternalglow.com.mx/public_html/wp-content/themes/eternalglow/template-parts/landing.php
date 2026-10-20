@@ -65,6 +65,19 @@
 	</section>
 <?php } ?>
 
+<?php if(!empty($landing['risks'])){ ?>
+	<section class="lp-section" id="<?php _p(eg_lang() == 'en' ? 'risks' : 'riesgos'); ?>" aria-labelledby="risks-title">
+		<div class="lp-wrap">
+			<div class="lp-prose">
+				<h2 id="risks-title"><?php _p(esc_html($landing['risks'][0])); ?></h2>
+				<?php foreach($landing['risks'][1] as $paragraph){ ?>
+					<p><?php _p(wp_kses($paragraph, $links + array('strong' => array()))); ?></p>
+				<?php } ?>
+			</div>
+		</div>
+	</section>
+<?php } ?>
+
 <?php get_template_part('template-parts/doctor', null, array('byline' => true)); ?>
 
 <section class="lp-section lp-band" id="faq" aria-labelledby="faq-title">

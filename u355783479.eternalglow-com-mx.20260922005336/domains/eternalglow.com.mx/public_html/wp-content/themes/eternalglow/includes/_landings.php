@@ -67,15 +67,22 @@ function eg_landings(){
 
 	$landings = array(
 		'botox-cdmx' => array(
-			'updated' => '2026-10-17',
+			'updated' => '2026-10-20',
 			'prices' => array(
 				array('Precios de Botox', 'Toxina botulínica · MXN', $by_cat('botox')),
 			),
+			// Approved by the user on 2026-10-20. Same shape as 'sections': a title and paragraphs (links and <strong> allowed).
+			'risks' => array('Riesgos y contraindicaciones del Botox', array(
+				'Bien aplicado por un médico, los efectos secundarios suelen ser leves y temporales, pero no es para todos.',
+				'<strong>No se recomienda si:</strong> estás embarazada o en lactancia; tienes una enfermedad neuromuscular (como miastenia gravis); hay infección o inflamación en la zona; tuviste una reacción alérgica a la toxina botulínica.',
+				'<strong>Efectos posibles:</strong> enrojecimiento, un moretón pequeño o dolor de cabeza leve los primeros días. Con poca frecuencia baja un poco el párpado o la ceja, de forma temporal.',
+				'Avisa en tu valoración si tomas anticoagulantes o antibióticos aminoglucósidos.',
+			)),
 			'faq_title' => 'Preguntas frecuentes sobre Botox',
 			'faq' => array(
 				array('¿Cuánto cuesta el Botox en CDMX?', 'En Eternal Glow el Botox cuesta $165 MXN por unidad. El Baby Botox (30 unidades) cuesta $4,499 y el Full Face (60 unidades) $8,499. Por zona: entrecejo $1,750, patas de gallo $2,150 y frente $2,750.'),
 				array('¿Cuántas unidades de Botox necesito?', 'Depende de la zona y de la fuerza de tus músculos, por eso se define en la valoración médica. Como referencia, el Baby Botox usa 30 unidades y el Full Face 60.'),
-				array('¿Cuándo se ven los resultados del Botox?', 'Los resultados comienzan a notarse entre 48 y 72 horas después de la aplicación.'),
+				array('¿Cuándo se ven los resultados del Botox?', 'Los primeros cambios se notan entre 48 y 72 horas después de la aplicación, y el efecto completo, a los 14 días.'),
 				array('¿Cuánto dura el efecto del Botox?', 'El efecto dura de 3 a 5 meses. Varía según la zona, la dosis y tu metabolismo.'),
 				array('¿El Baby Botox incluye retoque?', 'Sí. El protocolo de la clínica contempla un retoque de Baby Botox a las 2 semanas. El número de unidades y la indicación dependen de tu valoración.'),
 				array('¿Hay tiempo de recuperación?', 'No. Es un procedimiento rápido y puedes retomar tus actividades el mismo día. En la valoración te explicamos los cuidados posteriores.'),
@@ -84,6 +91,7 @@ function eg_landings(){
 		),
 		// English version of /botox-cdmx/ (child of /en/, so eg_lang() is 'en'). Same facts and prices as the Spanish hub.
 		'botox-mexico-city' => array(
+			'updated' => '2026-10-20',
 			'image' => array('2026/03/botox-para-lineas-de-expresion-cdmx.png', 'Botox treatment for expression lines at Eternal Glow, Mexico City'),
 			'hero' => array(
 				'Botulinum toxin · Roma Norte, Mexico City',
@@ -93,7 +101,7 @@ function eg_landings(){
 			'sections' => array(
 				array('What is Botox?', array(
 					'Botox (botulinum toxin) temporarily relaxes the muscles that cause expression lines, mainly on the forehead, between the brows and around the eyes. It is applied with micro injections.',
-					'Results start to show 48 to 72 hours after the treatment and last 3 to 5 months. It is quick and you can go back to your plans the same day.',
+					'The first changes show 48 to 72 hours after the treatment, the full effect at 14 days, and it lasts 3 to 5 months. It is quick and you can go back to your plans the same day.',
 				)),
 				array('How does the visit work?', array(
 					'Every treatment starts with a medical consultation: the doctor looks at your face, listens to what you want and decides with you the areas and the number of units.',
@@ -120,11 +128,17 @@ function eg_landings(){
 					'botox-dao' => array('DAO botox (downturned mouth corners)', 'Relaxes the muscle that pulls the corners of the mouth down.'),
 				))),
 			),
+			'risks' => array('Botox risks and contraindications', array(
+				'When a physician applies it, side effects are usually mild and temporary, but it is not for everyone.',
+				'<strong>It is not recommended if:</strong> you are pregnant or breastfeeding; you have a neuromuscular disease (such as myasthenia gravis); there is an infection or inflammation in the area; you have had an allergic reaction to botulinum toxin.',
+				'<strong>Possible effects:</strong> redness, a small bruise or a mild headache in the first days. Less often the eyelid or the brow drops slightly, temporarily.',
+				'Tell the doctor at your consultation if you take anticoagulants or aminoglycoside antibiotics.',
+			)),
 			'faq_title' => 'Botox questions',
 			'faq' => array(
 				array('How much does Botox cost in Mexico City?', 'At Eternal Glow Botox costs $165 MXN per unit. Baby Botox (30 units) is $4,499 MXN and Full Face (60 units) is $8,499 MXN. By area: frown lines $1,750, crow’s feet $2,150 and forehead $2,750 MXN.'),
 				array('How many units of Botox do I need?', 'It depends on the area and the strength of your muscles, so the doctor decides it in your consultation. As a reference, Baby Botox uses 30 units and Full Face 60.'),
-				array('When will I see the results?', 'Results start to show 48 to 72 hours after the treatment.'),
+				array('When will I see the results?', 'The first changes show 48 to 72 hours after the treatment, and the full effect at 14 days.'),
 				array('How long does Botox last?', 'The effect lasts 3 to 5 months. It varies with the area, the dose and your metabolism.'),
 				array('Does Baby Botox include a touch up?', 'Yes. The clinic’s protocol includes a Baby Botox touch up after 2 weeks. The number of units depends on your consultation.'),
 				array('Is there any downtime?', 'No. It is a quick procedure and you can go back to your plans the same day. We explain the aftercare in your consultation.'),
