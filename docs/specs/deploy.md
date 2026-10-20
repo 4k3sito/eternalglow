@@ -1,6 +1,6 @@
 # Deploy en el pipeline
 
-- **Estado**: implementado (falta configurar GitHub y hacer el primer deploy real)
+- **Estado**: implementado; primer deploy `--theme-only` OK el 2026-10-20
 - **Fecha**: 2026-10-20
 - **Tareas en Notion**: https://app.notion.com/p/d9f8b1aad67b4d4b8e1a3c331a494cd0
 
@@ -20,16 +20,16 @@ Que llegar a `main` termine en producción con un paso de aprobación, sin una r
 - **SSH**: llave dedicada a CI y `known_hosts` fijo en un secret (sin `ssh-keyscan`, para no aceptar a ciegas la clave del servidor).
 
 ## Criterios de aceptación
-- [ ] Con `DEPLOY_MODE` vacío, el workflow se salta.
+- [x] Con `DEPLOY_MODE` vacío, el workflow se salta.
 - [ ] Un push a `main` que toca el tema espera aprobación y luego corre `--theme-only` en verde.
 - [ ] Run workflow con `run_content_scripts` corre los 7 scripts en orden.
-- [ ] Existe `~/backups-deploy/<timestamp>-deploy/` con `db.sql` (eg_posts, eg_postmeta, eg_options) y `theme.tgz` después de cada deploy.
-- [ ] Un argumento distinto de `--theme-only` aborta sin tocar nada.
+- [x] Existe `~/backups-deploy/<timestamp>-deploy/` con `db.sql` (eg_posts, eg_postmeta, eg_options) y `theme.tgz` después de cada deploy.
+- [x] Un argumento distinto de `--theme-only` aborta sin tocar nada.
 - [ ] Una URL caída hace fallar el job.
 
 ## Riesgos y dudas abiertas
 - GoDaddy podría limitar SSH desde las IPs de GitHub. Si el primer deploy no conecta, revisar cPanel > SSH Access.
-- El respaldo crece unas decenas de MB por deploy. Con 10 copias debería bastar, pero no está medido.
+- Cada respaldo ocupa unos 11 MB (7.5 MB de base y 3 MB de tema), así que 10 copias son unos 110 MB.
 - El CI compila el tema pero no comprueba que el `dist/` versionado esté al día: se despliega el `dist/` del commit.
 - El tema se sube sin `--delete` (hay que conservar los `app.*.css/js` viejos), así que un archivo borrado del repo sigue en el servidor. El rollback de tema sí aparta la carpeta completa.
 - Los hooks de Rank Math que disparan los scripts pueden escribir en tablas `eg_rank_math_*`, que el respaldo no incluye.
