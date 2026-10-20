@@ -57,7 +57,7 @@ locs(){ curl -s --proto =https --connect-timeout 10 -m 120 "$1" | grep -o '<loc>
 warmed=0; misses=0; deadline=$((SECONDS + 300))
 while IFS= read -r sm; do
 	while IFS= read -r url; do
-		[ "$SECONDS" -lt "$deadline" ] && [ "$misses" -lt 3 ] || break 2
+		if [ "$SECONDS" -ge "$deadline" ] || [ "$misses" -ge 3 ]; then break 2; fi
 		case "$url" in *.jpg|*.jpeg|*.png|*.webp|*.gif) continue ;; esac
 		if curl -sf --proto =https --connect-timeout 10 -m 30 -o /dev/null "$url"; then warmed=$((warmed + 1)); misses=0; else misses=$((misses + 1)); fi
 	done < <(locs "$sm")
