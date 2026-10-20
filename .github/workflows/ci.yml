@@ -34,3 +34,7 @@ jobs:
       # ubuntu-24.04 fijo: trae PHP 8.3, igual que produccion (ubuntu-latest pasa a 26).
       - name: PHP - lint
         run: find seo "$THEME" -name '*.php' -not -path '*/node_modules/*' -print0 | xargs -0 -r -n1 php -l
+
+      # shellcheck viene preinstalado en ubuntu-24.04.
+      - name: Shell - lint
+        run: bash -n seo/deploy.sh && shellcheck seo/deploy.sh

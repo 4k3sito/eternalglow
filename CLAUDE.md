@@ -15,7 +15,6 @@ Por defecto el global (español para reportes, tareas y docs; inglés para códi
 - Contenido SEO como scripts `seo/*.php` que se corren con `wp eval-file` (escriben con `$wpdb`).
 - Scripts Python en `seo/` para GSC, GA4, GTM y Google Business (`google_oauth.py`, credenciales en `seo/.secrets/` y `.env`).
 - Local: Docker (`eg-db` mariadb en :3307, `eg-web` en :8080).
-- Ojo: a 2026-10-20 `seo/deploy.sh`, `google_oauth.py` y casi todos los `seo/*.php` solo existen en la rama `rediseno-editorial`; llegan a `main` con su merge.
 
 ## Comandos
 `$THEME` = `u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow`
@@ -24,16 +23,27 @@ Por defecto el global (español para reportes, tareas y docs; inglés para códi
 |---|---|
 | Instalar | `cd $THEME && npm ci` |
 | Desarrollo | `docker start eg-db eg-web` → http://localhost:8080 · `cd $THEME && npm run watch` |
-| Lint | `php -l` sobre `seo/` y el tema (lo corre CI); no hay linter de JS/SCSS |
+| Lint | `php -l` sobre `seo/` y el tema, `shellcheck seo/deploy.sh` (lo corre CI); no hay linter de JS/SCSS |
 | Tests | TODO (no hay tests; los `seo/*.php` tienen self-checks que salen con 1 si fallan) |
 | Build | `cd $THEME && npm run collect-tokens && npm run build-prod` |
 
 ## Deploy
-- **Modo**: manual con `bash seo/deploy.sh` (tar por SSH a `godaddy-eternalglow` + WP-CLI + purga de cachés). En GitHub `DEPLOY_MODE` = `disabled` hasta decidir; si se activa, `rsync` (ver `.github/workflows/deploy.yml`), que solo sube el tema.
-- **Destino**: GoDaddy cPanel, `~/public_html` (WordPress), tema en `~/public_html/wp-content/themes/eternalglow`.
-- **Respaldo (manual, antes de cada deploy; `deploy.sh` no lo hace)**: `ssh godaddy-eternalglow 'd=~/backups-deploy/$(date +%Y%m%d-%H%M%S) && mkdir -p $d && cd ~/public_html && wp db export --tables=eg_posts,eg_postmeta $d/db.sql && tar -czf $d/theme.tgz -C wp-content/themes eternalglow'`
-- **Rollback**: restaurar desde ese `~/backups-deploy/<timestamp>/` (`wp db import` + untar del tema) y purgar cachés.
-- Mientras `DEPLOY_MODE` no sea `rsync`, `deploy.yml` no hace nada; el deploy es `bash seo/deploy.sh` desde la raíz del repo.
+Receta única: `seo/deploy.sh` (respaldo → tema → scripts de contenido → purga de cachés → verificación de URLs). La usan igual GitHub Actions y la terminal. Spec: `docs/specs/deploy.md`.
+
+- **Destino**: GoDaddy cPanel por SSH (alias `godaddy-eternalglow`), WordPress en `~/public_html`.
+- **Automático** (`DEPLOY_MODE=script` en GitHub): cada merge a `main` que toque el tema o `seo/deploy.sh` corre `seo/deploy.sh --theme-only`, después de que lo apruebes en el environment `production`.
+- **Contenido** (`seo/*.php`): nunca es automático, porque reescribe `post_content` y pisa lo editado en wp-admin. Se lanza en Actions > Deploy > Run workflow con la casilla `run_content_scripts`, o a mano con `bash seo/deploy.sh`.
+- **Respaldo**: automático en el paso 0 a `~/backups-deploy/<timestamp>-deploy/` (`db.sql` con `eg_posts`, `eg_postmeta` y `eg_options`, más `theme.tgz`, con permisos 600). Se conservan los últimos 10: si reintentas muchas veces sobre un estado roto, el último respaldo bueno puede salir de la lista.
+- **Rollback**: primero ubica el respaldo con `ssh godaddy-eternalglow 'ls -1t ~/backups-deploy'` y pon su nombre en `B`.
+  - Solo tema (el caso normal, sirve tras `--theme-only`). Aparta el tema actual para que no queden plantillas nuevas: `ssh godaddy-eternalglow 'B=20261020-120000-deploy; cd ~/public_html/wp-content/themes && mv eternalglow eternalglow.bad-$(date +%s) && tar -xzf ~/backups-deploy/$B/theme.tgz && cd ~/public_html && wp cache flush; rm -rf wp-content/cache/supercache/eternalglow.com.mx'`
+  - Tema y base: solo si corrieron los scripts de contenido. **Borra todo lo editado en wp-admin desde el respaldo**, incluidas las opciones de plugins. Antes del comando anterior: `ssh godaddy-eternalglow 'B=20261020-120000-deploy; cd ~/public_html && wp db import ~/backups-deploy/$B/db.sql'`
+- **Falla el deploy** si un script de contenido falla su self-check o si alguna URL de la verificación no responde 200/301.
+
+### Flujo en el pipeline (`/ship`)
+1. PR → CI verde → revisión → tu "sí" → merge a `main`.
+2. Se dispara el workflow Deploy, que espera tu aprobación en GitHub (checkpoint 3). Apruebas y queda en verde.
+3. Si el cambio es de contenido: Run workflow con `run_content_scripts`.
+4. Tarea de Notion → Hecha / Deploy con el link del run. Si el deploy falla → Bloqueada y rollback.
 
 ## Notion
 - **Base de tareas**: https://app.notion.com/p/d9f8b1aad67b4d4b8e1a3c331a494cd0
