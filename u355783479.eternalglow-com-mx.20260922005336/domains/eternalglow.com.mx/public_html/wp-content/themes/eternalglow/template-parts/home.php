@@ -168,26 +168,7 @@
 	</section>
 <?php } ?>
 
-<section class="lp-section" id="doctor" aria-labelledby="doctor-title">
-	<div class="lp-wrap lp-doctor">
-		<div class="lp-doctor-media">
-			<img src="<?php images_url('dr-bruno-ocampo.webp'); ?>" alt="Dr. Bruno Ocampo, <?php _p(esc_attr($t['doctor']['role'])); ?>" width="768" height="995" loading="lazy" />
-		</div>
-		<div>
-			<p class="lp-eyebrow"><?php _p(esc_html($t['doctor']['eyebrow'])); ?></p>
-			<h2 id="doctor-title">Dr. Bruno Ocampo</h2>
-			<blockquote>“<?php _p(esc_html($t['doctor']['quote'])); ?>”</blockquote>
-			<ul class="lp-facts">
-				<?php foreach($t['doctor']['facts'] as $fact){ ?>
-					<li><?php _p(eg_icon($fact[0])); ?> <?php _p(esc_html($fact[1])); ?></li>
-				<?php } ?>
-			</ul>
-			<?php if(!$en){ ?>
-				<a class="lp-link" href="<?php _p(esc_url(home_url('/nosotros/'))); ?>"><?php _p(esc_html($t['doctor']['link'])); ?> <?php _p(eg_icon('arrow-right')); ?></a>
-			<?php } ?>
-		</div>
-	</div>
-</section>
+<?php get_template_part('template-parts/doctor'); ?>
 
 <section class="lp-section lp-dark" aria-labelledby="hilos-title">
 	<div class="lp-wrap lp-hilos">

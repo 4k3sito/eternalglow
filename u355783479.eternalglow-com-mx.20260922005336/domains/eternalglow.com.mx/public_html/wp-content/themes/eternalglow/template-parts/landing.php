@@ -65,6 +65,8 @@
 	</section>
 <?php } ?>
 
+<?php get_template_part('template-parts/doctor', null, array('byline' => true)); ?>
+
 <section class="lp-section lp-band" id="faq" aria-labelledby="faq-title">
 	<div class="lp-wrap lp-faq">
 		<h2 id="faq-title"><?php _p(esc_html($landing['faq_title'])); ?></h2>
