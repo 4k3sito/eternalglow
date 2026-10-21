@@ -35,6 +35,17 @@ function eg_landings(){
 		}));
 	};
 	$treatments = eg_treatments();
+	// Botox hub groups. 'zonas' takes every Botox treatment not listed in the other two, so a new one still shows up.
+	$botox_groups = array(
+		'paquetes' => array('botox-por-unidad', 'baby-botox-cdmx', 'full-face-botox-60-unidades'),
+		'medico' => array('botox-para-bruxismo-en-maseteros-cdmx', 'botox-trapecio-trap-tox', 'botox-para-hiperhidrosis-en-cdmx'),
+	);
+	$botox_group = function($group) use ($by_cat, $botox_groups){
+		$listed = array_merge(...array_values($botox_groups));
+		return array_values(array_filter($by_cat('botox'), function($item) use ($group, $botox_groups, $listed){
+			return isset($botox_groups[$group]) ? in_array($item->slug, $botox_groups[$group], true) : !in_array($item->slug, $listed, true);
+		}));
+	};
 	$syringes = array();
 	foreach(array(1 => 6499, 2 => 11000, 3 => 16000, 4 => 20000, 5 => 24000, 6 => 28000) as $n => $price){
 		$syringes[] = eg_price_row($n == 1 ? '1 jeringa' : "$n jeringas", "$n mL de ácido hialurónico", '$'.number_format($price));
@@ -68,8 +79,11 @@ function eg_landings(){
 	$landings = array(
 		'botox-cdmx' => array(
 			'updated' => '2026-10-20',
+			// Three short tables instead of one list of 16: packages, areas of the face, medical and body uses.
 			'prices' => array(
-				array('Precios de Botox', 'Toxina botulínica · MXN', $by_cat('botox')),
+				array('Paquetes de Botox', 'Toxina botulínica · MXN', $botox_group('paquetes')),
+				array('Botox por zona', 'Rostro y cuello · MXN', $botox_group('zonas')),
+				array('Botox médico y corporal', 'MXN', $botox_group('medico')),
 			),
 			// Approved by the user on 2026-10-20. Same shape as 'sections': a title and paragraphs (links and <strong> allowed).
 			'risks' => array('Riesgos y contraindicaciones del Botox', array(
@@ -109,10 +123,13 @@ function eg_landings(){
 				)),
 			),
 			'prices' => array(
-				array('Botox prices', 'Botulinum toxin · MXN', $english(array(
+				// Same three groups as the Spanish hub.
+				array('Botox packages', 'Botulinum toxin · MXN', $english(array(
 					'botox-por-unidad' => array('Botox per unit', 'A tailored dose for one area: forehead, frown lines or lip lines.'),
 					'baby-botox-cdmx' => array('Baby botox (30 units)', 'Micro doses for forehead, frown lines and eyes. Softens without freezing your expression.'),
 					'full-face-botox-60-unidades' => array('Full face botox (60 units)', 'Complete treatment of the upper and lower face for a rested look.'),
+				))),
+				array('Botox by area', 'Face and neck · MXN', $english(array(
 					'botox-frente' => array('Forehead botox', 'Softens the horizontal lines on the forehead.'),
 					'botox-en-entrecejo' => array('Frown lines botox', 'Relaxes the lines between the brows that make you look angry or tired.'),
 					'botox-para-patas-de-gallo-cdmx' => array('Crow’s feet botox', 'Softens the lines beside the eyes while keeping a natural smile.'),
@@ -120,12 +137,14 @@ function eg_landings(){
 					'botox-lip-flip' => array('Botox lip flip', 'A subtle turn of the upper lip to show more of it without filler.'),
 					'botox-sonrisa-gingival' => array('Gummy smile botox', 'Reduces how much gum shows when you smile.'),
 					'botox-foxy-eyes-cdmx' => array('Foxy eyes botox', 'Gently lifts the tail of the brow for a more open look.'),
-					'botox-para-bruxismo-en-maseteros-cdmx' => array('Masseter botox for bruxism', 'Eases teeth clenching and jaw pain and slims the face.'),
-					'botox-trapecio-trap-tox' => array('Trap botox (Trap-Tox / Barbie Botox)', 'Refines the neck and shoulder line and relieves muscle tension.'),
-					'botox-para-hiperhidrosis-en-cdmx' => array('Botox for hyperhidrosis (underarms, hands or feet)', 'Controls excessive sweating of the underarms, hands or feet.'),
 					'botox-bunny-lines' => array('Bunny lines botox', 'Softens the lines on the sides of the nose.'),
 					'botox-para-menton-en-cdmx' => array('Chin botox', 'Relaxes a dimpled chin and balances the profile.'),
 					'botox-dao' => array('DAO botox (downturned mouth corners)', 'Relaxes the muscle that pulls the corners of the mouth down.'),
+				))),
+				array('Medical and body botox', 'MXN', $english(array(
+					'botox-para-bruxismo-en-maseteros-cdmx' => array('Masseter botox for bruxism', 'Eases teeth clenching and jaw pain and slims the face.'),
+					'botox-trapecio-trap-tox' => array('Trap botox (Trap-Tox / Barbie Botox)', 'Refines the neck and shoulder line and relieves muscle tension.'),
+					'botox-para-hiperhidrosis-en-cdmx' => array('Botox for hyperhidrosis (underarms, hands or feet)', 'Controls excessive sweating of the underarms, hands or feet.'),
 				))),
 			),
 			'risks' => array('Botox risks and contraindications', array(

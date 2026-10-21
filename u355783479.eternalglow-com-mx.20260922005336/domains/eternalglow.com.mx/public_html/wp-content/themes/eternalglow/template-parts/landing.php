@@ -18,6 +18,7 @@
 						<?php _p(eg_cta_book('landing')); ?>
 						<?php _p(eg_cta_whatsapp('landing')); ?>
 					</div>
+					<?php _p(eg_rating_line()); ?>
 				</div>
 				<?php if(!empty($landing['image'])){ ?>
 					<?php // 16:9 photos cover a 4:3 box, so they are drawn about 1.2 times wider than the box. ?>

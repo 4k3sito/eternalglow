@@ -56,7 +56,7 @@ $form = <<<'FORM'
 </div>
 <div class='mt-40 text-center text-md-left'>
 	<div class="form-group acceptance fs-14 mb-24">
-		[acceptance your-acceptance default:on] I have read and accept the <a href="#" class='text-decoration-underline text-reset'>Privacy notice</a>
+		[acceptance your-acceptance] I have read and accept the <a href="#" class='text-decoration-underline text-reset'>Privacy notice</a>
 	</div>
 	<div class="jss-button-arrow">
 		<button type="submit" class="btn btn-primary wpcf7-submit">Send</button>
