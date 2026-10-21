@@ -209,6 +209,7 @@ function eg_landings(){
 		),
 		// English version of /rellenos-cdmx/. Same facts and prices as the Spanish hub.
 		'fillers-mexico-city' => array(
+			'updated' => '2026-10-21',
 			'image' => array('2026/05/tratamiento-de-pomulos-con-acido-hialuronico.png', 'Hyaluronic acid applied to the cheeks at Eternal Glow, Mexico City'),
 			'hero' => array(
 				'Hyaluronic acid · Roma Norte, Mexico City',
@@ -239,6 +240,12 @@ function eg_landings(){
 				))),
 				array('Packages by amount', 'For a global, balanced result', $syringes_en),
 			),
+			'risks' => array('Filler risks and contraindications', array(
+				'When a physician applies it, side effects are usually mild and temporary, but it is not for everyone.',
+				'<strong>It is not recommended if:</strong> you are pregnant or breastfeeding; there is an infection, active cold sores or inflammation in the area; you have an active autoimmune disease; you have had an allergic reaction to hyaluronic acid or lidocaine.',
+				'<strong>Possible effects:</strong> swelling, redness, tenderness or a small bruise for a few days. Less often small lumps appear, which the doctor corrects. The most serious complication, although rare, is the product blocking a blood vessel; that is why it is applied by a physician who knows facial anatomy and keeps hyaluronidase at hand.',
+				'Tell the doctor at your consultation if you take anticoagulants or aspirin, or if you often get cold sores.',
+			)),
 			'faq_title' => 'Filler questions',
 			'faq' => array(
 				array('How much does a hyaluronic acid filler cost in Mexico City?', 'At Eternal Glow each area costs $6,499 MXN per 1 mL syringe. As a package, 2 syringes cost $11,000, 3 syringes $16,000 and 4 syringes $20,000 MXN. The number of syringes is set in your consultation.'),
@@ -310,10 +317,11 @@ function eg_landings(){
 			),
 		),
 		'rellenos-cdmx' => array(
+			'updated' => '2026-10-21',
 			'image' => array('2026/05/tratamiento-de-pomulos-con-acido-hialuronico.png', 'Aplicación de ácido hialurónico en pómulos en Eternal Glow, CDMX'),
 			'hero' => array(
 				'Ácido hialurónico · Roma Norte, CDMX',
-				'Rellenos con ácido hialurónico en CDMX',
+				'Rellenos faciales con ácido hialurónico en CDMX',
 				'Volumen, definición y armonía con ácido hialurónico, aplicado por médico estético. Cada zona cuesta $6,499 MXN por jeringa y el plan se define en tu valoración.',
 			),
 			'sections' => array(
@@ -330,6 +338,13 @@ function eg_landings(){
 				array('Precio por zona', 'Por jeringa de 1 mL · MXN', $by_cat('rellenos')),
 				array('Paquetes por cantidad', 'Para un resultado global y armónico', $syringes),
 			),
+			// Approved by the user on 2026-10-21.
+			'risks' => array('Riesgos y contraindicaciones de los rellenos', array(
+				'Bien aplicado por un médico, los efectos secundarios suelen ser leves y temporales, pero no es para todos.',
+				'<strong>No se recomienda si:</strong> estás embarazada o en lactancia; hay infección, herpes activo o inflamación en la zona; tienes una enfermedad autoinmune activa; tuviste una reacción alérgica al ácido hialurónico o a la lidocaína.',
+				'<strong>Efectos posibles:</strong> inflamación, enrojecimiento, sensibilidad o un moretón pequeño durante unos días. Con poca frecuencia aparecen pequeños bultos que el médico corrige. La complicación más seria, aunque rara, es que el producto obstruya un vaso sanguíneo; por eso la aplicación la hace un médico que conoce la anatomía facial y tiene hialuronidasa a la mano.',
+				'Avisa en tu valoración si tomas anticoagulantes o aspirina, o si sueles tener herpes labial.',
+			)),
 			'faq_title' => 'Preguntas frecuentes sobre rellenos',
 			'faq' => array(
 				array('¿Cuánto cuesta un relleno con ácido hialurónico en CDMX?', 'En Eternal Glow cada zona cuesta $6,499 MXN por jeringa de 1 mL. Por paquete, 2 jeringas cuestan $11,000, 3 jeringas $16,000 y 4 jeringas $20,000. El número de jeringas se define en la valoración.'),

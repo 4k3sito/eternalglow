@@ -5,7 +5,7 @@
 
 $pages = array(
     // slug => array(page title, SEO title, description, focus keyword)
-    'rellenos-cdmx' => array('Rellenos con ácido hialurónico', 'Rellenos con Ácido Hialurónico en CDMX | Desde $6,499', 'Rellenos con ácido hialurónico en CDMX: $6,499 por jeringa para labios, ojeras, pómulos, mentón o mandíbula. Paquetes desde 2 jeringas. Roma Norte.', 'rellenos con ácido hialurónico en CDMX,rellenos cdmx'),
+    'rellenos-cdmx' => array('Rellenos con ácido hialurónico', 'Rellenos Faciales con Ácido Hialurónico en CDMX | $6,499', 'Rellenos faciales con ácido hialurónico en CDMX: $6,499 por jeringa para labios, ojeras, pómulos, mentón o mandíbula. Médico estético en Roma Norte.', 'rellenos faciales con ácido hialurónico en CDMX,rellenos faciales cdmx,ácido hialurónico cdmx'),
     'relleno-de-labios-cdmx' => array('Relleno de labios', 'Relleno de Labios en CDMX | $6,499 | Eternal Glow', 'Relleno de labios con ácido hialurónico en CDMX por $6,499 la jeringa de 1 mL. Volumen y definición con resultado natural. Agenda en Roma Norte.', 'relleno de labios en CDMX,relleno de labios cdmx'),
 );
 
