@@ -5,6 +5,8 @@ Actualizado: 2026-10-20
 Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100).
 
 ## Hecho recientemente
+- Cédula profesional del Dr. Ocampo (13493041) en el bloque del médico (home y 9 hubs ES/EN), en el schema Physician y en `seo/nosotros.php`. Verificada en el Registro Nacional de Profesionistas (SEP). Pendiente: desplegar (tema + `run_content_scripts` para /nosotros/).
+- Crítica de diseño del sitio con referencias de Mobbin (2026-10-20).
 - Auditoría SEO completa (68/100); 12 tareas nuevas en Notion.
 - Schema unificado en una sola entidad `#clinic` (PR #5): fuera el MedicalBusiness de SASWP con el teléfono viejo y las reseñas propias.
 - Deploy por GitHub Actions (PR #3); primer deploy `--theme-only` OK el 2026-10-20, run 39391632264.
@@ -21,4 +23,4 @@ Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-2
 - Push a `main` despliega solo el tema; los scripts de contenido solo se corren a mano (pisan ediciones de wp-admin).
 
 ## Bloqueos
-- Cédula del doctor, fotos antes/después y datos del aviso de privacidad dependen del cliente.
+- Fotos antes/después y datos del aviso de privacidad dependen del cliente.

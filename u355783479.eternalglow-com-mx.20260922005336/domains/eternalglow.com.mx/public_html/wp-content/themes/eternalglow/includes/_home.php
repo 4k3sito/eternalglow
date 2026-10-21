@@ -228,6 +228,7 @@ function eg_physician_schema(){
 		'image' => get_images_url('dr-bruno-ocampo.webp'),
 		'worksFor' => array('@id' => home_url('/#clinic')),
 		'alumniOf' => 'Universidad La Salle',
+		'identifier' => array('@type' => 'PropertyValue', 'propertyID' => 'Cédula profesional (SEP)', 'value' => '13493041'),
 	);
 }
 

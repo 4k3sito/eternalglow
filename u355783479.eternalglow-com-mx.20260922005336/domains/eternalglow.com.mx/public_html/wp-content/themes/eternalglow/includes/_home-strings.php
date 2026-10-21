@@ -90,6 +90,7 @@ return array(
 				array('graduation-cap', 'Médico cirujano, Universidad La Salle'),
 				array('certificate', 'Especialidad en medicina estética, nutrición y antienvejecimiento, Universidad de Madrid'),
 				array('seal-check', 'Certificado por Merz Aesthetics y en armonización facial por AMIR'),
+				array('stethoscope', 'Cédula profesional 13493041'),
 			),
 		),
 		'hilos' => array(
@@ -195,6 +196,7 @@ return array(
 				array('graduation-cap', 'Medical degree, Universidad La Salle'),
 				array('certificate', 'Specialty in aesthetic medicine, nutrition and antiaging, Universidad de Madrid'),
 				array('seal-check', 'Certified by Merz Aesthetics and in facial harmonization by AMIR'),
+				array('stethoscope', 'Mexican professional license (cédula) 13493041'),
 			),
 		),
 		'hilos' => array(
