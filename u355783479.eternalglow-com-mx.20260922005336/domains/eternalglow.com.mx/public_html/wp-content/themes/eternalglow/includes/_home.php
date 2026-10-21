@@ -166,6 +166,22 @@ function eg_google_reviews($limit = 3, $lang = 'es'){
 	);
 }
 
+// Google rating under a hub's call to action, as on the home hero. Empty when Trustindex has no data.
+// [eg_rating] puts it in WPBakery content; align="center" centers it on phones, as the hub heroes do.
+function eg_rating_line($align = ''){
+	$reviews = eg_google_reviews(0, eg_lang());
+	if(!$reviews){
+		return '';
+	}
+	$stars = '<span class="lp-stars" aria-hidden="true">'.str_repeat(eg_icon('star'), 5).'</span>';
+	$class = $align == 'center' ? ' justify-content-center justify-content-md-start' : '';
+	$text = sprintf(eg_home_strings()['hero']['rating'], $reviews->score, $reviews->count);
+	return '<ul class="lp-trust'.$class.'"><li><a href="'.esc_url($reviews->url).'" target="_blank" rel="noopener">'.$stars.' '.esc_html($text).'</a></li></ul>';
+}
+add_shortcode('eg_rating', function($atts){
+	return eg_rating_line(shortcode_atts(array('align' => ''), $atts, 'eg_rating')['align']);
+});
+
 // The page that owns the main keyword for a service, so every service links up to it.
 function eg_service_hub($post){
 	$hubs = array(
@@ -228,6 +244,7 @@ function eg_physician_schema(){
 		'image' => get_images_url('dr-bruno-ocampo.webp'),
 		'worksFor' => array('@id' => home_url('/#clinic')),
 		'alumniOf' => 'Universidad La Salle',
+		'identifier' => array('@type' => 'PropertyValue', 'propertyID' => 'Cédula profesional (SEP)', 'value' => '13493041'),
 	);
 }
 

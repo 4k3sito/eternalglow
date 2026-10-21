@@ -30,11 +30,11 @@ if [ "$THEME_ONLY" = true ]; then
 else
 	# privacidad.php and contact-form-en.php are one-off scripts, run by hand: not part of every deploy.
 	echo "2/4 Subiendo los scripts de SEO..."
-	tar -czf - seo/home.php seo/treatments.php seo/sculptra-cdmx.php seo/prices.php seo/landings.php seo/nosotros.php seo/content-fixes.php | ssh "$HOST" 'mkdir -p ~/seo-deploy && tar -xzf - -C ~/seo-deploy'
+	tar -czf - seo/home.php seo/treatments.php seo/sculptra-cdmx.php seo/prices.php seo/landings.php seo/nosotros.php seo/content-fixes.php seo/design-fixes.php | ssh "$HOST" 'mkdir -p ~/seo-deploy && tar -xzf - -C ~/seo-deploy'
 
 	echo "3/4 Corriendo los scripts (el orden importa: prices.php va después de treatments.php y content-fixes.php al final, porque sculptra-cdmx.php reescribe el hub)..."
 	# Each script exits 1 on a failed self-check: stop there instead of running the rest on top of it.
-	ssh "$HOST" 'cd ~/public_html && for f in home treatments sculptra-cdmx prices landings nosotros content-fixes; do echo "== $f"; wp eval-file ~/seo-deploy/seo/$f.php || { echo "FALLO: $f"; exit 1; }; done'
+	ssh "$HOST" 'cd ~/public_html && for f in home treatments sculptra-cdmx prices landings nosotros content-fixes design-fixes; do echo "== $f"; wp eval-file ~/seo-deploy/seo/$f.php || { echo "FALLO: $f"; exit 1; }; done'
 fi
 
 echo "4/4 Purgando cachés..."
