@@ -52,7 +52,8 @@ Receta única: `seo/deploy.sh` (respaldo → tema → scripts de contenido → p
 ## Convenciones del repo
 - El repo es un respaldo completo del hosting (`u355783479.../public_html`); solo se edita el tema, `seo/` y `local-env/`.
 - Cambios de contenido: script en `seo/*.php` con `$wpdb->update` (no `wp_update_post`: kses rompe shortcodes) y self-check al final.
-- Al agregar un script a `seo/`, sumarlo a `seo/deploy.sh` respetando el orden: prices después de treatments, y content-fixes y design-fixes al final, porque `sculptra-cdmx.php` reescribe el hub. `contact-form-en.php` y `privacidad.php` existen pero no están en `deploy.sh`.
+- Al agregar un script a `seo/`, sumarlo a `seo/deploy.sh` respetando el orden: prices después de treatments, y content-fixes y design-fixes al final, porque `sculptra-cdmx.php` reescribe el hub. `contact-form-en.php`, `privacidad.php` y `supercache-preload.php` existen pero no están en `deploy.sh`.
+- WP cron: `DISABLE_WP_CRON` está activo y lo dispara un cron de cPanel (`curl` a `wp-cron.php` cada 15 min). No quitar el modo de precarga de WP Super Cache: sin él, la limpieza borra las páginas cada 24 h y vuelven a quedar frías.
 - Los hubs muestran "Actualizado el" con la fecha más reciente entre el post y la clave `'updated'` de su entrada en `includes/_landings.php`: súbela al cambiar precios, textos o FAQ de ese hub desde el tema o con `$wpdb`, porque esas ediciones no tocan `post_modified`.
 - `dist/` se versiona; al recompilar, dejar los `app.*.css/js` viejos en el servidor.
 
