@@ -65,8 +65,10 @@
 		<ul class="lp-cats">
 			<?php foreach($cats as $key => $cat){ ?>
 				<?php $name = isset($t['cats']['names'][$key]) ? $t['cats']['names'][$key] : $cat; ?>
+				<?php // Botox and fillers open their hub, the page meant to rank for them; the rest open the catalogue. ?>
+				<?php $hub = eg_category_hub($key); ?>
 				<li>
-					<a href="<?php _p(esc_url(home_url('/tratamientos/#'.$key))); ?>">
+					<a href="<?php _p(esc_url($hub ? $hub->url : home_url('/tratamientos/#'.$key))); ?>">
 						<span class="lp-cat-top"><span class="lp-eyebrow"><?php _p(esc_html(sprintf($t['cats']['count'], $counts[$key]))); ?></span><?php _p(eg_icon('arrow-up-right')); ?></span>
 						<span>
 							<span class="lp-cat-name"><?php _p(esc_html($name[0])); ?></span>
@@ -76,6 +78,16 @@
 				</li>
 			<?php } ?>
 		</ul>
+		<?php // The hubs by their exact phrase: the home was outranking them for "botox cdmx" and similar (eg_hubs()). ?>
+		<p class="lp-guides">
+			<span><?php _p(esc_html($t['cats']['guides'])); ?></span>
+			<?php foreach(array_keys(eg_hubs()) as $key){ ?>
+				<?php $hub = eg_hub($key); ?>
+				<?php if($hub){ ?>
+					<a href="<?php _p(esc_url($hub->url)); ?>"><?php _p(esc_html($hub->title)); ?></a>
+				<?php } ?>
+			<?php } ?>
+		</p>
 	</div>
 </section>
 
