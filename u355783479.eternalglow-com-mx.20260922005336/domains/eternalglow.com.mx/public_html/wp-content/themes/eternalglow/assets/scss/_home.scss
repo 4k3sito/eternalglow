@@ -390,8 +390,8 @@
 		}
 	}
 
-	// Service pages are built with Divi, which writes the old coral palette into inline styles and per-page CSS.
-	// #et-boc is there to outrank Divi's own selectors. PurgeCSS cannot see this markup, hence the ignore block.
+	// Content written before the redesign may carry the old coral palette in inline styles.
+	// PurgeCSS cannot see that markup, hence the ignore block.
 	/*! purgecss start ignore */
 	[style*="#f9896b" i]{
 		color: inherit !important;
@@ -402,63 +402,6 @@
 		background-color: var(--lp-sand) !important;
 		[style*="#ffffff" i]{
 			color: var(--lp-ink) !important;
-		}
-	}
-	#et-boc .et-l{
-		.et_pb_module{
-			font-family: var(--#{$prefix}body-font-family) !important;
-		}
-		h1, h2, h3, h4{
-			font-family: var(--lp-serif) !important;
-			font-weight: 400 !important;
-			color: var(--lp-ink) !important;
-		}
-		.et-pb-icon,
-		.et_pb_toggle_title::before{
-			color: var(--lp-accent) !important;
-		}
-		// Repeated class: Divi's per-module button rule is .et_pb_button_N.et_pb_button with !important.
-		.et_pb_button.et_pb_button.et_pb_button{
-			padding: 12px 24px !important;
-			border: 1px solid var(--lp-ink) !important;
-			border-radius: 9999px !important;
-			background-color: var(--lp-ink) !important;
-			color: var(--lp-surface) !important;
-			font-size: 16px !important;
-			line-height: 24px !important;
-			font-weight: 600;
-			transition: background-color 0.3s var(--lp-ease);
-			&:hover{
-				background-color: var(--lp-ink-soft) !important;
-			}
-			&::after{
-				display: none;
-			}
-		}
-		.et_pb_promo{
-			background-color: var(--lp-sand) !important;
-			&, p, .et_pb_module_header{
-				color: var(--lp-ink) !important;
-			}
-			p{
-				color: var(--lp-text) !important;
-			}
-		}
-		.et_pb_toggle{
-			background-color: transparent !important;
-			border-color: var(--lp-line) !important;
-		}
-		.et_pb_row{
-			background-image: none !important;
-		}
-		.et_pb_image img, .et_pb_image_wrap{
-			border-radius: 24px !important;
-		}
-		.et_pb_promo, .et_pb_toggle{
-			border-radius: 24px !important;
-		}
-		.et_pb_row, .et_pb_column, .et_pb_module{
-			box-shadow: none !important;
 		}
 	}
 	/*! purgecss end ignore */
