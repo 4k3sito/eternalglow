@@ -12,7 +12,7 @@ function eg_lang(){
 
 // Spanish path => English path of the same page; drives hreflang and the ES/EN switch.
 function eg_translations(){
-	return array('/' => '/en/', '/botox-cdmx/' => '/en/botox-mexico-city/', '/sculptra-cdmx/' => '/en/sculptra-mexico-city/', '/rellenos-cdmx/' => '/en/fillers-mexico-city/', '/relleno-de-labios-cdmx/' => '/en/lip-filler-mexico-city/');
+	return array('/' => '/en/', '/botox-cdmx/' => '/en/botox-mexico-city/', '/sculptra-cdmx/' => '/en/sculptra-mexico-city/', '/rellenos-cdmx/' => '/en/fillers-mexico-city/', '/relleno-de-labios-cdmx/' => '/en/lip-filler-mexico-city/', '/hilos-tensores-cdmx/' => '/en/pdo-threads-mexico-city/');
 }
 
 // The current page in the other language, or that language's home when it has no translation.
@@ -192,7 +192,7 @@ function eg_hubs(){
 		'rellenos' => array('cat' => 'rellenos', 'es' => array('Rellenos en CDMX', '/rellenos-cdmx/'), 'en' => array('Fillers in Mexico City', '/en/fillers-mexico-city/')),
 		'labios' => array('cat' => null, 'es' => array('Relleno de labios en CDMX', '/relleno-de-labios-cdmx/'), 'en' => array('Lip filler in Mexico City', '/en/lip-filler-mexico-city/')),
 		'sculptra' => array('cat' => null, 'es' => array('Sculptra en CDMX', '/sculptra-cdmx/'), 'en' => array('Sculptra in Mexico City', '/en/sculptra-mexico-city/')),
-		'hilos' => array('cat' => null, 'es' => array('Hilos tensores en CDMX', '/hilos-tensores-cdmx/'), 'en' => null),
+		'hilos' => array('cat' => null, 'es' => array('Hilos tensores en CDMX', '/hilos-tensores-cdmx/'), 'en' => array('PDO threads in Mexico City', '/en/pdo-threads-mexico-city/')),
 	);
 }
 

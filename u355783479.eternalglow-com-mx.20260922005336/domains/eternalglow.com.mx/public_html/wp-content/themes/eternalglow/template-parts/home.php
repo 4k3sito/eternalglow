@@ -195,7 +195,7 @@
 					<?php } ?>
 				</dl>
 			<?php } ?>
-			<a class="btn lp-btn-light" href="<?php _p(esc_url(home_url('/hilos-tensores-cdmx/'))); ?>"><?php _p(esc_html($t['hilos']['link'])); ?> <?php _p(eg_icon('arrow-right')); ?></a>
+			<a class="btn lp-btn-light" href="<?php _p(esc_url(eg_hub('hilos')->url)); ?>"><?php _p(esc_html($t['hilos']['link'])); ?> <?php _p(eg_icon('arrow-right')); ?></a>
 		</div>
 		<div class="lp-hilos-media">
 			<div class="lp-lift" aria-hidden="true"><?php for($i = 0; $i < 3; $i++){ ?><span><?php _p(eg_icon('caret-double-up')); ?></span><?php } ?></div>

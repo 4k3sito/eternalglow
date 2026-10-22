@@ -65,6 +65,14 @@ update_post_meta($lips_en_id, 'rank_math_title', 'Lip Filler in Mexico City | $6
 update_post_meta($lips_en_id, 'rank_math_description', wp_slash('Lip filler in Mexico City: $6,499 MXN per 1 mL syringe of hyaluronic acid. Volume and definition with a natural result in Roma Norte. English spoken.'));
 update_post_meta($lips_en_id, 'rank_math_focus_keyword', 'lip filler mexico city,lip fillers mexico city,lip fillers in mexico');
 
+// 2f. English PDO threads page at /en/pdo-threads-mexico-city/, rendered like 2b.
+$threads_en = get_page_by_path('en/pdo-threads-mexico-city', OBJECT, 'page');
+$threads_en_id = $threads_en ? $threads_en->ID : wp_insert_post(array('post_type' => 'page', 'post_status' => 'publish', 'post_name' => 'pdo-threads-mexico-city', 'post_parent' => $en_id, 'post_title' => 'PDO Threads in Mexico City', 'post_content' => ''));
+if (!$threads_en_id || is_wp_error($threads_en_id)) { echo "ERROR: no pude crear /en/pdo-threads-mexico-city/\n"; exit(1); }
+update_post_meta($threads_en_id, 'rank_math_title', 'PDO Threads in Mexico City | From $1,100 per Thread');
+update_post_meta($threads_en_id, 'rank_math_description', wp_slash('PDO thread lift in Mexico City from $1,100 MXN per thread. A non-surgical lift for brows, jawline and neck in Roma Norte, with English spoken.'));
+update_post_meta($threads_en_id, 'rank_math_focus_keyword', 'pdo threads mexico city,thread lift mexico city,pdo thread lift mexico');
+
 // 3. /servicios/ is an empty page that sat in the main menu: point the menu to /tratamientos/ and redirect it.
 if ($services) {
     $items = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_object_id' AND meta_value = %d AND post_id IN (SELECT ID FROM $wpdb->posts WHERE post_type = 'nav_menu_item')", $services->ID));
