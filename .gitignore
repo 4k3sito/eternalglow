@@ -26,3 +26,6 @@ seo/gsc-data/
 /*.mp4
 *:Zone.Identifier
 *:mshield
+
+# Backups written by seo/*.php content scripts (post content, drafts included).
+**/wp-content/uploads/seo-backups/
