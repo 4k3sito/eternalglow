@@ -535,6 +535,131 @@
 			margin-top: 24px;
 		}
 	}
+	// Service page content: plain HTML written by seo/divi-to-html.php (it used to be Divi modules).
+	.lp-sv-section{
+		padding: clamp(32px, 5vw, 48px) 0;
+		border-top: 1px solid var(--lp-line);
+		&:first-child{
+			padding-top: 0;
+			border-top: 0;
+		}
+		&:last-child{
+			padding-bottom: 0;
+		}
+		h1, h2, h3{
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-weight: 400;
+		}
+		h1{
+			margin: 0 0 16px;
+			font-size: clamp(40px, 6vw, 64px);
+			line-height: 1.02;
+			letter-spacing: -0.02em;
+		}
+		h2{
+			margin: 0 0 16px;
+			font-size: clamp(30px, 4vw, 44px);
+			line-height: 1.05;
+		}
+		h3{
+			margin: 0 0 8px;
+			font-size: 24px;
+			line-height: 28px;
+		}
+		p{
+			margin: 0 0 12px;
+		}
+		ul:not([class]), ol{
+			margin: 0 0 12px;
+			padding-left: 20px;
+		}
+		a:not(.btn){
+			color: var(--lp-accent);
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+	}
+	.lp-sv-checks{
+		display: grid;
+		gap: 12px 32px;
+		margin: 20px 0;
+		padding: 0;
+		list-style: none;
+		li{
+			position: relative;
+			padding-left: 28px;
+			color: var(--lp-ink-soft);
+			&::before{
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0.45em;
+				width: 14px;
+				height: 8px;
+				border-left: 2px solid var(--lp-accent);
+				border-bottom: 2px solid var(--lp-accent);
+				transform: rotate(-45deg);
+			}
+		}
+		@include media-breakpoint-up(md){
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	// Two across at most: the content column is ~550px wide, and steps come in fours (three across left one alone).
+	.lp-sv-cards{
+		display: grid;
+		gap: 16px;
+		margin: 20px 0;
+		@include media-breakpoint-up(md){
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	.lp-sv-card{
+		height: 100%;
+		padding: 24px;
+		border-radius: 24px;
+		background: var(--lp-sand);
+		p:last-child{
+			margin-bottom: 0;
+		}
+	}
+	// Two Divi columns side by side: a photo beside text, or a pair of cards.
+	.lp-sv-cols{
+		display: grid;
+		gap: 16px 32px;
+		align-items: center;
+		margin: 16px 0;
+		.lp-sv-cards{
+			height: 100%;
+			margin: 0;
+		}
+		// Half the content column is too narrow for two lists or two cards across.
+		.lp-sv-checks, .lp-sv-cards{
+			grid-template-columns: 1fr;
+		}
+		@include media-breakpoint-up(md){
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	.lp-sv-media{
+		margin: 0 0 24px;
+		img{
+			display: block;
+			width: 100%;
+			height: auto;
+			border-radius: 24px;
+		}
+	}
+	.lp-sv-cols .lp-sv-media{
+		margin: 0;
+	}
+	.lp-sv-action{
+		margin: 24px 0 0 !important;
+	}
+	.lp-sv-faq{
+		margin-top: 24px;
+	}
 
 	// Sections
 	.lp-section{
