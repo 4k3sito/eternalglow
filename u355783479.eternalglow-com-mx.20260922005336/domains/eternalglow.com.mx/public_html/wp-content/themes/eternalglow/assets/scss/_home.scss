@@ -535,6 +535,40 @@
 			margin-top: 24px;
 		}
 	}
+	// Links to the hubs by their exact phrase (eg_hubs()): under the home's categories, after a service page's content
+	// and in the catalogue's group headings.
+	.lp-guides{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 20px;
+		margin: 24px 0 0;
+		font-size: 14px;
+		line-height: 20px;
+		color: var(--lp-muted);
+		a{
+			color: var(--lp-ink);
+			text-decoration: underline;
+			text-decoration-color: var(--lp-line-strong);
+			text-underline-offset: 4px;
+			&:hover{
+				text-decoration-color: var(--lp-ink);
+			}
+		}
+	}
+	.lp-service-hub{
+		margin: 40px 0 0;
+		padding-top: 24px;
+		border-top: 1px solid var(--lp-line);
+		a{
+			color: var(--lp-accent);
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+	}
+	.lp-group-head .lp-link{
+		margin-left: auto;
+		font-size: 14px;
+	}
 	// Service page content: plain HTML written by seo/divi-to-html.php (it used to be Divi modules).
 	.lp-sv-section{
 		padding: clamp(32px, 5vw, 48px) 0;
@@ -1730,6 +1764,7 @@
 	}
 	.lp-group-head{
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: baseline;
 		gap: 12px;

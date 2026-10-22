@@ -34,6 +34,10 @@
 				<div class="lp-group-head">
 					<h2><?php _p(esc_html($cat[0])); ?></h2>
 					<span><?php _p(esc_html($cat[1])); ?></span>
+					<?php $hub = eg_category_hub($key); ?>
+					<?php if($hub){ ?>
+						<a class="lp-link" href="<?php _p(esc_url($hub->url)); ?>">Guía de <?php _p(esc_html($hub->title)); ?> <?php _p(eg_icon('arrow-right')); ?></a>
+					<?php } ?>
 				</div>
 				<ul>
 					<?php foreach($treatments as $item){ ?>

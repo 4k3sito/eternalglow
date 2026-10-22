@@ -183,16 +183,46 @@ add_shortcode('eg_rating', function($atts){
 });
 
 // The page that owns the main keyword for a service, so every service links up to it.
+// The pages that should rank for each head term, and the exact phrase to link them with. Search Console showed the
+// home taking "botox cdmx", "rellenos cdmx" and lip queries away from these hubs, so the home, the catalogue and the
+// service pages link to them with these words. 'cat' is the catalogue category the hub owns (includes/_treatments.php).
+function eg_hubs(){
+	return array(
+		'botox' => array('cat' => 'botox', 'es' => array('Botox en CDMX', '/botox-cdmx/'), 'en' => array('Botox in Mexico City', '/en/botox-mexico-city/')),
+		'rellenos' => array('cat' => 'rellenos', 'es' => array('Rellenos en CDMX', '/rellenos-cdmx/'), 'en' => array('Fillers in Mexico City', '/en/fillers-mexico-city/')),
+		'labios' => array('cat' => null, 'es' => array('Relleno de labios en CDMX', '/relleno-de-labios-cdmx/'), 'en' => array('Lip filler in Mexico City', '/en/lip-filler-mexico-city/')),
+		'sculptra' => array('cat' => null, 'es' => array('Sculptra en CDMX', '/sculptra-cdmx/'), 'en' => array('Sculptra in Mexico City', '/en/sculptra-mexico-city/')),
+		'hilos' => array('cat' => null, 'es' => array('Hilos tensores en CDMX', '/hilos-tensores-cdmx/'), 'en' => null),
+	);
+}
+
+// A hub as (title, url) in the current language, or null when it has no page in that language.
+function eg_hub($key){
+	$hub = eg_hubs()[$key];
+	$lang = $hub[eg_lang()];
+	return $lang ? (object)array('title' => $lang[0], 'url' => home_url($lang[1])) : null;
+}
+
+// The hub that owns a category of the catalogue, if any.
+function eg_category_hub($cat){
+	foreach(eg_hubs() as $key => $hub){
+		if($hub['cat'] === $cat){
+			return eg_hub($key);
+		}
+	}
+	return null;
+}
+
 function eg_service_hub($post){
 	$hubs = array(
-		'/botox/' => array('Botox en CDMX', 'botox-cdmx'),
-		'/relleno|rinomodelacion|marcaje|armonizacion/' => array('Rellenos en CDMX', 'rellenos-cdmx'),
-		'/sculptra/' => array('Sculptra en CDMX', 'sculptra-cdmx'),
-		'/hilos/' => array('Hilos tensores en CDMX', 'hilos-tensores-cdmx'),
+		'/botox/' => 'botox',
+		'/relleno|rinomodelacion|marcaje|armonizacion/' => 'rellenos',
+		'/sculptra/' => 'sculptra',
+		'/hilos/' => 'hilos',
 	);
-	foreach($hubs as $pattern => $hub){
+	foreach($hubs as $pattern => $key){
 		if(preg_match($pattern, $post->post_name)){
-			return (object)array('title' => $hub[0], 'url' => home_url("/{$hub[1]}/"));
+			return eg_hub($key);
 		}
 	}
 	return (object)array('title' => 'Tratamientos', 'url' => home_url('/tratamientos/'));

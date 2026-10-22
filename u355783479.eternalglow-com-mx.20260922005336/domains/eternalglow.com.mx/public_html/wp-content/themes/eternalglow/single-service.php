@@ -45,6 +45,17 @@
                                 <?php the_content(); ?>
                             </div>
 
+                            <?php // In-content link to the hub with its exact phrase (see eg_hubs()); lip treatments also point to the lip filler hub. ?>
+                            <?php if($hub->url != home_url('/tratamientos/')){ ?>
+                                <p class="lp-service-hub">
+                                    Precios, zonas y preguntas frecuentes en nuestra guía de <a href="<?php _p(esc_url($hub->url)); ?>"><?php _p(esc_html($hub->title)); ?></a>.
+                                    <?php if(preg_match('/labio|lip/', get_post()->post_name)){ ?>
+                                        <?php $lips = eg_hub('labios'); ?>
+                                        Si buscas volumen o contorno, conoce el <a href="<?php _p(esc_url($lips->url)); ?>"><?php _p(esc_html(lcfirst($lips->title))); ?></a>.
+                                    <?php } ?>
+                                </p>
+                            <?php } ?>
+
                             <aside class="lp-service-cta">
                                 <p>
                                     Atención médica: <a href="<?php _p(esc_url(home_url('/nosotros/'))); ?>">Dr. Bruno Ocampo</a>, Eternal Glow, Roma Norte, CDMX.

@@ -54,6 +54,7 @@ return array(
 		'cats' => array(
 			'title' => 'Explora por categoría',
 			'all' => 'Ver los %d tratamientos',
+			'guides' => 'Guías completas:',
 			'count' => '%d tratamientos',
 			'names' => array(),
 		),
@@ -148,6 +149,7 @@ return array(
 		'cats' => array(
 			'title' => 'Browse by category',
 			'all' => 'See all %d treatments',
+			'guides' => 'Full guides:',
 			'count' => '%d treatments',
 			'names' => array(
 				'botox' => array('Botox', 'Botulinum toxin'),
