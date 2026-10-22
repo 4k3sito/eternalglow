@@ -694,6 +694,30 @@
 	.lp-sv-faq{
 		margin-top: 24px;
 	}
+	// Short answers under the H1 (includes/_service-answers.php).
+	.lp-sv-quick{
+		dl{
+			display: grid;
+			gap: 12px;
+			margin: 0;
+			@include media-breakpoint-up(md){
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+		div{
+			padding: 20px 24px;
+			border-radius: 20px;
+			background: var(--lp-sand);
+		}
+		dt{
+			margin-bottom: 4px;
+			color: var(--lp-ink);
+			font-weight: 600;
+		}
+		dd{
+			margin: 0;
+		}
+	}
 
 	// Sections
 	.lp-section{
