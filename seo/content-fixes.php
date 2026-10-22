@@ -115,10 +115,23 @@ foreach ($botox_duration as $slug => $swap) {
     if (!$post) { echo "ERROR: no existe el servicio $slug\n"; exit(1); }
     $content = str_replace(array_keys($swap), array_values($swap), $post->post_content);
     if (strpos($content, '3 a 5 meses') === false || preg_match('/\b[34] a 6 meses/', $content)) { echo "ERROR: $slug no quedó en 3 a 5 meses\n"; exit(1); }
-    if ($content === $post->post_content) continue;
-    $wpdb->update($wpdb->posts, array('post_content' => $content), array('ID' => $post->ID));
-    clean_post_cache($post->ID);
-    $changed++;
+    if ($content !== $post->post_content) {
+        $wpdb->update($wpdb->posts, array('post_content' => $content), array('ID' => $post->ID));
+        clean_post_cache($post->ID);
+        $changed++;
+    }
+    // The page's FAQPage JSON-LD (SASWP) repeats the answers in plain text: the same phrases, without the <strong>.
+    $schema = get_post_meta($post->ID, 'saswp_custom_schema_field', true);
+    if ($schema) {
+        $plain = array_combine(array_map('strip_tags', array_keys($swap)), array_map('strip_tags', array_values($swap)));
+        $fixed = str_replace(array_keys($plain), array_values($plain), $schema);
+        if (preg_match('/\b[34] a 6 meses/', $fixed)) { echo "ERROR: el schema de $slug sigue con otra duración\n"; exit(1); }
+        if ($fixed !== $schema) {
+            $wpdb->update($wpdb->postmeta, array('meta_value' => $fixed), array('post_id' => $post->ID, 'meta_key' => 'saswp_custom_schema_field'));
+            clean_post_cache($post->ID);
+            $changed++;
+        }
+    }
 }
 
 // Self-check on the rewritten attributes only: Sculptra's aftercare legitimately says to postpone limpiezas profundas.
