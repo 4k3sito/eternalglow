@@ -259,6 +259,7 @@ function eg_landings(){
 		),
 		// English version of /relleno-de-labios-cdmx/. Same facts and prices as the Spanish page.
 		'lip-filler-mexico-city' => array(
+			'updated' => '2026-10-22',
 			'image' => array('2026/05/rejuvenecimiento-labial-cdmx-resultados.jpg', 'Illustrative before and after of lips treated with hyaluronic acid filler'),
 			'hero' => array(
 				'Hyaluronic acid · Roma Norte, Mexico City',
@@ -287,6 +288,12 @@ function eg_landings(){
 					'armonizacion-facial-con-acido-hialuronico' => array('Facial harmonization', 'A treatment tailored to your goals.'),
 				))),
 			),
+			'risks' => array('Lip filler risks and contraindications', array(
+				'When a physician applies it, side effects are usually mild and temporary, but it is not for everyone.',
+				'<strong>It is not recommended if:</strong> you are pregnant or breastfeeding; you have active cold sores, an infection or inflammation on the lips; you have an active autoimmune disease; you have had an allergic reaction to hyaluronic acid or lidocaine.',
+				'<strong>Possible effects:</strong> lips swell more than other areas in the first days, and there may be tenderness or a small bruise. Less often small lumps appear, which the doctor corrects. The most serious complication, although rare, is the product blocking a blood vessel; that is why it is applied by a physician who knows facial anatomy and keeps hyaluronidase at hand.',
+				'Tell the doctor at your consultation if you take anticoagulants or aspirin, or if you often get cold sores.',
+			)),
 			'faq_title' => 'Lip filler questions',
 			'faq' => array(
 				array('How much does lip filler cost in Mexico City?', 'At Eternal Glow lip filler costs $6,499 MXN per 1 mL syringe of hyaluronic acid. The amount you need is set in your consultation.'),
@@ -325,6 +332,12 @@ function eg_landings(){
 					eg_price_row('9 or more threads', 'Price for each thread', '$1,100 / thread'),
 				)),
 			),
+			'risks' => array('PDO thread risks and contraindications', array(
+				'When a physician places them, side effects are usually mild and temporary, but they are not for everyone.',
+				'<strong>They are not recommended if:</strong> you are pregnant or breastfeeding; there is an infection or inflammation in the area; you have an active autoimmune disease or a bleeding disorder; you tend to form keloid scars. If the sagging is very marked, the doctor will tell you whether threads are the right option.',
+				'<strong>Possible effects:</strong> swelling, bruising, tenderness or a feeling of tightness in the first days. Less often small dimples or irregularities show on the skin, or the end of a thread can be felt; the doctor checks and corrects them. Infection is rare, which is why the aftercare of the first 5 days matters.',
+				'Tell the doctor at your consultation if you take anticoagulants or aspirin.',
+			)),
 			'faq_title' => 'PDO thread questions',
 			'faq' => array(
 				array('How much do PDO threads cost in Mexico City?', 'At Eternal Glow the price is per thread: $1,500 MXN each from 1 to 4 threads, $1,300 from 5 to 8 threads and $1,100 from 9 threads.'),
@@ -336,7 +349,7 @@ function eg_landings(){
 			),
 		),
 		'hilos-tensores-cdmx' => array(
-			'updated' => '2026-10-13',
+			'updated' => '2026-10-22',
 			'prices' => array(
 				array('Precio de hilos tensores', 'Precio por hilo · MXN', array(
 					eg_price_row('1 a 4 hilos', 'Precio por cada hilo', '$1,500 / hilo'),
@@ -344,6 +357,12 @@ function eg_landings(){
 					eg_price_row('9 o más hilos', 'Precio por cada hilo', '$1,100 / hilo'),
 				)),
 			),
+			'risks' => array('Riesgos y contraindicaciones de los hilos tensores', array(
+				'Bien colocados por un médico, los efectos secundarios suelen ser leves y temporales, pero no son para todos.',
+				'<strong>No se recomiendan si:</strong> estás embarazada o en lactancia; hay infección o inflamación en la zona; tienes una enfermedad autoinmune activa o un trastorno de la coagulación; tienes tendencia a cicatrices queloides. Si la flacidez es muy marcada, el médico te dirá si los hilos son la mejor opción.',
+				'<strong>Efectos posibles:</strong> inflamación, moretones, sensibilidad o una sensación de tirantez los primeros días. Con poca frecuencia se notan pequeños hundimientos o irregularidades en la piel, o se siente la punta de un hilo; el médico los revisa y corrige. La infección es rara, por eso importan los cuidados de los primeros 5 días.',
+				'Avisa en tu valoración si tomas anticoagulantes o aspirina.',
+			)),
 			'faq_title' => 'Preguntas frecuentes sobre hilos tensores',
 			'faq' => array(
 				array('¿Cuánto cuestan los hilos tensores en CDMX?', 'En Eternal Glow el precio es por hilo: $1,500 MXN cada uno de 1 a 4 hilos, $1,300 de 5 a 8 hilos y $1,100 a partir de 9 hilos.'),
@@ -393,6 +412,7 @@ function eg_landings(){
 			),
 		),
 		'relleno-de-labios-cdmx' => array(
+			'updated' => '2026-10-22',
 			'image' => array('2026/05/rejuvenecimiento-labial-cdmx-resultados.jpg', 'Imagen ilustrativa de labios antes y después de un relleno con ácido hialurónico'),
 			'hero' => array(
 				'Ácido hialurónico · Roma Norte, CDMX',
@@ -417,6 +437,12 @@ function eg_landings(){
 				array('Precio', 'Ácido hialurónico · MXN', array($lips)),
 				array('Tratamientos relacionados', 'Para labios y perfil', array($treatments['botox-lip-flip'], $treatments['relleno-de-menton'], $treatments['armonizacion-facial-con-acido-hialuronico'])),
 			),
+			'risks' => array('Riesgos y contraindicaciones del relleno de labios', array(
+				'Bien aplicado por un médico, los efectos secundarios suelen ser leves y temporales, pero no es para todos.',
+				'<strong>No se recomienda si:</strong> estás embarazada o en lactancia; tienes herpes labial activo, una infección o inflamación en los labios; tienes una enfermedad autoinmune activa; tuviste una reacción alérgica al ácido hialurónico o a la lidocaína.',
+				'<strong>Efectos posibles:</strong> los labios se inflaman más que otras zonas los primeros días, y puede haber sensibilidad o un moretón pequeño. Con poca frecuencia aparecen pequeños bultos que el médico corrige. La complicación más seria, aunque rara, es que el producto obstruya un vaso sanguíneo; por eso la aplicación la hace un médico que conoce la anatomía facial y tiene hialuronidasa a la mano.',
+				'Avisa en tu valoración si tomas anticoagulantes o aspirina, o si sueles tener herpes labial.',
+			)),
 			'faq_title' => 'Preguntas frecuentes sobre relleno de labios',
 			'faq' => array(
 				array('¿Cuánto cuesta el relleno de labios en CDMX?', 'En Eternal Glow el relleno de labios cuesta $6,499 MXN por jeringa de 1 mL de ácido hialurónico. La cantidad que necesitas se define en la valoración.'),
