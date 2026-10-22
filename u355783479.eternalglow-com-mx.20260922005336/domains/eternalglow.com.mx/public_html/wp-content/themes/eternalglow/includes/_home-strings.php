@@ -130,7 +130,7 @@ return array(
 	),
 	'en' => array(
 		// Full paths, not bare #anchors: the menu is also shown on English pages other than /en/.
-		'nav' => array('/en/#tratamientos' => 'Treatments', '/en/botox-mexico-city/' => 'Botox', '/en/fillers-mexico-city/' => 'Fillers', '/en/sculptra-mexico-city/' => 'Sculptra', '/en/#doctor' => 'The doctor', '/en/#resultados' => 'Results', '/en/#resenas' => 'Reviews'),
+		'nav' => array('/en/#tratamientos' => 'Treatments', '/en/botox-mexico-city/' => 'Botox', '/en/fillers-mexico-city/' => 'Fillers', '/en/sculptra-mexico-city/' => 'Sculptra', '/en/pdo-threads-mexico-city/' => 'PDO threads', '/en/#doctor' => 'The doctor', '/en/#resultados' => 'Results', '/en/#resenas' => 'Reviews'),
 		'cta' => 'Book online',
 		'cta_short' => 'Book a visit',
 		'cta_bar' => 'Book',

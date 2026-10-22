@@ -298,6 +298,43 @@ function eg_landings(){
 				array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up. You can also book online or message us on WhatsApp in English.'),
 			),
 		),
+		// English version of /hilos-tensores-cdmx/. Same facts and prices as the Spanish hub (its WPBakery copy and FAQ).
+		'pdo-threads-mexico-city' => array(
+			'updated' => '2026-10-22',
+			'image' => array('2025/09/hilos-tensores-cdmx-resultados-reales.jpg', 'Before and after PDO threads at Eternal Glow, Mexico City'),
+			'hero' => array(
+				'Lifting without surgery · Roma Norte, Mexico City',
+				'PDO threads in Mexico City',
+				'Lift, redefine and rejuvenate without surgery. PDO threads from $1,100 MXN per thread, placed by an aesthetic physician in Roma Norte, with English spoken at the clinic.',
+			),
+			'sections' => array(
+				array('What are PDO threads?', array(
+					'PDO (polydioxanone) threads are a minimally invasive technique that repositions and supports facial tissue. They are placed under the skin with micro cannulas to tighten, lift and stimulate collagen in specific areas, with no cuts.',
+					'The lifting effect shows from the treatment and keeps improving as collagen grows: firmness, elasticity and texture get better over the following days, and results last 1 to 1.5 years.',
+				)),
+				array('How does the treatment work?', array(
+					'It starts with a medical consultation: the doctor assesses the degree of sagging and the areas that need lifting, and designs a plan for your facial structure and the result you want.',
+					'Under local anaesthetic the threads are placed with a cannula or a fine needle along the lifting vectors. The session takes 30 to 60 minutes and you go home the same day.',
+					'Afterwards there may be mild swelling or a temporary feeling of tightness. Avoid sudden movements, intense exercise and facial massages for the first 5 days.',
+				)),
+			),
+			'prices' => array(
+				array('PDO thread prices', 'Price per thread · MXN', array(
+					eg_price_row('1 to 4 threads', 'Price for each thread', '$1,500 / thread'),
+					eg_price_row('5 to 8 threads', 'Price for each thread', '$1,300 / thread'),
+					eg_price_row('9 or more threads', 'Price for each thread', '$1,100 / thread'),
+				)),
+			),
+			'faq_title' => 'PDO thread questions',
+			'faq' => array(
+				array('How much do PDO threads cost in Mexico City?', 'At Eternal Glow the price is per thread: $1,500 MXN each from 1 to 4 threads, $1,300 from 5 to 8 threads and $1,100 from 9 threads.'),
+				array('How many threads do I need?', 'It depends on the area and the degree of sagging. The doctor sets the number of threads in your consultation, after examining your face.'),
+				array('Which areas can be treated?', 'The most common areas are the brows (brow lift), foxy eyes, cheeks, nasolabial folds, marionette lines, jawline, facial contour and neck.'),
+				array('How long do the results last?', 'The lifting effect shows from the treatment and results last 1 to 1.5 years, while the threads keep stimulating collagen.'),
+				array('Is it surgery?', 'No. It is an outpatient, minimally invasive procedure: PDO threads are placed with micro cannulas, without cuts.'),
+				array('Do you speak English?', 'Yes. Our team works in English and Spanish, during the consultation and the follow up. You can also book online or message us on WhatsApp in English.'),
+			),
+		),
 		'hilos-tensores-cdmx' => array(
 			'updated' => '2026-10-13',
 			'prices' => array(

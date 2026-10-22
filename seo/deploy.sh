@@ -67,7 +67,7 @@ if [ "$warmed" -gt 0 ]; then echo "   $warmed URLs"; else echo "   AVISO: no se 
 
 echo "Verificando..."
 failed=0
-for path in / /en/ /en/botox-mexico-city/ /en/sculptra-mexico-city/ /en/fillers-mexico-city/ /en/lip-filler-mexico-city/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/; do
+for path in / /en/ /en/botox-mexico-city/ /en/sculptra-mexico-city/ /en/fillers-mexico-city/ /en/lip-filler-mexico-city/ /en/pdo-threads-mexico-city/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/; do
 	result=$(curl -s -o /dev/null -m 30 -w '%{http_code} %{redirect_url}' "$SITE$path" || true)
 	printf '%s -> %s\n' "$path" "$result"
 	case "${result%% *}" in 200|301) ;; *) failed=1 ;; esac
