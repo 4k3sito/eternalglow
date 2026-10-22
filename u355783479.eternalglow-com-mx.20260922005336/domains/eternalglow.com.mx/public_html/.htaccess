@@ -44,6 +44,17 @@ RewriteRule ^(.*) "/wp-content/cache/supercache/%{HTTP_HOST}/$1/index-https.html
 </IfModule>
 # END WPSuperCache
 
+# BEGIN Security headers
+# HSTS starts at 5 minutes (2026-10-22); raise it to 1 year once nothing breaks over HTTPS.
+<IfModule mod_headers.c>
+Header always set Strict-Transport-Security "max-age=300" "expr=%{HTTPS} == 'on'"
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+</IfModule>
+# END Security headers
+
 # BEGIN Static files (rules kept from WP Rocket, plugin removed)
 # Do not reveal the PHP version.
 <IfModule mod_headers.c>
