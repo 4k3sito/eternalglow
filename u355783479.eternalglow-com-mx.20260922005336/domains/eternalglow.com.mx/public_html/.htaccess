@@ -7,7 +7,50 @@ RewriteRule ^ https://eternalglow.com.mx%{REQUEST_URI} [L,R=301]
 </IfModule>
 # END HTTPS redirect
 
-# BEGIN WP Rocket
+# BEGIN EG WebP
+# Serves image.ext.webp instead of image.ext when the browser accepts WebP and the sibling exists.
+# Restored from the old Imagify rules (removed with the plugin on 2026-10-15); own marker so plugins don't touch it.
+<IfModule mod_mime.c>
+	AddType image/webp .webp
+</IfModule>
+<IfModule mod_setenvif.c>
+	SetEnvIf Request_URI "\.(jpg|jpeg|jpe|png|gif)$" REQUEST_image
+</IfModule>
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteCond %{HTTP_ACCEPT} image/webp
+	RewriteCond %{REQUEST_FILENAME}.webp -f
+	RewriteRule (.+)\.(jpg|jpeg|jpe|png|gif)$ $1.$2.webp [T=image/webp,NC,L]
+</IfModule>
+<IfModule mod_headers.c>
+	Header append Vary Accept env=REQUEST_image
+</IfModule>
+# END EG WebP
+
+# BEGIN WPSuperCache
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+AddDefaultCharset UTF-8
+RewriteCond %{REQUEST_URI} !^.*[^/]$
+RewriteCond %{REQUEST_URI} !^.*//.*$
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{QUERY_STRING} ^$
+RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$
+RewriteCond %{HTTPS} on
+RewriteCond /home/gud2fg1pw42d/public_html/wp-content/cache/supercache/%{HTTP_HOST}/$1/index-https.html -f
+RewriteRule ^(.*) "/wp-content/cache/supercache/%{HTTP_HOST}/$1/index-https.html" [L]
+</IfModule>
+# END WPSuperCache
+
+# BEGIN Static files (rules kept from WP Rocket, plugin removed)
+# Do not reveal the PHP version.
+<IfModule mod_headers.c>
+Header always unset X-Powered-By
+Header unset X-Powered-By
+</IfModule>
+
 # Use UTF-8 encoding for anything served text/plain or text/html
 AddDefaultCharset UTF-8
 # Force UTF-8 for a number of file formats
@@ -45,7 +88,6 @@ Header set Access-Control-Allow-Origin "*"
 <IfModule mod_alias.c>
 <FilesMatch "\.(html|htm|rtf|rtx|txt|xsd|xsl|xml)$">
 <IfModule mod_headers.c>
-Header set X-Powered-By "WP Rocket/3.23.3.3"
 Header unset Pragma
 Header append Cache-Control "public"
 Header unset Last-Modified
@@ -147,7 +189,7 @@ Header append Vary: Accept-Encoding
 </IfModule>
 
 
-# END WP Rocket
+# END Static files
 
 
 # BEGIN WordPress
