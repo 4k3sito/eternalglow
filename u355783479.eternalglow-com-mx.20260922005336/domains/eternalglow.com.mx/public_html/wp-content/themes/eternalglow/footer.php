@@ -43,12 +43,7 @@
 				</div>
 				<div class="lp-footer-legal">
 					<span>
-						<?php if ( is_page('tratamientos') || is_singular('service') ) { ?>
-							<?php _p($texts->copyright); ?> Eternal Glow ·
-							<a href="https://mktboom.com/" target="_blank" rel="noopener noreferrer">Agencia de publicidad y marketing digital</a>
-						<?php } else { ?>
-							<?php _p($texts->copyright); ?> Eternal Glow · <?php _p(isset($t['footer']['credit']) ? str_replace('Sitio Web Diseñado por', $t['footer']['credit'], $texts->powered_by) : $texts->powered_by); ?>
-						<?php } ?>
+						<?php _p($texts->copyright); ?> Eternal Glow
 					</span>
 					<span>
 						<?php _p(esc_html($t['footer']['cofepris'])); ?>: 2509152002A00185
