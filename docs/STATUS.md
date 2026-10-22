@@ -1,10 +1,12 @@
 # Estado del proyecto
-Actualizado: 2026-10-21
+Actualizado: 2026-10-22
 
 ## Ahora
-Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100).
+Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100). Altas cerradas (salvo el nombre del perfil de Google Business, que es del cliente); siguen las Medias.
 
 ## Hecho recientemente
+- Riesgos y contraindicaciones en relleno de labios e hilos tensores, ES/EN (2026-10-22, PR #21, run 39799393550): con esto los 4 hubs de inyectables y Sculptra tienen su H2 de riesgos. Texto aprobado por el usuario.
+- `.htaccess` de producción (2026-10-22, PR #22 sincroniza la copia del repo; `seo/deploy.sh` no lo sube): el bloque de WP Rocket se llama ahora `Static files` y ya no envía `X-Powered-By: WP Rocket` (se quedan gzip, Expires y CORS de fuentes, que dan la caché de 1 año a CSS/JS); `X-Powered-By` de PHP oculto; bloque `Security headers` con HSTS `max-age=300`, `nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy` y `Permissions-Policy`. Respaldos en `~/backups-deploy/20261022-07*-htaccess/`.
 - Divi y ManageWP fuera del todo (2026-10-22): plugins borrados, 24 opciones `et_*`/`mwp_*` (licencia de `angloodigital`, llaves de ManageWP) y 412 filas de postmeta `_et_*` borradas; respaldo en `~/backups-deploy/20261022-052536-divi-purge/`. El original de cada servicio sigue en el meta `_eg_divi_content`. El tema ya no tiene código para Divi.
 - Enlaces internos a los hubs con la frase exacta (2026-10-22, `eg_hubs()`): tarjetas y línea "Guías completas" en la home ES/EN, frase al final de cada `/servicio/` y enlaces en los encabezados de `/tratamientos/`. Medir con `seo/gsc_report.py` (3–10 nov) si `/botox-cdmx/` y `/rellenos-cdmx/` le ganan a la home en "botox cdmx" y "rellenos cdmx".
 - Pie de página sin créditos de Anglood ni mktboom (PR #15).
@@ -20,7 +22,9 @@ Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-2
 - SEO: páginas en inglés de Sculptra, Botox, rellenos y relleno de labios; footer y formulario en inglés en `/en/`.
 
 ## Siguiente
-- Resto de Altas de la auditoría: hub de Botox, reenfoque de Rellenos, médico visible en hubs.
+- Desde el 2026-10-29: si nada falló sobre HTTPS, subir HSTS a `max-age=31536000` en el bloque `Security headers` del `.htaccess`.
+- Medias de la auditoría que quedan: hubs en inglés a ~900 palabras (USD, "Mexico vs US cost", "Is it safe?", "Planning your visit"); schema (BreadcrumbList, ItemList en `/tratamientos/`, `reviewedBy`/`dateModified` en hubs, `price` en Offer, `Physician` como Person, `@id` entre idiomas); Clarity después de `load` y logos de marca a WebP; CSP en report-only (falta decidir a dónde van los reportes).
+- Del 3 al 10 nov: `seo/gsc_report.py`.
 
 ## Decisiones
 - `seo/deploy.sh` es la única receta de deploy; CI la reutiliza.
