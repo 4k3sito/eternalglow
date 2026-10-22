@@ -70,7 +70,7 @@ $schema = $fill(<<<'NOWDOC_END'
       "name": "Eternal Glow CDMX Roma Norte",
       "url": "{SITE}/",
       "telephone": "+525554049467",
-      "email": "eternalglow.medicalaesthetic@gmail.com",
+      "email": "contacto@eternalglow.com.mx",
       "image": [
         "{SITE}/wp-content/uploads/2025/08/logo.png"
       ],
