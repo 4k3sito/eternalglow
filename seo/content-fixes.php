@@ -9,6 +9,7 @@
 // - 2026-10-20 audit, /botox-cdmx/: the intro promised guaranteed results, the onset was given as both 48-72 h and
 //   3-7 days, and two template sections ("Belleza natural…", "Nuestros Servicios") sat between the copy and the prices.
 //   The new wording was approved by the user on 2026-10-20.
+// - 2026-10-22: four Botox service pages gave the effect as 4-6 or 3-6 months. The user set 3 to 5 months, as on /botox-cdmx/.
 // Uses $wpdb->update, not wp_update_post: WP-CLI runs without a user and kses would strip the shortcodes.
 
 global $wpdb;
@@ -96,6 +97,24 @@ foreach (array_unique(array_merge(array_keys($procedures), $service_hubs)) as $s
         }
     }
 
+    if ($content === $post->post_content) continue;
+    $wpdb->update($wpdb->posts, array('post_content' => $content), array('ID' => $post->ID));
+    clean_post_cache($post->ID);
+    $changed++;
+}
+
+// Botox service pages: how long the effect lasts, the same 3 to 5 months as the hub. Exact phrases, so rerunning is a no-op.
+$botox_duration = array(
+    'botox-por-unidad' => array('reaplicación cada <strong>4 a 6 meses</strong>' => 'reaplicación cada <strong>3 a 5 meses</strong>'),
+    'full-face-botox-60-unidades' => array('el resultado se conserva alrededor de 4 a 6 meses.' => 'el efecto dura de 3 a 5 meses.'),
+    'botox-en-cuello-cdmx' => array('suele hablarse de alrededor de 4 a 6 meses,' => 'dura de 3 a 5 meses,'),
+    'botox-foxy-eyes-cdmx' => array('suele hablarse de un rango frecuente de 3 a 6 meses.' => 'dura de 3 a 5 meses.'),
+);
+foreach ($botox_duration as $slug => $swap) {
+    $post = $wpdb->get_row($wpdb->prepare("SELECT ID, post_content FROM $wpdb->posts WHERE post_name = %s AND post_type = 'service' AND post_status = 'publish'", $slug));
+    if (!$post) { echo "ERROR: no existe el servicio $slug\n"; exit(1); }
+    $content = str_replace(array_keys($swap), array_values($swap), $post->post_content);
+    if (strpos($content, '3 a 5 meses') === false || preg_match('/\b[34] a 6 meses/', $content)) { echo "ERROR: $slug no quedó en 3 a 5 meses\n"; exit(1); }
     if ($content === $post->post_content) continue;
     $wpdb->update($wpdb->posts, array('post_content' => $content), array('ID' => $post->ID));
     clean_post_cache($post->ID);
