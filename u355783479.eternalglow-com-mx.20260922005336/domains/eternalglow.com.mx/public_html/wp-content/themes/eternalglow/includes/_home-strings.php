@@ -233,6 +233,6 @@ return array(
 		),
 		'footer' => array('tagline' => 'Boutique aesthetic medicine clinic.', 'visit' => 'Visit us', 'hours' => 'Hours', 'contact' => 'Contact', 'privacy' => 'Privacy notice', 'cofepris' => 'COFEPRIS advertising permit', 'whatsapp' => 'Message us on WhatsApp', 'map' => 'Location map',
 			// Same hours as the theme's contact settings (wp-admin), translated: change both together.
-			'schedules' => "Monday to Friday: 11:30 a.m. to 6:00 p.m.\nSaturday: 11:30 a.m. to 5:00 p.m.", 'schedules_note' => 'By appointment only.', 'credit' => 'Website designed by'),
+			'schedules' => "Monday to Friday: 11:30 a.m. to 6:00 p.m.\nSaturday: 11:30 a.m. to 5:00 p.m.", 'schedules_note' => 'By appointment only.'),
 	),
 );
