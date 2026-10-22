@@ -5,6 +5,9 @@ Actualizado: 2026-10-22
 Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100). Altas cerradas (salvo el nombre del perfil de Google Business, que es del cliente); siguen las Medias.
 
 ## Hecho recientemente
+- Respuestas rápidas bajo el H1 de Full Face Botox y Botox por unidad (2026-10-22, PR #24, run 39817466657), con el mismo bloque de Hollywood Peel (`includes/_service-answers.php`): las dos estaban en el top 6 de "botox full face que incluye" y "precio de botox por unidad" con casi ningún clic. Medir en el reporte del 3 al 10 nov.
+- Duración del Botox unificada en 3 a 5 meses, como en `/botox-cdmx/` (decisión del usuario, 2026-10-22, PR #24 y #25): `seo/content-fixes.php` corrigió el FAQ visible y el schema FAQ de SASWP (`saswp_custom_schema_field`) de `botox-por-unidad`, `full-face-botox-60-unidades`, `botox-en-cuello-cdmx` y `botox-foxy-eyes-cdmx`. Ya corrido en producción; respaldos en `~/backups-deploy/20261022-*-content-fixes/`.
+- Mapa de keywords y canibalización (2026-10-22, PR #23): `docs/reports/2026-10-22-mapa-keywords.md` y `seo/cannibalization.py`. Línea base: la home se queda con las búsquedas genéricas de cada hub. Endolifting descartado (no está en la lista de tratamientos).
 - Riesgos y contraindicaciones en relleno de labios e hilos tensores, ES/EN (2026-10-22, PR #21, run 39799393550): con esto los 4 hubs de inyectables y Sculptra tienen su H2 de riesgos. Texto aprobado por el usuario.
 - `.htaccess` de producción (2026-10-22, PR #22 sincroniza la copia del repo; `seo/deploy.sh` no lo sube): el bloque de WP Rocket se llama ahora `Static files` y ya no envía `X-Powered-By: WP Rocket` (se quedan gzip, Expires y CORS de fuentes, que dan la caché de 1 año a CSS/JS); `X-Powered-By` de PHP oculto; bloque `Security headers` con HSTS `max-age=300`, `nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy` y `Permissions-Policy`. Respaldos en `~/backups-deploy/20261022-07*-htaccess/`.
 - Divi y ManageWP fuera del todo (2026-10-22): plugins borrados, 24 opciones `et_*`/`mwp_*` (licencia de `angloodigital`, llaves de ManageWP) y 412 filas de postmeta `_et_*` borradas; respaldo en `~/backups-deploy/20261022-052536-divi-purge/`. El original de cada servicio sigue en el meta `_eg_divi_content`. El tema ya no tiene código para Divi.
@@ -24,7 +27,7 @@ Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-2
 ## Siguiente
 - Desde el 2026-10-29: si nada falló sobre HTTPS, subir HSTS a `max-age=31536000` en el bloque `Security headers` del `.htaccess`.
 - Medias de la auditoría que quedan: hubs en inglés a ~900 palabras (USD, "Mexico vs US cost", "Is it safe?", "Planning your visit"); schema (BreadcrumbList, ItemList en `/tratamientos/`, `reviewedBy`/`dateModified` en hubs, `price` en Offer, `Physician` como Person, `@id` entre idiomas); Clarity después de `load` y logos de marca a WebP; CSP en report-only (falta decidir a dónde van los reportes).
-- Del 3 al 10 nov: `seo/gsc_report.py`.
+- Del 3 al 10 nov: `seo/gsc_report.py` y luego `seo/cannibalization.py`; comparar contra `docs/reports/2026-10-22-mapa-keywords.md` (hubs contra home, `/en/` contra home, clics de Full Face y Botox por unidad).
 
 ## Decisiones
 - `seo/deploy.sh` es la única receta de deploy; CI la reutiliza.
