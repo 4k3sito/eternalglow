@@ -44,6 +44,6 @@ La canibalización entre `/sculptra-cdmx/` y `/servicio/tratamiento-sculptra-en-
 1. **Respuestas rápidas en Full Face y Botox por unidad.** Son las dos páginas con más impresiones en el top 6 y casi sin clics. La búsqueda "botox full face que incluye" (102 impr) pide justo lo que hoy está más abajo. Usar el bloque de `includes/_service-answers.php` (el mismo de Hollywood Peel): qué zonas incluye, cuánto dura, precio. Lo más probable es que hoy Google conteste con un resumen de IA; el bloque busca que esa respuesta cite a la clínica.
 2. **Esperar al reporte del 3 al 10 nov** antes de mover más la home. Correr `seo/gsc_report.py` y después `seo/cannibalization.py` y comparar contra la tabla de arriba.
 3. **Huecos sin página** (la home aparece en el top 6 sin ser la respuesta):
-   - "endolifting facial": 201 impr, pos 4.6. Preguntar al cliente si lo ofrece; si sí, merece su `/servicio/`.
+   - "endolifting facial": 201 impr, pos 4.6. Descartado: no está en la lista de tratamientos de la clínica.
    - "restylane": 237 impr, pos 5.9. Es búsqueda de marca del producto; una mención en `/rellenos-cdmx/` basta.
 4. **Rinomodelación** está en pos 24–57 con intención clara de precio. Candidata a ampliar contenido (riesgos, antes y después, FAQ de precio) después de los hubs.
