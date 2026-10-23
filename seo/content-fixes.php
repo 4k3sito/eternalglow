@@ -34,7 +34,8 @@ $services = array(
     array('Bioestimuladores', 'Sculptra, Radiesse y Rejuran estimulan tu propio colágeno para mejorar la firmeza y la calidad de la piel de forma gradual.', 'bio'),
     array('Piel y aparatología', 'HIFU, Hollywood Peel, microneedling, peeling químico y carboxiterapia para reafirmar y mejorar textura y luminosidad.', 'piel'),
 );
-$service_hubs = array('sculptra-cdmx', 'hilos-tensores-cdmx');
+// Hilos dropped its cards on 2026-10-22 (see $page_drop), so only Sculptra still rewrites them.
+$service_hubs = array('sculptra-cdmx');
 
 // Botox hub copy: exact phrases replaced in place (str_replace is a no-op once applied, so the script stays rerunnable).
 $botox_copy = array(
@@ -44,8 +45,10 @@ $botox_copy = array(
         'los primeros cambios se notan entre 48 y 72 horas después, el efecto completo se ve a los 14 días y dura de 3 a 5 meses.',
     'Resultados visibles a partir de las 48 a 72 horas' => 'Primeros cambios entre 48 y 72 horas, efecto completo a los 14 días',
 );
-// Whole outer [vc_row] sections dropped from the Botox hub, found by their heading. [vc_row_inner] does not end the match.
-$botox_drop = array('Belleza natural para cada tipo de piel', 'Nuestros {{Servicios}}');
+// Whole outer [vc_row] sections dropped from a hub, found by their heading. [vc_row_inner] does not end the match.
+// Hilos on 2026-10-22: the same two template sections the audit flagged on Botox.
+$template_rows = array('Belleza natural para cada tipo de piel', 'Nuestros {{Servicios}}');
+$page_drop = array('botox-cdmx' => $template_rows, 'hilos-tensores-cdmx' => $template_rows);
 
 // WPBakery stores the attribute as rawurlencode(json); json_decode(urldecode()) in the templates reads it back.
 function eg_encode_texts(array $items): string {
@@ -89,12 +92,12 @@ foreach (array_unique(array_merge(array_keys($procedures), $service_hubs)) as $s
 
     if ($slug === 'botox-cdmx') {
         $content = str_replace(array_keys($botox_copy), array_values($botox_copy), $content);
-        foreach ($botox_drop as $heading) {
-            // The tempered part refuses to cross any [vc_row or [/vc_row, so the match never spans two rows.
-            $content = preg_replace('/\[vc_row(?:\s[^\]]*)?\](?:(?!\[\/?vc_row[\s\]]).)*?' . preg_quote($heading, '/') . '.*?\[\/vc_row\]/s', '', $content, 1);
-            // preg_replace returns null on a PCRE failure: writing that would empty the hub.
-            if ($content === null) { echo "ERROR: regex botox-cdmx: " . preg_last_error_msg() . "\n"; exit(1); }
-        }
+    }
+    foreach ($page_drop[$slug] ?? array() as $heading) {
+        // The tempered part refuses to cross any [vc_row or [/vc_row, so the match never spans two rows.
+        $content = preg_replace('/\[vc_row(?:\s[^\]]*)?\](?:(?!\[\/?vc_row[\s\]]).)*?' . preg_quote($heading, '/') . '.*?\[\/vc_row\]/s', '', $content, 1);
+        // preg_replace returns null on a PCRE failure: writing that would empty the hub.
+        if ($content === null) { echo "ERROR: regex $slug: " . preg_last_error_msg() . "\n"; exit(1); }
     }
 
     if ($content === $post->post_content) continue;
@@ -156,6 +159,14 @@ foreach (array('Dr. Bruno Ocampo', 'a los 14 días', 'Primeros cambios entre 48 
     if (strpos($botox, $good) === false) { echo "ERROR: botox-cdmx perdió '$good'\n"; exit(1); }
 }
 if (preg_match_all('/\[vc_row[\s\]]/', $botox) !== substr_count($botox, '[/vc_row]')) { echo "ERROR: botox-cdmx quedó con filas sin cerrar\n"; exit(1); }
+$hilos = get_page_by_path('hilos-tensores-cdmx')->post_content;
+foreach ($template_rows as $bad) {
+    if (strpos($hilos, $bad) !== false) { echo "ERROR: hilos-tensores-cdmx todavía tiene '$bad'\n"; exit(1); }
+}
+foreach (array('[jss-procedure', 'Pacientes {{satisfechos}}') as $good) {
+    if (strpos($hilos, $good) === false) { echo "ERROR: hilos-tensores-cdmx perdió '$good'\n"; exit(1); }
+}
+if (preg_match_all('/\[vc_row[\s\]]/', $hilos) !== substr_count($hilos, '[/vc_row]')) { echo "ERROR: hilos-tensores-cdmx quedó con filas sin cerrar\n"; exit(1); }
 
 wp_cache_flush();
 if (function_exists('rocket_clean_domain')) rocket_clean_domain();
