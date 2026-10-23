@@ -157,7 +157,10 @@ def build(c: GoogleClient) -> str:
         "filter": [condition("matchRegex", "{{Click URL}}", r"agendapro\.com|wa\.me/|api\.whatsapp\.com|^tel:")],
     })
 
-    ws.upsert("tags", html_tag("Clarity - base", CLARITY_HTML, [ALL_PAGES]))
+    # Clarity after the load event (audit 2026-10-20): on All Pages it competed with the home's LCP on mobile.
+    # A contact click before load is not tagged in Clarity; GA4 still counts it.
+    t_loaded = ws.upsert("triggers", {"name": "Window Loaded - todas las páginas", "type": "windowLoaded"})
+    ws.upsert("tags", html_tag("Clarity - base", CLARITY_HTML, [t_loaded]))
     ws.upsert("tags", html_tag("Listeners - FAQ, idioma, formulario", LISTENERS_HTML, [ALL_PAGES]))
     ws.upsert("tags", html_tag("GA4 - faq_open (vía gtag)", ga4_bridge("faq_open", "faq_question", "DLV - faq_question"), [t_faq]))
     ws.upsert("tags", html_tag("GA4 - cambio_idioma (vía gtag)", ga4_bridge("cambio_idioma", "idioma", "DLV - idioma"), [t_lang]))
