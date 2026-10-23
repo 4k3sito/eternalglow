@@ -106,6 +106,10 @@ function eg_treatments(){
 			'name' => $r[1],
 			'cat' => $r[2],
 			'price' => $price,
+			// The same price as numbers, for the schema's Offer.
+			'amount' => $r[3],
+			'unit' => $unit,
+			'from' => !empty($r[6]),
 			'desc' => $r[4],
 			'url' => $url,
 		);

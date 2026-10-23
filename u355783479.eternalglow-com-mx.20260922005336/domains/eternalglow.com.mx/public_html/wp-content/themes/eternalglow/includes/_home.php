@@ -275,6 +275,30 @@ function eg_breadcrumb_schema($trail){
 	return array('@type' => 'BreadcrumbList', 'itemListElement' => $items);
 }
 
+// The catalogue price of a service page as an Offer price: a fixed amount, a starting one or one per unit.
+function eg_offer_price($item){
+	$offer = array('priceCurrency' => 'MXN');
+	if($item->from){
+		$offer['priceSpecification'] = array('@type' => 'PriceSpecification', 'minPrice' => $item->amount, 'priceCurrency' => 'MXN');
+	}elseif($item->unit){
+		$offer['price'] = $item->amount;
+		$offer['priceSpecification'] = array('@type' => 'UnitPriceSpecification', 'price' => $item->amount, 'priceCurrency' => 'MXN', 'unitText' => $item->unit);
+	}else{
+		$offer['price'] = $item->amount;
+	}
+	return $offer;
+}
+
+// Adds the catalogue price to the Offer of the schema plugin's Service nodes, which carry a currency but no price.
+function eg_saswp_add_price($nodes, $item){
+	foreach($nodes as $i => $node){
+		if(isset($node['offers']['@type']) && $node['offers']['@type'] === 'Offer' && !isset($node['offers']['price'])){
+			$nodes[$i]['offers'] = array_merge($node['offers'], eg_offer_price($item));
+		}
+	}
+	return $nodes;
+}
+
 // One graph per page, with the clinic node that the other nodes point to by @id.
 // The schema plugin's own output is off (eg_schema_only); its per-post nodes come in through eg_saswp_nodes().
 function eg_schema(){
@@ -284,7 +308,8 @@ function eg_schema(){
 	$clinic = array('@id' => home_url('/#clinic'));
 	if(is_front_page() || is_page('en')){
 		$t = eg_home_strings();
-		$graph[] = array('@type' => 'WebSite', '@id' => home_url('/#website'), 'url' => home_url('/'), 'name' => 'Eternal Glow', 'inLanguage' => eg_lang() == 'en' ? 'en' : 'es-MX', 'publisher' => $clinic);
+		// One bilingual site: the same @id on /en/ must not claim a different language than on the home.
+		$graph[] = array('@type' => 'WebSite', '@id' => home_url('/#website'), 'url' => home_url('/'), 'name' => 'Eternal Glow', 'inLanguage' => array('es-MX', 'en'), 'publisher' => $clinic);
 		$graph[] = eg_physician_schema();
 		$faq = array();
 		foreach($t['faq'] as $item){
@@ -297,8 +322,42 @@ function eg_schema(){
 	$landing = is_page() ? eg_landing(get_post()->post_name) : null;
 	// Hub pages show the doctor block (template-parts/doctor.php), so the graph names him and dates the page.
 	if($landing || is_page('sculptra-cdmx')){
+		$en = eg_lang() == 'en';
 		$graph[] = eg_physician_schema();
-		$graph[] = array('@type' => 'WebPage', '@id' => get_permalink().'#webpage', 'url' => get_permalink(), 'name' => get_the_title(), 'inLanguage' => eg_lang() == 'en' ? 'en' : 'es-MX', 'dateModified' => wp_date('c', eg_page_modified()), 'about' => $clinic);
+		$graph[] = array(
+			'@type' => 'WebPage', '@id' => get_permalink().'#webpage', 'url' => get_permalink(), 'name' => get_the_title(),
+			'inLanguage' => $en ? 'en' : 'es-MX', 'dateModified' => wp_date('c', eg_page_modified()), 'about' => $clinic,
+			// The doctor block on the page is the review the date refers to.
+			'reviewedBy' => array('@id' => home_url('/#dr-bruno-ocampo')), 'lastReviewed' => wp_date('Y-m-d', eg_page_modified()),
+		);
+		if(!in_array('BreadcrumbList', $saswp_types, true)){
+			// The hub's name as the service pages' breadcrumb gives it ("Botox en CDMX"), not its WordPress title.
+			$name = get_the_title();
+			foreach(eg_hubs() as $key => $hub){
+				$here = eg_hub($key);
+				if($here && trailingslashit($here->url) === trailingslashit(get_permalink())){
+					$name = $here->title;
+				}
+			}
+			$graph[] = eg_breadcrumb_schema(array(
+				$en ? array('Home', home_url('/en/')) : array('Inicio', home_url('/')),
+				array($name, get_permalink()),
+			));
+		}
+	}
+	if(is_page('tratamientos')){
+		$items = array();
+		foreach(array_values(array_filter(eg_treatments(), function($item){
+			return strpos($item->url, home_url()) === 0;
+		})) as $i => $item){
+			$items[] = array('@type' => 'ListItem', 'position' => $i + 1, 'name' => $item->name, 'url' => $item->url);
+		}
+		$graph[] = array(
+			'@type' => 'CollectionPage', '@id' => get_permalink().'#webpage', 'url' => get_permalink(), 'name' => get_the_title(),
+			'inLanguage' => 'es-MX', 'about' => $clinic,
+			'mainEntity' => array('@type' => 'ItemList', 'numberOfItems' => count($items), 'itemListElement' => $items),
+		);
+		$graph[] = eg_breadcrumb_schema(array(array('Inicio', home_url('/')), array(get_the_title(), get_permalink())));
 	}
 	if($landing && !in_array('FAQPage', $saswp_types, true)){
 		$faq = array();
@@ -310,6 +369,15 @@ function eg_schema(){
 	if(is_singular('service')){
 		$post = get_post();
 		$hub = eg_service_hub($post);
+		$item = eg_treatment_for($post->post_name);
+		if($item){
+			$saswp = eg_saswp_add_price($saswp, $item);
+		}
+		// The plugin's breadcrumb goes through "Servicios"; the one on the page goes through the treatment's hub.
+		$saswp = array_values(array_filter($saswp, function($node){
+			return !in_array('BreadcrumbList', (array)($node['@type'] ?? ''), true);
+		}));
+		$saswp_types = eg_schema_types($saswp);
 		if(!in_array('MedicalProcedure', $saswp_types, true)){
 			$graph[] = array(
 				'@type' => 'MedicalProcedure',
