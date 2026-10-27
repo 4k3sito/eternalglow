@@ -2,9 +2,11 @@
 Actualizado: 2026-10-22
 
 ## Ahora
-Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100). Altas cerradas (salvo el nombre del perfil de Google Business, que es del cliente); siguen las Medias.
+Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100). Altas cerradas (el nombre del perfil de Google Business ya es "Eternal Glow", verificado por API el 2026-10-23); siguen las Medias.
 
 ## Hecho recientemente
+- HSTS subido a `max-age=31536000` en producción (2026-10-27, dos días antes de lo previsto, a pedido del usuario; HTTPS revisado: redirecciones http/www a https y sin contenido mixto). Respaldo en `~/backups-deploy/20261027-121559-hsts/`.
+- API de Google Business aprobada (2026-10-23): `seo/gbp_metrics.py` (métricas a `seo/gbp-data/`) y `seo/gbp_profile.py` (alinea el perfil con `docs/directorios.md`). Perfil corregido: teléfono y WhatsApp viejos fuera, WhatsApp como chat principal, citas a AgendaPro, sitio con `utm_campaign=gbp`, 26 servicios con precio; respaldo en `~/backups-deploy/20261023-204955-gbp/`. Lectura preliminar del rediseño: `docs/reports/2026-10-23-impacto-rediseno.md` (GSC +63% clics, posición 9.0 → 7.5; GA4 no comparable por el cambio de medición del 16 oct).
 - Respuestas rápidas bajo el H1 de Full Face Botox y Botox por unidad (2026-10-22, PR #24, run 39817466657), con el mismo bloque de Hollywood Peel (`includes/_service-answers.php`): las dos estaban en el top 6 de "botox full face que incluye" y "precio de botox por unidad" con casi ningún clic. Medir en el reporte del 3 al 10 nov.
 - Duración del Botox unificada en 3 a 5 meses, como en `/botox-cdmx/` (decisión del usuario, 2026-10-22, PR #24 y #25): `seo/content-fixes.php` corrigió el FAQ visible y el schema FAQ de SASWP (`saswp_custom_schema_field`) de `botox-por-unidad`, `full-face-botox-60-unidades`, `botox-en-cuello-cdmx` y `botox-foxy-eyes-cdmx`. Ya corrido en producción; respaldos en `~/backups-deploy/20261022-*-content-fixes/`.
 - Mapa de keywords y canibalización (2026-10-22, PR #23): `docs/reports/2026-10-22-mapa-keywords.md` y `seo/cannibalization.py`. Línea base: la home se queda con las búsquedas genéricas de cada hub. Endolifting descartado (no está en la lista de tratamientos).
@@ -25,7 +27,8 @@ Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-2
 - SEO: páginas en inglés de Sculptra, Botox, rellenos y relleno de labios; footer y formulario en inglés en `/en/`.
 
 ## Siguiente
-- Desde el 2026-10-29: si nada falló sobre HTTPS, subir HSTS a `max-age=31536000` en el bloque `Security headers` del `.htaccess`.
+- Categoría principal del perfil cambiada a mano a "Spa médico" (2026-10-23, Clínica especializada pasa a secundaria); Google ya lo publicó (verificado por API). A las 2–4 semanas, medir impresiones con `seo/gbp_metrics.py`.
+
 - Medias de la auditoría que quedan: hubs en inglés a ~900 palabras (USD, "Mexico vs US cost", "Is it safe?", "Planning your visit"); schema (BreadcrumbList, ItemList en `/tratamientos/`, `reviewedBy`/`dateModified` en hubs, `price` en Offer, `Physician` como Person, `@id` entre idiomas); Clarity después de `load` y logos de marca a WebP; CSP en report-only (falta decidir a dónde van los reportes).
 - Del 3 al 10 nov: `seo/gsc_report.py` y luego `seo/cannibalization.py`; comparar contra `docs/reports/2026-10-22-mapa-keywords.md` (hubs contra home, `/en/` contra home, clics de Full Face y Botox por unidad).
 

@@ -45,9 +45,9 @@ RewriteRule ^(.*) "/wp-content/cache/supercache/%{HTTP_HOST}/$1/index-https.html
 # END WPSuperCache
 
 # BEGIN Security headers
-# HSTS starts at 5 minutes (2026-10-22); raise it to 1 year once nothing breaks over HTTPS.
+# HSTS: 5 minutes from 2026-10-22, 1 year since 2026-10-27.
 <IfModule mod_headers.c>
-Header always set Strict-Transport-Security "max-age=300" "expr=%{HTTPS} == 'on'"
+Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on'"
 Header always set X-Content-Type-Options "nosniff"
 Header always set X-Frame-Options "SAMEORIGIN"
 Header always set Referrer-Policy "strict-origin-when-cross-origin"
