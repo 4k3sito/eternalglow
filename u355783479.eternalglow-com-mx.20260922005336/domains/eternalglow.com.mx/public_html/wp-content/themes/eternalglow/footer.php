@@ -22,7 +22,13 @@
 					</div>
 					<div>
 						<p class="lp-footer-label"><?php _p(esc_html($t['footer']['visit'])); ?></p>
-						<p><?php _p(nl2br(esc_html($contact->address))); ?></p>
+						<p>
+							<?php _p(nl2br(esc_html($contact->address))); ?>
+							<?php // Only Spanish has a contact page; it was orphaned without this link. ?>
+							<?php if(!empty($t['footer']['directions'])){ ?>
+								<br><a href="<?php _p(esc_url(home_url('/contacto/'))); ?>"><?php _p(esc_html($t['footer']['directions'])); ?></a>
+							<?php } ?>
+						</p>
 					</div>
 					<div>
 						<p class="lp-footer-label"><?php _p(esc_html($t['footer']['hours'])); ?></p>

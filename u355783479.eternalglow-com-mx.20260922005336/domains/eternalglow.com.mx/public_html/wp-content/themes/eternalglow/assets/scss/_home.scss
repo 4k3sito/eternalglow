@@ -304,7 +304,8 @@
 			transform: translateY(-3px) rotate(-45deg);
 		}
 	}
-	@include media-breakpoint-down(lg){
+	// Same breakpoint as navbar-expand-xl in main-menu.php.
+	@include media-breakpoint-down(xl){
 		header .offcanvas{
 			--#{$prefix}offcanvas-width: 100%;
 			--#{$prefix}offcanvas-bg: var(--lp-bg);
@@ -352,6 +353,13 @@
 					}
 				}
 			}
+		}
+	}
+	// Tablets and small laptops: a side panel, so the page stays in view behind the menu.
+	@include media-breakpoint-between(md, xl){
+		header .offcanvas{
+			--#{$prefix}offcanvas-width: 420px;
+			box-shadow: -24px 0 48px rgba(43, 37, 34, 0.18);
 		}
 	}
 	@keyframes lp-rise{

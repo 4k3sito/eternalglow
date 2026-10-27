@@ -5,10 +5,11 @@
 ?>
 <header>
     <div class="lp-wrap">
-        <nav class="navbar navbar-expand-lg p-0" aria-label="<?php _p($en ? 'Main' : 'Principal'); ?>">
+        <nav class="navbar navbar-expand-xl p-0" aria-label="<?php _p($en ? 'Main' : 'Principal'); ?>">
             <a class="lp-wordmark" href="<?php _p(esc_url(home_url($en ? '/en/' : '/'))); ?>">Eternal <em>Glow</em></a>
             <?php // One button opens and closes the menu; its two lines turn into a cross (see .lp-menu-open in _home.scss). ?>
-            <button type="button" class="lp-burger d-lg-none" aria-label="<?php _p($en ? 'Menu' : 'Menú'); ?>" aria-controls="offcanvasNavbar" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+            <?php // xl, not lg: the eight links plus the actions don't fit in one row below 1200px. ?>
+            <button type="button" class="lp-burger d-xl-none" aria-label="<?php _p($en ? 'Menu' : 'Menú'); ?>" aria-controls="offcanvasNavbar" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
                 <span></span><span></span>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">

@@ -17,9 +17,10 @@
                             <img src="<?php _p($image->url); ?>" alt="" class="height-60 p-10 border border-primary rounded-circle" />
                         </div>
                         <div class="col">
-                            <h4 class="mb-0">
+                            <?php // h3 under the section's h2; .h4 keeps the old size. ?>
+                            <h3 class="h4 mb-0">
                                 <?php _p($text->title); ?>
-                            </h4>
+                            </h3>
                         </div>
                     </div>
                     <div>

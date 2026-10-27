@@ -34,7 +34,7 @@ $popular = array('baby-botox-cdmx', 'full-face-botox-60-unidades', 'relleno-de-o
 
 return array(
 	'es' => array(
-		'nav' => array('/tratamientos/' => 'Tratamientos', '/botox-cdmx/' => 'Botox', '/rellenos-cdmx/' => 'Rellenos', '/sculptra-cdmx/' => 'Sculptra', '/hilos-tensores-cdmx/' => 'Hilos tensores', '/#resenas' => 'Reseñas', '/nosotros/' => 'Nosotros'),
+		'nav' => array('/tratamientos/' => 'Tratamientos', '/botox-cdmx/' => 'Botox', '/rellenos-cdmx/' => 'Rellenos', '/sculptra-cdmx/' => 'Sculptra', '/hilos-tensores-cdmx/' => 'Hilos tensores', '/#resenas' => 'Reseñas', '/nosotros/' => 'Nosotros', '/contacto/' => 'Contacto'),
 		'cta' => 'Reservar en línea',
 		'cta_short' => 'Agendar cita',
 		'cta_bar' => 'Reservar',
@@ -126,7 +126,7 @@ return array(
 			'title' => 'Tu valoración es el <em>primer paso</em>.',
 			'note' => 'Con cita previa · Valladolid 56, Roma Norte',
 		),
-		'footer' => array('tagline' => 'Clínica boutique de medicina estética.', 'visit' => 'Visítanos', 'hours' => 'Horario', 'contact' => 'Contacto', 'privacy' => 'Aviso de privacidad', 'cofepris' => 'Permiso de publicidad COFEPRIS', 'whatsapp' => 'Escríbenos por WhatsApp', 'map' => 'Mapa de ubicación'),
+		'footer' => array('tagline' => 'Clínica boutique de medicina estética.', 'visit' => 'Visítanos', 'directions' => 'Cómo llegar', 'hours' => 'Horario', 'contact' => 'Contacto', 'privacy' => 'Aviso de privacidad', 'cofepris' => 'Permiso de publicidad COFEPRIS', 'whatsapp' => 'Escríbenos por WhatsApp', 'map' => 'Mapa de ubicación'),
 	),
 	'en' => array(
 		// Full paths, not bare #anchors: the menu is also shown on English pages other than /en/.

@@ -21,6 +21,9 @@
                     <?php
                         $form = do_shortcode("[contact-form-7 id='{$contact->form}']");
                         $form = format_jss_text($form);
+                        // The form's title is an h3 in the CF7 markup, but the block follows the page's h1 or last h2.
+                        // .h3 keeps the old size.
+                        $form = preg_replace("#<h3 class='([^']*)'>(.*?)</h3>#s", "<h2 class='h3 $1'>$2</h2>", $form, 1);
                     ?>
                     <?php _p($form); ?>
                 <?php } ?>
