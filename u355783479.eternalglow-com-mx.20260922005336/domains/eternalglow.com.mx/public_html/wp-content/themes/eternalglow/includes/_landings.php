@@ -10,6 +10,10 @@ function eg_price_row($name, $text, $price, $url = null){
 	return (object)array('name' => $name, 'desc' => $text, 'price' => $price, 'url' => $url ?: eg_booking_url());
 }
 
+// Pesos per dollar for the USD figures on the English hubs: Banco de México FIX, rounded (18.65 on 2026-10-27).
+// Update it when the rate moves by more than about 5%.
+define('EG_USD_RATE', 18.7);
+
 function eg_landing($slug){
 	$all = eg_landings();
 	return isset($all[$slug]) ? $all[$slug] : null;
@@ -35,6 +39,10 @@ function eg_landings(){
 		}));
 	};
 	$treatments = eg_treatments();
+	// Prices are charged in MXN; English pages show a rounded dollar figure beside them (see EG_USD_RATE).
+	$usd = function($mxn){
+		return '$'.number_format(round($mxn / EG_USD_RATE)).' USD';
+	};
 	// Botox hub groups. 'zonas' takes every Botox treatment not listed in the other two, so a new one still shows up.
 	$botox_groups = array(
 		'paquetes' => array('botox-por-unidad', 'baby-botox-cdmx', 'full-face-botox-60-unidades'),
@@ -105,21 +113,34 @@ function eg_landings(){
 		),
 		// English version of /botox-cdmx/ (child of /en/, so eg_lang() is 'en'). Same facts and prices as the Spanish hub.
 		'botox-mexico-city' => array(
-			'updated' => '2026-10-20',
+			'updated' => '2026-10-27',
 			'image' => array('2026/03/botox-para-lineas-de-expresion-cdmx.png', 'Botox treatment for expression lines at Eternal Glow, Mexico City'),
 			'hero' => array(
 				'Botulinum toxin · Roma Norte, Mexico City',
 				'Botox in Mexico City',
-				'Softer expression lines with a natural result, applied by an aesthetic physician. From $165 MXN per unit, with English spoken at the clinic.',
+				'Softer expression lines with a natural result, applied by an aesthetic physician. From $165 MXN (about '.$usd(165).') per unit, with English spoken at the clinic.',
 			),
 			'sections' => array(
 				array('What is Botox?', array(
 					'Botox (botulinum toxin) temporarily relaxes the muscles that cause expression lines, mainly on the forehead, between the brows and around the eyes. It is applied with micro injections.',
 					'The first changes show 48 to 72 hours after the treatment, the full effect at 14 days, and it lasts 3 to 5 months. It is quick and you can go back to your plans the same day.',
+					'We work with reference brands of botulinum toxin, Botox and Xeomin, and the doctor tells you which one and how many units before the treatment.',
 				)),
-				array('How does the visit work?', array(
-					'Every treatment starts with a medical consultation: the doctor looks at your face, listens to what you want and decides with you the areas and the number of units.',
-					'We see patients by appointment at Valladolid 56, Roma Norte, a short walk from Condesa and Juárez.',
+				array('How much is Botox in Mexico City compared with the US?', array(
+					'Botox costs $165 MXN per unit at Eternal Glow, about '.$usd(165).'. Baby Botox (30 units) is $4,499 MXN, about '.$usd(4499).', and Full Face (60 units) is $8,499 MXN, about '.$usd(8499).'.',
+					'US clinics usually charge $10 to $25 USD per unit, according to 2026 price guides, so 30 units there cost roughly $300 to $750 USD and 60 units $600 to $1,500 USD. The table below puts both side by side.',
+					'You pay in Mexican pesos. The dollar figures use about '.EG_USD_RATE.' pesos per dollar (Banco de México, October 2026) and move with the exchange rate. The price per unit is the same in every area: what changes is how many units your face needs.',
+				)),
+				array('Is Botox in Mexico City safe?', array(
+					'Botox is a prescription medicine, and how safe it is depends on two things: who applies it and which product goes into the syringe. At Eternal Glow every treatment is done by Dr. Bruno Ocampo, a licensed physician (professional license 13493041, listed in the Mexican Ministry of Education’s national registry).',
+					'The clinic’s advertising is authorized by COFEPRIS, Mexico’s federal health regulator (permit 2509152002A00185).',
+					'Wherever you get Botox, ask for the injector’s medical license, the brand and the number of units. Be wary of a price per unit far below the usual range: it often means a diluted or unbranded product.',
+				)),
+				array('Planning your visit', array(
+					'Every treatment starts with a medical consultation: the doctor looks at your face, listens to what you want and decides with you the areas and the number of units. You can <a href="'.esc_url(eg_booking_url()).'">book online</a> or message us on WhatsApp in English.',
+					'We see patients by appointment at Valladolid 56, Roma Norte, a short walk from Condesa and Juárez, Monday to Friday from 11:30 to 18:00 and Saturday from 11:30 to 17:00.',
+					'Timing: the full effect shows at 14 days, so book at least two weeks before an event or a photo. Baby Botox includes a touch up after 2 weeks, so plan your trip to be in the city then, or ask about it in your consultation.',
+					'Aftercare: for 4 hours do not lie down, press or massage the area, and for 24 hours avoid intense exercise, saunas and heat. Botox can be combined with <a href="/en/fillers-mexico-city/">fillers</a> in the same plan.',
 				)),
 			),
 			'prices' => array(
@@ -146,6 +167,12 @@ function eg_landings(){
 					'botox-trapecio-trap-tox' => array('Trap botox (Trap-Tox / Barbie Botox)', 'Refines the neck and shoulder line and relieves muscle tension.'),
 					'botox-para-hiperhidrosis-en-cdmx' => array('Botox for hyperhidrosis (underarms, hands or feet)', 'Controls excessive sweating of the underarms, hands or feet.'),
 				))),
+				// US ranges: $10-$25 USD per unit in 2026 US price guides, times the units.
+				array('Mexico City vs the US', 'Eternal Glow price · approximate USD', array(
+					eg_price_row('Botox per unit', 'Typical US clinic: $10 to $25 USD per unit.', '$165 MXN ≈ '.$usd(165)),
+					eg_price_row('Baby Botox (30 units)', 'Typical US clinic: $300 to $750 USD for 30 units.', '$4,499 MXN ≈ '.$usd(4499)),
+					eg_price_row('Full Face Botox (60 units)', 'Typical US clinic: $600 to $1,500 USD for 60 units.', '$8,499 MXN ≈ '.$usd(8499)),
+				)),
 			),
 			'risks' => array('Botox risks and contraindications', array(
 				'When a physician applies it, side effects are usually mild and temporary, but it is not for everyone.',
@@ -155,7 +182,7 @@ function eg_landings(){
 			)),
 			'faq_title' => 'Botox questions',
 			'faq' => array(
-				array('How much does Botox cost in Mexico City?', 'At Eternal Glow Botox costs $165 MXN per unit. Baby Botox (30 units) is $4,499 MXN and Full Face (60 units) is $8,499 MXN. By area: frown lines $1,750, crow’s feet $2,150 and forehead $2,750 MXN.'),
+				array('How much does Botox cost in Mexico City?', 'At Eternal Glow Botox costs $165 MXN per unit (about '.$usd(165).'). Baby Botox (30 units) is $4,499 MXN and Full Face (60 units) is $8,499 MXN. By area: frown lines $1,750, crow’s feet $2,150 and forehead $2,750 MXN.'),
 				array('How many units of Botox do I need?', 'It depends on the area and the strength of your muscles, so the doctor decides it in your consultation. As a reference, Baby Botox uses 30 units and Full Face 60.'),
 				array('When will I see the results?', 'The first changes show 48 to 72 hours after the treatment, and the full effect at 14 days.'),
 				array('How long does Botox last?', 'The effect lasts 3 to 5 months. It varies with the area, the dose and your metabolism.'),
