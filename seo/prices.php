@@ -30,7 +30,8 @@ $rows = array(
     'relleno-de-ojeras-con-acido-hialuronico' => array('Relleno de Ojeras en CDMX | $6,499 | Ácido Hialurónico', 'Relleno de ojeras con ácido hialurónico en CDMX por $6,499: mejora ojeras hundidas, surco lagrimal y aspecto cansado. Resultado natural.'),
     'rinomodelacion-en-cdmx' => array('Rinomodelación en CDMX | $6,499 | Perfilado sin Cirugía', 'Rinomodelación en CDMX con ácido hialurónico por $6,499: mejora el perfil nasal, suaviza la giba leve y levanta la punta sin cirugía.'),
     'tratamiento-radiesse-en-cdmx' => array('Radiesse en CDMX | $8,499 por Jeringa | Eternal Glow', 'Radiesse en CDMX: $8,499 por jeringa, 2 por $15,999 o 3 por $22,999. Bioestimulador de colágeno para firmeza y contorno facial. Roma Norte.'),
-    'tratamiento-rejuran-en-cdmx' => array('Rejuran en CDMX | Desde $4,499 | Polinucleótidos', 'Rejuran en CDMX desde $4,499; Rejuran Healer inyectable, $6,999 por sesión. Polinucleótidos para hidratación, textura y luminosidad de la piel.'),
+    // "PDRN" too: the retired PDRN page redirects here (see $retired) and its searches ("pdrn salmon precio") had no page to land on.
+    'tratamiento-rejuran-en-cdmx' => array('Rejuran en CDMX desde $4,499 | Alternativa al PDRN', 'Rejuran en CDMX desde $4,499; Rejuran Healer, $6,999 por sesión. Polinucleótidos de ADN de salmón, la alternativa al PDRN. Roma Norte.'),
 );
 
 // Service pages for treatments that are not on the clinic's list any more: each one goes to the closest

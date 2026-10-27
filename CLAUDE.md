@@ -52,7 +52,7 @@ Receta única: `seo/deploy.sh` (respaldo → tema → scripts de contenido → p
 ## Convenciones del repo
 - El repo es un respaldo completo del hosting (`u355783479.../public_html`); solo se edita el tema, `seo/` y `local-env/`.
 - Cambios de contenido: script en `seo/*.php` con `$wpdb->update` (no `wp_update_post`: kses rompe shortcodes) y self-check al final.
-- Al agregar un script a `seo/`, sumarlo a `seo/deploy.sh` respetando el orden: prices después de treatments, y content-fixes y design-fixes al final, porque `sculptra-cdmx.php` reescribe el hub. `contact-form-en.php`, `privacidad.php`, `supercache-preload.php` y `divi-to-html.php` existen pero no están en `deploy.sh` (se corren una vez, a mano).
+- Al agregar un script a `seo/`, sumarlo a `seo/deploy.sh` respetando el orden: prices después de treatments, y content-fixes y design-fixes al final, porque `sculptra-cdmx.php` reescribe el hub. `contact-form-en.php`, `privacidad.php`, `supercache-preload.php`, `divi-to-html.php` y `rejuran-pdrn.php` existen pero no están en `deploy.sh` (se corren una vez, a mano).
 - Las páginas `/servicio/` son HTML simple con clases `lp-sv-*` (estilos en `_home.scss`), no Divi: `seo/divi-to-html.php` las convirtió y guardó el original en el meta `_eg_divi_content`.
 - WP cron: `DISABLE_WP_CRON` está activo y lo dispara un cron de cPanel (`curl` a `wp-cron.php` cada 15 min). No quitar el modo de precarga de WP Super Cache: sin él, la limpieza borra las páginas cada 24 h y vuelven a quedar frías.
 - Los hubs muestran "Actualizado el" con la fecha más reciente entre el post y la clave `'updated'` de su entrada en `includes/_landings.php`: súbela al cambiar precios, textos o FAQ de ese hub desde el tema o con `$wpdb`, porque esas ediciones no tocan `post_modified`.
