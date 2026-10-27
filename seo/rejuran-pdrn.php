@@ -23,9 +23,9 @@ $pdrn_section = '<section class="lp-sv-section">' . $pdrn_h2
     . '<p>Si buscabas PDRN de salmón, esta parte es para ti. En Eternal Glow ya no aplicamos PDRN genérico: el tratamiento con derivados de ADN de salmón que ofrecemos es <strong>Rejuran PN</strong>, un producto de marca formulado con polinucleótidos purificados.</p>'
     . '<ul class="lp-sv-checks">'
     . '<li><strong>Qué los distingue:</strong> “PDRN de salmón” es una categoría genérica que incluye muchas marcas y formulaciones, desde inyectables hasta sueros cosméticos. Rejuran PN es un producto específico, basado en polinucleótidos y aplicado con un protocolo médico.</li>'
-    . '<li><strong>Cómo se aplica:</strong> con microinyecciones en las zonas seleccionadas, después de una valoración médica. No es un suero ni un facial cosmético.</li>'
-    . '<li><strong>Cuánto dura:</strong> la mejoría es progresiva y depende del estado de tu piel, del número de sesiones y del mantenimiento. En la valoración te decimos cuántas sesiones necesitas y cada cuánto conviene repetirlas.</li>'
-    . '<li><strong>Cuidados:</strong> no tocar ni maquillar la zona, evitar el calor y el ejercicio intenso y usar protector solar. Más abajo están todos los cuidados después del tratamiento.</li>'
+    . '<li><strong>Cómo se aplica:</strong> Con microinyecciones en las zonas seleccionadas, después de una valoración médica. No es un suero ni un facial cosmético.</li>'
+    . '<li><strong>Cuánto dura:</strong> La mejoría es progresiva y depende del estado de tu piel, del número de sesiones y del mantenimiento. En la valoración te decimos cuántas sesiones necesitas y cada cuánto conviene repetirlas.</li>'
+    . '<li><strong>Cuidados:</strong> No tocar ni maquillar la zona, evitar el calor y el ejercicio intenso y usar protector solar. Más abajo están todos los cuidados después del tratamiento.</li>'
     . '<li><strong>Precio:</strong> Rejuran en CDMX desde $4,499 MXN; Rejuran Healer inyectable, $6,999 MXN por sesión. El precio final depende de la cantidad de producto y del número de sesiones, y te lo confirmamos antes de empezar.</li>'
     . '</ul>' . $cta . '</section>';
 
