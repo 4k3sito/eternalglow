@@ -1,0 +1,178 @@
+<title>Cotización Eternal Glow</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500&display=swap">
+<style>
+/* Layout: single A4-like sheet, letterhead → items → totals → payments → terms */
+:root {
+  --bg: #eef0ec; --paper: #ffffff; --ink: #1c2420; --muted: #5d6862;
+  --line: #d9ddd8; --accent: #2f5641; --tint: #f3f6f2;
+  --display: "Newsreader", Georgia, serif;
+  --body: "Schibsted Grotesk", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121614; --paper: #1a201d; --ink: #e6ebe7; --muted: #9aa69f;
+  --line: #313a35; --accent: #8fc2a4; --tint: #212925; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121614; --paper: #1a201d; --ink: #e6ebe7; --muted: #9aa69f;
+  --line: #313a35; --accent: #8fc2a4; --tint: #212925; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--body); padding-inline: 16px; padding-block: 32px; }
+.sheet { max-width: 820px; margin: 0 auto; background: var(--paper); border: 1px solid var(--line); padding: clamp(24px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.1; }
+h2 { font-size: 21px; }
+p { margin: 0; }
+.label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fill { background: var(--tint); border-bottom: 1px dashed var(--accent); padding: 0 4px; }
+.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+
+header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; border-bottom: 2px solid var(--accent); padding-bottom: 24px; }
+header > div { min-width: 0; display: grid; gap: 6px; }
+.meta { display: grid; grid-template-columns: auto auto; gap: 4px 16px; align-content: start; }
+.meta dt { color: var(--muted); } .meta dd { margin: 0; font-weight: 500; }
+
+.parties { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.parties div { display: grid; gap: 4px; }
+
+.intro { color: var(--muted); max-width: 65ch; }
+
+section { display: grid; gap: 14px; }
+.item { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; padding-block: 18px; border-top: 1px solid var(--line); }
+.item h3 { margin: 0; font-size: 16px; font-weight: 700; }
+.item .price { font-weight: 700; font-size: 16px; }
+.item .sub { color: var(--muted); font-size: 13px; }
+.item ul { grid-column: 1 / -1; margin: 0; padding-left: 18px; display: grid; gap: 3px; color: var(--ink); }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 420px; }
+th, td { padding: 10px 0; border-bottom: 1px solid var(--line); text-align: left; }
+th { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+th.num, td.num { padding-left: 16px; }
+tr.total td { border-bottom: none; border-top: 2px solid var(--accent); font-weight: 700; font-size: 18px; padding-top: 14px; }
+
+ol, .terms ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.terms li { color: var(--ink); }
+.sign { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-top: 24px; }
+.sign div { border-top: 1px solid var(--ink); padding-top: 8px; font-size: 13px; color: var(--muted); }
+
+@media print {
+  :root { --bg: #fff; --paper: #fff; --ink: #1c2420; --muted: #5d6862; --line: #d9ddd8; --accent: #2f5641; --tint: #fff; color-scheme: light; }
+  body { padding: 0; } .sheet { border: none; padding: 0; }
+  .fill { border-bottom: none; }
+  .item, tr { break-inside: avoid; }
+}
+</style>
+
+<main class="sheet">
+  <header>
+    <div>
+      <span class="label">Cotización</span>
+      <h1>Rediseño web y posicionamiento SEO</h1>
+      <p>eternalglow.com.mx</p>
+    </div>
+    <dl class="meta">
+      <dt>Folio</dt><dd>COT-2026-001</dd>
+      <dt>Fecha</dt><dd>13 de octubre de 2026</dd>
+      <dt>Vigencia</dt><dd>15 días naturales</dd>
+      <dt>Moneda</dt><dd>MXN, IVA incluido</dd>
+    </dl>
+  </header>
+
+  <div class="parties">
+    <div>
+      <span class="label">Para</span>
+      <strong>Eternal Glow, medicina estética</strong>
+      <span>Razón social: <span class="fill">[razón social]</span></span>
+      <span>RFC: <span class="fill">[RFC del cliente]</span></span>
+    </div>
+    <div>
+      <span class="label">De</span>
+      <strong class="fill">[Tu nombre]</strong>
+      <span>RFC: <span class="fill">[tu RFC]</span></span>
+      <span>Contacto: <span class="fill">[teléfono / correo]</span></span>
+    </div>
+  </div>
+
+  <p class="intro">El objetivo es que Eternal Glow aparezca en la primera página de Google cuando alguien en la Ciudad de México busca Botox, Sculptra o rellenos, y que esa visita termine en una cita.</p>
+
+  <section>
+    <h2>Servicios</h2>
+
+    <div class="item">
+      <div><h3>1. Rediseño del sitio web</h3></div>
+      <div class="price num">$52,500.00</div>
+      <ul>
+        <li><strong>Diseño nuevo en todo el sitio</strong>, basado en el prototipo aprobado: paleta, tipografía, botones y tarjetas.</li>
+        <li><strong>Página de inicio nueva:</strong> portada con botones de Reservar y WhatsApp, tratamientos por categoría, marcas, favoritos, proceso en tres pasos, reseñas reales de Google, sección del doctor, antes y después, hilos tensores, preguntas frecuentes y cierre.</li>
+        <li><strong>Página de tratamientos:</strong> los 29 tratamientos en cuatro categorías, con buscador y filtros.</li>
+        <li><strong>Encabezado y menú nuevos</strong> con selector de idioma español / inglés, y pie de página con los datos reales de la clínica.</li>
+        <li><strong>Página Nosotros</strong> con el nombre del doctor como titular.</li>
+        <li><strong>Fotografías de tratamientos</strong> recortadas y adaptadas a la paleta nueva.</li>
+        <li><strong>Versión móvil:</strong> barra fija con Reservar y WhatsApp en todas las páginas, portada que cabe en la primera pantalla del celular, y menú y contacto cómodos para usar con una mano.</li>
+        <li><strong>Velocidad de carga:</strong> estilos del sitio de 4.2 MB a 111 KB, imágenes del tamaño adecuado para cada pantalla, íconos animados de 3.2 MB a 1 MB y sin saltos de contenido al cargar.</li>
+        <li><strong>Accesibilidad:</strong> zoom permitido en celular y nombres accesibles en botones y enlaces.</li>
+        <li><strong>Pruebas</strong> en celular y escritorio, respaldo completo y publicación en el servidor.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div><h3>2. Implementación SEO</h3></div>
+      <div class="price num">$47,500.00</div>
+      <ul>
+        <li><strong>Diagnóstico en Google Search Console:</strong> búsquedas que traen pacientes, posiciones actuales y páginas del sitio que competían entre sí.</li>
+        <li><strong>Sculptra:</strong> las dos páginas que competían por las mismas búsquedas se unieron en una sola, con el contenido completo en secciones desplegables (13 temas y 10 preguntas frecuentes).</li>
+        <li><strong>Páginas principales</strong> de Botox, Sculptra e Hilos, y páginas nuevas de Rellenos y Relleno de labios, con tablas de precios y preguntas frecuentes.</li>
+        <li><strong>Las 29 páginas de tratamiento</strong> con título, descripción y palabra clave propios para Google.</li>
+        <li><strong>Precios oficiales</strong> visibles en los resultados de Google y en cada página de tratamiento.</li>
+        <li><strong>Datos estructurados</strong> para que Google identifique la clínica, al médico, los procedimientos y las preguntas frecuentes.</li>
+        <li><strong>Navegación interna:</strong> cada tratamiento enlaza a su página principal y cada página tiene un solo titular principal.</li>
+        <li><strong>Versión en inglés</strong> de la portada para búsquedas como "botox mexico city", correctamente ligada a la versión en español.</li>
+        <li><strong>Redirecciones permanentes</strong> de las páginas retiradas, para no perder visitas ni posiciones.</li>
+        <li><strong>Respaldo</strong> antes de cada cambio y publicación en el servidor.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Resumen</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Concepto</th><th class="num">Importe</th></tr></thead>
+        <tbody>
+          <tr><td>Rediseño del sitio web</td><td class="num">$52,500.00</td></tr>
+          <tr><td>Implementación SEO</td><td class="num">$47,500.00</td></tr>
+          <tr class="total"><td>Total, IVA incluido</td><td class="num">$100,000.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Forma de pago</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Pago</th><th class="num">Importe</th></tr></thead>
+        <tbody>
+          <tr><td>Anticipo, 50%</td><td class="num">$50,000.00</td></tr>
+          <tr><td>Finiquito a la entrega, 50%</td><td class="num">$50,000.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="color:var(--muted);font-size:13px">Cada pago se factura con CFDI. Si el cliente es persona moral, aplican las retenciones de IVA e ISR que marca la ley.</p>
+  </section>
+
+  <section class="terms">
+    <h2>Condiciones</h2>
+    <ul>
+      <li>Precios en pesos mexicanos, con IVA incluido.</li>
+      <li>Google no permite garantizar posiciones. Los resultados del SEO suelen verse entre el tercer y el sexto mes.</li>
+      <li>El cliente proporciona: cédula profesional del médico y fotos de antes y después con consentimiento de los pacientes.</li>
+      <li>No incluye: seguimiento mensual del SEO, publicidad en Google Ads, redes sociales, sesiones de fotografía, hosting ni dominio.</li>
+    </ul>
+  </section>
+
+  <div class="sign">
+    <div>Acepta: Eternal Glow</div>
+    <div>Elabora: <span class="fill">[Tu nombre]</span></div>
+  </div>
+</main>

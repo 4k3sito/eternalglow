@@ -29,3 +29,6 @@ seo/gsc-data/
 
 # Backups written by seo/*.php content scripts (post content, drafts included).
 **/wp-content/uploads/seo-backups/
+
+# configuración local de Claude Code
+.claude/settings.local.json

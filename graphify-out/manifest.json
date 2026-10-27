@@ -1,0 +1,662 @@
+{
+  "local-env/router.php": {
+    "mtime": 1790195485.3264587,
+    "seen": 1793092579.790925,
+    "ast_hash": "b461f955ccc013d8cab03e30da218a2a",
+    "semantic_hash": "b461f955ccc013d8cab03e30da218a2a"
+  },
+  "seo/cannibalization.py": {
+    "mtime": 1792689142.566584,
+    "seen": 1793092579.7909288,
+    "ast_hash": "084454ee694839b505f3014000d6350b",
+    "semantic_hash": "084454ee694839b505f3014000d6350b"
+  },
+  "seo/check-schema.php": {
+    "mtime": 1792489641.6645448,
+    "seen": 1793092579.7909303,
+    "ast_hash": "bb3e3b58e7b2053fa258f8e902c99963",
+    "semantic_hash": "bb3e3b58e7b2053fa258f8e902c99963"
+  },
+  "seo/contact-form-en.php": {
+    "mtime": 1792571749.4489896,
+    "seen": 1793092579.7909312,
+    "ast_hash": "42115b149c675e76c69b9e7908ebb089",
+    "semantic_hash": "42115b149c675e76c69b9e7908ebb089"
+  },
+  "seo/content-fixes.php": {
+    "mtime": 1792718650.0780227,
+    "seen": 1793092579.7909322,
+    "ast_hash": "e29bba5cdf8e9a720d74b7f406dcc880",
+    "semantic_hash": "e29bba5cdf8e9a720d74b7f406dcc880"
+  },
+  "seo/cutouts.py": {
+    "mtime": 1792480875.8845005,
+    "seen": 1793092579.790934,
+    "ast_hash": "958b1c15c6561aa1444062d0fbcb0237",
+    "semantic_hash": "958b1c15c6561aa1444062d0fbcb0237"
+  },
+  "seo/deploy.sh": {
+    "mtime": 1793088441.6982553,
+    "seen": 1793092579.7909355,
+    "ast_hash": "2b02b9d9c295897f7f7f793379225ad2",
+    "semantic_hash": "2b02b9d9c295897f7f7f793379225ad2"
+  },
+  "seo/design-fixes.php": {
+    "mtime": 1792571749.463868,
+    "seen": 1793092579.7909377,
+    "ast_hash": "fcca52dbf36488ee773d00af37da23e7",
+    "semantic_hash": "fcca52dbf36488ee773d00af37da23e7"
+  },
+  "seo/divi-to-html.php": {
+    "mtime": 1792653095.0030303,
+    "seen": 1793092579.790939,
+    "ast_hash": "d7916f3a47c4205bcbbabdec338dbe67",
+    "semantic_hash": "d7916f3a47c4205bcbbabdec338dbe67"
+  },
+  "seo/gbp_metrics.py": {
+    "mtime": 1792809414.014927,
+    "seen": 1793092579.7909398,
+    "ast_hash": "e6987973bd05a40b5f33a6dbc5973536",
+    "semantic_hash": "e6987973bd05a40b5f33a6dbc5973536"
+  },
+  "seo/gbp_profile.py": {
+    "mtime": 1792810179.1055033,
+    "seen": 1793092579.7909408,
+    "ast_hash": "a6b3bd97793ae3ec800a9217bfe4505f",
+    "semantic_hash": "a6b3bd97793ae3ec800a9217bfe4505f"
+  },
+  "seo/google_inventory.py": {
+    "mtime": 1792480875.8845005,
+    "seen": 1793092579.7909417,
+    "ast_hash": "0a4cc64d99893b1fdc7f23e6b5d0dd54",
+    "semantic_hash": "0a4cc64d99893b1fdc7f23e6b5d0dd54"
+  },
+  "seo/google_oauth.py": {
+    "mtime": 1792480875.8845005,
+    "seen": 1793092579.7909424,
+    "ast_hash": "fe069dd0b163c5669e9432862de7a162",
+    "semantic_hash": "fe069dd0b163c5669e9432862de7a162"
+  },
+  "seo/gsc_report.py": {
+    "mtime": 1792143304.971626,
+    "seen": 1793092579.7909431,
+    "ast_hash": "f38dcbe39c6636c510310aeea38ffc18",
+    "semantic_hash": "f38dcbe39c6636c510310aeea38ffc18"
+  },
+  "seo/gtm_build.py": {
+    "mtime": 1792732006.2274632,
+    "seen": 1793092579.790944,
+    "ast_hash": "e03981995974ea4e5c2f9268d87bcee6",
+    "semantic_hash": "e03981995974ea4e5c2f9268d87bcee6"
+  },
+  "seo/home.php": {
+    "mtime": 1792666970.6360145,
+    "seen": 1793092579.7909448,
+    "ast_hash": "72f2ec6e7e7ee8a74a7fe507ea2618c8",
+    "semantic_hash": "72f2ec6e7e7ee8a74a7fe507ea2618c8"
+  },
+  "seo/landings.php": {
+    "mtime": 1792571749.463868,
+    "seen": 1793092579.7909455,
+    "ast_hash": "3fcc74cab8ce01a2455ba89821118ee8",
+    "semantic_hash": "3fcc74cab8ce01a2455ba89821118ee8"
+  },
+  "seo/nosotros.php": {
+    "mtime": 1792571749.4787462,
+    "seen": 1793092579.7909465,
+    "ast_hash": "25a058b6f8e3c5448aac27b93e77f41c",
+    "semantic_hash": "25a058b6f8e3c5448aac27b93e77f41c"
+  },
+  "seo/prices.php": {
+    "mtime": 1792661142.7723525,
+    "seen": 1793092579.7909474,
+    "ast_hash": "f35eaebd244a0335a8502b2bcec937ff",
+    "semantic_hash": "f35eaebd244a0335a8502b2bcec937ff"
+  },
+  "seo/privacidad.php": {
+    "mtime": 1792480875.8845005,
+    "seen": 1793092579.7909482,
+    "ast_hash": "85c301fc6f3b0c84fafda99c0ee8c164",
+    "semantic_hash": "85c301fc6f3b0c84fafda99c0ee8c164"
+  },
+  "seo/redirects.php": {
+    "mtime": 1793088757.3613348,
+    "seen": 1793092579.7909489,
+    "ast_hash": "3b39fe958cc6190dfe18d6742797edcf",
+    "semantic_hash": "3b39fe958cc6190dfe18d6742797edcf"
+  },
+  "seo/sculptra-cdmx.php": {
+    "mtime": 1792653095.0030303,
+    "seen": 1793092579.7909496,
+    "ast_hash": "454dd1e2aee4682afe093599e7b62ca7",
+    "semantic_hash": "454dd1e2aee4682afe093599e7b62ca7"
+  },
+  "seo/site_audit.py": {
+    "mtime": 1792267369.9415529,
+    "seen": 1793092579.790951,
+    "ast_hash": "537fa77a166e799a6e244f6d43054436",
+    "semantic_hash": "537fa77a166e799a6e244f6d43054436"
+  },
+  "seo/supercache-preload.php": {
+    "mtime": 1792571749.4787462,
+    "seen": 1793092579.7909517,
+    "ast_hash": "77a0f0dde8f275d4de561fdb8488a425",
+    "semantic_hash": "77a0f0dde8f275d4de561fdb8488a425"
+  },
+  "seo/treatments.php": {
+    "mtime": 1792571749.4787462,
+    "seen": 1793092579.7909524,
+    "ast_hash": "5d8f977fde24984d6f935f157e5a31b7",
+    "semantic_hash": "5d8f977fde24984d6f935f157e5a31b7"
+  },
+  "seo/webp-copies.php": {
+    "mtime": 1792718650.0780227,
+    "seen": 1793092579.7909534,
+    "ast_hash": "e59a550e38ba18fcc03cc198f60039aa",
+    "semantic_hash": "e59a550e38ba18fcc03cc198f60039aa"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/404.php": {
+    "mtime": 1790291695.2927585,
+    "seen": 1793092579.7909544,
+    "ast_hash": "fa25b962ebce7e73a94d13b15573a026",
+    "semantic_hash": "fa25b962ebce7e73a94d13b15573a026"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/archive.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.790955,
+    "ast_hash": "e30fd7b1b733b08cf76fc62930a1f934",
+    "semantic_hash": "e30fd7b1b733b08cf76fc62930a1f934"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/assets/js/admin.js": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909558,
+    "ast_hash": "7f2647dea6bc7d6b49c9a696bd27ea18",
+    "semantic_hash": "7f2647dea6bc7d6b49c9a696bd27ea18"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/assets/js/bootstrap.js": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909565,
+    "ast_hash": "cfa2981a5411e5215377ee8acc9dbc83",
+    "semantic_hash": "cfa2981a5411e5215377ee8acc9dbc83"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/assets/js/fancybox.umd.js": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909572,
+    "ast_hash": "0ce18f9ca64e6fdcac07ec7e97dac4c7",
+    "semantic_hash": "0ce18f9ca64e6fdcac07ec7e97dac4c7"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/assets/ts/app.ts": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909582,
+    "ast_hash": "4d45b71768d78e69329875daa9ee9f84",
+    "semantic_hash": "4d45b71768d78e69329875daa9ee9f84"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/assets/ts/main.ts": {
+    "mtime": 1792480875.8920546,
+    "seen": 1793092579.790959,
+    "ast_hash": "818364676506324ad20348ab889659ee",
+    "semantic_hash": "818364676506324ad20348ab889659ee"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/assets/ts/vars.d.ts": {
+    "mtime": 1792480875.8920546,
+    "seen": 1793092579.7909596,
+    "ast_hash": "4d39d914d0018b672603854f4ac86987",
+    "semantic_hash": "4d39d914d0018b672603854f4ac86987"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/contact-data.php": {
+    "mtime": 1792480875.8920546,
+    "seen": 1793092579.7909603,
+    "ast_hash": "b067be60f776196cb29df3c0a4bbdddc",
+    "semantic_hash": "b067be60f776196cb29df3c0a4bbdddc"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/contact-form.php": {
+    "mtime": 1792480875.8920546,
+    "seen": 1793092579.7909613,
+    "ast_hash": "36bdfd8f158a43fbb11f49fd9eed298c",
+    "semantic_hash": "36bdfd8f158a43fbb11f49fd9eed298c"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/footer.php": {
+    "mtime": 1792655968.002629,
+    "seen": 1793092579.790962,
+    "ast_hash": "cec91c253ff89fb79c2336d8f285caf6",
+    "semantic_hash": "cec91c253ff89fb79c2336d8f285caf6"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/front-page.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7909627,
+    "ast_hash": "2cb806daec7b2dd1fa332425942341b1",
+    "semantic_hash": "2cb806daec7b2dd1fa332425942341b1"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/functions.php": {
+    "mtime": 1792661142.7759917,
+    "seen": 1793092579.7909634,
+    "ast_hash": "b80a14176fffd6dd04186c9d50b4bc5f",
+    "semantic_hash": "b80a14176fffd6dd04186c9d50b4bc5f"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/header.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7909644,
+    "ast_hash": "7cbe09f793be5c38dd93c54283549f81",
+    "semantic_hash": "7cbe09f793be5c38dd93c54283549f81"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_ajax.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909653,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_home-strings.php": {
+    "mtime": 1792666970.6360145,
+    "seen": 1793092579.790966,
+    "ast_hash": "edb195315a7a88e6d75442f1438499eb",
+    "semantic_hash": "edb195315a7a88e6d75442f1438499eb"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_home.php": {
+    "mtime": 1792732006.2274632,
+    "seen": 1793092579.7909667,
+    "ast_hash": "3da8a86da9b3b053bd123141281252be",
+    "semantic_hash": "3da8a86da9b3b053bd123141281252be"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_landings.php": {
+    "mtime": 1792680694.4566708,
+    "seen": 1793092579.790969,
+    "ast_hash": "bffabf43ed9cfb524e5784719cb734ee",
+    "semantic_hash": "bffabf43ed9cfb524e5784719cb734ee"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_perf.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7909696,
+    "ast_hash": "5365d1c05b6a86eda9cd5329d9413061",
+    "semantic_hash": "5365d1c05b6a86eda9cd5329d9413061"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_schema-saswp.php": {
+    "mtime": 1792489641.6645448,
+    "seen": 1793092579.7909703,
+    "ast_hash": "da3104c205c7a71910ae63f9f5b04299",
+    "semantic_hash": "da3104c205c7a71910ae63f9f5b04299"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_service-answers.php": {
+    "mtime": 1792687849.8001275,
+    "seen": 1793092579.790971,
+    "ast_hash": "6a8f3d69a980872d5792c0ad6677b0db",
+    "semantic_hash": "6a8f3d69a980872d5792c0ad6677b0db"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_theme-contact.php": {
+    "mtime": 1790291695.296454,
+    "seen": 1793092579.790972,
+    "ast_hash": "6cea7cc27cd295fc66397570d9c959b6",
+    "semantic_hash": "6cea7cc27cd295fc66397570d9c959b6"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_theme-links.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.790973,
+    "ast_hash": "ccba530e357c3b10d6c104311e053c11",
+    "semantic_hash": "ccba530e357c3b10d6c104311e053c11"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_theme-logos.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909737,
+    "ast_hash": "758fbbcb8ab4ca2a784c161865671144",
+    "semantic_hash": "758fbbcb8ab4ca2a784c161865671144"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_theme-settings.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909744,
+    "ast_hash": "1ec1a9e440743d93ee296279190910ca",
+    "semantic_hash": "1ec1a9e440743d93ee296279190910ca"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_theme-social.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909753,
+    "ast_hash": "4111c32450a999837a305508d8735c04",
+    "semantic_hash": "4111c32450a999837a305508d8735c04"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_theme-texts.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.790976,
+    "ast_hash": "41fd1c5a5e6f61cfe262f9485ae84041",
+    "semantic_hash": "41fd1c5a5e6f61cfe262f9485ae84041"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_theme.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7909768,
+    "ast_hash": "af3f09629ef9144d06141254e7bdd9bf",
+    "semantic_hash": "af3f09629ef9144d06141254e7bdd9bf"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_token.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909775,
+    "ast_hash": "13b49aea0d462736480febeb496e5ac5",
+    "semantic_hash": "13b49aea0d462736480febeb496e5ac5"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_treatments.php": {
+    "mtime": 1792732006.2274632,
+    "seen": 1793092579.7909782,
+    "ast_hash": "d78809370ae10878521c5311b2ebfc8d",
+    "semantic_hash": "d78809370ae10878521c5311b2ebfc8d"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/_vc.php": {
+    "mtime": 1790291695.296454,
+    "seen": 1793092579.7909791,
+    "ast_hash": "5d19adfbf22b526a91d07fe7072ce677",
+    "semantic_hash": "5d19adfbf22b526a91d07fe7072ce677"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/functions.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7909799,
+    "ast_hash": "a1d44b4350a99e220f822640a082b0dc",
+    "semantic_hash": "a1d44b4350a99e220f822640a082b0dc"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-bg-image.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7909803,
+    "ast_hash": "f7c202cb518e8cf0cb4eb89991f58d75",
+    "semantic_hash": "f7c202cb518e8cf0cb4eb89991f58d75"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-button-arrow.php": {
+    "mtime": 1790291695.296454,
+    "seen": 1793092579.790981,
+    "ast_hash": "ba518611a7b9255db1013bdd11be165e",
+    "semantic_hash": "ba518611a7b9255db1013bdd11be165e"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-button.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909827,
+    "ast_hash": "7d7f7637b031770f2d30095a886c6eb2",
+    "semantic_hash": "7d7f7637b031770f2d30095a886c6eb2"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-carousel.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7909834,
+    "ast_hash": "f3af27bdcb5bf8e6467b1757c22ea6fd",
+    "semantic_hash": "f3af27bdcb5bf8e6467b1757c22ea6fd"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-contact-data.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909842,
+    "ast_hash": "4aa457ff0f25492c9e9fd8df5eee3b4f",
+    "semantic_hash": "4aa457ff0f25492c9e9fd8df5eee3b4f"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-empty-space.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909849,
+    "ast_hash": "0d8422c70ad409bbaac8ff4066cba723",
+    "semantic_hash": "0d8422c70ad409bbaac8ff4066cba723"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-heading.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7909858,
+    "ast_hash": "7578ef5084dae46e50ff922fd80d398d",
+    "semantic_hash": "7578ef5084dae46e50ff922fd80d398d"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-image.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7909865,
+    "ast_hash": "77d6194c21668f36e013f72163ae1b96",
+    "semantic_hash": "77d6194c21668f36e013f72163ae1b96"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-images-grid.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7909873,
+    "ast_hash": "62f45f2af51c4e6b3322ad759e64aa13",
+    "semantic_hash": "62f45f2af51c4e6b3322ad759e64aa13"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-numbers.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7909882,
+    "ast_hash": "e6a16e2e6536be071c54d87df7d3fb83",
+    "semantic_hash": "e6a16e2e6536be071c54d87df7d3fb83"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-patients.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7910228,
+    "ast_hash": "de7c8ddb87c0d7b9c013bfd171b94bad",
+    "semantic_hash": "de7c8ddb87c0d7b9c013bfd171b94bad"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-procedure.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7910247,
+    "ast_hash": "636379d2e7062ca2b26ca7e0599be493",
+    "semantic_hash": "636379d2e7062ca2b26ca7e0599be493"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-products.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7910256,
+    "ast_hash": "c7096a47a8e08bf4a6804e04e0b15a3e",
+    "semantic_hash": "c7096a47a8e08bf4a6804e04e0b15a3e"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-separator.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7910266,
+    "ast_hash": "71b0403d4eafc2b3cc9c21084661c808",
+    "semantic_hash": "71b0403d4eafc2b3cc9c21084661c808"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-services-list.php": {
+    "mtime": 1773217047.0,
+    "seen": 1793092579.7910275,
+    "ast_hash": "a3ee33904ba7e55e714afb6ee261bf2b",
+    "semantic_hash": "a3ee33904ba7e55e714afb6ee261bf2b"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-services.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7910285,
+    "ast_hash": "154efebe372d6da03ee19379e9fd3b20",
+    "semantic_hash": "154efebe372d6da03ee19379e9fd3b20"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-subtitle.php": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7910292,
+    "ast_hash": "6f503d7604327afab201d9a0b02fbcec",
+    "semantic_hash": "6f503d7604327afab201d9a0b02fbcec"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-text.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.79103,
+    "ast_hash": "3f3e0f83938abeee309c61051b06eac9",
+    "semantic_hash": "3f3e0f83938abeee309c61051b06eac9"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-video.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.791031,
+    "ast_hash": "00d4045943bb0e60799d52c85692ce3e",
+    "semantic_hash": "00d4045943bb0e60799d52c85692ce3e"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/includes/jss-templates/jss-wpcf7.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7910316,
+    "ast_hash": "cadec58fcb21853ebdf0efe82ce46f6c",
+    "semantic_hash": "cadec58fcb21853ebdf0efe82ce46f6c"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/index.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7910328,
+    "ast_hash": "f1794a714dd437e9b9e1f544ea43cf0e",
+    "semantic_hash": "f1794a714dd437e9b9e1f544ea43cf0e"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/loop-posts.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7910337,
+    "ast_hash": "b31b22b039c7eadd4d376fa416d3d854",
+    "semantic_hash": "b31b22b039c7eadd4d376fa416d3d854"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/main-menu.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.791035,
+    "ast_hash": "37eae93c088427b19a293e9dc2c4c889",
+    "semantic_hash": "37eae93c088427b19a293e9dc2c4c889"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/no-found.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7910357,
+    "ast_hash": "0c35c502e48a2e361bae726ef3f1891b",
+    "semantic_hash": "0c35c502e48a2e361bae726ef3f1891b"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/package.json": {
+    "mtime": 1790295466.1082156,
+    "seen": 1793092579.7910364,
+    "ast_hash": "9c32076e5767d17b257b0e6ff162cd91",
+    "semantic_hash": "9c32076e5767d17b257b0e6ff162cd91"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/page-en.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7910373,
+    "ast_hash": "308b8c69f7c513a540057c1577754cfb",
+    "semantic_hash": "308b8c69f7c513a540057c1577754cfb"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/page-tratamientos.php": {
+    "mtime": 1792658943.133971,
+    "seen": 1793092579.7910383,
+    "ast_hash": "fb9eb07e003f8b9f3b66fb6a8555c063",
+    "semantic_hash": "fb9eb07e003f8b9f3b66fb6a8555c063"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/page.php": {
+    "mtime": 1792492544.3186018,
+    "seen": 1793092579.791039,
+    "ast_hash": "7156955f7b78cf4e4bc8cbb4f5cadd7f",
+    "semantic_hash": "7156955f7b78cf4e4bc8cbb4f5cadd7f"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/postcss.config.js": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7910414,
+    "ast_hash": "940b4d7843fa698713ff27e79b2ca5f1",
+    "semantic_hash": "940b4d7843fa698713ff27e79b2ca5f1"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/scripts/collect-tokens.mjs": {
+    "mtime": 1790293982.7050164,
+    "seen": 1793092579.791042,
+    "ast_hash": "60a5c9ad3b54bf71fec73539d4d4418d",
+    "semantic_hash": "60a5c9ad3b54bf71fec73539d4d4418d"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/service-box.php": {
+    "mtime": 1773217022.0,
+    "seen": 1793092579.7910428,
+    "ast_hash": "d2cafeae354bea357fd067bc853597bc",
+    "semantic_hash": "d2cafeae354bea357fd067bc853597bc"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/share.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7910435,
+    "ast_hash": "1dc1ab03750d188e83accc3dbaf3c3d2",
+    "semantic_hash": "1dc1ab03750d188e83accc3dbaf3c3d2"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/sidebar.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7910447,
+    "ast_hash": "3e271000b104b9b660e88f5967aa1422",
+    "semantic_hash": "3e271000b104b9b660e88f5967aa1422"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/single-box.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.7910454,
+    "ast_hash": "83ff444f42a5e7defc05f94f2a4580d2",
+    "semantic_hash": "83ff444f42a5e7defc05f94f2a4580d2"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/single-service.php": {
+    "mtime": 1792658943.133971,
+    "seen": 1793092579.7910461,
+    "ast_hash": "6f05936d28d7c9aff86768b8accce2ee",
+    "semantic_hash": "6f05936d28d7c9aff86768b8accce2ee"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/single.php": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.791047,
+    "ast_hash": "6d72c07bd7b6b3747fb59d2f89b605af",
+    "semantic_hash": "6d72c07bd7b6b3747fb59d2f89b605af"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/social-icons.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.791048,
+    "ast_hash": "a8a7b860b69ad49c82a11b164f0c9d92",
+    "semantic_hash": "a8a7b860b69ad49c82a11b164f0c9d92"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/template-parts/doctor.php": {
+    "mtime": 1792492544.3186018,
+    "seen": 1793092579.7910488,
+    "ast_hash": "1fd69aeb7f4e98808954e55c6691cac3",
+    "semantic_hash": "1fd69aeb7f4e98808954e55c6691cac3"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/template-parts/home.php": {
+    "mtime": 1792666970.6360145,
+    "seen": 1793092579.7910495,
+    "ast_hash": "1411ae0548822b0cbc27334fbda7e0fa",
+    "semantic_hash": "1411ae0548822b0cbc27334fbda7e0fa"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/template-parts/landing.php": {
+    "mtime": 1792571749.4824657,
+    "seen": 1793092579.7910502,
+    "ast_hash": "51b69eebeb33d981034f6254b9b1de21",
+    "semantic_hash": "51b69eebeb33d981034f6254b9b1de21"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/tsconfig.json": {
+    "mtime": 1757220964.0,
+    "seen": 1793092579.791051,
+    "ast_hash": "e652be46dcd84cd8391b510d430d9767",
+    "semantic_hash": "e652be46dcd84cd8391b510d430d9767"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/webpack.config.js": {
+    "mtime": 1790295581.5529122,
+    "seen": 1793092579.7910519,
+    "ast_hash": "3eff574b0b70a2198ffc13c4bbb1aa86",
+    "semantic_hash": "3eff574b0b70a2198ffc13c4bbb1aa86"
+  },
+  "u355783479.eternalglow-com-mx.20260922005336/domains/eternalglow.com.mx/public_html/wp-content/themes/eternalglow/whatsapp-button.php": {
+    "mtime": 1792480875.8958316,
+    "seen": 1793092579.7910526,
+    "ast_hash": "854d39df85f0889808522abac9f34964",
+    "semantic_hash": "854d39df85f0889808522abac9f34964"
+  },
+  "CLAUDE.md": {
+    "mtime": 1792653095.0030303,
+    "seen": 1793092579.7910533,
+    "ast_hash": "1772f31afe79bf4118770fe9ffdbad84",
+    "semantic_hash": "1772f31afe79bf4118770fe9ffdbad84"
+  },
+  "docs/STATUS.md": {
+    "mtime": 1792813133.7523293,
+    "seen": 1793092579.7910538,
+    "ast_hash": "1d6769605761784011d381307ed1fe31",
+    "semantic_hash": "1d6769605761784011d381307ed1fe31"
+  },
+  "docs/directorios.md": {
+    "mtime": 1792676556.2624328,
+    "seen": 1793092579.7910545,
+    "ast_hash": "ab0daa0c57644eb29d4f50fa37c09e1c",
+    "semantic_hash": "ab0daa0c57644eb29d4f50fa37c09e1c"
+  },
+  "docs/reports/2026-10-20-auditoria-seo.md": {
+    "mtime": 1792490959.0441923,
+    "seen": 1793092579.7910554,
+    "ast_hash": "42955143a7fac5d8dbc817f5619e68b8",
+    "semantic_hash": "42955143a7fac5d8dbc817f5619e68b8"
+  },
+  "docs/reports/2026-10-22-mapa-keywords.md": {
+    "mtime": 1792689142.5625765,
+    "seen": 1793092579.7910562,
+    "ast_hash": "b5b20ae20e25491759ba35fa1f001a44",
+    "semantic_hash": "b5b20ae20e25491759ba35fa1f001a44"
+  },
+  "docs/reports/2026-10-23-impacto-rediseno.md": {
+    "mtime": 1792810292.6779232,
+    "seen": 1793092579.7910569,
+    "ast_hash": "0f380813313255cff8ca040e330fc254",
+    "semantic_hash": "0f380813313255cff8ca040e330fc254"
+  },
+  "docs/specs/_template.md": {
+    "mtime": 1792480875.8845005,
+    "seen": 1793092579.7910576,
+    "ast_hash": "f1a9df450237e03fb8b6916d6c62d52b",
+    "semantic_hash": "f1a9df450237e03fb8b6916d6c62d52b"
+  },
+  "docs/specs/deploy.md": {
+    "mtime": 1792490959.0441923,
+    "seen": 1793092579.7910585,
+    "ast_hash": "eee114068e7362d35a3aa7d53739a542",
+    "semantic_hash": "eee114068e7362d35a3aa7d53739a542"
+  },
+  "tareas-eternalglow.md": {
+    "mtime": 1792810312.6410434,
+    "seen": 1793092579.7910593,
+    "ast_hash": "9342c87a627b305a7b710e2af34b79e7",
+    "semantic_hash": "9342c87a627b305a7b710e2af34b79e7"
+  }
+}

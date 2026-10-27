@@ -11,9 +11,11 @@ $rows = array(
     'botox-cdmx' => array(null, 'Botox en CDMX (Roma Norte) con médico estético: $165 por unidad, Baby Botox $4,499 y Full Face $8,499. Resultado natural. Agenda tu valoración.'),
     'hilos-tensores-cdmx' => array('Hilos Tensores en CDMX | Desde $1,100 por Hilo', 'Hilos tensores PDO en CDMX desde $1,100 por hilo: de 1 a 4 hilos, $1,500 c/u; de 5 a 8, $1,300 c/u. Lifting sin cirugía en Roma Norte.'),
 
-    'armonizacion-facial-con-acido-hialuronico' => array('Armonización Facial en CDMX | Desde $6,499 | Eternal Glow', 'Armonización facial con ácido hialurónico en CDMX desde $6,499 por jeringa; 3 jeringas por $16,000 y 4 por $20,000. Valoración médica en Roma Norte.'),
+    // "Ácido hialurónico" in the title: "armonizacion facial con acido hialuronico" is the page's top query (Search Console, 13-26 oct).
+    'armonizacion-facial-con-acido-hialuronico' => array('Armonización Facial con Ácido Hialurónico en CDMX | $6,499','Armonización facial con ácido hialurónico en CDMX desde $6,499 por jeringa; 3 jeringas por $16,000 y 4 por $20,000. Valoración médica en Roma Norte.'),
     'baby-botox-cdmx' => array('Baby Botox en CDMX | 30 Unidades por $4,499 | Eternal Glow', 'Baby Botox en CDMX: 30 unidades por $4,499. Microdosis de toxina botulínica para suavizar líneas finas con resultado natural. Agenda tu valoración.'),
-    'botox-en-los-labios' => array('Botox en los Labios en CDMX | Precio por Unidad: $165', 'Botox en los labios en CDMX para suavizar el código de barras. Se cobra por unidad ($165) y la dosis se define en valoración médica en Roma Norte.'),
+    // Position 2 for "botox en los labios" with a 0.8% CTR (13-26 oct): the search asks what it does, not only the price.
+    'botox-en-los-labios' => array('Botox en los Labios: Qué Hace, Resultados y Precio en CDMX', 'El Botox en los labios no da volumen: suaviza el código de barras y define el labio superior (efecto Lip Flip). $165 por unidad, con médico en Roma Norte.'),
     'botox-foxy-eyes-cdmx' => array('Botox Foxy Eyes en CDMX | $1,250 | Eleva la Mirada', 'Botox Foxy Eyes en CDMX por $1,250: eleva sutilmente la cola de la ceja para una mirada más abierta y natural. Agenda tu valoración en Roma Norte.'),
     'botox-lip-flip' => array(null, 'Botox Lip Flip en CDMX por $1,250: define el labio superior y mejora la sonrisa con un efecto natural, sin rellenos. Agenda tu valoración en Roma Norte.'),
     'botox-para-bruxismo-en-maseteros-cdmx' => array('Botox para Bruxismo en Maseteros en CDMX | $8,499', 'Botox para bruxismo en maseteros en CDMX por $8,499: relaja la tensión mandibular, alivia el dolor y afina el contorno del rostro. Roma Norte.'),

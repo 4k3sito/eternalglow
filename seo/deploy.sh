@@ -30,11 +30,11 @@ if [ "$THEME_ONLY" = true ]; then
 else
 	# privacidad.php and contact-form-en.php are one-off scripts, run by hand: not part of every deploy.
 	echo "2/4 Subiendo los scripts de SEO..."
-	tar -czf - seo/home.php seo/treatments.php seo/sculptra-cdmx.php seo/prices.php seo/landings.php seo/nosotros.php seo/content-fixes.php seo/design-fixes.php | ssh "$HOST" 'mkdir -p ~/seo-deploy && tar -xzf - -C ~/seo-deploy'
+	tar -czf - seo/home.php seo/treatments.php seo/sculptra-cdmx.php seo/prices.php seo/landings.php seo/nosotros.php seo/content-fixes.php seo/design-fixes.php seo/redirects.php | ssh "$HOST" 'mkdir -p ~/seo-deploy && tar -xzf - -C ~/seo-deploy'
 
 	echo "3/4 Corriendo los scripts (el orden importa: prices.php va después de treatments.php y content-fixes.php al final, porque sculptra-cdmx.php reescribe el hub)..."
 	# Each script exits 1 on a failed self-check: stop there instead of running the rest on top of it.
-	ssh "$HOST" 'cd ~/public_html && for f in home treatments sculptra-cdmx prices landings nosotros content-fixes design-fixes; do echo "== $f"; wp eval-file ~/seo-deploy/seo/$f.php || { echo "FALLO: $f"; exit 1; }; done'
+	ssh "$HOST" 'cd ~/public_html && for f in home treatments sculptra-cdmx prices landings nosotros content-fixes design-fixes redirects; do echo "== $f"; wp eval-file ~/seo-deploy/seo/$f.php || { echo "FALLO: $f"; exit 1; }; done'
 fi
 
 echo "4/4 Purgando cachés..."
@@ -67,7 +67,7 @@ if [ "$warmed" -gt 0 ]; then echo "   $warmed URLs"; else echo "   AVISO: no se 
 
 echo "Verificando..."
 failed=0
-for path in / /en/ /en/botox-mexico-city/ /en/sculptra-mexico-city/ /en/fillers-mexico-city/ /en/lip-filler-mexico-city/ /en/pdo-threads-mexico-city/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/; do
+for path in / /en/ /en/botox-mexico-city/ /en/sculptra-mexico-city/ /en/fillers-mexico-city/ /en/lip-filler-mexico-city/ /en/pdo-threads-mexico-city/ /botox-cdmx/ /hilos-tensores-cdmx/ /tratamientos/ /rellenos-cdmx/ /relleno-de-labios-cdmx/ /sculptra-cdmx/ /servicio/hollywood-peel-en-cdmx/ /servicio/tratamiento-sculptra-en-cdmx/ /servicio/tratamiento-pdrn-salmon/ /servicio/sculptra/ /servicio/; do
 	result=$(curl -s -o /dev/null -m 30 -w '%{http_code} %{redirect_url}' "$SITE$path" || true)
 	printf '%s -> %s\n' "$path" "$result"
 	case "${result%% *}" in 200|301) ;; *) failed=1 ;; esac

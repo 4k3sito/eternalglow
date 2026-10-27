@@ -24,6 +24,8 @@ OUT_DIR = Path(__file__).resolve().parent / "gbp-data"
 ACCOUNTS_URL = "https://mybusinessaccountmanagement.googleapis.com/v1/accounts"
 INFO_URL = "https://mybusinessbusinessinformation.googleapis.com/v1"
 PERF_URL = "https://businessprofileperformance.googleapis.com/v1"
+# La cuenta administra otros perfiles (p. ej. TechMech); solo interesa Eternal Glow.
+LOCATION = "locations/3792563091370806835"
 
 DAILY_METRICS = [
     "BUSINESS_IMPRESSIONS_MOBILE_SEARCH",
@@ -111,6 +113,8 @@ def main() -> int:
             {"readMask": "name,title,storefrontAddress,websiteUri", "pageSize": 100},
         )
         for loc in locations:
+            if loc["name"] != LOCATION:
+                continue
             print(f"- {loc.get('title')} ({loc['name']}) en {account.get('accountName')}")
             tag = {"location": loc.get("title", loc["name"])}
             daily_rows += [{**tag, **r} for r in fetch_daily(client, loc["name"], start, end)]
