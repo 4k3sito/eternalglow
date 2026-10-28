@@ -334,12 +334,12 @@ function eg_landings(){
 		),
 		// English version of /relleno-de-labios-cdmx/. Same facts and prices as the Spanish page.
 		'lip-filler-mexico-city' => array(
-			'updated' => '2026-10-22',
+			'updated' => '2026-10-27',
 			'image' => array('2026/05/rejuvenecimiento-labial-cdmx-resultados.jpg', 'Illustrative before and after of lips treated with hyaluronic acid filler'),
 			'hero' => array(
 				'Hyaluronic acid · Roma Norte, Mexico City',
 				'Lip filler in Mexico City',
-				'Volume, definition and a natural shape with hyaluronic acid. $6,499 MXN per 1 mL syringe, applied by an aesthetic physician in Roma Norte, with English spoken at the clinic.',
+				'Volume, definition and a natural shape with hyaluronic acid. $6,499 MXN (about '.$usd(6499).') per 1 mL syringe, applied by an aesthetic physician in Roma Norte, with English spoken at the clinic.',
 			),
 			'sections' => array(
 				array('What is lip filler?', array(
@@ -350,13 +350,29 @@ function eg_landings(){
 					'For anyone who wants more volume, a sharper outline, to correct an asymmetry or to restore the volume lips lose with age.',
 					'If you only want to show a little more of the upper lip without adding volume, the alternative is the Botox lip flip (see our <a href="/en/botox-mexico-city/">Botox page</a>).',
 				)),
-				array('How does the visit work?', array(
-					'It starts with a medical consultation: the doctor looks at the shape of your lips, your profile and what you want to achieve, and suggests the amount of product.',
-					'The treatment takes less than an hour and you can go back to your plans the same day.',
+				array('How much is lip filler in Mexico City compared with the US?', array(
+					'Lip filler costs $6,499 MXN per 1 mL syringe at Eternal Glow, about '.$usd(6499).'. The amount you need is set at your consultation.',
+					'In the US a hyaluronic acid syringe costs $715 USD on average, according to the American Society of Plastic Surgeons, and usually $500 to $1,200 USD depending on the brand and the city. The table below puts both side by side.',
+					'You pay in Mexican pesos. The dollar figures use about '.EG_USD_RATE.' pesos per dollar (Banco de México, October 2026) and move with the exchange rate.',
+				)),
+				array('Is lip filler in Mexico City safe?', array(
+					'Lip filler is safe when the product is genuine and the injector knows facial anatomy. At Eternal Glow every treatment is done by Dr. Bruno Ocampo, a licensed physician (professional license 13493041, listed in the Mexican Ministry of Education’s national registry), with reference brands such as Restylane and Yvoire.',
+					'Hyaluronic acid can be dissolved with hyaluronidase, and the doctor keeps it at hand during every treatment. The clinic’s advertising is authorized by COFEPRIS, Mexico’s federal health regulator (permit 2509152002A00185).',
+					'Wherever you get it, ask for the injector’s medical license, the brand and how much product goes into your lips, and be wary of a price per syringe far below the usual range.',
+				)),
+				array('Planning your visit', array(
+					'Everything starts with a medical consultation: the doctor looks at the shape of your lips, your profile and what you want to achieve, and suggests the amount of product. You can <a href="'.esc_url(eg_booking_url()).'">book online</a> or message us on WhatsApp in English.',
+					'We see patients by appointment at Valladolid 56, Roma Norte, a short walk from Condesa and Juárez, Monday to Friday from 11:30 to 18:00 and Saturday from 11:30 to 17:00.',
+					'The treatment takes less than an hour and you can go back to your plans the same day. Lips swell more than other areas, so leave a few days of margin before an event or photos; the final shape is easier to judge once the swelling goes down.',
+					'Lip filler usually lasts 6 to 12 months. If you also want to soften lines or treat other areas, it can be combined with <a href="/en/botox-mexico-city/">Botox</a> or other <a href="/en/fillers-mexico-city/">fillers</a> in the same plan.',
 				)),
 			),
 			'prices' => array(
 				array('Price', 'Hyaluronic acid · MXN', array($lips_en)),
+				// US: $715 USD average per HA syringe (ASPS); $500-$1,200 USD typical range.
+				array('Mexico City vs the US', 'Eternal Glow price · approximate USD', array(
+					eg_price_row('Lip filler · 1 syringe (1 mL)', 'Typical US clinic: $500 to $1,200 USD ($715 on average).', '$6,499 MXN ≈ '.$usd(6499)),
+				)),
 				array('Related treatments', 'For lips and profile', $english(array(
 					'botox-lip-flip' => array('Botox lip flip', 'A subtle turn of the upper lip to show more of it without filler.'),
 					'relleno-de-menton' => array('Chin filler', 'Definition and balance of the profile.'),
@@ -371,7 +387,7 @@ function eg_landings(){
 			)),
 			'faq_title' => 'Lip filler questions',
 			'faq' => array(
-				array('How much does lip filler cost in Mexico City?', 'At Eternal Glow lip filler costs $6,499 MXN per 1 mL syringe of hyaluronic acid. The amount you need is set in your consultation.'),
+				array('How much does lip filler cost in Mexico City?', 'At Eternal Glow lip filler costs $6,499 MXN (about '.$usd(6499).') per 1 mL syringe of hyaluronic acid. The amount you need is set in your consultation.'),
 				array('How long does lip filler last?', 'It usually lasts 6 to 12 months. Lips move a lot, so the product is absorbed sooner than in other areas; the product and your metabolism also play a part.'),
 				array('Will my lips look natural?', 'Yes. We apply measured amounts and work in stages to respect the shape of your lips and the proportions of your face.'),
 				array('How long does the swelling last?', 'It is normal for the lips to swell during the first days and for a small bruise to appear. The result is easier to judge once the swelling goes down.'),
