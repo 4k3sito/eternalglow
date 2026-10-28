@@ -185,6 +185,31 @@ function eg_hubs(){
 	);
 }
 
+// The price each hub's Service node offers, in the same shape as a catalogue row (eg_offer_price): the hub's
+// headline price from includes/_treatments.php, or the flyer's lowest price per thread for the threads hub.
+function eg_hub_offer($key){
+	$treatments = eg_treatments();
+	$rows = array('botox' => 'botox-por-unidad', 'rellenos' => 'relleno-de-labios', 'labios' => 'relleno-de-labios', 'sculptra' => 'tratamiento-sculptra-en-cdmx');
+	if($key == 'hilos'){
+		return (object)array('amount' => 1100, 'unit' => 'hilo', 'from' => true);
+	}
+	$item = $treatments[$rows[$key]];
+	// Fillers are priced per 1 mL syringe, whichever area the syringe goes to.
+	return (object)array('amount' => $item->amount, 'unit' => $item->unit ?: 'jeringa', 'from' => false);
+}
+
+// The hub whose page is the current one, by its URL in either language.
+function eg_current_hub(){
+	foreach(eg_hubs() as $key => $hub){
+		foreach(array('es', 'en') as $lang){
+			if($hub[$lang] && trailingslashit(home_url($hub[$lang][1])) === trailingslashit(get_permalink())){
+				return $key;
+			}
+		}
+	}
+	return null;
+}
+
 // A hub as (title, url) in the current language, or null when it has no page in that language.
 function eg_hub($key){
 	$hub = eg_hubs()[$key];
@@ -289,11 +314,14 @@ function eg_offer_price($item){
 	return $offer;
 }
 
-// Adds the catalogue price to the Offer of the schema plugin's Service nodes, which carry a currency but no price.
+// Adds the catalogue price to the Offer of the schema plugin's Service nodes, which carry a currency but no price,
+// and an Offer to the ones that have none (the Botox and threads hubs).
 function eg_saswp_add_price($nodes, $item){
 	foreach($nodes as $i => $node){
 		if(isset($node['offers']['@type']) && $node['offers']['@type'] === 'Offer' && !isset($node['offers']['price'])){
 			$nodes[$i]['offers'] = array_merge($node['offers'], eg_offer_price($item));
+		}elseif(!isset($node['offers']) && in_array('Service', (array)($node['@type'] ?? ''), true)){
+			$nodes[$i]['offers'] = array_merge(array('@type' => 'Offer', 'url' => $node['url'] ?? get_permalink()), eg_offer_price($item));
 		}
 	}
 	return $nodes;
@@ -324,12 +352,31 @@ function eg_schema(){
 	if($landing || is_page('sculptra-cdmx')){
 		$en = eg_lang() == 'en';
 		$graph[] = eg_physician_schema();
-		$graph[] = array(
+		$webpage = array(
 			'@type' => 'WebPage', '@id' => get_permalink().'#webpage', 'url' => get_permalink(), 'name' => get_the_title(),
 			'inLanguage' => $en ? 'en' : 'es-MX', 'dateModified' => wp_date('c', eg_page_modified()), 'about' => $clinic,
 			// The doctor block on the page is the review the date refers to.
 			'reviewedBy' => array('@id' => home_url('/#dr-bruno-ocampo')), 'lastReviewed' => wp_date('Y-m-d', eg_page_modified()),
 		);
+		// The same hub in the other language, by the @id that page gives its own WebPage node.
+		$other = home_url(eg_alternate_path()).'#webpage';
+		if(!in_array(eg_alternate_path(), array('/', '/en/'), true)){
+			$webpage[$en ? 'translationOfWork' : 'workTranslation'] = array('@id' => $other);
+		}
+		$graph[] = $webpage;
+		$hub_key = eg_current_hub();
+		if($hub_key){
+			$offer = eg_hub_offer($hub_key);
+			if(in_array('Service', $saswp_types, true)){
+				$saswp = eg_saswp_add_price($saswp, $offer);
+			}else{
+				$graph[] = array(
+					'@type' => 'Service', '@id' => get_permalink().'#service', 'name' => eg_hub($hub_key)->title, 'url' => get_permalink(),
+					'provider' => $clinic, 'areaServed' => 'Ciudad de México',
+					'offers' => array_merge(array('@type' => 'Offer', 'url' => get_permalink()), eg_offer_price($offer)),
+				);
+			}
+		}
 		if(!in_array('BreadcrumbList', $saswp_types, true)){
 			// The hub's name as the service pages' breadcrumb gives it ("Botox en CDMX"), not its WordPress title.
 			$name = get_the_title();
@@ -344,6 +391,14 @@ function eg_schema(){
 				array($name, get_permalink()),
 			));
 		}
+	}
+	if(is_page('nosotros')){
+		$graph[] = eg_physician_schema();
+		$graph[] = array(
+			'@type' => 'AboutPage', '@id' => get_permalink().'#webpage', 'url' => get_permalink(), 'name' => get_the_title(),
+			'inLanguage' => 'es-MX', 'about' => $clinic, 'mainEntity' => array('@id' => home_url('/#dr-bruno-ocampo')),
+		);
+		$graph[] = eg_breadcrumb_schema(array(array('Inicio', home_url('/')), array(get_the_title(), get_permalink())));
 	}
 	if(is_page('tratamientos')){
 		$items = array();
