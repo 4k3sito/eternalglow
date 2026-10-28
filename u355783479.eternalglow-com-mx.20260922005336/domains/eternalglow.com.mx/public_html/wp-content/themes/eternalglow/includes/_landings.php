@@ -398,12 +398,12 @@ function eg_landings(){
 		),
 		// English version of /hilos-tensores-cdmx/. Same facts and prices as the Spanish hub (its WPBakery copy and FAQ).
 		'pdo-threads-mexico-city' => array(
-			'updated' => '2026-10-22',
+			'updated' => '2026-10-27',
 			'image' => array('2025/09/hilos-tensores-cdmx-resultados-reales.jpg', 'Before and after PDO threads at Eternal Glow, Mexico City'),
 			'hero' => array(
 				'Lifting without surgery · Roma Norte, Mexico City',
 				'PDO threads in Mexico City',
-				'Lift, redefine and rejuvenate without surgery. PDO threads from $1,100 MXN per thread, placed by an aesthetic physician in Roma Norte, with English spoken at the clinic.',
+				'Lift, redefine and rejuvenate without surgery. PDO threads from $1,100 MXN (about '.$usd(1100).') per thread, placed by an aesthetic physician in Roma Norte, with English spoken at the clinic.',
 			),
 			'sections' => array(
 				array('What are PDO threads?', array(
@@ -415,12 +415,34 @@ function eg_landings(){
 					'Under local anaesthetic the threads are placed with a cannula or a fine needle along the lifting vectors. The session takes 30 to 60 minutes and you go home the same day.',
 					'Afterwards there may be mild swelling or a temporary feeling of tightness. Avoid sudden movements, intense exercise and facial massages for the first 5 days.',
 				)),
+				array('How much are PDO threads in Mexico City compared with the US?', array(
+					'At Eternal Glow you pay per thread, and the price drops with the number of threads: $1,500 MXN each from 1 to 4 threads (about '.$usd(1500).'), $1,300 from 5 to 8 (about '.$usd(1300).') and $1,100 from 9 (about '.$usd(1100).'). Four threads come to $6,000 MXN, about '.$usd(6000).', and ten to $11,000 MXN, about '.$usd(11000).'.',
+					'In the US a PDO thread lift usually costs $1,500 to $3,000 USD per treatment, and more when several areas are treated, according to the price guides US clinics publish. The table below puts both side by side.',
+					'You pay in Mexican pesos. The dollar figures use about '.EG_USD_RATE.' pesos per dollar (Banco de México, October 2026) and move with the exchange rate.',
+				)),
+				array('Are PDO threads in Mexico City safe?', array(
+					'Threads are safe when they are placed by a physician who knows facial anatomy, with sterile, single-use material. At Eternal Glow every treatment is done by Dr. Bruno Ocampo, a licensed physician (professional license 13493041, listed in the Mexican Ministry of Education’s national registry).',
+					'PDO is the same absorbable material used in surgical sutures: the body breaks it down over the following months. The clinic’s advertising is authorized by COFEPRIS, Mexico’s federal health regulator (permit 2509152002A00185).',
+					'Wherever you get them, ask for the doctor’s medical license and how many threads go into your plan, and be wary of a price far below the usual range.',
+				)),
+				array('Planning your visit', array(
+					'Everything starts with a medical consultation: the doctor assesses the sagging and tells you how many threads you need. You can <a href="'.esc_url(eg_booking_url()).'">book online</a> or message us on WhatsApp in English.',
+					'We see patients by appointment at Valladolid 56, Roma Norte, a short walk from Condesa and Juárez, Monday to Friday from 11:30 to 18:00 and Saturday from 11:30 to 17:00.',
+					'The session takes 30 to 60 minutes and you go home the same day. Plan for some swelling or bruising in the first days, and for 5 days without intense exercise, sudden movements or facial massages, so leave a few days of margin before an event or photos.',
+					'Results last 1 to 1.5 years. Threads can be combined with <a href="/en/botox-mexico-city/">Botox</a> or <a href="/en/sculptra-mexico-city/">Sculptra</a> in the same plan.',
+				)),
 			),
 			'prices' => array(
 				array('PDO thread prices', 'Price per thread · MXN', array(
 					eg_price_row('1 to 4 threads', 'Price for each thread', '$1,500 / thread'),
 					eg_price_row('5 to 8 threads', 'Price for each thread', '$1,300 / thread'),
 					eg_price_row('9 or more threads', 'Price for each thread', '$1,100 / thread'),
+				)),
+				// US: $1,500-$3,000 USD per thread lift treatment (US clinic price guides, 2026).
+				array('Mexico City vs the US', 'Eternal Glow price · approximate USD', array(
+					eg_price_row('4 threads', '4 × $1,500 MXN. Typical US thread lift: $1,500 to $3,000 USD.', '$6,000 MXN ≈ '.$usd(6000)),
+					eg_price_row('8 threads', '8 × $1,300 MXN. Typical US thread lift: $1,500 to $3,000 USD.', '$10,400 MXN ≈ '.$usd(10400)),
+					eg_price_row('10 threads', '10 × $1,100 MXN. Typical US thread lift: $1,500 to $3,000 USD.', '$11,000 MXN ≈ '.$usd(11000)),
 				)),
 			),
 			'risks' => array('PDO thread risks and contraindications', array(
@@ -431,7 +453,7 @@ function eg_landings(){
 			)),
 			'faq_title' => 'PDO thread questions',
 			'faq' => array(
-				array('How much do PDO threads cost in Mexico City?', 'At Eternal Glow the price is per thread: $1,500 MXN each from 1 to 4 threads, $1,300 from 5 to 8 threads and $1,100 from 9 threads.'),
+				array('How much do PDO threads cost in Mexico City?', 'At Eternal Glow the price is per thread: $1,500 MXN each from 1 to 4 threads, $1,300 from 5 to 8 threads and $1,100 from 9 threads (about '.$usd(1500).', '.$usd(1300).' and '.$usd(1100).').'),
 				array('How many threads do I need?', 'It depends on the area and the degree of sagging. The doctor sets the number of threads in your consultation, after examining your face.'),
 				array('Which areas can be treated?', 'The most common areas are the brows (brow lift), foxy eyes, cheeks, nasolabial folds, marionette lines, jawline, facial contour and neck.'),
 				array('How long do the results last?', 'The lifting effect shows from the treatment and results last 1 to 1.5 years, while the threads keep stimulating collagen.'),
