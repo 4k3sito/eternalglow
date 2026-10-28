@@ -265,21 +265,33 @@ function eg_landings(){
 		),
 		// English version of /rellenos-cdmx/. Same facts and prices as the Spanish hub.
 		'fillers-mexico-city' => array(
-			'updated' => '2026-10-21',
+			'updated' => '2026-10-27',
 			'image' => array('2026/05/tratamiento-de-pomulos-con-acido-hialuronico.png', 'Hyaluronic acid applied to the cheeks at Eternal Glow, Mexico City'),
 			'hero' => array(
 				'Hyaluronic acid · Roma Norte, Mexico City',
 				'Dermal fillers in Mexico City',
-				'Volume, definition and balance with hyaluronic acid, applied by an aesthetic physician. Each area costs $6,499 MXN per syringe, with English spoken at the clinic.',
+				'Volume, definition and balance with hyaluronic acid, applied by an aesthetic physician. Each area costs $6,499 MXN (about '.$usd(6499).') per syringe, with English spoken at the clinic.',
 			),
 			'sections' => array(
 				array('What is a hyaluronic acid filler?', array(
 					'Hyaluronic acid is a substance your body makes naturally that holds water in the skin. As a filler it is a gel injected to restore volume, define contours or soften folds.',
 					'The result shows from the moment of the treatment and the body absorbs the product over time. At Eternal Glow we work with reference brands such as Restylane and Yvoire.',
 				)),
-				array('How does the visit work?', array(
-					'Everything starts with a medical consultation: the doctor looks at your face, listens to what you want and suggests the areas and the amount of product.',
-					'Most treatments take less than an hour and you can go back to your plans the same day.',
+				array('How much are fillers in Mexico City compared with the US?', array(
+					'Each area costs $6,499 MXN per 1 mL syringe at Eternal Glow, about '.$usd(6499).'. The packages lower the price per syringe: 2 syringes are $11,000 MXN, about '.$usd(11000).', 3 are $16,000 MXN, about '.$usd(16000).', and 4 are $20,000 MXN, about '.$usd(20000).'.',
+					'In the US a hyaluronic acid syringe costs $715 USD on average, according to the American Society of Plastic Surgeons, and usually $500 to $1,200 USD depending on the brand and the city. The table below puts both side by side.',
+					'You pay in Mexican pesos. The dollar figures use about '.EG_USD_RATE.' pesos per dollar (Banco de México, October 2026) and move with the exchange rate.',
+				)),
+				array('Are fillers in Mexico City safe?', array(
+					'A filler is safe when the product is genuine and the injector knows facial anatomy. At Eternal Glow every treatment is done by Dr. Bruno Ocampo, a licensed physician (professional license 13493041, listed in the Mexican Ministry of Education’s national registry), with reference brands such as Restylane and Yvoire.',
+					'Hyaluronic acid can be dissolved with hyaluronidase, and the doctor keeps it at hand during every treatment. The clinic’s advertising is authorized by COFEPRIS, Mexico’s federal health regulator (permit 2509152002A00185).',
+					'Wherever you get a filler, ask for the injector’s medical license, the brand and how many syringes go into your plan, and be wary of a price per syringe far below the usual range.',
+				)),
+				array('Planning your visit', array(
+					'Everything starts with a medical consultation: the doctor looks at your face, listens to what you want and suggests the areas and the amount of product. You can <a href="'.esc_url(eg_booking_url()).'">book online</a> or message us on WhatsApp in English.',
+					'We see patients by appointment at Valladolid 56, Roma Norte, a short walk from Condesa and Juárez, Monday to Friday from 11:30 to 18:00 and Saturday from 11:30 to 17:00.',
+					'Most treatments take less than an hour and you can go back to your plans the same day. The result shows from the start, but some swelling or a small bruise is normal for a few days, so leave a few days of margin before an event or photos.',
+					'A filler lasts 6 to 18 months, less in the lips and more in the cheeks or jaw. It can be combined with <a href="/en/botox-mexico-city/">Botox</a> or <a href="/en/sculptra-mexico-city/">Sculptra</a> in the same plan.',
 				)),
 			),
 			'prices' => array(
@@ -295,6 +307,13 @@ function eg_landings(){
 					'armonizacion-facial-con-acido-hialuronico' => array('Facial harmonization', 'A treatment tailored to your goals.'),
 				))),
 				array('Packages by amount', 'For a global, balanced result', $syringes_en),
+				// US: $715 USD average per HA syringe (ASPS); $500-$1,200 USD typical range, times the syringes.
+				array('Mexico City vs the US', 'Eternal Glow price · approximate USD', array(
+					eg_price_row('1 syringe', 'Typical US clinic: $500 to $1,200 USD ($715 on average).', '$6,499 MXN ≈ '.$usd(6499)),
+					eg_price_row('2 syringes', 'Typical US clinic: $1,000 to $2,400 USD.', '$11,000 MXN ≈ '.$usd(11000)),
+					eg_price_row('3 syringes', 'Typical US clinic: $1,500 to $3,600 USD.', '$16,000 MXN ≈ '.$usd(16000)),
+					eg_price_row('4 syringes', 'Typical US clinic: $2,000 to $4,800 USD.', '$20,000 MXN ≈ '.$usd(20000)),
+				)),
 			),
 			'risks' => array('Filler risks and contraindications', array(
 				'When a physician applies it, side effects are usually mild and temporary, but it is not for everyone.',
@@ -304,7 +323,7 @@ function eg_landings(){
 			)),
 			'faq_title' => 'Filler questions',
 			'faq' => array(
-				array('How much does a hyaluronic acid filler cost in Mexico City?', 'At Eternal Glow each area costs $6,499 MXN per 1 mL syringe. As a package, 2 syringes cost $11,000, 3 syringes $16,000 and 4 syringes $20,000 MXN. The number of syringes is set in your consultation.'),
+				array('How much does a hyaluronic acid filler cost in Mexico City?', 'At Eternal Glow each area costs $6,499 MXN per 1 mL syringe (about '.$usd(6499).'). As a package, 2 syringes cost $11,000, 3 syringes $16,000 and 4 syringes $20,000 MXN. The number of syringes is set in your consultation.'),
 				array('How long does a filler last?', 'It depends on the area, the product and your metabolism. In general it lasts 6 to 18 months: less in areas that move a lot, such as the lips, and more in the cheeks or jaw.'),
 				array('Which areas can be treated?', 'Lips, under eyes, cheeks, chin, nasolabial folds, nose (non-surgical rhinoplasty), temples and jawline. When several areas are treated together we call it facial harmonization.'),
 				array('Can a filler be reversed?', 'Yes. Hyaluronic acid can be dissolved with an enzyme called hyaluronidase when the doctor considers it necessary.'),
