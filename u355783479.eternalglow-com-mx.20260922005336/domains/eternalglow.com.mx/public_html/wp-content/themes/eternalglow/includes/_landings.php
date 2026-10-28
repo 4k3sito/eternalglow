@@ -193,11 +193,12 @@ function eg_landings(){
 		),
 		// English version of /sculptra-cdmx/. Same facts and prices as the Spanish hub.
 		'sculptra-mexico-city' => array(
+			'updated' => '2026-10-27',
 			'image' => array('2026/06/piel-despues-tratamiento-sculptra-cdmx.png', 'Skin after a Sculptra treatment at Eternal Glow, Mexico City'),
 			'hero' => array(
 				'Collagen biostimulator · Roma Norte, Mexico City',
 				'Sculptra in Mexico City',
-				'Firmer skin and restored volume that build up gradually as your own collagen grows, without changing your expression. $14,999 MXN per vial, with English spoken at the clinic.',
+				'Firmer skin and restored volume that build up gradually as your own collagen grows, without changing your expression. $14,999 MXN (about '.$usd(14999).') per vial, with English spoken at the clinic.',
 			),
 			'sections' => array(
 				array('What is Sculptra?', array(
@@ -210,7 +211,23 @@ function eg_landings(){
 				)),
 				array('How does the treatment work?', array(
 					'It starts with a medical consultation, where we define the areas, the number of vials and the number of sessions. Many patients need two or three sessions a few weeks apart.',
-					'Each session takes 30 to 45 minutes. Sculptra is placed in the deep layers of the skin with a cannula or a fine needle. Afterwards you massage the area 5 times a day for 5 days, and avoid intense exercise on the first day.',
+					'Each session takes 30 to 45 minutes. Sculptra is placed in the deep layers of the skin with a cannula or a fine needle, and the product can be prepared with a local anaesthetic to make you more comfortable.',
+				)),
+				array('How much is Sculptra in Mexico City compared with the US?', array(
+					'Sculptra costs $14,999 MXN per vial at Eternal Glow, about '.$usd(14999).'. The packages lower the price per vial: 2 vials are $28,000 MXN, about '.$usd(28000).', and 3 vials are $33,000 MXN, about '.$usd(33000).', or roughly '.$usd(11000).' per vial.',
+					'US clinics usually charge $600 to $1,200 USD per vial, according to 2026 price guides, so a 3 vial plan there costs roughly $1,800 to $3,600 USD. The table below puts both side by side.',
+					'You pay in Mexican pesos. The dollar figures use about '.EG_USD_RATE.' pesos per dollar (Banco de México, October 2026) and move with the exchange rate.',
+				)),
+				array('Is Sculptra in Mexico City safe?', array(
+					'Sculptra is a medical device that has to be prepared and placed in the right layer of the skin, so who applies it matters as much as the product. At Eternal Glow every treatment is done by Dr. Bruno Ocampo, a licensed physician (professional license 13493041, listed in the Mexican Ministry of Education’s national registry).',
+					'The clinic’s advertising is authorized by COFEPRIS, Mexico’s federal health regulator (permit 2509152002A00185).',
+					'Wherever you get Sculptra, ask for the injector’s medical license and how many vials go into your plan, and be wary of a price per vial far below the usual range.',
+				)),
+				array('Planning your visit', array(
+					'Every plan starts with a medical consultation. You can <a href="'.esc_url(eg_booking_url()).'">book online</a> or message us on WhatsApp in English. We see patients by appointment at Valladolid 56, Roma Norte, a short walk from Condesa and Juárez, Monday to Friday from 11:30 to 18:00 and Saturday from 11:30 to 17:00.',
+					'Sculptra is a plan, not a single visit: most patients need two or three sessions a few weeks apart. If you travel to Mexico City, plan two or three trips or a longer stay, and agree on the dates with the doctor in your first consultation.',
+					'Aftercare: massage the area for 5 minutes, 5 times a day, for 5 days, as the doctor shows you. Cold can be applied, protected, during the first 24 hours, and for 24 to 48 hours avoid intense exercise, saunas, steam and heat. Postpone facials, lasers and other facial procedures until the doctor clears them.',
+					'The volume you see on the first days fades, and the real result builds up over the following months, so do not plan Sculptra for an event next week. It can be combined with <a href="/en/fillers-mexico-city/">fillers</a> or <a href="/en/botox-mexico-city/">Botox</a> in the same plan.',
 				)),
 			),
 			'prices' => array(
@@ -221,10 +238,22 @@ function eg_landings(){
 					eg_price_row('Body Sculptra · 5 vials', 'Body treatment; areas set in your consultation', '$52,999'),
 					eg_price_row('Body Sculptra · 10 vials', 'Body treatment; areas set in your consultation', '$99,999'),
 				)),
+				// US ranges: $600-$1,200 USD per vial in 2026 US price guides, times the vials.
+				array('Mexico City vs the US', 'Eternal Glow price · approximate USD', array(
+					eg_price_row('Sculptra · 1 vial', 'Typical US clinic: $600 to $1,200 USD per vial.', '$14,999 MXN ≈ '.$usd(14999)),
+					eg_price_row('Sculptra · 2 vials', 'Typical US clinic: $1,200 to $2,400 USD for 2 vials.', '$28,000 MXN ≈ '.$usd(28000)),
+					eg_price_row('Sculptra · 3 vials', 'Typical US clinic: $1,800 to $3,600 USD for 3 vials.', '$33,000 MXN ≈ '.$usd(33000)),
+				)),
 			),
+			// Same facts as the risks section of /sculptra-cdmx/.
+			'risks' => array('Sculptra risks and contraindications', array(
+				'Like any injectable, Sculptra can have side effects. The most common are temporary and appear around the injection points: swelling, redness, tenderness, mild pain, bruising or itching. Small irregularities or nodules under the skin can also appear; the technique, the preparation of the product, the depth of placement and the follow up are what keep that risk low.',
+				'<strong>It may not be right for you if:</strong> you are hypersensitive to its components; you have a history of severe allergies; you tend to form keloids or hypertrophic scars; there is an active infection or inflammation in the area.',
+				'Tell the doctor about your medicines, illnesses, recent procedures, pregnancy or breastfeeding, and any allergy to anaesthetics such as lidocaine. Contact the clinic if you notice persistent nodules, changes of colour or any unexpected symptom.',
+			)),
 			'faq_title' => 'Sculptra questions',
 			'faq' => array(
-				array('How much does Sculptra cost in Mexico City?', 'At Eternal Glow Sculptra costs $14,999 MXN per vial; 2 vials cost $28,000 and 3 vials $33,000 MXN. For the body, 5 vials cost $52,999 and 10 vials $99,999 MXN. The number of vials and sessions is set in your consultation.'),
+				array('How much does Sculptra cost in Mexico City?', 'At Eternal Glow Sculptra costs $14,999 MXN per vial (about '.$usd(14999).'); 2 vials cost $28,000 and 3 vials $33,000 MXN. For the body, 5 vials cost $52,999 and 10 vials $99,999 MXN. The number of vials and sessions is set in your consultation.'),
 				array('Is Sculptra hyaluronic acid?', 'No. Sculptra is poly-L-lactic acid. Hyaluronic acid adds volume right away, while Sculptra stimulates new collagen gradually. They can be combined in the same plan.'),
 				array('When will I see the results?', 'Some patients notice changes during the first month, and the improvement keeps developing over the following months as collagen increases.'),
 				array('Why does the initial volume go away?', 'The volume of the first days comes mostly from the liquid used to prepare the product and from swelling. It fades, and then the real biostimulation starts.'),
