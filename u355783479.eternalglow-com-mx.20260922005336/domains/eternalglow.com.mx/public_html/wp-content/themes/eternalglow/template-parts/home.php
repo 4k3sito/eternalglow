@@ -9,6 +9,14 @@
 	$cats = eg_treatment_categories();
 	$counts = array_count_values(wp_list_pluck($treatments, 'cat'));
 	$allowed = array('em' => array());
+	// Stock photo (Pexels, free licence) behind each category card, in assets/images/home. Before-and-after
+	// photos stay in the results section only. Decorative (alt=""): the card text names the category.
+	$cat_photos = array(
+		'botox' => 'categoria-botox.jpg',
+		'rellenos' => 'categoria-rellenos.jpg',
+		'bio' => 'categoria-bioestimuladores.jpg',
+		'piel' => 'categoria-piel.jpg',
+	);
 ?>
 
 <section class="lp-hero" aria-labelledby="hero-title">
@@ -26,18 +34,19 @@
 				</div>
 				<p class="lp-fine"><?php _p(esc_html($t['hero']['note'])); ?></p>
 			</div>
-			<ul class="lp-trust">
+			<?php // Proof bar: the three facts a first-time patient checks before booking, big enough to read at a glance. ?>
+			<ul class="lp-proof">
 				<?php if($reviews){ ?>
-					<li><a href="<?php _p(esc_url($reviews->url)); ?>" target="_blank" rel="noopener"><?php _p($stars); ?> <?php _p(esc_html(sprintf($t['hero']['rating'], $reviews->score, $reviews->count))); ?></a></li>
+					<li><a href="<?php _p(esc_url($reviews->url)); ?>" target="_blank" rel="noopener"><strong><?php _p(esc_html($reviews->score)); ?> <?php _p(eg_icon('star')); ?></strong><span><?php _p(esc_html(sprintf($t['hero']['reviews'], $reviews->count))); ?></span></a></li>
 				<?php } ?>
-				<?php foreach($t['hero']['trust'] as $item){ ?>
-					<li><?php _p(eg_icon($item[0])); ?> <?php _p(esc_html($item[1])); ?></li>
+				<?php foreach($t['hero']['proof'] as $item){ ?>
+					<li><strong><?php _p(esc_html($item[0])); ?></strong><span><?php _p(esc_html($item[1])); ?></span></li>
 				<?php } ?>
 			</ul>
 		</div>
-		<?php // sizes: the 16:9 photo covers a 4:5 box, so it is drawn about 2.2 times wider than the box. Asking for the box width gives a blurry file. ?>
+		<?php // Stock photo (Pexels 7479645, free licence), 2:3, in two widths. The box is about 4:5, so the photo is drawn at the box width. ?>
 		<div class="lp-hero-media">
-			<?php _p(eg_img('2026/06/piel-despues-tratamiento-sculptra-cdmx.png', 'full', array('fetchpriority' => 'high', 'loading' => 'eager', 'decoding' => 'async', 'sizes' => '(min-width: 992px) 1250px, 225vw'))); ?>
+			<img src="<?php images_url('home/hero-1600.jpg'); ?>" srcset="<?php images_url('home/hero-900.jpg'); ?> 900w, <?php images_url('home/hero-1600.jpg'); ?> 1600w" sizes="(min-width: 992px) 560px, 100vw" width="1600" height="2400" alt="<?php _p(esc_attr($en ? 'Close-up of natural skin with freckles' : 'Piel natural con pecas en primer plano')); ?>" fetchpriority="high" loading="eager" decoding="async" />
 			<p class="lp-chip"><span><?php _p(esc_html($t['hero']['chip'][0])); ?></span><?php _p(esc_html($t['hero']['chip'][1])); ?></p>
 		</div>
 	</div>
@@ -68,7 +77,8 @@
 				<?php // Botox and fillers open their hub, the page meant to rank for them; the rest open the catalogue. ?>
 				<?php $hub = eg_category_hub($key); ?>
 				<li>
-					<a href="<?php _p(esc_url($hub ? $hub->url : home_url('/tratamientos/#'.$key))); ?>">
+					<a href="<?php _p(esc_url($hub ? $hub->url : home_url('/tratamientos/#'.$key))); ?>"<?php _p(isset($cat_photos[$key]) ? ' class="has-photo"' : ''); ?>>
+						<?php if(isset($cat_photos[$key])){ ?><img src="<?php images_url('home/'.$cat_photos[$key]); ?>" alt="" width="800" height="600"<?php _p($key == 'botox' ? ' style="object-position: 30% 70%"' : ''); ?> loading="lazy" decoding="async" /><?php } ?>
 						<span class="lp-cat-top"><span class="lp-eyebrow"><?php _p(esc_html(sprintf($t['cats']['count'], $counts[$key]))); ?></span><?php _p(eg_icon('arrow-up-right')); ?></span>
 						<span>
 							<span class="lp-cat-name"><?php _p(esc_html($name[0])); ?></span>
@@ -88,6 +98,35 @@
 				<?php } ?>
 			<?php } ?>
 		</p>
+	</div>
+</section>
+
+<?php // Results right after the categories: before-and-after photos are what convince a first-time patient to book. ?>
+<?php get_template_part('template-parts/patient-reviews', null, array('items' => eg_patient_reviews(), 'id' => 'antes-despues', 'eyebrow' => $t['reviews']['ba_eyebrow'], 'title' => $t['reviews']['ba_title'], 'note' => $t['reviews']['ba_note'])); ?>
+<section class="lp-section" id="resultados" aria-labelledby="results-title">
+	<div class="lp-wrap">
+		<div class="lp-head">
+			<div>
+				<p class="lp-eyebrow"><?php _p(esc_html($t['results']['eyebrow'])); ?></p>
+				<h2 id="results-title"><?php _p(esc_html($t['results']['title'])); ?></h2>
+			</div>
+			<div class="lp-tabs" role="group" aria-label="<?php _p(esc_attr($t['results']['eyebrow'])); ?>">
+				<?php foreach($t['results']['tabs'] as $key => $label){ ?>
+					<button type="button" data-filter="<?php _p($key); ?>" aria-pressed="<?php _p($key == 'all' ? 'true' : 'false'); ?>"><?php _p(esc_html($label)); ?></button>
+				<?php } ?>
+			</div>
+		</div>
+		<ul class="lp-results" tabindex="0">
+			<?php foreach($t['results']['items'] as $item){ ?>
+				<li data-category="<?php _p($item[0]); ?>">
+					<figure data-before="<?php _p(esc_attr($t['results']['before'])); ?>" data-after="<?php _p(esc_attr($t['results']['after'])); ?>">
+						<?php _p(eg_img($item[1], 'medium_large', array('sizes' => '(min-width: 992px) 380px, 80vw', 'alt' => $item[$en ? 3 : 2]))); ?>
+						<figcaption><?php _p(esc_html($t['results']['tabs'][$item[0]])); ?></figcaption>
+					</figure>
+				</li>
+			<?php } ?>
+		</ul>
+		<p class="lp-fine"><?php _p(esc_html($t['results']['note'])); ?></p>
 	</div>
 </section>
 
@@ -131,6 +170,8 @@
 							<span class="lp-link"><?php _p(esc_html($t['popular']['more'])); ?> <?php _p(eg_icon('arrow-right')); ?></span>
 						</span>
 					</a>
+					<?php // Straight to AgendaPro, for patients who already know what they want (the card opens the details sheet). ?>
+					<?php _p(eg_cta_book('popular', sprintf($t['popular']['book'], preg_replace('/\s*\(.*$/', '', $copy[0])))); ?>
 				</li>
 			<?php } ?>
 		</ul>
@@ -201,33 +242,6 @@
 			<div class="lp-lift" aria-hidden="true"><?php for($i = 0; $i < 3; $i++){ ?><span><?php _p(eg_icon('caret-double-up')); ?></span><?php } ?></div>
 			<?php _p(eg_img('2025/09/hilos-tensores-para-la-cara-cerca-de-mi.jpg', 'medium_large', array('sizes' => '(min-width: 992px) 600px, 100vw', 'alt' => $t['hilos']['alt']))); ?>
 		</div>
-	</div>
-</section>
-
-<section class="lp-section" id="resultados" aria-labelledby="results-title">
-	<div class="lp-wrap">
-		<div class="lp-head">
-			<div>
-				<p class="lp-eyebrow"><?php _p(esc_html($t['results']['eyebrow'])); ?></p>
-				<h2 id="results-title"><?php _p(esc_html($t['results']['title'])); ?></h2>
-			</div>
-			<div class="lp-tabs" role="group" aria-label="<?php _p(esc_attr($t['results']['eyebrow'])); ?>">
-				<?php foreach($t['results']['tabs'] as $key => $label){ ?>
-					<button type="button" data-filter="<?php _p($key); ?>" aria-pressed="<?php _p($key == 'all' ? 'true' : 'false'); ?>"><?php _p(esc_html($label)); ?></button>
-				<?php } ?>
-			</div>
-		</div>
-		<ul class="lp-results" tabindex="0">
-			<?php foreach($t['results']['items'] as $item){ ?>
-				<li data-category="<?php _p($item[0]); ?>">
-					<figure data-before="<?php _p(esc_attr($t['results']['before'])); ?>" data-after="<?php _p(esc_attr($t['results']['after'])); ?>">
-						<?php _p(eg_img($item[1], 'medium_large', array('sizes' => '(min-width: 992px) 380px, 80vw', 'alt' => $item[$en ? 3 : 2]))); ?>
-						<figcaption><?php _p(esc_html($t['results']['tabs'][$item[0]])); ?></figcaption>
-					</figure>
-				</li>
-			<?php } ?>
-		</ul>
-		<p class="lp-fine"><?php _p(esc_html($t['results']['note'])); ?></p>
 	</div>
 </section>
 

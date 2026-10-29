@@ -185,6 +185,37 @@ function eg_hubs(){
 	);
 }
 
+// The hub a page slug belongs to (Spanish or English), or null for any other page.
+function eg_hub_for_slug($slug){
+	foreach(eg_hubs() as $key => $hub){
+		if(in_array($slug, array(basename($hub['es'][1]), basename($hub['en'][1])))){
+			return $key;
+		}
+	}
+	return null;
+}
+
+// The hand-picked reviews (includes/_reviews.php) for one hub, or the before-and-after ones for the home, as objects
+// in the page's language: text, the treatment chip and whether the text is a translation.
+function eg_patient_reviews($hub = null){
+	$lang = eg_lang() == 'en' ? 'en' : 'es';
+	$items = array();
+	foreach(eg_reviews() as $row){
+		if($hub ? $row['hub'] != $hub : !$row['home']){
+			continue;
+		}
+		$items[] = (object)array(
+			'name' => $row['name'],
+			'date' => $row['date'],
+			'chip' => $row['chip'][$lang == 'en' ? 1 : 0],
+			'text' => $row[$lang],
+			'translated' => $row['lang'] != $lang,
+			'photos' => $row['photos'],
+		);
+	}
+	return $items;
+}
+
 // The price each hub's Service node offers, in the same shape as a catalogue row (eg_offer_price): the hub's
 // headline price from includes/_treatments.php, or the flyer's lowest price per thread for the threads hub.
 function eg_hub_offer($key){

@@ -32,4 +32,12 @@
 			<?php } ?>
 		</div>
 	</div>
+	<?php // The doctor at work and the treatment room, from patients' Google reviews. ?>
+	<div class="lp-wrap">
+		<ul class="lp-doctor-gallery">
+			<?php foreach($t['doctor']['gallery'] as $photo){ ?>
+				<li><img src="<?php images_url('resenas/'.$photo[0]); ?>" alt="<?php _p(esc_attr($photo[1])); ?>" width="900" height="1200" loading="lazy" decoding="async" /></li>
+			<?php } ?>
+		</ul>
+	</div>
 </section>

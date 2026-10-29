@@ -79,6 +79,10 @@
 	</section>
 <?php } ?>
 
+<?php if(!empty($args['hub'])){ ?>
+	<?php get_template_part('template-parts/patient-reviews', null, array('items' => eg_patient_reviews($args['hub']), 'id' => 'resenas', 'band' => true, 'eyebrow' => $t['reviews']['eyebrow'], 'title' => $t['reviews']['hub_title'])); ?>
+<?php } ?>
+
 <?php get_template_part('template-parts/doctor', null, array('byline' => true)); ?>
 
 <section class="lp-section lp-band" id="faq" aria-labelledby="faq-title">

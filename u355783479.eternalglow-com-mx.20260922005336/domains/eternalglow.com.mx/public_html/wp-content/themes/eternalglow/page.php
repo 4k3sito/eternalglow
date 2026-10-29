@@ -29,8 +29,14 @@
     <?php } ?>
 
     <?php
+        // Hub pages also show the Google reviews about their treatment: inside the landing, before the doctor, or
+        // right after the content on hubs that are only WordPress content.
+        $hub = eg_hub_for_slug(get_post()->post_name);
         if($landing){
-            get_template_part('template-parts/landing', null, array('landing' => $landing));
+            get_template_part('template-parts/landing', null, array('landing' => $landing, 'hub' => $hub));
+        }elseif($hub){
+            $t = eg_home_strings();
+            get_template_part('template-parts/patient-reviews', null, array('items' => eg_patient_reviews($hub), 'id' => 'resenas', 'band' => true, 'eyebrow' => $t['reviews']['eyebrow'], 'title' => $t['reviews']['hub_title']));
         }
         // Sculptra's hub is WordPress content, not a landing, but it gets the same doctor block.
         if(is_page('sculptra-cdmx')){

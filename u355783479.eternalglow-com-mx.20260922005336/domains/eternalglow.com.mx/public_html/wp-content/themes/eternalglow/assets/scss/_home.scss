@@ -673,6 +673,10 @@
 	// Sections
 	.lp-section{
 		padding: clamp(56px, 8vw, 104px) 0;
+		// Two plain sections in a row share the background, so one gap between them is enough.
+		&:not(.lp-band):not(.lp-dark) + .lp-section:not(.lp-band):not(.lp-dark){
+			padding-top: 0;
+		}
 		h2{
 			margin: 0;
 			font-size: clamp(36px, 5vw, 56px);
@@ -762,6 +766,46 @@
 		> li > .lp-icon{
 			color: var(--lp-accent);
 			font-size: 20px;
+		}
+	}
+	.lp-proof{
+		display: grid;
+		grid-template-columns: repeat(3, auto);
+		justify-content: start;
+		margin: 0;
+		padding: 20px 0 0;
+		list-style: none;
+		box-shadow: 0 -1px 0 var(--lp-line);
+		li + li{
+			padding-left: clamp(16px, 2.4vw, 28px);
+			margin-left: clamp(16px, 2.4vw, 28px);
+			box-shadow: -1px 0 0 var(--lp-line);
+		}
+		a{
+			display: block;
+			color: inherit;
+		}
+		strong{
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			color: var(--lp-ink);
+			font-family: var(--lp-serif);
+			font-size: clamp(20px, 2vw, 24px);
+			line-height: 1.1;
+			font-weight: 400;
+			white-space: nowrap;
+		}
+		.lp-icon{
+			color: var(--lp-accent);
+			font-size: 0.7em;
+		}
+		span:not(.lp-icon){
+			display: block;
+			margin-top: 4px;
+			color: var(--lp-muted);
+			font-size: 13px;
+			line-height: 18px;
 		}
 	}
 	.lp-hero-media{
@@ -1025,6 +1069,37 @@
 			margin: 0;
 			letter-spacing: 0.12em;
 		}
+		// Photo cards: the image fills the card under a dark fade so the white text stays readable.
+		a.has-photo{
+			position: relative;
+			overflow: hidden;
+			isolation: isolate;
+			background: var(--lp-ink);
+			color: #fff;
+			> img{
+				position: absolute;
+				inset: 0;
+				z-index: -2;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.6s var(--lp-ease);
+			}
+			&::after{
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: -1;
+				background: linear-gradient(180deg, rgba(43, 34, 29, 0.15) 0%, rgba(43, 34, 29, 0.8) 100%);
+			}
+			&:hover > img{
+				transform: scale(1.05);
+			}
+			.lp-eyebrow,
+			.lp-cat-sub{
+				color: rgba(255, 255, 255, 0.85);
+			}
+		}
 	}
 	.lp-cat-top{
 		display: flex;
@@ -1108,6 +1183,31 @@
 		h3{
 			font-size: 30px;
 			line-height: 1.05;
+		}
+		li{
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+		> li > a:first-child{
+			flex: 1;
+		}
+		// The booking button under each card; undo the card styles that "a" above gives it.
+		.btn{
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			gap: 8px;
+			height: auto;
+			padding: 12px 20px;
+			border: 0;
+			border-radius: 999px;
+			background: var(--lp-ink);
+			color: #fff;
+			&:hover{
+				box-shadow: none;
+				background: var(--lp-ink-soft);
+			}
 		}
 	}
 	.lp-card-top{
@@ -1265,6 +1365,60 @@
 			font-size: 14px;
 			line-height: 20px;
 			font-weight: 600;
+		}
+	}
+	// Treatment reviews: the chip names the treatment, photos (when the patient shared them) go on top.
+	.lp-patient-reviews{
+		figure{
+			gap: 14px;
+		}
+		figcaption small{
+			display: block;
+			color: var(--lp-muted);
+			font-size: 12px;
+			font-weight: 500;
+		}
+	}
+	.lp-review-photos{
+		display: grid;
+		gap: 4px;
+		margin: -10px -10px 4px;
+		overflow: hidden;
+		border-radius: 14px;
+		&.is-pair{
+			grid-template-columns: 1fr 1fr;
+		}
+		img{
+			display: block;
+			width: 100%;
+			height: 240px;
+			object-fit: cover;
+		}
+	}
+	.lp-review-chip{
+		align-self: flex-start;
+		padding: 4px 12px;
+		border-radius: 999px;
+		background: var(--lp-sand);
+		color: var(--lp-accent-dark);
+		font-size: 12px;
+		line-height: 16px;
+		font-weight: 600;
+	}
+	.lp-doctor-gallery{
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 14px;
+		margin: clamp(32px, 5vw, 56px) 0 0;
+		padding: 0;
+		list-style: none;
+		img{
+			display: block;
+			width: 100%;
+			aspect-ratio: 4 / 5;
+			height: auto;
+			object-fit: cover;
+			border-radius: 22px;
 		}
 	}
 	.lp-avatar{
