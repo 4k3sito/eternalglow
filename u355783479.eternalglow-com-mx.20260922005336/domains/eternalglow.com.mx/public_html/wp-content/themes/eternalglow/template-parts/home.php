@@ -223,28 +223,6 @@
 
 <?php get_template_part('template-parts/doctor'); ?>
 
-<section class="lp-section lp-dark" aria-labelledby="hilos-title">
-	<div class="lp-wrap lp-hilos">
-		<div>
-			<p class="lp-eyebrow"><?php _p(esc_html($t['hilos']['eyebrow'])); ?></p>
-			<h2 id="hilos-title"><?php _p(esc_html($t['hilos']['title'])); ?></h2>
-			<p><?php _p(esc_html($t['hilos']['text'])); ?></p>
-			<?php if(eg_show_prices()){ ?>
-				<dl>
-					<?php foreach($t['hilos']['stats'] as $stat){ ?>
-						<div><dd><?php _p(esc_html($stat[0])); ?></dd><dt><?php _p(esc_html($stat[1])); ?></dt></div>
-					<?php } ?>
-				</dl>
-			<?php } ?>
-			<a class="btn lp-btn-light" href="<?php _p(esc_url(eg_hub('hilos')->url)); ?>"><?php _p(esc_html($t['hilos']['link'])); ?> <?php _p(eg_icon('arrow-right')); ?></a>
-		</div>
-		<div class="lp-hilos-media">
-			<div class="lp-lift" aria-hidden="true"><?php for($i = 0; $i < 3; $i++){ ?><span><?php _p(eg_icon('caret-double-up')); ?></span><?php } ?></div>
-			<?php _p(eg_img('2025/09/hilos-tensores-para-la-cara-cerca-de-mi.jpg', 'medium_large', array('sizes' => '(min-width: 992px) 600px, 100vw', 'alt' => $t['hilos']['alt']))); ?>
-		</div>
-	</div>
-</section>
-
 <section class="lp-section lp-band" id="faq" aria-labelledby="faq-title">
 	<div class="lp-wrap lp-faq">
 		<h2 id="faq-title"><?php _p(esc_html($t['faq_title'])); ?></h2>

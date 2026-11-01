@@ -102,14 +102,6 @@ return array(
 				array('stethoscope', 'Cédula profesional 13493041'),
 			),
 		),
-		'hilos' => array(
-			'eyebrow' => 'Lifting sin cirugía',
-			'title' => 'Hilos tensores',
-			'alt' => 'Antes y después de un tratamiento con hilos tensores en Eternal Glow, CDMX',
-			'text' => 'Una técnica mínimamente invasiva que reposiciona y sostiene los tejidos faciales. Trabajamos con hilos PDO para definir el óvalo facial sin pasar por quirófano.',
-			'stats' => array(array('$1,500', 'Por hilo · 1 a 4 hilos'), array('$1,300', 'Por hilo · 5 a 8 hilos'), array('$1,100', 'Por hilo · 9 o más')),
-			'link' => 'Conocer hilos tensores',
-		),
 		'results' => array(
 			'eyebrow' => 'Resultados reales',
 			'title' => 'Sin perder lo que te hace tú.',
@@ -216,14 +208,6 @@ return array(
 				array('seal-check', 'Certified by Merz Aesthetics and in facial harmonization by AMIR'),
 				array('stethoscope', 'Mexican professional license (cédula) 13493041'),
 			),
-		),
-		'hilos' => array(
-			'eyebrow' => 'Lifting without surgery',
-			'title' => 'PDO threads',
-			'alt' => 'Before and after a PDO threads treatment at Eternal Glow, Mexico City',
-			'text' => 'A minimally invasive technique that repositions and supports facial tissue. We work with PDO threads to define the jawline without an operating room.',
-			'stats' => array(array('$1,500', 'Per thread · 1 to 4 threads'), array('$1,300', 'Per thread · 5 to 8 threads'), array('$1,100', 'Per thread · 9 or more')),
-			'link' => 'About PDO threads',
 		),
 		'results' => array(
 			'eyebrow' => 'Real results',

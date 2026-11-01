@@ -11,7 +11,7 @@
 <section class="lp-section lp-catalog" aria-labelledby="catalog-title">
 	<div class="lp-wrap">
 		<div class="lp-catalog-head">
-			<p class="lp-eyebrow"><?php _p(count($treatments)); ?> tratamientos + hilos tensores</p>
+			<p class="lp-eyebrow"><?php _p(count($treatments)); ?> tratamientos</p>
 			<h1 id="catalog-title">Tratamientos</h1>
 			<p>Medicina estética en Roma Norte, CDMX. Todos empiezan con una valoración médica; elige uno para conocer el procedimiento, los cuidados y los resultados.</p>
 		</div>
@@ -59,15 +59,6 @@
 		<?php } ?>
 
 		<p class="lp-empty" id="lp-empty" hidden>No encontramos ese tratamiento. Escríbenos por <a href="<?php _p(esc_url(get_whatsapp_url())); ?>" target="_blank" rel="noopener" data-cta="catalogo">WhatsApp</a> y te orientamos.</p>
-
-		<a class="lp-hilos-row" href="<?php _p(esc_url(home_url('/hilos-tensores-cdmx/'))); ?>">
-			<span>
-				<span class="lp-eyebrow">Página especial</span>
-				<span class="lp-row-name">Hilos tensores</span>
-				<span>Lifting sin cirugía con hilos PDO</span>
-			</span>
-			<?php _p(eg_icon('arrow-right')); ?>
-		</a>
 	</div>
 </section>
 

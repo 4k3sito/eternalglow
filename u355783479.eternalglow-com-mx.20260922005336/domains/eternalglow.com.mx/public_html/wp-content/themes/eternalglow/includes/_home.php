@@ -217,16 +217,13 @@ function eg_patient_reviews($hub = null){
 }
 
 // The price each hub's Service node offers, in the same shape as a catalogue row (eg_offer_price): the hub's
-// headline price from includes/_treatments.php, or the flyer's lowest price per thread for the threads hub.
+// headline price from includes/_treatments.php.
 function eg_hub_offer($key){
 	$treatments = eg_treatments();
-	$rows = array('botox' => 'botox-por-unidad', 'rellenos' => 'relleno-de-labios', 'labios' => 'relleno-de-labios', 'sculptra' => 'tratamiento-sculptra-en-cdmx');
-	if($key == 'hilos'){
-		return (object)array('amount' => 1100, 'unit' => 'hilo', 'from' => true);
-	}
+	$rows = array('botox' => 'botox-por-unidad', 'rellenos' => 'relleno-de-labios', 'labios' => 'relleno-de-labios', 'sculptra' => 'tratamiento-sculptra-en-cdmx', 'hilos' => 'hilos-tensores');
 	$item = $treatments[$rows[$key]];
 	// Fillers are priced per 1 mL syringe, whichever area the syringe goes to.
-	return (object)array('amount' => $item->amount, 'unit' => $item->unit ?: 'jeringa', 'from' => false);
+	return (object)array('amount' => $item->amount, 'unit' => $item->unit ?: 'jeringa', 'from' => $item->from);
 }
 
 // The hub whose page is the current one, by its URL in either language.

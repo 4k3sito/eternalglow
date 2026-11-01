@@ -32,7 +32,7 @@ function eg_treatment_categories(){
 	return array(
 		'botox' => array('Botox', 'Toxina botulínica'),
 		'rellenos' => array('Rellenos', 'Ácido hialurónico'),
-		'bio' => array('Bioestimuladores', 'Inyectables regenerativos'),
+		'bio' => array('Bioestimuladores', 'Colágeno y lifting sin cirugía'),
 		'piel' => array('Piel y aparatología', 'Tecnología y peelings'),
 	);
 }
@@ -68,6 +68,8 @@ function eg_treatments(){
 		array('tratamiento-sculptra-en-cdmx', 'Sculptra', 'bio', 14999, 'Ácido poli-L-láctico que estimula colágeno y devuelve firmeza gradual.', 'vial'),
 		array('tratamiento-radiesse-en-cdmx', 'Radiesse', 'bio', 8499, 'Hidroxiapatita de calcio para soporte inmediato y bioestimulación.', 'jeringa'),
 		array('tratamiento-rejuran-en-cdmx', 'Rejuran', 'bio', 4499, 'Polinucleótidos que reparan la piel, mejoran textura, poros y luminosidad.', null, true),
+		// The hub's price per thread drops with the number of threads (1-4, 5-8, 9 or more): the lowest one, as a "from" price.
+		array('hilos-tensores', 'Hilos tensores PDO', 'bio', 1100, 'Lifting sin cirugía: reposicionan el óvalo facial y estimulan colágeno.', 'hilo', true),
 		array('hifu-facial-en-cdmx', 'HIFU Ultramage 7D', 'piel', 7000, 'Ultrasonido focalizado que tensa óvalo y papada sin agujas.', 'sesión'),
 		array('hollywood-peel-en-cdmx', 'Hollywood Carbon Peel', 'piel', 1499, 'Piel luminosa, poros cerrados y tono uniforme en una sesión.', 'sesión'),
 		array('carboxiterapia-facial', 'Carboxiterapia facial', 'piel', 799, 'Para una piel más sana y luminosa.', 'sesión'),
@@ -83,11 +85,12 @@ function eg_treatments(){
 		'botox-dao' => '/botox-cdmx/',
 		'relleno-de-labios' => '/relleno-de-labios-cdmx/',
 		'relleno-de-menton' => '/rellenos-cdmx/',
+		'hilos-tensores' => '/hilos-tensores-cdmx/',
 		'carboxiterapia-facial' => null,
 		'carboxiterapia-corporal' => null,
 	);
 	$en = eg_lang() == 'en';
-	$units = array('unidad' => 'unit', 'jeringa' => 'syringe', 'sesión' => 'session', 'zona' => 'area');
+	$units = array('unidad' => 'unit', 'jeringa' => 'syringe', 'sesión' => 'session', 'zona' => 'area', 'hilo' => 'thread');
 	$list = array();
 	foreach($rows as $r){
 		$unit = isset($r[5]) ? $r[5] : null;
