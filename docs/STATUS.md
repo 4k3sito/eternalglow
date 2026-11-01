@@ -1,10 +1,11 @@
 # Estado del proyecto
-Actualizado: 2026-10-22
+Actualizado: 2026-10-31
 
 ## Ahora
 Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100). Altas cerradas (el nombre del perfil de Google Business ya es "Eternal Glow", verificado por API el 2026-10-23); siguen las Medias.
 
 ## Hecho recientemente
+- Hilos tensores pasa al catálogo (2026-10-31, `includes/_treatments.php`): desde $1,100 por hilo, sin sección propia en la home ni fila aparte en `/tratamientos/`. `seo/armonizacion.php` (quita "3-4 jeringas", precio por jeringa) queda en el repo y falta correrlo en producción: `wp eval-file`, una sola vez, con confirmación aparte.
 - Los 5 hubs en inglés ampliados (2026-10-27, `includes/_landings.php`): precios en USD (constante `EG_USD_RATE`, 18.7), tabla "Mexico City vs the US", secciones "Is ... in Mexico City safe?" y "Planning your visit"; ~900–1,070 palabras cada uno; Sculptra ganó además su H2 de riesgos. Referencia de EE. UU.: ASPS para ácido hialurónico; guías de clínicas para Botox, Sculptra e hilos.
 - Remate del schema (2026-10-27, `includes/_home.php`): Service con Offer y precio en los 10 hubs, `workTranslation`/`translationOfWork` entre ES/EN, AboutPage + Physician en `/nosotros/`.
 - Títulos de Botox en los labios y Armonización facial (2026-10-27, `seo/prices.php`, ya corrido en producción): el de labios estaba en posición 2.1 para "botox en los labios" con CTR de 0.8%; el de armonización ahora lleva "ácido hialurónico", su búsqueda principal. Medir el CTR en el reporte del 3 al 10 nov.
