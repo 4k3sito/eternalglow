@@ -4,6 +4,7 @@
 // priced per 1 mL syringe ($6,499) and by package (2, 3 or 4 syringes, the same list as the theme's
 // includes/_landings.php), so the title, the H1 and the headings drop "3-4 jeringas", and the "3-4 jeringas vs 5-6 ml"
 // section and FAQ become the price per amount. Approved by the user on 2026-10-28.
+// The amounts left in the copy became "2 a 4 jeringas", the package range. Approved by the user on 2026-11-02.
 // Run with: wp eval-file seo/armonizacion.php  (safe to run twice: each phrase is replaced only while it is there;
 // EG_DRY=1 wp eval-file seo/armonizacion.php checks it without writing)
 // Uses $wpdb->update, not wp_update_post: WP-CLI runs without a user and kses would change the markup.
@@ -15,7 +16,7 @@ $title = 'Armonización facial con ácido hialurónico';
 $prices = 'Cada jeringa de 1 mL cuesta $6,499, y por paquete el precio baja: 2 jeringas $11,000, 3 jeringas $16,000 y 4 jeringas $20,000.';
 $faq_answer = 'Cada jeringa de 1 mL de ácido hialurónico cuesta $6,499. Por paquete: 2 jeringas $11,000, 3 jeringas $16,000 y 4 jeringas $20,000. La cantidad se define en la valoración.';
 
-// Page copy: old => new. The mentions of 3 or 4 syringes as one option among others stay.
+// Page copy: old => new.
 $content_swaps = array(
     '<h1>Armonización facial con ácido hialurónico 3-4 jeringas en CDMX</h1>' => '<h1>Armonización facial con ácido hialurónico en CDMX</h1>',
     '<h2>¿Qué es la armonización facial con ácido hialurónico 3-4 jeringas?</h2>' => '<h2>¿Qué es la armonización facial con ácido hialurónico?</h2>',
@@ -32,15 +33,31 @@ $content_swaps = array(
     '<h3>7. ¿Cuál es la diferencia entre 3-4 jeringas y 5-6 ml?</h3>' => '<h3>7. ¿Cuánto cuesta la armonización facial?</h3>',
     '<p>La armonización de 3-4 jeringas suele enfocarse en una mejora más sutil o inicial, trabajando zonas estratégicas. La de 5-6 ml permite un abordaje más integral, ideal para mayor pérdida de volumen o más zonas a tratar.</p>' =>
         '<p>' . $faq_answer . '</p>',
+    '<strong>Con 3 a 4 jeringas, generalmente' => '<strong>Con 2 a 4 jeringas, generalmente',
+    '<strong>Con 3 a 4 jeringas de ácido hialurónico se puede diseñar' => '<strong>Con 2 a 4 jeringas de ácido hialurónico se puede diseñar',
+    '<strong>La armonización facial con 3-4 jeringas es ideal' => '<strong>La armonización facial con 2 a 4 jeringas es ideal',
+    'En una armonización facial con 3-4 jeringas, es muy importante' => 'En una armonización facial es muy importante',
+    '<p>La armonización facial con 3-4 jeringas suele ser ideal' => '<p>La armonización facial con 2 a 4 jeringas suele ser ideal',
+    '<h2>¿Es suficiente una armonización facial con 3-4 jeringas?</h2>' => '<h2>¿Es suficiente una armonización facial con 2 a 4 jeringas?</h2>',
+    '<strong> Una armonización facial con 3-4 jeringas puede ser suficiente</strong>' => '<strong> Una armonización facial con 2 a 4 jeringas puede ser suficiente</strong>',
+    'definir si 3-4 jeringas son suficientes' => 'definir cuántas jeringas son suficientes',
+    '<h3>2. ¿Qué zonas se pueden tratar con 3-4 jeringas?</h3>' => '<h3>2. ¿Qué zonas se pueden tratar?</h3>',
+    'Para cambios sutiles o moderados, 3-4 jeringas pueden ser suficientes.' => 'Para cambios sutiles o moderados, 2 a 4 jeringas pueden ser suficientes.',
 );
 
 // The page's own JSON-LD (SASWP custom schema): the same names and the same FAQ answer, in plain text.
+// The review keeps its "3-4 jeringas": it is a patient's own words.
 $schema_swaps = array(
     '"Armonización facial con ácido hialurónico 3-4 jeringas en CDMX"' => '"Armonización facial con ácido hialurónico en CDMX"',
     '"Armonización facial con ácido hialurónico 3-4 jeringas"' => '"Armonización facial con ácido hialurónico"',
     '"¿Cuál es la diferencia entre 3-4 jeringas y 5-6 ml?"' => '"¿Cuánto cuesta la armonización facial?"',
     '"La armonización de 3-4 jeringas suele enfocarse en una mejora más sutil o inicial, trabajando zonas estratégicas. La de 5-6 ml permite un abordaje más integral, ideal para mayor pérdida de volumen o más zonas a tratar."' =>
         '"' . $faq_answer . '"',
+    '"Armonización facial 3-4 jeringas"' => '"Armonización facial 2 a 4 jeringas"',
+    'La armonización facial con 3-4 jeringas suele enfocarse' => 'La armonización facial con 2 a 4 jeringas suele enfocarse',
+    'se distribuyen 3-4 jeringas de ácido hialurónico' => 'se distribuyen las jeringas de ácido hialurónico',
+    '"¿Qué zonas se pueden tratar con 3-4 jeringas?"' => '"¿Qué zonas se pueden tratar?"',
+    'Para cambios sutiles o moderados, 3-4 jeringas pueden ser suficientes.' => 'Para cambios sutiles o moderados, 2 a 4 jeringas pueden ser suficientes.',
 );
 
 // Each swap must find its old phrase, or its new one when this already ran; anything else means the page changed.
@@ -66,6 +83,9 @@ if ($new_schema !== '' && json_decode(preg_replace('#</?script[^>]*>#', '', $new
 
 foreach (array('5-6 ml', 'hialurónico 3-4 jeringas', 'hialurónic</strong>o') as $bad) {
     if (strpos($content . $new_schema, $bad) !== false) { echo "ERROR: todavía dice '$bad'\n"; exit(1); }
+}
+foreach (array('3-4 jeringas', '3 a 4 jeringas') as $bad) {
+    if (strpos($content, $bad) !== false) { echo "ERROR: el contenido todavía dice '$bad'\n"; exit(1); }
 }
 
 // EG_DRY=1 checks every phrase and prints the new headings without writing anything.
