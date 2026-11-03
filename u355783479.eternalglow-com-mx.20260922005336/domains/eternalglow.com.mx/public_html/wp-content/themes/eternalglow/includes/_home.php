@@ -157,6 +157,10 @@ function eg_cutout_attrs($attr, $attachment){
 		$attr['src'] = get_template_directory_uri()."/assets/images/cutouts/{$map[$file]}.webp";
 		$attr['class'] = trim((isset($attr['class']) ? $attr['class'] : '').' lp-cutout');
 		unset($attr['srcset'], $attr['sizes']);
+		// The doctor's portrait is now a real photo with its own background, not a transparent cut-out.
+		if($file == 'clinica-medico-estetica-especialista-en-cdmx.png'){
+			$attr['alt'] = 'Dr. Bruno Ocampo, médico estético en Eternal Glow, Roma Norte';
+		}
 	}
 	return $attr;
 }
