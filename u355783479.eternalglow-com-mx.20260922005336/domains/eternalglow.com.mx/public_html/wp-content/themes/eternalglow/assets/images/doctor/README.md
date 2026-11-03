@@ -12,7 +12,9 @@ Los PNG son los originales (1024×1536, salvo la 02 que es 1086×1448). Los WebP
 
 En el tema, la 03 se recorta a 900×1166 y se sirve como:
 
-- `assets/images/dr-bruno-ocampo.webp` — bloque del doctor en home y hubs, y schema.
-- `assets/images/cutouts/dr-bruno-ocampo-nosotros.webp` — retrato de `/nosotros/` (el archivo conserva el nombre "cutout" por el filtro de `includes/_home.php`, aunque ya es una foto con fondo).
+- `assets/images/dr-bruno-ocampo-2026.webp` — bloque del doctor en home y hubs, y schema.
+- `assets/images/cutouts/dr-bruno-ocampo-nosotros-2026.webp` — retrato de `/nosotros/` (el archivo conserva el nombre "cutout" por el filtro de `includes/_home.php`, aunque ya es una foto con fondo).
 
-Si se cambia la foto, actualizar los dos archivos anteriores y el `width`/`height` de `template-parts/doctor.php` (900×1166).
+Los archivos sin `-2026` se conservan para las páginas CACHEADAS que todavía apuntan a la foto vieja; se pueden borrar cuando expire la caché de 4 meses del `.htaccess`.
+
+Si se cambia la foto, actualizar los dos archivos con `-2026`, el `width`/`height` de `template-parts/doctor.php` (900×1166) y el schema (`get_images_url`).
