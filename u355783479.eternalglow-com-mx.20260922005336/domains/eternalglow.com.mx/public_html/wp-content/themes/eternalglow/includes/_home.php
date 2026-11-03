@@ -150,7 +150,7 @@ function eg_cutout_attrs($attr, $attachment){
 		'689b9b16ab08b.png' => 'botox-cerca-de-mi-para-hombres-aplicacion-estetica',
 		'botox-mexico-city-resultados-visibles-hombre-mujer.png' => 'botox-mexico-city-resultados-visibles-hombre-mujer',
 		// Not redrawn, only kept whole: the doctor's head stands out of its circle.
-		'clinica-medico-estetica-especialista-en-cdmx.png' => 'dr-bruno-ocampo-nosotros',
+		'clinica-medico-estetica-especialista-en-cdmx.png' => 'dr-bruno-ocampo-nosotros-2026',
 	);
 	$file = basename((string)get_attached_file($attachment->ID));
 	if(isset($map[$file])){
@@ -412,7 +412,7 @@ function eg_physician_schema(){
 		'jobTitle' => 'Médico estético',
 		'knowsAbout' => 'Medicina estética',
 		'url' => home_url('/nosotros/'),
-		'image' => get_images_url('dr-bruno-ocampo.webp'),
+		'image' => get_images_url('dr-bruno-ocampo-2026.webp'),
 		'worksFor' => array('@id' => home_url('/#clinic')),
 		'alumniOf' => 'Universidad La Salle',
 		'identifier' => array('@type' => 'PropertyValue', 'propertyID' => 'Cédula profesional (SEP)', 'value' => '13493041'),

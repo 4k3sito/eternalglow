@@ -10,7 +10,7 @@
 <section class="lp-section" id="doctor" aria-labelledby="doctor-title">
 	<div class="lp-wrap lp-doctor">
 		<div class="lp-doctor-media">
-			<img src="<?php images_url('dr-bruno-ocampo.webp'); ?>" alt="Dr. Bruno Ocampo, <?php _p(esc_attr($t['doctor']['role'])); ?>" width="900" height="1166" loading="lazy" />
+			<img src="<?php images_url('dr-bruno-ocampo-2026.webp'); ?>" alt="Dr. Bruno Ocampo, <?php _p(esc_attr($t['doctor']['role'])); ?>" width="900" height="1166" loading="lazy" />
 		</div>
 		<div>
 			<p class="lp-eyebrow"><?php _p(esc_html($t['doctor']['eyebrow'])); ?></p>
