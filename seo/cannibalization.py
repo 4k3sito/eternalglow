@@ -7,9 +7,9 @@ import argparse
 import collections
 import csv
 from pathlib import Path
+from urllib.parse import urlsplit
 
 DATA = Path(__file__).parent / "gsc-data"
-SITE = "https://eternalglow.com.mx"
 
 
 def main():
@@ -20,7 +20,7 @@ def main():
 
     by_query = collections.defaultdict(list)
     for r in csv.DictReader(open(DATA / "query_page.csv", encoding="utf-8")):
-        page = r["page"].replace(SITE, "") or "/"
+        page = urlsplit(r["page"]).path or "/"
         by_query[r["query"]].append((page, int(r["clicks"]), int(r["impressions"]), float(r["position"])))
     cluster = {r["query"]: r["cluster"] for r in csv.DictReader(open(DATA / "queries.csv", encoding="utf-8"))}
 
