@@ -31,7 +31,7 @@ El sitio ya recibe más gente: **436 clics en 19 días, +64% por día** contra e
 1. Arreglar el desborde de credenciales en móvil (1 hora).
 2. Reordenar el hero móvil de Botox, Hilos y Sculptra: precio y CTA antes de la foto.
 3. Poner una ficha de precio escaneable en cada hub, con paquetes.
-4. Actualizar el contador de reseñas de 198 a 213.
+4. Bajar las reseñas de la Reviews API (`seo/gbp_reviews.py`) y retirar Trustindex del front-end.
 5. Barra móvil con tratamiento y precio; "Agendar valoración".
 6. Lote de 8 títulos y metas, el 18 de noviembre (después de Buen Fin).
 7. Campaña de reseñas: 15 al mes, sin incentivos.
