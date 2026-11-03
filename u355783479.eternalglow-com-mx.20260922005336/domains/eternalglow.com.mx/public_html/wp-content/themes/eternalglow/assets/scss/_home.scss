@@ -1850,6 +1850,25 @@
 			-webkit-backdrop-filter: blur(12px);
 			box-shadow: 0 -1px 0 var(--lp-line);
 			transition: transform 0.5s var(--lp-ease);
+			// Hub and service pages carry the treatment and its price: the bar says what the click buys.
+			.lp-bar-context{
+				flex: 1 0 100%;
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				gap: 8px;
+				margin: 0 2px;
+				color: var(--lp-muted);
+				font-size: 12px;
+				line-height: 16px;
+				strong{
+					color: var(--lp-ink);
+					font-weight: 600;
+				}
+				span{
+					white-space: nowrap;
+				}
+			}
 			&.is-hidden{
 				transform: translateY(110%);
 			}
@@ -1864,10 +1883,10 @@
 			display: none;
 		}
 		.lp-footer{
-			padding-bottom: calc(96px + env(safe-area-inset-bottom));
+			padding-bottom: calc(116px + env(safe-area-inset-bottom));
 		}
 		.grecaptcha-badge{
-			bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+			bottom: calc(108px + env(safe-area-inset-bottom)) !important;
 		}
 		.lp-chip{
 			left: 12px;
@@ -1952,6 +1971,24 @@
 			}
 			.btn{
 				width: 100%;
+			}
+		}
+	}
+
+	// The proof bar is three auto columns with nowrap figures: at 390 px the third one (the doctor and
+	// his licence) fell outside the viewport and body's overflow-x: hidden clipped it. Keep the rating
+	// and COFEPRIS side by side and give the doctor the full width.
+	@include media-breakpoint-down(sm){
+		.lp-proof{
+			grid-template-columns: 1fr 1fr;
+			strong{
+				white-space: normal;
+			}
+			li:nth-child(3){
+				grid-column: 1 / -1;
+				padding-left: 0;
+				margin-left: 0;
+				box-shadow: 0 -1px 0 var(--lp-line);
 			}
 		}
 	}

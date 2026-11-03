@@ -43,7 +43,64 @@ function eg_contact(){
 }
 
 function eg_booking_url(){
-	return get_theme_links()->header_btn_link;
+	// Same destination for every CTA; data-cta says where the click came from. The UTMs give AgendaPro
+	// its own source label, so bookings can be compared against GA4 without guessing.
+	$url = get_theme_links()->header_btn_link;
+	if(!$url){
+		return '';
+	}
+	return add_query_arg(array(
+		'utm_source' => 'eternalglow.com.mx',
+		'utm_medium' => 'web',
+		'utm_campaign' => 'agenda',
+	), $url);
+}
+
+// What the phone bar is selling on this page: the treatment and its price. Null on the home and generic pages.
+function eg_bar_context(){
+	$post = get_post();
+	if(!$post){
+		return null;
+	}
+	if($post->post_type == 'service'){
+		$item = eg_treatment_for($post->post_name);
+		return $item ? (object)array('name' => $item->name, 'price' => $item->price) : null;
+	}
+	if($post->post_type != 'page'){
+		return null;
+	}
+	// Hub slug => catalogue row and the short name the bar shows (the catalogue name is longer).
+	$hubs = array(
+		'botox-cdmx' => array('botox-por-unidad', 'Botox'),
+		'botox-mexico-city' => array('botox-por-unidad', 'Botox'),
+		'hilos-tensores-cdmx' => array('hilos-tensores', 'Hilos tensores'),
+		'pdo-threads-mexico-city' => array('hilos-tensores', 'PDO threads'),
+		'sculptra-cdmx' => array('tratamiento-sculptra-en-cdmx', 'Sculptra'),
+		'sculptra-mexico-city' => array('tratamiento-sculptra-en-cdmx', 'Sculptra'),
+		'rellenos-cdmx' => array('relleno-de-labios', 'Rellenos'),
+		'fillers-mexico-city' => array('relleno-de-labios', 'Fillers'),
+		'relleno-de-labios-cdmx' => array('relleno-de-labios', 'Relleno de labios'),
+		'lip-filler-mexico-city' => array('relleno-de-labios', 'Lip filler'),
+	);
+	if(!isset($hubs[$post->post_name])){
+		return null;
+	}
+	list($key, $name) = $hubs[$post->post_name];
+	$catalog = eg_treatments();
+	if(!isset($catalog[$key])){
+		return null;
+	}
+	$item = $catalog[$key];
+	$en = eg_lang() == 'en';
+	$price = $item->price;
+	if(!$item->from){
+		$price = ($en ? 'From ' : 'Desde ').$price;
+	}
+	// The lip filler row has no unit in the catalogue; the hub sells it by syringe.
+	if($key == 'relleno-de-labios'){
+		$price .= $en ? ' / syringe' : ' / jeringa';
+	}
+	return (object)array('name' => $name, 'price' => $price);
 }
 
 // The two booking buttons used across the site. $where goes to analytics as cta_location.

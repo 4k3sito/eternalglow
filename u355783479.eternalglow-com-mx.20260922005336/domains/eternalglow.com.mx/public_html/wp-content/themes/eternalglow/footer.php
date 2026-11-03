@@ -6,6 +6,7 @@
 			$social = get_theme_social();
 			$t = eg_home_strings();
 			$whatsapp = get_whatsapp_url();
+			$bar = eg_bar_context();
 		?>
 		<?php if(!is_404()){ ?>
 			<div class="lp-wrap lp-contact" id="contacto">
@@ -81,7 +82,10 @@
 		</dialog>
 		<?php // Phones: booking stays one thumb away on every page (hidden while another booking button is on screen, see stickyBar in main.ts). ?>
 		<div class="lp-bar" id="lp-bar">
-			<?php _p(eg_cta_book('barra', $t['cta_bar'])); ?>
+			<?php if($bar){ ?>
+				<p class="lp-bar-context"><strong><?php _p(esc_html($bar->name)); ?></strong><span><?php _p(esc_html($bar->price)); ?></span></p>
+			<?php } ?>
+			<?php _p(eg_cta_book('barra', $bar ? $t['cta_bar_context'] : $t['cta_bar'])); ?>
 			<?php _p(eg_cta_whatsapp('barra', 'WhatsApp')); ?>
 		</div>
 		<?php if($whatsapp){ ?>
