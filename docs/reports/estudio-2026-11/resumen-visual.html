@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--foreground);
+    background: transparent;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 4px 0 8px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted-foreground); margin: 0 0 10px;
+  }
+  h1 { font-size: 26px; line-height: 1.15; margin: 0 0 8px; font-weight: 650; letter-spacing: -.02em; }
+  .sub { margin: 0 0 22px; color: var(--muted-foreground); font-size: 14px; line-height: 1.5; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 26px; }
+  .kpi { border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+  .kpi b { display: block; font-size: 22px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .kpi span { display: block; margin-top: 4px; font-size: 11.5px; color: var(--muted-foreground); line-height: 1.35; }
+  .kpi .up { color: var(--success); font-size: 11.5px; margin-top: 2px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 26px; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .09em; margin: 0 0 4px; color: var(--muted-foreground); font-weight: 600; }
+  .note { font-size: 11.5px; color: var(--muted-foreground); margin: 0 0 10px; }
+  svg { width: 100%; display: block; }
+  .actions { border-top: 1px solid var(--border); padding-top: 18px; }
+  ol { margin: 10px 0 0; padding-left: 20px; }
+  li { font-size: 13px; line-height: 1.55; margin-bottom: 7px; }
+  li b { font-weight: 600; }
+  .tag { font-size: 10.5px; color: var(--muted-foreground); border: 1px solid var(--border); border-radius: 999px; padding: 1px 7px; margin-left: 6px; white-space: nowrap; }
+  .foot { margin-top: 18px; font-size: 11px; color: var(--muted-foreground); line-height: 1.5; }
+  @media (max-width: 620px) {
+    .kpis { grid-template-columns: 1fr; }
+    .grid2 { grid-template-columns: 1fr; gap: 20px; }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Eternal Glow · Estudio 2026-11 · Plan a 90 días</p>
+  <h1>El problema no es el tráfico:<br>es el clic y el primer pantallazo</h1>
+  <p class="sub">El sitio ya recibe 64% más clics por día, pero el CTR sigue en 2.15%. Sculptra demuestra que funciona cuando hay profundidad, precio y orden: es el modelo a copiar.</p>
+
+  <div class="kpis">
+    <div class="kpi"><b>436</b><span>clics en 19 días</span><span class="up">+64% por día</span></div>
+    <div class="kpi"><b>2.15%</b><span>CTR global</span><span class="up">sin marca: 1.0%</span></div>
+    <div class="kpi"><b>213</b><span>reseñas en Google</span><span class="up">5.0 ★ · el sitio dice 198</span></div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h2>CTR por tema</h2>
+      <p class="note">Sculptra rinde 3.5× más que Botox y 11× más que Hilos.</p>
+      <svg viewBox="0 0 340 210" height="210" role="img" aria-label="CTR por tema: Sculptra 2.42, Peel 0.79, Botox 0.70, Rellenos 0.64, Hilos 0.22">
+        <g font-size="10" fill="var(--muted-foreground)">
+          <text x="0" y="16">Sculptra</text>
+          <text x="0" y="52">Peel</text>
+          <text x="0" y="88">Botox</text>
+          <text x="0" y="124">Rellenos</text>
+          <text x="0" y="160">Hilos</text>
+        </g>
+        <g>
+          <rect x="72" y="6" width="168" height="12" rx="3" fill="var(--chart-1)"></rect>
+          <rect x="72" y="42" width="55" height="12" rx="3" fill="var(--chart-2)"></rect>
+          <rect x="72" y="78" width="49" height="12" rx="3" fill="var(--chart-2)"></rect>
+          <rect x="72" y="114" width="44" height="12" rx="3" fill="var(--chart-2)"></rect>
+          <rect x="72" y="150" width="15" height="12" rx="3" fill="var(--chart-3)"></rect>
+        </g>
+        <g font-size="10.5" font-weight="600" fill="var(--foreground)">
+          <text x="248" y="16">2.42%</text>
+          <text x="135" y="52">0.79%</text>
+          <text x="129" y="88">0.70%</text>
+          <text x="124" y="124">0.64%</text>
+          <text x="95" y="160">0.22%</text>
+        </g>
+        <line x1="72" y1="178" x2="280" y2="178" stroke="var(--border)"></line>
+        <g font-size="9" fill="var(--muted-foreground)">
+          <text x="72" y="192">0%</text>
+          <text x="176" y="192" text-anchor="middle">1.5%</text>
+          <text x="280" y="192" text-anchor="end">3%</text>
+        </g>
+      </svg>
+    </div>
+
+    <div>
+      <h2>Clics al mes</h2>
+      <p class="note">Meta a 90 días: +9% a +22% sobre la base actual.</p>
+      <svg viewBox="0 0 340 210" height="210" role="img" aria-label="Clics al mes: hoy 690, meta entre 750 y 840">
+        <line x1="40" y1="20" x2="40" y2="170" stroke="var(--border)"></line>
+        <line x1="40" y1="170" x2="320" y2="170" stroke="var(--border)"></line>
+        <rect x="70" y="55" width="80" height="115" rx="4" fill="var(--chart-1)" opacity="0.9"></rect>
+        <rect x="200" y="30" width="80" height="140" rx="4" fill="var(--chart-2)" opacity="0.25"></rect>
+        <rect x="200" y="45" width="80" height="125" rx="4" fill="var(--chart-2)" opacity="0.55"></rect>
+        <g font-size="12" font-weight="650" fill="var(--foreground)" text-anchor="middle">
+          <text x="110" y="47">690</text>
+          <text x="240" y="22">750–840</text>
+        </g>
+        <g font-size="10" fill="var(--muted-foreground)" text-anchor="middle">
+          <text x="110" y="188">Hoy</text>
+          <text x="240" y="188">90 días</text>
+        </g>
+        <g font-size="9" fill="var(--muted-foreground)">
+          <text x="32" y="173" text-anchor="end">0</text>
+          <text x="32" y="96" text-anchor="end">450</text>
+          <text x="32" y="23" text-anchor="end">900</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="actions">
+    <h2>Las siete acciones que más mueven</h2>
+    <ol>
+      <li><b>Arreglar la fila de credenciales en móvil:</b> hoy corta el nombre y la cédula del doctor.<span class="tag">1 h</span></li>
+      <li><b>Reordenar el hero móvil de Botox, Hilos y Sculptra:</b> precio y CTA antes de la foto.<span class="tag">4 h</span></li>
+      <li><b>Poner ficha de precio en cada hub,</b> con paquetes y costo total.<span class="tag">4 h</span></li>
+      <li><b>Actualizar el contador de reseñas</b> de 198 a 213 y automatizarlo.<span class="tag">30 min</span></li>
+      <li><b>Barra móvil con tratamiento y precio,</b> y "Agendar valoración".<span class="tag">3 h</span></li>
+      <li><b>Lote de 8 títulos y metas,</b> el 18 de noviembre (después de Buen Fin).<span class="tag">3 h</span></li>
+      <li><b>Campaña de reseñas:</b> 15 al mes, sin incentivos.<span class="tag">continuo</span></li>
+    </ol>
+  </div>
+
+  <p class="foot">Base: Search Console 13–31 oct 2026 · GBP 2 ago–30 oct · Maps 2 nov. Detalle, sprints, presupuesto y medición en <b>docs/reports/estudio-2026-11/05-plan-de-ataque.md</b>.</p>
+</div>
+</body>
+</html>

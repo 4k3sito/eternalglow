@@ -4,7 +4,10 @@ Actualizado: 2026-11-02
 ## Ahora
 Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-20-auditoria-seo.md`, 68/100). Altas cerradas (el nombre del perfil de Google Business ya es "Eternal Glow", verificado por API el 2026-10-23); siguen las Medias.
 
+En paralelo, estudio de CTR, diseño y competencia cerrado el 2026-11-02 (`docs/reports/estudio-2026-11/`): 5 documentos, 23 capturas de producción y 7 competidores. El plan a 90 días arranca con el Sprint 0 (medición y fugas del fold móvil); las acciones que tocan `post_content` esperan confirmación.
+
 ## Hecho recientemente
+- Sprint 0 del plan de CTR (2026-11-02, rama `chore/sprint-0-ctr`): la URL UTM de GBP se suma a `/` en `seo/gsc_report.py` y `seo/cannibalization.py`; el hero móvil ya no corta la cédula del doctor (`.lp-proof`); la barra fija muestra tratamiento y precio en hubs y servicios; la salida a AgendaPro lleva UTMs. Pendiente de deploy.
 - Hilos tensores pasa al catálogo (2026-10-31, `includes/_treatments.php`): desde $1,100 por hilo, sin sección propia en la home ni fila aparte en `/tratamientos/`. `seo/armonizacion.php` (quita "3-4 jeringas" de título, H1 y encabezados; precio por jeringa) ya corrido en producción el 2026-11-02; respaldo en `~/backups-deploy/20261101-232832-armonizacion/`. Segunda corrida el mismo día: las cantidades que quedaban pasan a "2 a 4 jeringas" (respaldo `uploads/seo-backups/armonizacion-20261102-092423.json`).
 - Los 5 hubs en inglés ampliados (2026-10-27, `includes/_landings.php`): precios en USD (constante `EG_USD_RATE`, 18.7), tabla "Mexico City vs the US", secciones "Is ... in Mexico City safe?" y "Planning your visit"; ~900–1,070 palabras cada uno; Sculptra ganó además su H2 de riesgos. Referencia de EE. UU.: ASPS para ácido hialurónico; guías de clínicas para Botox, Sculptra e hilos.
 - Remate del schema (2026-10-27, `includes/_home.php`): Service con Offer y precio en los 10 hubs, `workTranslation`/`translationOfWork` entre ES/EN, AboutPage + Physician en `/nosotros/`.
@@ -31,6 +34,7 @@ Atacando las tareas de la auditoría SEO del 2026-10-20 (`docs/reports/2026-10-2
 - SEO: páginas en inglés de Sculptra, Botox, rellenos y relleno de labios; footer y formulario en inglés en `/en/`.
 
 ## Siguiente
+- Sprint 0 del plan de ataque (`docs/reports/estudio-2026-11/05-plan-de-ataque.md`): faltan actualizar 198 → 213 reseñas (opción de Trustindex, en producción) y correr el corte limpio del 3 al 10 nov antes de Buen Fin. El reorden del hero móvil y las fichas de precio tocan `post_content` y esperan confirmación. Los títulos entran el 18 nov.
 - Categoría principal del perfil cambiada a mano a "Spa médico" (2026-10-23, Clínica especializada pasa a secundaria); Google ya lo publicó (verificado por API). A las 2–4 semanas, medir impresiones con `seo/gbp_metrics.py`.
 
 - Medias de la auditoría que quedan: CSP en report-only (falta decidir a dónde van los reportes); publicar el borrador de GTM de Clarity y medir el LCP móvil.

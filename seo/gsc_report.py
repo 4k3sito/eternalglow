@@ -14,7 +14,7 @@ from collections import defaultdict
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
 from google_oauth import GoogleApiError, GoogleClient, get_credentials
 
@@ -63,7 +63,32 @@ def write_csv(name: str, rows: list[dict[str, Any]]) -> None:
 
 
 def short(url: str) -> str:
-    return url.replace("https://eternalglow.com.mx", "") or "/"
+    # Drop the query string: the GBP booking URL (/?utm_campaign=gbp) is the same page as /.
+    return urlsplit(url).path or "/"
+
+
+def merge_query_pages(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Sum rows that only differ by query string (the GBP UTM URL).
+
+    GSC reports "/" and "/?utm…gbp" as separate pages. Keeping them apart made
+    the home look like position 24 and created false cannibalization. Position
+    is weighted by impressions; CTR is recomputed after summing.
+    """
+    merged: dict[tuple[str, str], dict[str, Any]] = {}
+    for row in rows:
+        page = short(row["page"])
+        key = (row["query"], page)
+        current = merged.get(key)
+        if current is None:
+            merged[key] = {**row, "page": page}
+            continue
+        impressions = current["impressions"] + row["impressions"]
+        weighted = current["position"] * current["impressions"] + row["position"] * row["impressions"]
+        current["clicks"] += row["clicks"]
+        current["impressions"] = impressions
+        current["position"] = weighted / impressions if impressions else 0
+        current["ctr"] = current["clicks"] / impressions if impressions else 0
+    return list(merged.values())
 
 
 def main() -> int:
@@ -79,7 +104,7 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
 
     daily = fetch(c, start, end, ["date"])
-    qp = fetch(c, start, end, ["query", "page"])
+    qp = merge_query_pages(fetch(c, start, end, ["query", "page"]))
     write_csv("daily.csv", daily)
     write_csv("query_page.csv", qp)
     last = max((r["date"] for r in daily), default="?")

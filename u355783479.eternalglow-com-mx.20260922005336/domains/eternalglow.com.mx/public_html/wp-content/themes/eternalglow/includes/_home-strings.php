@@ -38,6 +38,7 @@ return array(
 		'cta' => 'Reservar en línea',
 		'cta_short' => 'Agendar cita',
 		'cta_bar' => 'Reservar',
+		'cta_bar_context' => 'Agendar',
 		'sheet' => array('price' => 'Precio', 'includes' => 'Incluye valoración médica', 'note' => 'Reserva con tu horario preferido o escríbenos y te ayudamos a elegir.', 'more' => 'Conocer el tratamiento', 'close' => 'Cerrar', 'wa' => '¡Hola! Vi su página web y me gustaría agendar: %s.'),
 		'whatsapp' => 'Agendar por WhatsApp',
 		'hero' => array(
@@ -134,6 +135,7 @@ return array(
 		'cta' => 'Book online',
 		'cta_short' => 'Book a visit',
 		'cta_bar' => 'Book',
+		'cta_bar_context' => 'Book',
 		'sheet' => array('price' => 'Price', 'includes' => 'Includes a medical consultation', 'note' => 'Book the time you prefer or message us and we will help you choose.', 'more' => 'About this treatment', 'close' => 'Close', 'wa' => 'Hello! I saw your website and would like to book: %s.'),
 		'whatsapp' => 'Book on WhatsApp',
 		'hero' => array(
