@@ -84,7 +84,7 @@ Objetivo: que la lectura del 10 de noviembre sea confiable y que ningún arreglo
 |---|---|---|---|---|---|
 | 0.1 | Normalizar la URL UTM de GBP | `seo/gsc_report.py` y `seo/cannibalization.py` deben sumar `/?utm…gbp` con `/` | Dev | 2 h | Reporte sin falso positivo |
 | 0.2 | Arreglar `.lp-proof` en móvil | 2 columnas + doctor a todo lo ancho; ver 04, P0-1 | Dev | 1 h | Cédula visible en 390 px |
-| 0.3 | Actualizar 198 → 213 | Opción `trustindex-google-page-details`; definir refresco mensual | Ops | 30 min | Número igual a Maps |
+| 0.3 | Reseñas desde la API | `seo/gbp_reviews.py` baja la Reviews API y genera `includes/google-reviews.json`; el tema lo lee y Trustindex queda como respaldo | Dev | 3 h | 213 y carrusel sin plugin |
 | 0.4 | Reordenar el hero móvil | Botox, Hilos y Sculptra: foto después del CTA (04, P0-2) | Contenido | 4 h | Precio y CTA en el fold |
 | 0.5 | Ficha de precio en hubs | "Desde $X" arriba del CTA; Hilos y Armonización con paquetes | Contenido | 4 h | 4 hubs con precio escaneable |
 | 0.6 | Barra fija con contexto | Tratamiento + precio + "Agendar valoración"; WhatsApp como icono | Dev | 3 h | `cta_click` con `barra` |

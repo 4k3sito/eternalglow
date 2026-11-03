@@ -136,7 +136,7 @@ En servicio, mover el H1 arriba de la ficha y dejar la ficha inmediatamente desp
 
 **Qué se ve [M].** Home, Rellenos, Labios, EN y hubs muestran "5.0 · 198 reseñas en Google". Maps tiene 213. El dato sale de la opción `trustindex-google-page-details`, que el tema lee en `includes/_home.php`; no está en los PHP ni en los scripts, por eso no se actualiza con el deploy.
 
-**Arreglo.** Actualizar la opción de Trustindex (o el cache del widget) y definir quién la refresca cada mes. Si el plugin no se actualiza solo, leer el conteo de `seo/gbp-data/` y pasarlo por un filtro, con el número de Maps como fuente.
+**Arreglo.** Generar el número con `seo/gbp_reviews.py` desde la Reviews API (`includes/google-reviews.json`) y dejar Trustindex como respaldo mientras se verifica; después, desactivar el plugin. La API ya devuelve 5.0 y 213.
 
 **Impacto [E].** Credibilidad inmediata y coherencia con la ficha de Google. Es el dato que el usuario compara con los 785 de Juvenalia.
 
