@@ -607,6 +607,26 @@ add_filter('rank_math/opengraph/facebook/og_locale', function($locale){
 // WhatsApp show the WordPress login of whoever last saved the page instead of the clinic.
 add_filter('rank_math/opengraph/slack_enhanced_data', '__return_empty_array');
 
+// Pages without a featured image (the /en/ twins, contact, about...) shipped no og:image, so WhatsApp and
+// Facebook previews had no picture. Fall back to the Spanish twin's featured image, then to the home's.
+function eg_og_fallback_image($image){
+	if($image->has_images()){
+		return;
+	}
+	$path = trailingslashit(strtok($_SERVER['REQUEST_URI'] ?? '/', '?'));
+	$es = array_search($path, eg_translations(), true);
+	// url_to_postid() gives 0 for the home; get_post_thumbnail_id(0) would read the global post, so guard it.
+	$twin = $es !== false ? url_to_postid(home_url($es)) : 0;
+	$thumb = $twin ? get_post_thumbnail_id($twin) : 0;
+	$thumb = $thumb ?: get_post_thumbnail_id((int)get_option('page_on_front'));
+	if($thumb){
+		$image->add_image_by_id($thumb);
+	}
+}
+
+add_action('rank_math/opengraph/facebook/add_additional_images', 'eg_og_fallback_image');
+add_action('rank_math/opengraph/twitter/add_additional_images', 'eg_og_fallback_image');
+
 // The home is a PHP template, so the page builder's CSS and JS are dead weight there.
 function eg_home_dequeue(){
 	if(!is_front_page() && !is_page('en')){
